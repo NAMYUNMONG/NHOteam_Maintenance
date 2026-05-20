@@ -118,16 +118,16 @@ Chemical,CHM-0116,Sigma,Sodium carbonate,222321,RT,,19.05.16,500g,solid,,,
 Chemical,CHM-0117,Sigma,Sodium carboxymethyl cellulose,419273,RT,,,100g,solid,,,
 Chemical,CHM-0118,Sigma,Sodium carboxymethyl cellulose,419273,RT,,,100g,solid,,,
 Chemical,CHM-0119,USB,Sodium chloride,4275449,RT,,,5kg,solid,,,
-Chemical,CHM-0120,Sigma,Sodium dodecyl sulfate,L3771,RT,,,"500g, 1kg",solid,,,
+Chemical,CHM-0120,Sigma,Sodium dodecyl sulfate,L3771,RT,,,500g; 1kg,solid,,,
 Chemical,CHM-0121,Sigma,Sodium hydroxide,795429,RT,,,500g,solid,,,
 Chemical,CHM-0122,Sigma,Sodium hydroxide solution,72068,RT,,,100mL,liquid,,,
 Chemical,CHM-0123,Sigma,Sodium metabisulfite,255556,RT,,,100g,solid,,,
 Chemical,CHM-0124,Sigma,Sodium nitrite,563218,RT,,2019.05.16,25g,solid,,,
 Chemical,CHM-0125,Sigma,Sodium orthovanadate,S6508,RT,,,10g,solid,,,
 Chemical,CHM-0126,Sigma,Sodium phosphate,342483,RT,,,25g,solid,,,
-Chemical,CHM-0127,Sigma,Sodium phosphate dibasic,S3264,RT,,,"205g, 500g",solid,,,
+Chemical,CHM-0127,Sigma,Sodium phosphate dibasic,S3264,RT,,,250g; 500g,solid,,,
 Chemical,CHM-0128,Sigma,Sodium phosphate dibasic heptahydrate,S9390,RT,,,100g,solid,,,
-Chemical,CHM-0129,Sigma,Sodium selenite,S5261,RT,,,"10g, 25g",solid,,,
+Chemical,CHM-0129,Sigma,Sodium selenite,S5261,RT,,,10g; 25g,solid,,,
 Chemical,CHM-0130,Sigma,Sodium sulfite,239321,RT,,,500g,solid,,,
 Chemical,CHM-0131,Sigma,Sodium tartrate dibasic dihydrate,S4797,RT,,,100g,solid,,,
 Chemical,CHM-0132,Sigma,Sucrose,47289,RT,,,,solid,,,
@@ -206,7 +206,7 @@ Chemical,CHM-0204,(Cytiva)Biacore,Glycine 1.5,BR-1003-54,4'C,,,100mL,liquid,,,Re
 Chemical,CHM-0205,(Cytiva)Biacore,Glycine 2.0,BR-1003-55,4'C,,,100mL,liquid,,,Ref #3
 Chemical,CHM-0206,(Cytiva)Biacore,Glycine 2.5,BR-1003-56,4'C,,,10mL,liquid,,,Ref #3
 Chemical,CHM-0207,sigma,"Glycogen from bovine liver, Type IX",G0885,4'C,,,1g,solid,,,Ref #4
-Chemical,CHM-0208,(Cytiva)Biacore,HBS-EP buffer,BR-1001-88,4'C,,,6x200mL,liquid,,,Ref #3
+Chemical,CHM-0208,(Cytiva)Biacore,HBS-EP buffer,BR-1001-88,4'C,,,200mL,liquid,,,Ref #3
 Chemical,CHM-0209,sigma,Hesperetin,H4125,4'C,,,1g,solid,,,Ref #4
 Chemical,CHM-0210,sigma,Hexadimethrine bromide,H9268,4'C,,,10g,solid,,,Ref #4
 Chemical,CHM-0211,iNtRON,iN-fect (in vitro Transfection reagent),15081,4'C,,,500uL,liquid,,,Ref #3
@@ -214,7 +214,7 @@ Chemical,CHM-0212,sigma,Indole-3-carbinol,I7256,4'C,,,1g,solid,,,Ref #4
 Chemical,CHM-0213,sigma,Iodonitrotetrazolium chloride,I10406,4'C,,2014.04.30,1g,solid,,,Ref #4
 Chemical,CHM-0214,sigma,Krebs-Henseleit Buffer Modified,K3753-10x1L,4'C,,,1L,liquid,,,Ref #4
 Chemical,CHM-0215,Sigma,L-Glutamic acid,G6133,4'C,,2010.07.20,1g,solid,,,Ref #4
-Chemical,CHM-0216,sigma,L-glutathione oxidized,G6654,4'C,,,"250mg, 1g",solid,,,Ref #4
+Chemical,CHM-0216,sigma,L-glutathione oxidized,G6654,4'C,,,250mg; 1g,solid,,,Ref #4
 Chemical,CHM-0217,sigma,L-glutathione reduced,G4251,4'C,,,10g,solid,,,Ref #4
 Chemical,CHM-0218,sigma,Lipopolysaccharides from Escherichia coli,L3129,4'C,,,10mg,solid,,,Ref #4
 Chemical,CHM-0219,sigma,Liquified Phenol,P9346,4'C,,,100mL,liquid,,,Ref #4
@@ -238,7 +238,7 @@ Chemical,CHM-0236,sigma,Phenethyl isothiocyanate,253731,4'C,,2012.11.29,5g,liqui
 Chemical,CHM-0237,sigma,Phenol solution,P4557,4'C,,,100mL,liquid,,,Ref #4
 Chemical,CHM-0238,sigma,Piroxicam,P5654,4'C,,,1g,solid,,,Ref #4
 Chemical,CHM-0239,Bio-rad,proline Universal Calibration Beads,1451086,4'C,,,5mL,liquid,,,Ref #4
-Chemical,CHM-0240,sigma,Propidium iodide,P4170; 287075,4'C,,,"25mg, 100mg",solid,,,Ref #4
+Chemical,CHM-0240,sigma,Propidium iodide,P4170; 287075,4'C,,,25mg; 100mg,solid,,,Ref #4
 Chemical,CHM-0241,Millipore (sigma),Protein A agarose_ Salmon Sperm DNA,16-157,4'C,,,2.5mL,liquid,,,Ref #3
 Chemical,CHM-0242,Bio-Rad,Protein assay Dye reagent concentrated,5000006,4'C,,2020.01.28,450mL,liquid,,,Ref #3
 Chemical,CHM-0243,NEXTflex,Rapid Directional mRNA-Seq Bundle,5138-10,4'C,,,,,,,Ref #4
@@ -250,7 +250,7 @@ Chemical,CHM-0248,aldrich (sigma),Sodium Sulfide,407410,4'C,,,10g,solid,,,Ref #3
 Chemical,CHM-0249,sigma,SP600125,S5567,4'C,,2019.12.16,10mg,solid,,,Ref #3
 Chemical,CHM-0250,sigma,Sperimidine,S0266,4'C,,,1g,solid,,,Ref #4
 Chemical,CHM-0251,Thermo scientific,Strepavidin Agarose Resin,20347,4'C,,,2mL,liquid,,,Ref #3
-Chemical,CHM-0252,Thermo scientific (applied biosystems),SYBR Green Master Mix,A25742,4'C,,,"5mL, 1mL",liquid,,,Ref #3
+Chemical,CHM-0252,Thermo scientific (applied biosystems),SYBR Green Master Mix,A25742,4'C,,,5mL; 1mL,liquid,,,Ref #3
 Chemical,CHM-0253,sigma,"Tamoxifen, Minimum",T5648,4'C,,2007.01.31,1g,solid,,,Ref #4
 Chemical,CHM-0254,Fluka,Taxifolin,78666,4'C,,2014.12.02,25mg,solid,,,Ref #4
 Chemical,CHM-0255,sigma,Temozolomide,T2577,4'C,,,25mg,solid,,,Ref #3
@@ -265,20 +265,20 @@ Chemical,CHM-0263,Fluka (SIGMA),Vanillic acid,94770,4'C,,2014.12.02,10g,solid,,,
 Chemical,CHM-0264,Vector,Vectashield (mounting medium with DAPI),H-1200,4'C,,,10mL,liquid,,,Ref #3
 Chemical,CHM-0265,sigma,β-Glycerol phosphate disodium salt pentahydrate,50020,4'C,,2019.02.27,100g,solid,,,Ref #4
 Chemical,CHM-0266,sigma,"β-Naphthoflavone, 90-95%",N3633,4'C,,,1g,solid,,,Ref #4
-Chemical,CHM-0267,Welgene,DMEM high glucose,LM 001-05,4'C,,,500 mL,liquid,,,Ref #6
-Chemical,CHM-0268,Cytiva,DMEM high glucose,SH30243.01,4'C,,,500 mL,liquid,,,Ref #6
-Chemical,CHM-0269,Gibco,DMEM / F12 (1:1),11320-033,4'C,,,500 mL,liquid,,,Ref #6
-Chemical,CHM-0270,Gibco,Neurobasal medum,21103-049,4'C,,,500 mL,liquid,,,Ref #6
+Chemical,CHM-0267,Welgene,DMEM high glucose,LM 001-05,4'C,,,500mL,liquid,,,Ref #6
+Chemical,CHM-0268,Cytiva,DMEM high glucose,SH30243.01,4'C,,,500mL,liquid,,,Ref #6
+Chemical,CHM-0269,Gibco,DMEM / F12 (1:1),11320-033,4'C,,,500mL,liquid,,,Ref #6
+Chemical,CHM-0270,Gibco,Neurobasal medum,21103-049,4'C,,,500mL,liquid,,,Ref #6
 Chemical,CHM-0271,Elabscience,Hydroxyproline colorimetric assay kit,E-BC-K062-S,4'C,,,kit,liquid,,,Ref #6
 Chemical,CHM-0272,Elabscience,Alanin Aminotransferase colorimetric assay kit,E-BC-K235-S,4'C,,,kit,liquid,,,Ref #6
 Chemical,CHM-0273,Elabscience,Aspartate Aminotransferase (AST/GOT) Activity Assay Kit,E-BC-K236-M,4'C,,,kit,liquid,,,Ref #6
-Chemical,CHM-0274,Cytiva,MEM/EBSS,SH30024.01,4'C,,,500 mL,liquid,,,Ref #6
-Chemical,CHM-0275,Welgene,MEM,LM 007-12,4'C,,,500 mL,liquid,,,Ref #6
-Chemical,CHM-0276,Welgene,Alpha MEM,LM 008-53,4'C,,,500 mL,liquid,,,Ref #6
-Chemical,CHM-0277,Welgene,IMDM,LM 004-02,4'C,,,500 mL,liquid,,,Ref #6
-Chemical,CHM-0278,Cytiva,RPMI-1640 Medium,SH 30027.01,4'C,,,500 mL,liquid,,,Ref #6
-Chemical,CHM-0279,Welgene,DPBS,LB 001-02,4'C,,,500 mL,liquid,,,Ref #6
-Chemical,CHM-0280,Lonza,EGM-2,CC-3162,4'C,,,500 mL,liquid,,,Ref #6
+Chemical,CHM-0274,Cytiva,MEM/EBSS,SH30024.01,4'C,,,500mL,liquid,,,Ref #6
+Chemical,CHM-0275,Welgene,MEM,LM 007-12,4'C,,,500mL,liquid,,,Ref #6
+Chemical,CHM-0276,Welgene,Alpha MEM,LM 008-53,4'C,,,500mL,liquid,,,Ref #6
+Chemical,CHM-0277,Welgene,IMDM,LM 004-02,4'C,,,500mL,liquid,,,Ref #6
+Chemical,CHM-0278,Cytiva,RPMI-1640 Medium,SH 30027.01,4'C,,,500mL,liquid,,,Ref #6
+Chemical,CHM-0279,Welgene,DPBS,LB 001-02,4'C,,,500mL,liquid,,,Ref #6
+Chemical,CHM-0280,Lonza,EGM-2,CC-3162,4'C,,,500mL,liquid,,,Ref #6
 Chemical,CHM-0281,Cayman,(−)-Deguelin,10010706,-20'C,,,10mg,solid,,,Fridge #5
 Chemical,CHM-0282,sigma,(L)-Dehydroascorbic acid,261556,-20'C,,,250mg,solid,,,Fridge #7
 Chemical,CHM-0283,Sigma,"1α,25-Dihydroxyvitamin D3",D1530,-20'C,,,10ug,solid,,,Fridge #5
@@ -346,12 +346,12 @@ Chemical,CHM-0344,Sigma,β-Carotene,C9750,-20'C,,,5g,solid,,,Fridge #5
 Chemical,CHM-0345,sigma,β-Estradiol,E2758-250MG,-20'C,,,250mg,solid,,,Fridge #7
 Chemical,CHM-0346,Sigma,"β-Nicotinamide adenine dinucleotide phosphate, reduced tetra(cyclohexylammonium) salt",N5130,-20'C,,,25mg,solid,,,Fridge #5
 Chemical,CHM-0347,Lonza,Reagent Pack for HUVEC,CC-5034,-20'C,,,100 mL,liquid,,,Fridge #5
-Chemical,CHM-0348,Gibco,FBS,10082147,-20'C,,,500 mL,liquid,,,Fridge #1
+Chemical,CHM-0348,Gibco,FBS,10082147,-20'C,,,500mL,liquid,,,Fridge #1
 Chemical,CHM-0349,Corning,FBS,35015169,-20'C,,,50 mL,liquid,,,4층 세포실
 Chemical,CHM-0350,Cytiva,Penicillin-streptomycin solution,SH40003.01,-20'C,,,100 mL,liquid,,,4층 세포실
 Chemical,CHM-0351,Welgene,"Cell freezing medium-dmso, 1x",FM 001-01,-20'C,,,100 mL,liquid,,,4층 세포실
 Chemical,CHM-0352,Gibco,"0.25% trypsin-EDTA, 1x",25200-056,-20'C,,,100 mL,liquid,,,4층 세포실
-Chemical,CHM-0353,Welgene,Trypsin-EDTA,LS 015-01,-20'C,,,500 mL,liquid,,,4층 세포실
+Chemical,CHM-0353,Welgene,Trypsin-EDTA,LS 015-01,-20'C,,,500mL,liquid,,,4층 세포실
 Antibody,AB-0001,Cell signaling technology,p27 Kip1 (D37H1) Rabbit mAb,3688S,-20'C,CST #1,,,,27,,
 Antibody,AB-0002,Cell signaling technology,Cyclin A2 (BF683) Mouse mAb,4656S,-20'C,CST #1,,,,55,,
 Antibody,AB-0003,Cell signaling technology,Cyclin D1 Antibody,2922S,-20'C,CST #1,,,,36,,
