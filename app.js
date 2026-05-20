@@ -64,13 +64,13 @@ async function loadData() {
     const parsed = JSON.parse(saved);
     sourceMeta = parsed.meta || {};
     items = parsed.items || [];
-    $("lastUpdated").textContent = "브라우저 임시 저장 데이터를 사용 중입니다.";
+    $("lastUpdated").textContent = `${sourceMeta.source_file || "inventory.json"} (브라우저 임시 저장)`;
   } else {
     const response = await fetch("./data/inventory.json", { cache: "no-store" });
     const data = await response.json();
     sourceMeta = data.meta || {};
     items = data.items || [];
-    $("lastUpdated").textContent = `기준 데이터: ${sourceMeta.source_file || "inventory.json"}`;
+    $("lastUpdated").textContent = sourceMeta.source_file || "inventory.json";
   }
   buildStorageFilter();
   render();
@@ -144,7 +144,7 @@ function renderTable() {
       }
       return `<td>${escapeHtml(item[col] || "")}</td>`;
     }).join("");
-    return `<tr>${cells}<td><button type="button" data-edit-id="${escapeHtml(item.Item_ID)}">Edit</button></td></tr>`;
+    return `<tr class="row-${escapeHtml(item.Category)}">${cells}<td class="edit-cell"><button type="button" data-edit-id="${escapeHtml(item.Item_ID)}">Edit</button></td></tr>`;
   }).join("");
 
   tbody.querySelectorAll("[data-edit-id]").forEach((button) => {
@@ -305,7 +305,7 @@ function localSave(showAlert = true) {
     items,
   };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-  $("lastUpdated").textContent = "브라우저 임시 저장 완료";
+  $("lastUpdated").textContent = `${sourceMeta.source_file || "inventory.json"} (브라우저 임시 저장 완료)`;
   if (showAlert) alert("현재 브라우저에 임시 저장했습니다. 팀 전체 반영은 JSON 다운로드 후 GitHub에 커밋해야 합니다.");
 }
 
