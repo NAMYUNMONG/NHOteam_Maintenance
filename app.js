@@ -89,6 +89,10 @@ function filteredItems() {
   const storage = $("storageFilter").value;
   const sortKey = $("sortSelect").value;
 
+  if (activeView === "Mainpage" && !query) {
+    return [];
+  }
+
   return items
     .filter((item) => {
       if (category && item.Category !== category) return false;
@@ -113,6 +117,7 @@ function renderStats() {
 
 function renderTable() {
   const rows = filteredItems();
+  const query = normalize($("searchInput").value);
   const prefix = CATEGORY_COLUMNS[activeView] ? `${activeView} ` : "";
   const columns = CATEGORY_COLUMNS[activeView] || TABLE_COLUMNS;
   $("resultCount").textContent = `${prefix}검색 결과 ${rows.length.toLocaleString("ko-KR")}개`;
@@ -123,7 +128,10 @@ function renderTable() {
   thead.innerHTML = `<tr>${columns.map((col) => `<th>${escapeHtml(col)}</th>`).join("")}<th>작업</th></tr>`;
 
   if (rows.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="${columns.length + 1}">검색 결과가 없습니다.</td></tr>`;
+    const emptyMessage = activeView === "Mainpage" && !query
+      ? "검색어를 입력하면 결과가 표시됩니다."
+      : "검색 결과가 없습니다.";
+    tbody.innerHTML = `<tr><td colspan="${columns.length + 1}">${emptyMessage}</td></tr>`;
     return;
   }
 
@@ -484,8 +492,10 @@ function initEvents() {
   document.querySelectorAll("[data-view]").forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
-      history.replaceState(null, "", link.getAttribute("href"));
-      setView(link.dataset.view);
+      const view = link.dataset.view;
+      const href = link.getAttribute("href") || `#${view.toLowerCase()}`;
+      history.replaceState(null, "", href);
+      setView(view);
     });
   });
 

@@ -49,18 +49,29 @@
         <span class="stat-label">전체</span>
         <strong id="statTotal">0</strong>
       </article>
-      <article class="stat-card">
+      <button class="stat-card category-card" type="button" data-view="Chemical">
         <span class="stat-label">Chemical</span>
         <strong id="statChemical">0</strong>
-      </article>
-      <article class="stat-card">
+      </button>
+      <button class="stat-card category-card" type="button" data-view="Antibody">
         <span class="stat-label">Antibody</span>
         <strong id="statAntibody">0</strong>
-      </article>
-      <article class="stat-card">
+      </button>
+      <button class="stat-card category-card" type="button" data-view="Product">
         <span class="stat-label">Product</span>
         <strong id="statProduct">0</strong>
-      </article>
+      </button>
+    </section>
+
+    <section class="actions-panel">
+      <div class="action-group">
+        <button id="addItemBtn" class="primary-button" type="button">신규 항목 추가</button>
+      </div>
+      <div class="upload-box">
+        <label for="fileInput">JSON/CSV/Excel 업로드 병합</label>
+        <input id="fileInput" type="file" accept=".json,.csv,.xlsx,.xls" />
+        <small>Excel 업로드는 Chemical/Antibody/Product 탭 또는 동일 컬럼명을 가진 시트를 인식합니다.</small>
+      </div>
     </section>
 
     <section class="toolbar">
@@ -96,17 +107,6 @@
           <option value="Item_ID">Item_ID</option>
         </select>
       </label>
-    </section>
-
-    <section class="actions-panel">
-      <div class="action-group">
-        <button id="addItemBtn" class="primary-button" type="button">신규 항목 추가</button>
-      </div>
-      <div class="upload-box">
-        <label for="fileInput">JSON/CSV/Excel 업로드 병합</label>
-        <input id="fileInput" type="file" accept=".json,.csv,.xlsx,.xls" />
-        <small>Excel 업로드는 Chemical/Antibody/Product 탭 또는 동일 컬럼명을 가진 시트를 인식합니다.</small>
-      </div>
     </section>
 
     <section class="status-row">

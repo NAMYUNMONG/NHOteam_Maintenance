@@ -200,6 +200,20 @@ code {
   padding: 18px;
 }
 
+button.stat-card {
+  width: 100%;
+  border-radius: var(--radius);
+  text-align: left;
+}
+
+.category-card {
+  cursor: pointer;
+}
+
+.category-card:hover {
+  border-color: var(--primary);
+}
+
 .stat-label {
   display: block;
   color: var(--muted);
