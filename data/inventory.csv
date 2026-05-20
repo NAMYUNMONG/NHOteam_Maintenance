@@ -1,22 +1,22 @@
 ﻿Category,Item_ID,Manufacturer,Item_Name,Cat_No,Storage,Location,Opened_Date,Quantity_Size,Form_Type,MW_kDa,Requester,Note
 Chemical,CHM-0001,Sigma,(±)-Verapamil hydrochloride,V4629,RT,,,1g,solid,,,
-Chemical,CHM-0002,T&I,"0.5M EDTA, pH 8.0",BED9180-005M,RT,,2013.14.22,500ml,liquid,,,
+Chemical,CHM-0002,T&I,"0.5M EDTA, pH 8.0",BED9180-005M,RT,,2013.14.22,500mL,liquid,,,
 Chemical,CHM-0003,Sigma,"1-Chloro-2,4-dinitrobenzene",237329,RT,,,10g,solid,,,
 Chemical,CHM-0004,Bio-rad,10x Tris/CAPS Buffer for Semi-Dry Blotting,1610778,RT,,,1L,liquid,,,
-Chemical,CHM-0005,USB,1M Magnesium Chloride,78641,RT,,,100ml,liquid,,,
-Chemical,CHM-0006,Daejung,1N-Hydrochloric acid standard solution,4095-3700,RT,,,"1L, 2개",liquid,,,
+Chemical,CHM-0005,USB,1M Magnesium Chloride,78641,RT,,,100mL,liquid,,,
+Chemical,CHM-0006,Daejung,1N-Hydrochloric acid standard solution,4095-3700,RT,,,1L,liquid,,,
 Chemical,CHM-0007,Daejung,1N-Hydrochloric acid standard solution,4095-3700,RT,,,1L,liquid,,,
-Chemical,CHM-0008,Daejung,1N-Sodium hydroxide standard solution,7576-3700,RT,,,"1L, 2개",liquid,,,
-Chemical,CHM-0009,Supelco,2-propanol,1.09634.1011,RT,,2021.09.12,"1L, 3개",liquid,,,
-Chemical,CHM-0010,TREVIGEN 4,200mM EDTA,4250-050-04,RT,,08.12.17,12.5ml,liquid,,,
+Chemical,CHM-0008,Daejung,1N-Sodium hydroxide standard solution,7576-3700,RT,,,1L,liquid,,,
+Chemical,CHM-0009,Supelco,2-propanol,1.09634.1011,RT,,2021.09.12,1L,liquid,,,
+Chemical,CHM-0010,TREVIGEN 4,200mM EDTA,4250-050-04,RT,,08.12.17,12.5mL,liquid,,,
 Chemical,CHM-0011,Sigma,"3,4-Dihydroxy-L-phenylalanine",D9628,RT,,,5g,solid,,,
 Chemical,CHM-0012,Sigma,"3,5-Dinitrosalicylic acid",D0550,RT,,,10g,solid,,,
 Chemical,CHM-0013,Sigma,4-Hydroxy-3-methoxycinnamaldehyde,382051,RT,,,1g,solid,,,
-Chemical,CHM-0014,T&I,4% Paraformaldehyde Solution,BPP-9004,RT,,2021.11.17,500ml,liquid,,,
-Chemical,CHM-0015,Sigma,5-Aminosalicylic acid,A79809,RT,,,"5g, 2개",solid,,,
+Chemical,CHM-0014,T&I,4% Paraformaldehyde Solution,BPP-9004,RT,,2021.11.17,500mL,liquid,,,
+Chemical,CHM-0015,Sigma,5-Aminosalicylic acid,A79809,RT,,,5g,solid,,,
 Chemical,CHM-0016,Sigma,"5,5'-Dithio-bis(2-nitro-benzoic acid)",D8130,RT,,,10g,solid,,,
 Chemical,CHM-0017,SCBT,8-Hydroxyzuindine hemisulfate salt hemihydrate,SC-227132,RT,,2018.01.03,100g,solid,,,
-Chemical,CHM-0018,부광약품,헥사메딘,,RT,,,250ml,liquid,,,
+Chemical,CHM-0018,부광약품,헥사메딘,,RT,,,250mL,liquid,,,
 Chemical,CHM-0019,Sigma,Acetone,270725,RT,,2014.12.23,1L,liquid,,,
 Chemical,CHM-0020,Thermo Scientific,Acetonitrile,A998-4,RT,,,4L,liquid,,,
 Chemical,CHM-0021,BioShop,"Agarose, biotechnology grade",AGA001.500,RT,,,500g,solid,,,
@@ -35,16 +35,16 @@ Chemical,CHM-0033,USB,Calcium chloride dihydrate,117960(12531),RT,,,500g,solid,,
 Chemical,CHM-0034,Sigma,Cetirizine dihydrochloride,C3618,RT,,,50mg,solid,,,
 Chemical,CHM-0035,Sigma,Cetylpyridinium chloride,C0732,RT,,,100g,solid,,,
 Chemical,CHM-0036,STC,Chalcone,SC-204681,RT,,,25g,solid,,,
-Chemical,CHM-0037,Sigma,Chloroform,C2432,RT,,,"1L, 2개",liquid,,,
+Chemical,CHM-0037,Sigma,Chloroform,C2432,RT,,,1L,liquid,,,
 Chemical,CHM-0038,Sigma,Chlorogenic acid,C3878,RT,,,250mg,solid,,,
 Chemical,CHM-0039,TCI,Chlorogenic Acid Hydrate,C0181,RT,,,1g,solid,,,
 Chemical,CHM-0040,Sigma,Cobalt(II) chloride,232696,RT,,2017.02.21,5g,solid,,,
-Chemical,CHM-0041,Sigma,Corn oil,C8267,RT,,2015.10.02,500ml,liquid,,,
+Chemical,CHM-0041,Sigma,Corn oil,C8267,RT,,2015.10.02,500mL,liquid,,,
 Chemical,CHM-0042,Sigma,D-(+)-Glucose,47249,RT,,,,solid,,,
 Chemical,CHM-0043,Sigma,D-(+)-Glucose,G5767,RT,,,25g,solid,,,
 Chemical,CHM-0044,Sigma,D-(−)-Fructose,F2793,RT,,,500mg,solid,,,
 Chemical,CHM-0045,GE healthcare,DEAE Sephadex A-25,17017001,RT,,,100g,solid,,,
-Chemical,CHM-0046,MP Biomedicals,Dextran sulfate sodium salt colitis grade,160110,RT,,,"100g, 3개",solid,,,
+Chemical,CHM-0046,MP Biomedicals,Dextran sulfate sodium salt colitis grade,160110,RT,,,100g,solid,,,
 Chemical,CHM-0047,Daejung,Dichloromethane,3030-4400,RT,,,1kg,liquid,,,
 Chemical,CHM-0048,Sigma,Diethanolamine,31589,RT,,,100g,solid,,,
 Chemical,CHM-0049,Sigma,"Diethylenetriaminepenta acetic acid, minium 99% titration",D6518,RT,,,5g,solid,,,
@@ -52,8 +52,8 @@ Chemical,CHM-0050,BD,Difco Antiboitic medium 5,227710,RT,,,500g,solid,,,
 Chemical,CHM-0051,Sigma,Diflunisal,D3281,RT,,,5g,solid,,,
 Chemical,CHM-0052,Sigma,Dimethyl sulfoxide,D8418,RT,,,1L,liquid,,,
 Chemical,CHM-0053,Daejung,Dimethyl sulfoxide,3047-4400,RT,,,1L,liquid,,,
-Chemical,CHM-0054,Welgene,Dulbecco’s Phosphate-Buffered Saline,LB001-02,RT,,,500ml,liquid,,,
-Chemical,CHM-0055,Supelco,Ethanol,1.00983.1011,RT,,,"1L, 2개",liquid,,,
+Chemical,CHM-0054,Welgene,Dulbecco’s Phosphate-Buffered Saline,LB001-02,RT,,,500mL,liquid,,,
+Chemical,CHM-0055,Supelco,Ethanol,1.00983.1011,RT,,,1L,liquid,,,
 Chemical,CHM-0056,Millipore,Ethanol absolute for analysis EMSURE,54-17-5,RT,,,1L,liquid,,,
 Chemical,CHM-0057,Samchun,"Ethyl alcohol, 95.0% Denatured",E0219,RT,,,18L,liquid,,,
 Chemical,CHM-0058,Sigma,"Ethylene glycol-bis(β-aminoethyl ether)-N,N,N′,N′-tetraacetic acid tetrasodium salt",E8145,RT,,,10g,solid,,,
@@ -64,15 +64,15 @@ Chemical,CHM-0062,JUNSEI,Formaldehyde solution,69360S0380,RT,,2019.12.07,1L,liqu
 Chemical,CHM-0063,Sigma,Formamide,F7508,RT,,,500g,liquid,,,
 Chemical,CHM-0064,Sigma,Gallic acid,G7384,RT,,,100g,solid,,,
 Chemical,CHM-0065,SCBT,Gallic acid,sc-205704,RT,,12.10.19,10g,solid,,,
-Chemical,CHM-0066,Sigma,"Giemsa Stain, Modified Solution",48900,RT,,,100ml,liquid,,,
+Chemical,CHM-0066,Sigma,"Giemsa Stain, Modified Solution",48900,RT,,,100mL,liquid,,,
 Chemical,CHM-0067,USB,Glutathione-Reduced,16315,RT,,,25g,solid,,,
 Chemical,CHM-0068,Calbiochem,Glycine,4840,RT,,,5kg,solid,,,
 Chemical,CHM-0069,Sigma,Griess reagent (modified),G4410,RT,,18.01.26,10g,solid,,,
 Chemical,CHM-0070,Sigma,Hexadeculpyridinium bromide,H9151,RT,,,25g,solid,,,
 Chemical,CHM-0071,Sigma,Hexadecylpyridinium chloride monohydrate,C9002,RT,,,100g,solid,,,
 Chemical,CHM-0072,GeneAll,Hybrid-R 100p,305-101,RT,,,-,liquid,,,
-Chemical,CHM-0073,Sigma,Hydrochloric acid,H1758,RT,,,100ml,liquid,,,
-Chemical,CHM-0074,Sigma,IGEPAL® CA-630,I8896,RT,,,50ml,liquid,,,
+Chemical,CHM-0073,Sigma,Hydrochloric acid,H1758,RT,,,100mL,liquid,,,
+Chemical,CHM-0074,Sigma,IGEPAL® CA-630,I8896,RT,,,50mL,liquid,,,
 Chemical,CHM-0075,Sigma,Indomethacin,I7378,RT,,,5g,solid,,,
 Chemical,CHM-0076,Sigma,Iron(Ⅲ) chloride hexahydrate,44944,RT,,,50g,solid,,,
 Chemical,CHM-0077,Daejung,Isopropyl alcohol,5035-4400,RT,,,1L,liquid,,,
@@ -88,26 +88,26 @@ Chemical,CHM-0086,Thermo Scientific,Methanol,A452-4,RT,,,4L,liquid,,,
 Chemical,CHM-0087,J.T.Baker,Methanol,9093-88,RT,,,4L,liquid,,,
 Chemical,CHM-0088,Supelco,Methanol,1.06009.1011,RT,,2021.09.12,1L,liquid,,,
 Chemical,CHM-0089,Daejung,Methyl Alcohol,5558-4410,RT,,,18L,liquid,,,
-Chemical,CHM-0090,Daejung,Methyl Alcohol / 99.5%,5558-4410,RT,,,"18L, 2개",liquid,,,
+Chemical,CHM-0090,Daejung,Methyl Alcohol / 99.5%,5558-4410,RT,,,18L,liquid,,,
 Chemical,CHM-0091,Sigma,Methyl viologen dichloride hydrate,856177,RT,,09.08.27,250mg,solid,,,
 Chemical,CHM-0092,Sigma,N-(1-Naphthyl)ethylenediamine dihydrochloride,N9125,RT,,,10g,solid,,,
-Chemical,CHM-0093,Samchun,"Nitric acid, 68.0-70%",051019,RT,,,"1kg, 2개",liquid,,,
+Chemical,CHM-0093,Samchun,"Nitric acid, 68.0-70%",051019,RT,,,1kg,liquid,,,
 Chemical,CHM-0094,Sigma,Oil red O,O0625,RT,,,100g,solid,,,
-Chemical,CHM-0095,Sigma,Olive oil,O1514,RT,,,100ml,liquid,,,
+Chemical,CHM-0095,Sigma,Olive oil,O1514,RT,,,100mL,liquid,,,
 Chemical,CHM-0096,Sigma,Orlistat,PHR1445,RT,,,1g,solid,,,
 Chemical,CHM-0097,Sigma,p-Coumaric acid,C9008,RT,,,1g,solid,,,
 Chemical,CHM-0098,Sigma,Palmitic acid,P0500,RT,,2021.05.17,10g,solid,,,
 Chemical,CHM-0099,Sigma,Phenylmethanesulfonyl fluoride,P7626,RT,,,1g,solid,,,
-Chemical,CHM-0100,Sigma,Phosphoric acid,345245,RT,,,100ml,liquid,,,
-Chemical,CHM-0101,Thermo Scientific,Pierce™ BCA Protein Assay Reagent A,23228,RT,,,500ml,liquid,,,
+Chemical,CHM-0100,Sigma,Phosphoric acid,345245,RT,,,100mL,liquid,,,
+Chemical,CHM-0101,Thermo Scientific,Pierce™ BCA Protein Assay Reagent A,23228,RT,,,500mL,liquid,,,
 Chemical,CHM-0102,Sigma,Ponceau S solution,P7170,RT,,,1L,liquid,,,
 Chemical,CHM-0103,USB,Potassium Chloride,20598,RT,,,500g,solid,,,
 Chemical,CHM-0104,Sigma,Potassium sodium tartrate tetrahydrate,217255,RT,,,500g,solid,,,
 Chemical,CHM-0105,Sigma,Putrescine dihydrochloride,p5780,RT,,,5g,solid,,,
 Chemical,CHM-0106,QIAGEN,QIAamp PowerFecal Pro DNA kit (50),51804,RT,,2021.10.20,,liquid,,,
 Chemical,CHM-0107,Sigma,Resorufin,424455,RT,,10.07.07,1g,solid,,,
-Chemical,CHM-0108,Thermo Scientific,Restore™ PLUS Western Blot Stripping Buffer,46430,RT,,,"500ml, 2개",liquid,,,
-Chemical,CHM-0109,Curebio,"Sds solution, 10%",,RT,,,500ml,liquid,,,
+Chemical,CHM-0108,Thermo Scientific,Restore™ PLUS Western Blot Stripping Buffer,46430,RT,,,500mL,liquid,,,
+Chemical,CHM-0109,Curebio,"Sds solution, 10%",,RT,,,500mL,liquid,,,
 Chemical,CHM-0110,GE healthcare,Sephadex LH-20,17009001,RT,,,100g,solid,,,
 Chemical,CHM-0111,Sigma,Sinapic acid,D7927,RT,,,1g,solid,,,
 Chemical,CHM-0112,Sigma,Sodium (meta)arsenite,S7400,RT,,,100g,solid,,,
@@ -120,7 +120,7 @@ Chemical,CHM-0118,Sigma,Sodium carboxymethyl cellulose,419273,RT,,,100g,solid,,,
 Chemical,CHM-0119,USB,Sodium chloride,4275449,RT,,,5kg,solid,,,
 Chemical,CHM-0120,Sigma,Sodium dodecyl sulfate,L3771,RT,,,"500g, 1kg",solid,,,
 Chemical,CHM-0121,Sigma,Sodium hydroxide,795429,RT,,,500g,solid,,,
-Chemical,CHM-0122,Sigma,Sodium hydroxide solution,72068,RT,,,100ml,liquid,,,
+Chemical,CHM-0122,Sigma,Sodium hydroxide solution,72068,RT,,,100mL,liquid,,,
 Chemical,CHM-0123,Sigma,Sodium metabisulfite,255556,RT,,,100g,solid,,,
 Chemical,CHM-0124,Sigma,Sodium nitrite,563218,RT,,2019.05.16,25g,solid,,,
 Chemical,CHM-0125,Sigma,Sodium orthovanadate,S6508,RT,,,10g,solid,,,
@@ -133,16 +133,16 @@ Chemical,CHM-0131,Sigma,Sodium tartrate dibasic dihydrate,S4797,RT,,,100g,solid,
 Chemical,CHM-0132,Sigma,Sucrose,47289,RT,,,,solid,,,
 Chemical,CHM-0133,Sigma,Sulfanilamide,S9251,RT,,,100g,solid,,,
 Chemical,CHM-0134,Daejung,Sulfuric acid 98%,7683-4100,RT,,,1kg,liquid,,,
-Chemical,CHM-0135,Thermo Scientific,TEMED,17919,RT,,,25ml,liquid,,,
+Chemical,CHM-0135,Thermo Scientific,TEMED,17919,RT,,,25mL,liquid,,,
 Chemical,CHM-0136,Sigma,Tetraethylthiuram disulfide,86720,RT,,,50g,solid,,,
 Chemical,CHM-0137,Sigma,trans-Cinnamaldehyde,C80687,RT,,18.01.26,25g,liquid,,,
 Chemical,CHM-0138,Sigma,trans-Cinnamic acid,133760,RT,,,100g,solid,,,
 Chemical,CHM-0139,Fisher scientific,Tris-Base,BP152-5,RT,,,5kg,solid,,,
-Chemical,CHM-0140,Sigma,Tris-EDTA buffer solution,93302,RT,,,100ml,liquid,,,
-Chemical,CHM-0141,Sigma,Triton™ X-100,X100,RT,,,100ml,liquid,,,
+Chemical,CHM-0140,Sigma,Tris-EDTA buffer solution,93302,RT,,,100mL,liquid,,,
+Chemical,CHM-0141,Sigma,Triton™ X-100,X100,RT,,,100mL,liquid,,,
 Chemical,CHM-0142,Sigma,Trizma® hydrochloride buffer solution,T3069,RT,,,1L,liquid,,,
 Chemical,CHM-0143,Sigma,Trizma® hydrochloride solution,T2663,RT,,,1L,liquid,,,
-Chemical,CHM-0144,Sigma,TWEEN® 20,P1379,RT,,,250ml,liquid,,,
+Chemical,CHM-0144,Sigma,TWEEN® 20,P1379,RT,,,250mL,liquid,,,
 Chemical,CHM-0145,Sigma,Vanillic acid,94770,RT,,,10g,solid,,,
 Chemical,CHM-0146,Promega,Wizard SV Gel and PCR Clean-Up System,A9282,RT,,,,liquid,,,
 Chemical,CHM-0147,Sigma,"Xanthin, Sigma Ultrea > 99%",X4002,RT,,,1g,solid,,,
@@ -155,17 +155,17 @@ Chemical,CHM-0153,Santa Cruz Biotechnology,(-)-Perillyl Alcohol,sc-205798,4'C,,2
 Chemical,CHM-0154,sigma,(+)-Catechin hydrate,C1251,4'C,,,5g,solid,,,Ref #4
 Chemical,CHM-0155,sigma,"(±)-6-Hydroxy-2,5,7,8-tetramethyl-chromane-2-carboxylic acid",238813,4'C,,,1g,solid,,,Ref #4
 Chemical,CHM-0156,sigma,1-(Trimethylsilyl) imidazole,92751,4'C,,,50mL,liquid,,,Ref #4
-Chemical,CHM-0157,sigma,"1,1,3,3-Tetraethoxypropane",T9889,4'C,,,25ml,liquid,,,Ref #4
+Chemical,CHM-0157,sigma,"1,1,3,3-Tetraethoxypropane",T9889,4'C,,,25mL,liquid,,,Ref #4
 Chemical,CHM-0158,Mpbio,10xRbCa TXN Salts,113103014,4'C,,2010.07,150mL,liquid,,,Ref #3
-Chemical,CHM-0159,sigma,"2,2-Diphenyl-1-picrylhydrazyl",D9132; 43180,4'C,,,"1g, 2개",solid,,,Ref #4
+Chemical,CHM-0159,sigma,"2,2-Diphenyl-1-picrylhydrazyl",D9132; 43180,4'C,,,1g,solid,,,Ref #4
 Chemical,CHM-0160,sigma,"2,2'-Azino-bis(3-ethylbenzothiazoline-6-sulfonic acide) diammonium salt",A1888,4'C,,2020.01.30,2g,solid,,,Ref #4
 Chemical,CHM-0161,Biochemika,"2,2'-Azino-bis(3-ethylbenzothiazoline-6-sulfonic acide) diammonium salt",11557,4'C,,,1g,solid,,,Ref #4
 Chemical,CHM-0162,Thermo Fisher,"2,2'-Azobis(2-methylpropionamidine)dihydrochloride",401560250,4'C,,2020.01.30,25g,solid,,,Ref #4
 Chemical,CHM-0163,aldrich (sigma),"2,3,4-Trihydroxybenzoic acid",253847,4'C,,2014.12.02,5g,solid,,,Ref #3
-Chemical,CHM-0164,Bio-Rad,30% Acrylamide/Bis solution 37.5:1,1610158,4'C,,2020.11.03,"500mL, 2개",liquid,,,Ref #3
+Chemical,CHM-0164,Bio-Rad,30% Acrylamide/Bis solution 37.5:1,1610158,4'C,,2020.11.03,500mL,liquid,,,Ref #3
 Chemical,CHM-0165,sigma,4-Hydroxybenzoic acid,240141,4'C,,,50g,solid,,,Ref #4
 Chemical,CHM-0166,sigma,4-O-Caffeoylquinic acid,65969,4'C,,,10mg,solid,,,Ref #4
-Chemical,CHM-0167,phytolab,"4,5-Dicaffeoylquinic acid",80427,4'C,,,"10mg, 2개",solid,,,Ref #4
+Chemical,CHM-0167,phytolab,"4,5-Dicaffeoylquinic acid",80427,4'C,,,10mg,solid,,,Ref #4
 Chemical,CHM-0168,(Cytiva)Biacore,Acetate 4.0,BR-1003-49,4'C,,,50mL,liquid,,,Ref #3
 Chemical,CHM-0169,(Cytiva)Biacore,Acetate 4.5,BR-1003-50,4'C,,,50mL,liquid,,,Ref #3
 Chemical,CHM-0170,(Cytiva)Biacore,acetate 5.0,BR-1003-51,4'C,,,50mL,liquid,,,Ref #3
@@ -191,11 +191,11 @@ Chemical,CHM-0189,sigma,D.P.X,317616,4'C,,2018.11.15,100mL,liquid,,,Ref #3
 Chemical,CHM-0190,sigma,DAPI,D9542,4'C,,,10mg,solid,,,Ref #3
 Chemical,CHM-0191,sigma,Dexamethasone,D4902,4'C,,,10mg; 25mg; 25mg,solid,,,Ref #4
 Chemical,CHM-0192,Santa Cruz Biotechnology,Dihydrocoumarin,sc-227867,4'C,,,5g,liquid,,,Ref #4
-Chemical,CHM-0193,sigma,DL-Dithiothreitol,D0632,4'C,,,"5g, 2개",solid,,,Ref #3
+Chemical,CHM-0193,sigma,DL-Dithiothreitol,D0632,4'C,,,5g,solid,,,Ref #3
 Chemical,CHM-0194,sigma,Doxorubicin hydrochloride,44583,4'C,,,1mg,solid,,,Ref #3
-Chemical,CHM-0195,sigma,Dulbecco's Phosphate bufered Saline,D5652-10x1L,4'C,,,"1L, 2개",liquid,,,Ref #3
+Chemical,CHM-0195,sigma,Dulbecco's Phosphate bufered Saline,D5652-10x1L,4'C,,,1L,liquid,,,Ref #3
 Chemical,CHM-0196,DYNEBIO,Dyne loading STAR,A750,4'C,,,1mL,liquid,,,Ref #3
-Chemical,CHM-0197,sigma; santa cruz,Emodin,"E7881, sc-202601",4'C,,,"50mg, 2개",solid,,,Ref #4
+Chemical,CHM-0197,sigma; santa cruz,Emodin,"E7881, sc-202601",4'C,,,50mg,solid,,,Ref #4
 Chemical,CHM-0198,Biacore,Ethanolamine-HCL,,4'C,,,10.5mL,liquid,,,Ref #3
 Chemical,CHM-0199,Santa Cruz Biotechnology,Eugenol,sc-203043,4'C,,,1g,liquid,,,Ref #4
 Chemical,CHM-0200,sigma,Evodiamine,E3531,4'C,,2018.11.26,250mg,solid,,,Ref #4
@@ -217,7 +217,7 @@ Chemical,CHM-0215,Sigma,L-Glutamic acid,G6133,4'C,,2010.07.20,1g,solid,,,Ref #4
 Chemical,CHM-0216,sigma,L-glutathione oxidized,G6654,4'C,,,"250mg, 1g",solid,,,Ref #4
 Chemical,CHM-0217,sigma,L-glutathione reduced,G4251,4'C,,,10g,solid,,,Ref #4
 Chemical,CHM-0218,sigma,Lipopolysaccharides from Escherichia coli,L3129,4'C,,,10mg,solid,,,Ref #4
-Chemical,CHM-0219,sigma,Liquified Phenol,P9346,4'C,,,"100mL, 3개",liquid,,,Ref #4
+Chemical,CHM-0219,sigma,Liquified Phenol,P9346,4'C,,,100mL,liquid,,,Ref #4
 Chemical,CHM-0220,chemFaces,Lithospermic acid,CFN98546,4'C,,,20mg,solid,,,Ref #4
 Chemical,CHM-0221,sigma,Madecassoside from Centella asiatica,M6949,4'C,,,10mg,solid,,,Ref #4
 Chemical,CHM-0222,sigma,Matairesinol,40043,4'C,,,5mg,solid,,,Ref #4
@@ -225,8 +225,7 @@ Chemical,CHM-0223,chemFaces,Methyl rosmarineate,CFN97567,4'C,,,10mg,solid,,,Ref 
 Chemical,CHM-0224,sigma,"Methyl vanillate, Kosher",W510319,4'C,,2014.12.02,25g,solid,,,Ref #3
 Chemical,CHM-0225,Hps,Multi Element IC Cation Std,IC-4,4'C,,,250mL,liquid,,,Ref #3
 Chemical,CHM-0226,Hps,Multi Element IC Std 1 Solution A,IC-1,4'C,,,100mL,liquid,,,Ref #4
-Chemical,CHM-0227,sigma,N-Acetyl-L-cysteine,A7250,4'C,,,"5g, 2개,
-10g",solid,,,Ref #3
+Chemical,CHM-0227,sigma,N-Acetyl-L-cysteine,A7250,4'C,,,5g; 10g,solid,,,Ref #3
 Chemical,CHM-0228,sigma,Neochlorogenic acid,94419,4'C,,,10mg,solid,,,Ref #4
 Chemical,CHM-0229,Santa Cruz,Neomycin sulfate,sc-3573A,4'C,,,5g,solid,,,Ref #4
 Chemical,CHM-0230,sigma,Ninhydrin Reagent (2% solution),N7285,4'C,,,100mL,liquid,,,Ref #3
@@ -235,15 +234,15 @@ Chemical,CHM-0232,LKT laboratory,oltipraz,O4578,4'C,,2009.09.17,500mg,solid,,,Re
 Chemical,CHM-0233,sigma,Orlistat,O4139,4'C,,,100mg,solid,,,Ref #4
 Chemical,CHM-0234,sigma,Palmitic acid,P0500,4'C,,2011.11.15,25g,solid,,,Ref #4
 Chemical,CHM-0235,sigma,Paraformaldehyde,16005,4'C,,2010.03.26  2008.11.20,1kg; 500g,solid,,,Ref #3
-Chemical,CHM-0236,sigma,Phenethyl isothiocyanate,253731,4'C,,2012.11.29,"5g, 2개",liquid,,,Ref #4
+Chemical,CHM-0236,sigma,Phenethyl isothiocyanate,253731,4'C,,2012.11.29,5g,liquid,,,Ref #4
 Chemical,CHM-0237,sigma,Phenol solution,P4557,4'C,,,100mL,liquid,,,Ref #4
 Chemical,CHM-0238,sigma,Piroxicam,P5654,4'C,,,1g,solid,,,Ref #4
-Chemical,CHM-0239,Bio-rad,proline Universal Calibration Beads,1451086,4'C,,,"5ml, 3개",liquid,,,Ref #4
+Chemical,CHM-0239,Bio-rad,proline Universal Calibration Beads,1451086,4'C,,,5mL,liquid,,,Ref #4
 Chemical,CHM-0240,sigma,Propidium iodide,P4170; 287075,4'C,,,"25mg, 100mg",solid,,,Ref #4
 Chemical,CHM-0241,Millipore (sigma),Protein A agarose_ Salmon Sperm DNA,16-157,4'C,,,2.5mL,liquid,,,Ref #3
 Chemical,CHM-0242,Bio-Rad,Protein assay Dye reagent concentrated,5000006,4'C,,2020.01.28,450mL,liquid,,,Ref #3
 Chemical,CHM-0243,NEXTflex,Rapid Directional mRNA-Seq Bundle,5138-10,4'C,,,,,,,Ref #4
-Chemical,CHM-0244,GeneAll,RiboEx (RNA isolation solution),301-902,4'C,,2021.12.17,"100mL,100mL",liquid,,,Ref #4
+Chemical,CHM-0244,GeneAll,RiboEx (RNA isolation solution),301-902,4'C,,2021.12.17,100mL,liquid,,,Ref #4
 Chemical,CHM-0245,Thermo scientific,RIPA buffer,89900,4'C,,2021.07.03,100mL; 250mL,liquid,,,Ref #3
 Chemical,CHM-0246,Takara,RNAiso plus,9109,4'C,,,200mL,liquid,,,Ref #4
 Chemical,CHM-0247,(Cytiva)Biacore,Sensor chip CM5,BR-1000-14,4'C,,,,,,,Ref #3
@@ -259,13 +258,13 @@ Chemical,CHM-0256,sigma,"Tert-Butyl hydroperoxide, T-Hydro solution, 70wt",45813
 Chemical,CHM-0257,sigma,Theobromine,42993,4'C,,,100mg,solid,,,Ref #4
 Chemical,CHM-0258,sigma,Theophylline,PHR1023,4'C,,,1g,solid,,,Ref #4
 Chemical,CHM-0259,sigma,Thiazolyl Blue Tetrazolium Bromide,M2128,4'C,,,1g,solid,,,Ref #3
-Chemical,CHM-0260,sigma,trans-Ferulic acid,128708,4'C,,2014.12.02,"5g, 2개",solid,,,Ref #3
+Chemical,CHM-0260,sigma,trans-Ferulic acid,128708,4'C,,2014.12.02,5g,solid,,,Ref #3
 Chemical,CHM-0261,CALBIOCHEM,Trolox,648471,4'C,,,500mg,solid,,,Ref #4
 Chemical,CHM-0262,sigma,Ursolic acid,U6753,4'C,,,100mg,solid,,,Ref #4
 Chemical,CHM-0263,Fluka (SIGMA),Vanillic acid,94770,4'C,,2014.12.02,10g,solid,,,Ref #3
-Chemical,CHM-0264,Vector,Vectashield (mounting medium with DAPI),H-1200,4'C,,,"10mL, 2개",liquid,,,Ref #3
+Chemical,CHM-0264,Vector,Vectashield (mounting medium with DAPI),H-1200,4'C,,,10mL,liquid,,,Ref #3
 Chemical,CHM-0265,sigma,β-Glycerol phosphate disodium salt pentahydrate,50020,4'C,,2019.02.27,100g,solid,,,Ref #4
-Chemical,CHM-0266,sigma,"β-Naphthoflavone, 90-95%",N3633,4'C,,,"1g, 2개",solid,,,Ref #4
+Chemical,CHM-0266,sigma,"β-Naphthoflavone, 90-95%",N3633,4'C,,,1g,solid,,,Ref #4
 Chemical,CHM-0267,Welgene,DMEM high glucose,LM 001-05,4'C,,,500 mL,liquid,,,Ref #6
 Chemical,CHM-0268,Cytiva,DMEM high glucose,SH30243.01,4'C,,,500 mL,liquid,,,Ref #6
 Chemical,CHM-0269,Gibco,DMEM / F12 (1:1),11320-033,4'C,,,500 mL,liquid,,,Ref #6
@@ -329,7 +328,7 @@ Chemical,CHM-0326,Promega,pGL3-Basic Vector,E175A,-20'C,,,20ug,solid,,,Fridge #5
 Chemical,CHM-0327,Sigma,Phosphatase substrate,P4744,-20'C,,,5g,solid,,,Fridge #5
 Chemical,CHM-0328,sigma,Progesterone,P0130-25G,-20'C,,,25g,solid,,,Fridge #7
 Chemical,CHM-0329,Cayman,Prostaglandin D2 ELISA Kit,512031,-20'C,,,1 kit,liquid,,,Fridge #5
-Chemical,CHM-0330,sigma,Protease Inhibitor Cocktail,P8340,-20'C,,,5ml,liquid,,,Fridge #2
+Chemical,CHM-0330,sigma,Protease Inhibitor Cocktail,P8340,-20'C,,,5mL,liquid,,,Fridge #2
 Chemical,CHM-0331,Cayman,Rapamycin,13346,-20'C,,,1mg,solid,,,Fridge #5
 Chemical,CHM-0332,ORF,Recombinant TNF alpha,IK2600,-20'C,,,10ug,solid,,,Fridge #5
 Chemical,CHM-0333,Sigma,"Ribonuclease A, from bovine pancreas",R4875,-20'C,,,100mg,solid,,,Fridge #5
