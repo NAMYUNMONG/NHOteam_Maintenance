@@ -508,15 +508,6 @@ function initEvents() {
   $("deleteItemBtn").addEventListener("click", deleteActiveItem);
   $("cancelBtn").addEventListener("click", closeDialog);
   $("closeDialogBtn").addEventListener("click", closeDialog);
-
-  $("themeToggle").addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("l1521_inventory_theme", document.body.classList.contains("dark") ? "dark" : "light");
-  });
-
-  if (localStorage.getItem("l1521_inventory_theme") === "dark") {
-    document.body.classList.add("dark");
-  }
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

@@ -13,20 +13,6 @@
   --radius: 18px;
 }
 
-body.dark {
-  --bg: #0f172a;
-  --surface: #111827;
-  --surface-2: #1f2937;
-  --text: #e5e7eb;
-  --muted: #94a3b8;
-  --line: #334155;
-  --primary: #60a5fa;
-  --primary-strong: #3b82f6;
-  --danger: #f87171;
-  --danger-soft: #3f1f24;
-  --shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
-}
-
 * {
   box-sizing: border-box;
 }
@@ -138,9 +124,7 @@ body.sidebar-collapsed .sidebar {
   gap: 24px;
   align-items: center;
   padding: 40px min(6vw, 72px) 24px;
-  background:
-    radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 34rem),
-    linear-gradient(180deg, rgba(255,255,255,0.75), transparent);
+  background: transparent;
   margin-left: 240px;
   transition: margin-left 0.18s ease;
 }
@@ -318,10 +302,6 @@ button:hover,
   background: var(--primary-strong);
 }
 
-.ghost-button {
-  background: rgba(255, 255, 255, 0.45);
-}
-
 .danger-button {
   color: var(--danger);
   border-color: var(--danger);
@@ -387,11 +367,6 @@ td {
   font-size: 0.92rem;
 }
 
-body.dark th,
-body.dark td {
-  border-bottom-color: #475569;
-}
-
 th {
   position: sticky;
   top: 0;
@@ -443,18 +418,6 @@ tbody tr.row-Product {
   background: #fffbeb;
 }
 
-body.dark tbody tr.row-Chemical {
-  background: #102719;
-}
-
-body.dark tbody tr.row-Antibody {
-  background: #171735;
-}
-
-body.dark tbody tr.row-Product {
-  background: #2d2109;
-}
-
 tbody tr:hover {
   background: color-mix(in srgb, var(--primary) 8%, transparent);
 }
@@ -481,10 +444,6 @@ tbody tr:hover {
   background: #fef3c7;
   color: #92400e;
 }
-
-body.dark .badge.Chemical { background: #133821; color: #86efac; }
-body.dark .badge.Antibody { background: #20204f; color: #c7d2fe; }
-body.dark .badge.Product { background: #422d0b; color: #fde68a; }
 
 dialog {
   width: min(820px, 92vw);
