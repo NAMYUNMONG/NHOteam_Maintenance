@@ -39,6 +39,74 @@ body {
   line-height: 1.5;
 }
 
+.sidebar-toggle {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 30;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 12px;
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 20;
+  width: 240px;
+  padding: 76px 16px 20px;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  transition: transform 0.18s ease;
+}
+
+.sidebar-header {
+  display: grid;
+  gap: 2px;
+  padding: 0 8px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.sidebar-header strong {
+  font-size: 1.1rem;
+}
+
+.sidebar-header span {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.sidebar-nav {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.sidebar-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 800;
+  padding: 11px 12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  color: var(--primary-strong);
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+body.sidebar-collapsed .sidebar {
+  transform: translateX(-100%);
+}
+
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -48,6 +116,8 @@ body {
   background:
     radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 34rem),
     linear-gradient(180deg, rgba(255,255,255,0.75), transparent);
+  margin-left: 240px;
+  transition: margin-left 0.18s ease;
 }
 
 .eyebrow {
@@ -82,6 +152,16 @@ h1 {
 main {
   width: min(1440px, 92vw);
   margin: 0 auto 64px;
+  padding-left: 240px;
+  transition: padding-left 0.18s ease;
+}
+
+body.sidebar-collapsed .site-header {
+  margin-left: 0;
+}
+
+body.sidebar-collapsed main {
+  padding-left: 0;
 }
 
 .notice {
@@ -158,6 +238,10 @@ textarea {
   border-radius: 12px;
   padding: 11px 12px;
   font: inherit;
+}
+
+.locked-filter {
+  opacity: 0.72;
 }
 
 textarea {
@@ -364,9 +448,32 @@ footer {
   text-align: center;
   color: var(--muted);
   padding: 30px;
+  margin-left: 240px;
+  transition: margin-left 0.18s ease;
+}
+
+body.sidebar-collapsed footer {
+  margin-left: 0;
 }
 
 @media (max-width: 900px) {
+  .sidebar {
+    width: min(280px, 82vw);
+  }
+
+  .site-header {
+    margin-left: 0;
+    padding-top: 76px;
+  }
+
+  main {
+    padding-left: 0;
+  }
+
+  footer {
+    margin-left: 0;
+  }
+
   .site-header,
   .status-row {
     flex-direction: column;

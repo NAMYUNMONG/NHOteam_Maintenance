@@ -31,6 +31,7 @@ const CATEGORY_PREFIX = {
 let sourceMeta = {};
 let items = [];
 let activeEditId = null;
+let activeView = "Mainpage";
 
 const $ = (id) => document.getElementById(id);
 
@@ -83,7 +84,8 @@ function buildStorageFilter() {
 
 function filteredItems() {
   const query = normalize($("searchInput").value).toLowerCase();
-  const category = $("categoryFilter").value;
+  const viewCategory = CATEGORY_COLUMNS[activeView] ? activeView : "";
+  const category = viewCategory || $("categoryFilter").value;
   const storage = $("storageFilter").value;
   const sortKey = $("sortSelect").value;
 
@@ -111,7 +113,8 @@ function renderStats() {
 
 function renderTable() {
   const rows = filteredItems();
-  $("resultCount").textContent = `검색 결과 ${rows.length.toLocaleString("ko-KR")}개`;
+  const prefix = CATEGORY_COLUMNS[activeView] ? `${activeView} ` : "";
+  $("resultCount").textContent = `${prefix}검색 결과 ${rows.length.toLocaleString("ko-KR")}개`;
 
   const thead = $("inventoryTable").querySelector("thead");
   const tbody = $("inventoryTable").querySelector("tbody");
@@ -139,8 +142,34 @@ function renderTable() {
 }
 
 function render() {
+  renderViewState();
   renderStats();
   renderTable();
+}
+
+function setView(view) {
+  activeView = CATEGORY_COLUMNS[view] ? view : "Mainpage";
+  $("searchInput").value = "";
+  render();
+}
+
+function renderViewState() {
+  const viewCategory = CATEGORY_COLUMNS[activeView] ? activeView : "";
+  const categoryLabel = $("categoryFilterLabel");
+  const categoryFilter = $("categoryFilter");
+
+  if (viewCategory) {
+    categoryFilter.value = viewCategory;
+    categoryFilter.disabled = true;
+    categoryLabel.classList.add("locked-filter");
+  } else {
+    categoryFilter.disabled = false;
+    categoryLabel.classList.remove("locked-filter");
+  }
+
+  document.querySelectorAll("[data-view]").forEach((link) => {
+    link.classList.toggle("active", link.dataset.view === activeView);
+  });
 }
 
 function categoryFields(category) {
@@ -446,6 +475,19 @@ function initEvents() {
     $(id).addEventListener("change", rerender);
   });
 
+  $("sidebarToggle").addEventListener("click", () => {
+    const collapsed = document.body.classList.toggle("sidebar-collapsed");
+    $("sidebarToggle").setAttribute("aria-expanded", String(!collapsed));
+  });
+
+  document.querySelectorAll("[data-view]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      history.replaceState(null, "", link.getAttribute("href"));
+      setView(link.dataset.view);
+    });
+  });
+
   $("addItemBtn").addEventListener("click", () => openDialog());
   $("fileInput").addEventListener("change", handleUpload);
 
@@ -466,6 +508,12 @@ function initEvents() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   initEvents();
+  const hashView = {
+    "#chemical": "Chemical",
+    "#antibody": "Antibody",
+    "#product": "Product",
+  }[window.location.hash.toLowerCase()];
+  if (hashView) activeView = hashView;
   try {
     await loadData();
   } catch (error) {

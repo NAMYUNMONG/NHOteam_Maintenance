@@ -10,6 +10,21 @@
   <script defer src="./app.js"></script>
 </head>
 <body>
+  <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-controls="sidebar" aria-expanded="true">☰</button>
+
+  <aside id="sidebar" class="sidebar" aria-label="page navigation">
+    <div class="sidebar-header">
+      <strong>NHOteam</strong>
+      <span>Inventory</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#mainpage" data-view="Mainpage" class="active">Mainpage</a>
+      <a href="#chemical" data-view="Chemical">Chemical</a>
+      <a href="#antibody" data-view="Antibody">Antibody</a>
+      <a href="#product" data-view="Product">Product</a>
+    </nav>
+  </aside>
+
   <header class="site-header">
     <div>
       <p class="eyebrow">Team Inventory</p>
@@ -54,7 +69,7 @@
         <input id="searchInput" type="search" placeholder="예: NaCl, anti-GFP, CST #1, 4℃, Cat No." autocomplete="off" />
       </label>
 
-      <label>
+      <label id="categoryFilterLabel">
         <span>Category</span>
         <select id="categoryFilter">
           <option value="">전체</option>
