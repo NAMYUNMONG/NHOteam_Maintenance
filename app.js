@@ -149,7 +149,7 @@ function categoryFields(category) {
 
 function makeField(name, value, category) {
   const full = ["Item_Name", "Note"].includes(name) ? " full" : "";
-  const readonly = name === "Item_ID" ? "" : "";
+  const readonly = name === "Item_ID" ? "readonly" : "";
   if (name === "Category") {
     return `<label class="${full}">
       <span>${name}</span>
@@ -173,18 +173,21 @@ function makeField(name, value, category) {
 function renderFormFields(item) {
   const category = item?.Category || "Chemical";
   const fields = categoryFields(category);
-  $("formFields").innerHTML = fields.map((name) => makeField(name, item?.[name] || "", category)).join("");
+  const fieldValues = { ...item };
+  if (!activeEditId) fieldValues.Item_ID = nextItemId(category);
+  $("formFields").innerHTML = fields.map((name) => makeField(name, fieldValues?.[name] || "", category)).join("");
   const categorySelect = $("formFields").querySelector('select[name="Category"]');
   categorySelect.addEventListener("change", () => {
     const current = getFormObject();
     current.Category = categorySelect.value;
+    if (!activeEditId) current.Item_ID = nextItemId(current.Category);
     renderFormFields(current);
   });
 }
 
 function openDialog(itemId = null) {
   activeEditId = itemId;
-  const item = itemId ? items.find((entry) => entry.Item_ID === itemId) : { Category: "Chemical" };
+  const item = itemId ? items.find((entry) => entry.Item_ID === itemId) : { Category: "Chemical", Item_ID: nextItemId("Chemical") };
   $("dialogTitle").textContent = itemId ? "항목 편집" : "신규 항목 추가";
   $("deleteItemBtn").style.display = itemId ? "inline-flex" : "none";
   renderFormFields(item);
@@ -444,10 +447,6 @@ function initEvents() {
   });
 
   $("addItemBtn").addEventListener("click", () => openDialog());
-  $("saveLocalBtn").addEventListener("click", () => localSave(true));
-  $("resetLocalBtn").addEventListener("click", resetLocal);
-  $("downloadJsonBtn").addEventListener("click", downloadJson);
-  $("downloadCsvBtn").addEventListener("click", downloadCsv);
   $("fileInput").addEventListener("change", handleUpload);
 
   $("itemForm").addEventListener("submit", saveItem);
