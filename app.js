@@ -127,7 +127,7 @@ function renderTable() {
   const thead = $("inventoryTable").querySelector("thead");
   const tbody = $("inventoryTable").querySelector("tbody");
 
-  thead.innerHTML = `<tr>${columns.map((col) => `<th>${escapeHtml(col)}</th>`).join("")}<th>작업</th></tr>`;
+  thead.innerHTML = `<tr>${columns.map((col) => `<th>${escapeHtml(col)}</th>`).join("")}<th>Edit</th></tr>`;
 
   if (rows.length === 0) {
     const emptyMessage = activeView === "Mainpage" && !query
@@ -144,7 +144,7 @@ function renderTable() {
       }
       return `<td>${escapeHtml(item[col] || "")}</td>`;
     }).join("");
-    return `<tr>${cells}<td><button type="button" data-edit-id="${escapeHtml(item.Item_ID)}">수정</button></td></tr>`;
+    return `<tr>${cells}<td><button type="button" data-edit-id="${escapeHtml(item.Item_ID)}">Edit</button></td></tr>`;
   }).join("");
 
   tbody.querySelectorAll("[data-edit-id]").forEach((button) => {
