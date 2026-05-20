@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>L1521 Inventory Search</title>
+  <meta name="description" content="Chemical, Antibody, Product inventory search and update page." />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">Team Inventory</p>
+      <h1>L1521 Inventory</h1>
+      <p class="subtitle">Chemical · Antibody · Product 통합 검색 및 목록 관리</p>
+    </div>
+    <div class="header-actions">
+      <button id="themeToggle" class="ghost-button" type="button">화면 모드</button>
+      <a class="primary-button" href="./data/inventory.json" download>원본 JSON</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="notice">
+      <strong>운영 방식:</strong>
+      이 사이트는 GitHub Pages용 정적 웹사이트입니다. 웹에서 수정한 내용은 브라우저에 임시 저장되며,
+      팀 전체에 반영하려면 <b>변경 JSON 다운로드</b> 후 <code>data/inventory.json</code>을 교체하여 GitHub에 커밋하세요.
+    </section>
+
+    <section class="stats-grid" aria-label="inventory summary">
+      <article class="stat-card">
+        <span class="stat-label">전체</span>
+        <strong id="statTotal">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Chemical</span>
+        <strong id="statChemical">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Antibody</span>
+        <strong id="statAntibody">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Product</span>
+        <strong id="statProduct">0</strong>
+      </article>
+    </section>
+
+    <section class="toolbar">
+      <label class="search-box">
+        <span>통합 검색</span>
+        <input id="searchInput" type="search" placeholder="예: NaCl, anti-GFP, CST #1, 4℃, Cat No." autocomplete="off" />
+      </label>
+
+      <label>
+        <span>Category</span>
+        <select id="categoryFilter">
+          <option value="">전체</option>
+          <option value="Chemical">Chemical</option>
+          <option value="Antibody">Antibody</option>
+          <option value="Product">Product</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Storage</span>
+        <select id="storageFilter">
+          <option value="">전체</option>
+        </select>
+      </label>
+
+      <label>
+        <span>정렬</span>
+        <select id="sortSelect">
+          <option value="Category">Category</option>
+          <option value="Item_Name">Item_Name</option>
+          <option value="Manufacturer">Manufacturer</option>
+          <option value="Storage">Storage</option>
+          <option value="Item_ID">Item_ID</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="actions-panel">
+      <div class="action-group">
+        <button id="addItemBtn" class="primary-button" type="button">신규 항목 추가</button>
+        <button id="saveLocalBtn" type="button">브라우저 임시 저장</button>
+        <button id="resetLocalBtn" type="button">임시 저장 초기화</button>
+      </div>
+      <div class="action-group">
+        <button id="downloadJsonBtn" type="button">변경 JSON 다운로드</button>
+        <button id="downloadCsvBtn" type="button">CSV 다운로드</button>
+      </div>
+      <div class="upload-box">
+        <label for="fileInput">JSON/CSV/Excel 업로드 병합</label>
+        <input id="fileInput" type="file" accept=".json,.csv,.xlsx,.xls" />
+        <small>Excel 업로드는 Chemical/Antibody/Product 탭 또는 동일 컬럼명을 가진 시트를 인식합니다.</small>
+      </div>
+    </section>
+
+    <section class="status-row">
+      <p id="resultCount">검색 결과 0개</p>
+      <p id="lastUpdated">데이터 로딩 중...</p>
+    </section>
+
+    <section class="table-card">
+      <div class="table-scroll">
+        <table id="inventoryTable">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="itemDialog">
+    <form id="itemForm" method="dialog">
+      <div class="dialog-header">
+        <h2 id="dialogTitle">항목 편집</h2>
+        <button id="closeDialogBtn" class="icon-button" type="button" aria-label="close">×</button>
+      </div>
+      <div id="formFields" class="form-grid"></div>
+      <menu class="dialog-actions">
+        <button id="deleteItemBtn" class="danger-button" type="button">삭제</button>
+        <span class="spacer"></span>
+        <button type="button" id="cancelBtn">취소</button>
+        <button class="primary-button" id="submitBtn" type="submit">저장</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <footer>
+    <p>Static GitHub Pages package generated from <code>Inventory_Master_CategoryTabs_V4.xlsx</code>.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "description": "Inventory item schema for Chemical, Antibody, and Product records.",
+  "common_columns": [
+    "Category",
+    "Item_ID",
+    "Manufacturer",
+    "Item_Name",
+    "Cat_No",
+    "Storage"
+  ],
+  "chemical_columns": [
+    "Category",
+    "Item_ID",
+    "Manufacturer",
+    "Item_Name",
+    "Cat_No",
+    "Storage",
+    "Opened_Date",
+    "Quantity_Size",
+    "Form_Type",
+    "Requester",
+    "Note"
+  ],
+  "antibody_columns": [
+    "Category",
+    "Item_ID",
+    "Manufacturer",
+    "Item_Name",
+    "Cat_No",
+    "Storage",
+    "Location",
+    "Opened_Date",
+    "MW_kDa",
+    "Requester",
+    "Note"
+  ],
+  "product_columns": [
+    "Category",
+    "Item_ID",
+    "Manufacturer",
+    "Item_Name",
+    "Cat_No",
+    "Storage"
+  ],
+  "notes": [
+    "Item_ID is used as the stable key for edit/merge/sync.",
+    "GitHub Pages cannot directly save edits to the repository. Export data/inventory.json and commit it to GitHub.",
+    "Google Sheets migration can use the same column names and Category-specific tabs."
+  ]
+}
