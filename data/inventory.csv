@@ -305,12 +305,12 @@ Chemical,CHM-0302,BioVision,Creatinine Colorimetric/Fluorometric Assay Kit,K625-
 Chemical,CHM-0303,Sigma,Curcumin,C1386,-20'C,,,5g,solid,,,Fridge #5
 Chemical,CHM-0304,Tocris,DPN,1494,-20'C,,,10mg,solid,,,Fridge #5
 Chemical,CHM-0305,Promega,Dual-Luciferase® Reporter Assay System,E1960,-20'C,,,1 kit,liquid,,,Fridge #5
-Chemical,CHM-0306,sigma,Ellagic acid,E2250,-20,,,1g,solid,,,Fridge #2
+Chemical,CHM-0306,sigma,Ellagic acid,E2250,-20'C,,,1g,solid,,,Fridge #2
 Chemical,CHM-0307,Sigma,Fisetin,F4043,-20'C,,,100mg,solid,,,Fridge #5
 Chemical,CHM-0308,SCBT,Garcinol,SC-200891,-20'C,,,10mg,solid,,,Fridge #5
 Chemical,CHM-0309,Sigma,Genistein,G6649,-20'C,,,25mg,solid,,,Fridge #5
 Chemical,CHM-0310,EXTRASYNTHESE,Glucotropaeolin potassium salt,2510S,-20'C,,,10mg,solid,,,Fridge #5
-Chemical,CHM-0311,extrasynthese,Glucotropaeolin potassium salt,2510 S,-20,,,10mg,solid,,,Fridge #2
+Chemical,CHM-0311,extrasynthese,Glucotropaeolin potassium salt,2510 S,-20'C,,,10mg,solid,,,Fridge #2
 Chemical,CHM-0312,invitrogen,H2DCFDA,1846926,-20'C,,,100mg,solid,,,Fridge #7
 Chemical,CHM-0313,Sigma,Human MMP-1 ELISA Kit,RAB0361,-20'C,,,1 kit,solid,,,Fridge #5
 Chemical,CHM-0314,Thermo Scientific,Human MMP-1 ELISA Kit,EHMMP-1,-20'C,,,1 kit,liquid,,,Fridge #5
@@ -322,20 +322,20 @@ Chemical,CHM-0319,Thermo Scientific,Metronidazole,H6025814,-20'C,,,25g,solid,,,F
 Chemical,CHM-0320,RayBio,Mouse PAI-1 ELISA,ELM-PAI-1,-20'C,,,1 kit,liquid,,,Fridge #5
 Chemical,CHM-0321,Cayman,Myricetin,10012600,-20'C,,,50mg,solid,,,Fridge #5
 Chemical,CHM-0322,Santa cruz,Neomycin sulfate,sc-3573,-20'C,,,5g,solid,,,Fridge #7
-Chemical,CHM-0323,holzel,Obeticholic acid,HY-12222-200mg,-20,,,200mg,solid,,,Fridge #2
-Chemical,CHM-0324,sigma,Oleic acid,O1383,-20,,,1g,solid,,,Fridge #2
+Chemical,CHM-0323,holzel,Obeticholic acid,HY-12222-200mg,-20'C,,,200mg,solid,,,Fridge #2
+Chemical,CHM-0324,sigma,Oleic acid,O1383,-20'C,,,1g,solid,,,Fridge #2
 Chemical,CHM-0325,Cayman,Parthenolide,70080,-20'C,,,50mg,solid,,,Fridge #5
 Chemical,CHM-0326,Promega,pGL3-Basic Vector,E175A,-20'C,,,20ug,solid,,,Fridge #5
 Chemical,CHM-0327,Sigma,Phosphatase substrate,P4744,-20'C,,,5g,solid,,,Fridge #5
 Chemical,CHM-0328,sigma,Progesterone,P0130-25G,-20'C,,,25g,solid,,,Fridge #7
 Chemical,CHM-0329,Cayman,Prostaglandin D2 ELISA Kit,512031,-20'C,,,1 kit,liquid,,,Fridge #5
-Chemical,CHM-0330,sigma,Protease Inhibitor Cocktail,P8340,-20,,,5ml,liquid,,,Fridge #2
+Chemical,CHM-0330,sigma,Protease Inhibitor Cocktail,P8340,-20'C,,,5ml,liquid,,,Fridge #2
 Chemical,CHM-0331,Cayman,Rapamycin,13346,-20'C,,,1mg,solid,,,Fridge #5
 Chemical,CHM-0332,ORF,Recombinant TNF alpha,IK2600,-20'C,,,10ug,solid,,,Fridge #5
 Chemical,CHM-0333,Sigma,"Ribonuclease A, from bovine pancreas",R4875,-20'C,,,100mg,solid,,,Fridge #5
 Chemical,CHM-0334,Cayman,ROS Detection Cell-Based Assay Kit (DCFDA),601520,-20'C,,,1 kit,liquid,,,Fridge #5
 Chemical,CHM-0335,sigma,Silymarin,S0292-10G,-20'C,,,10g,solid,,,Fridge #7
-Chemical,CHM-0336,sigma,Sulfatase from Helix pomatia,S9626,-20,,,10ku,solid,,,Fridge #2
+Chemical,CHM-0336,sigma,Sulfatase from Helix pomatia,S9626,-20'C,,,10ku,solid,,,Fridge #2
 Chemical,CHM-0337,TaKaRa,TaKaRa MiniBEST Plant RNA Extraction Kit,9769S,-20'C,,,2 kit,solid,,,Fridge #5
 Chemical,CHM-0338,BioVision,Total Cholesterol and Cholesteryl Ester Colorimetric Assay Kit II,K623-100,-20'C,,,1 kit,liquid,,,Fridge #5
 Chemical,CHM-0339,BioVision,Total Cholesterol and Cholesteryl Ester Colorimetric/ Fluorometric Assay Kit,K603-100,-20'C,,,1 kit,liquid,,,Fridge #5
