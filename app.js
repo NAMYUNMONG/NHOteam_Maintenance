@@ -114,20 +114,21 @@ function renderStats() {
 function renderTable() {
   const rows = filteredItems();
   const prefix = CATEGORY_COLUMNS[activeView] ? `${activeView} ` : "";
+  const columns = CATEGORY_COLUMNS[activeView] || TABLE_COLUMNS;
   $("resultCount").textContent = `${prefix}검색 결과 ${rows.length.toLocaleString("ko-KR")}개`;
 
   const thead = $("inventoryTable").querySelector("thead");
   const tbody = $("inventoryTable").querySelector("tbody");
 
-  thead.innerHTML = `<tr>${TABLE_COLUMNS.map((col) => `<th>${escapeHtml(col)}</th>`).join("")}<th>작업</th></tr>`;
+  thead.innerHTML = `<tr>${columns.map((col) => `<th>${escapeHtml(col)}</th>`).join("")}<th>작업</th></tr>`;
 
   if (rows.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="${TABLE_COLUMNS.length + 1}">검색 결과가 없습니다.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="${columns.length + 1}">검색 결과가 없습니다.</td></tr>`;
     return;
   }
 
   tbody.innerHTML = rows.map((item) => {
-    const cells = TABLE_COLUMNS.map((col) => {
+    const cells = columns.map((col) => {
       if (col === "Category") {
         return `<td><span class="badge ${escapeHtml(item.Category)}">${escapeHtml(item.Category)}</span></td>`;
       }
