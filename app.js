@@ -28,6 +28,8 @@ const CATEGORY_PREFIX = {
   Product: "PRD",
 };
 
+const HIDDEN_DISPLAY_COLUMNS = new Set(["Item_ID"]);
+
 let sourceMeta = {};
 let items = [];
 let activeEditId = null;
@@ -119,7 +121,7 @@ function renderTable() {
   const rows = filteredItems();
   const query = normalize($("searchInput").value);
   const prefix = CATEGORY_COLUMNS[activeView] ? `${activeView} ` : "";
-  const columns = CATEGORY_COLUMNS[activeView] || TABLE_COLUMNS;
+  const columns = (CATEGORY_COLUMNS[activeView] || TABLE_COLUMNS).filter((col) => !HIDDEN_DISPLAY_COLUMNS.has(col));
   $("resultCount").textContent = `${prefix}검색 결과 ${rows.length.toLocaleString("ko-KR")}개`;
 
   const thead = $("inventoryTable").querySelector("thead");
@@ -210,7 +212,7 @@ function makeField(name, value, category) {
 
 function renderFormFields(item) {
   const category = item?.Category || "Chemical";
-  const fields = categoryFields(category);
+  const fields = categoryFields(category).filter((name) => !HIDDEN_DISPLAY_COLUMNS.has(name));
   const fieldValues = { ...item };
   if (!activeEditId) fieldValues.Item_ID = nextItemId(category);
   $("formFields").innerHTML = fields.map((name) => makeField(name, fieldValues?.[name] || "", category)).join("");
