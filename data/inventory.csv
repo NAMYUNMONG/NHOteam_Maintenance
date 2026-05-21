@@ -360,9 +360,9 @@ Antibody,AB-0005,Cell signaling technology,Cleaved Caspase-9 (Asp315) Antibody,9
 Antibody,AB-0006,Cell signaling technology,cdc25C (5H9) Rabbit mAb,4688,-20'C,CST #1,,,,"60, 75",,
 Antibody,AB-0007,Cell signaling technology,Phospho-CDK2 (Thr160) Antibody,2561S,-20'C,CST #1,,,,33,,
 Antibody,AB-0008,Cell signaling technology,Phospho-cdc25C (Ser216) (63F9) Rabbit mAb,4901S,-20'C,CST #1,,,,60,,
-Antibody,AB-0009,Cell signaling technology,cdc2 Antibody,9112,-20'C,CST #1,,,,34,단종,단종
-Antibody,AB-0010,Cell signaling technology,cdc25A Antibody,3652,-20'C,CST #1,,,,70,단종,단종
-Antibody,AB-0011,Cell signaling technology,CDK4 (DCS156) Mouse mAb,2906,-20'C,CST #1,,,,30,단종,단종
+Antibody,AB-0009,Cell signaling technology,cdc2 Antibody,9112,-20'C,CST #1,,,,34,단종,
+Antibody,AB-0010,Cell signaling technology,cdc25A Antibody,3652,-20'C,CST #1,,,,70,단종,
+Antibody,AB-0011,Cell signaling technology,CDK4 (DCS156) Mouse mAb,2906,-20'C,CST #1,,,,30,단종,
 Antibody,AB-0012,Cell signaling technology,Phospho-cdc2 (Tyr15) (10A11) Rabbit mAb,4539,-20'C,CST #1,,,,34,,
 Antibody,AB-0013,Cell signaling technology,p53 Antibody,9282,-20'C,CST #1,,,,53,,
 Antibody,AB-0014,Cell signaling technology,Phospho-p53 (Ser46) Antibody,2521S,-20'C,CST #1,,,,53,,
@@ -388,7 +388,7 @@ Antibody,AB-0033,Cell signaling technology,Acetyl-CoA Carboxylase (C83B10) Rabbi
 Antibody,AB-0034,Cell signaling technology,NRF2 (D1Z9C) XP® Rabbit mAb,12721S,-20'C,CST #2,,,,97-100,,
 Antibody,AB-0035,Cell signaling technology,RIP (D94C12) XP® Rabbit mAb,3493S,-20'C,CST #2,,,,78,,
 Antibody,AB-0036,Cell signaling technology,Cleaved Caspase-9 (Asp315) Antibody,9505S,-20'C,CST #1,,,,35,,
-Antibody,AB-0037,Cell signaling technology,CrkII Antibody,3492,-20'C,CST #2,,,,42,단종,단종
+Antibody,AB-0037,Cell signaling technology,CrkII Antibody,3492,-20'C,CST #2,,,,42,단종,
 Antibody,AB-0038,Cell signaling technology,NF-κB p65 (L8F6) Mouse mAb,6956S,-20'C,CST #2,,,,65,,
 Antibody,AB-0039,Cell signaling technology,Toll-like Receptor 4 (D8L5W) Rabbit mAb,14358S,-20'C,CST #2,,,,100-135,,
 Antibody,AB-0040,Cell signaling technology,NOS (pan) Antibody,2977S,-20'C,CST #2,250904 없음,,,"130, 140, 160",,
@@ -403,7 +403,7 @@ Antibody,AB-0048,Cell signaling technology,Phospho-IKKα/β (Ser176/180) (16A6) 
 Antibody,AB-0049,Cell signaling technology,Phospho-IKKα/β (Ser176/180) (16A6) Rabbit mAb,2697S,-20'C,CST #2,,,,85 IKK-alpha 87 IKK-beta,,
 Antibody,AB-0050,Cell signaling technology,KEAP1 (D1G10) Rabbit mAb,7705S,-20'C,CST #2,,,,60-64,,
 Antibody,AB-0051,Cell signaling technology,KEAP1 (P586) Antibody,4678S,-20'C,CST #2,,,,60-64,,
-Antibody,AB-0052,Cell signaling technology,KEAP1 (H436) Antibody,4617,-20'C,CST #2,,,,60-64,단종,단종
+Antibody,AB-0052,Cell signaling technology,KEAP1 (H436) Antibody,4617,-20'C,CST #2,,,,60-64,단종,
 Antibody,AB-0053,Cell signaling technology,PLCγ1 Antibody,2822S,-20'C,CST #2,,,,155,,
 Antibody,AB-0054,Cell signaling technology,Oct-4A (C30A3) Rabbit mAb,2840S,-20'C,CST #2,,,,45,,
 Antibody,AB-0055,Cell signaling technology,Oct-4A (C30A3) Rabbit mAb,2840S,-20'C,CST #2,,,,45,,
@@ -419,8 +419,8 @@ Antibody,AB-0064,Cell signaling technology,HO-1 (E3F4S) Rabbit mAb,43966S,-20'C,
 Antibody,AB-0065,Cell signaling technology,Phospho-SMAD2 (Ser465/467)/SMAD3 (Ser423/425) (D27F4) Rabbit mAb,8828S,-20'C,CST #2,,,,"52, 60",,
 Antibody,AB-0066,Cell signaling technology,Tuberin/TSC2 (D57A9) Rabbit mAb,3990S,-20'C,CST #2,,,,200,,
 Antibody,AB-0067,Cell signaling technology,Phospho-Tuberin/TSC2 (Ser1387) Antibody,5584S,-20'C,CST #2,,,,200,,
-Antibody,AB-0068,Cell signaling technology,Estrogen Receptor α (62A3) Mouse mAb,2512,-20'C,CST #2,,,,66,단종,단종
-Antibody,AB-0069,Cell signaling technology,Estrogen Receptor β Antibody,5513,-20'C,CST #2,,,,"52, 55, 63",단종,단종
+Antibody,AB-0068,Cell signaling technology,Estrogen Receptor α (62A3) Mouse mAb,2512,-20'C,CST #2,,,,66,단종,
+Antibody,AB-0069,Cell signaling technology,Estrogen Receptor β Antibody,5513,-20'C,CST #2,,,,"52, 55, 63",단종,
 Antibody,AB-0070,Cell signaling technology,Lamin B1 (D9V6H) Rabbit mAb,13435,-20'C,CST #2,,,,"68,45",,
 Antibody,AB-0071,Cell signaling technology,Phospho-PLCγ1 (Tyr783) Antibody,2821S,-20'C,CST #3,,,,155,,
 Antibody,AB-0072,Cell signaling technology,Phospho-ULK1 (Ser757) Antibody,6888S,-20'C,CST #3,,,,140-150,,
@@ -453,7 +453,7 @@ Antibody,AB-0098,Cell signaling technology,BID Antibody,2002S,-20'C,CST #3,,,,"1
 Antibody,AB-0099,Cell signaling technology,PKCα Antibody,2056,-20'C,CST #3,,,,80,,
 Antibody,AB-0100,Cell signaling technology,SMAD2/3 Antibody,5678S,-20'C,CST #3,25.11.04 op,,,"52, 60",남윤성,
 Antibody,AB-0101,Cell signaling technology,p44/42 MAPK (Erk1/2) Antibody,9102S,-20'C,CST #3,,,,"42, 44",,
-Antibody,AB-0102,Cell signaling technology,PKD/PKCμ Antibody,2052S,-20'C,CST #3,,,,115,단종,단종
+Antibody,AB-0102,Cell signaling technology,PKD/PKCμ Antibody,2052S,-20'C,CST #3,,,,115,단종,
 Antibody,AB-0103,Cell signaling technology,Fetuin A (F180) Antibody,5258S,-20'C,CST #3,,,,45-50,,
 Antibody,AB-0104,Cell signaling technology,Non-phospho (Active) β-Catenin (Ser33/37/Thr41) (D13A1) Rabbit mAb,8814S,-20'C,CST #3,,,,92,,
 Antibody,AB-0105,Cell signaling technology,SMAD5 (D4G2) Rabbit mAb,12534T,-20'C,CST #3,,,,60,,
@@ -498,12 +498,12 @@ Antibody,AB-0143,Cell signaling technology,IKKβ Antibody,2684S,-20'C,CST #4,,,,
 Antibody,AB-0144,Cell signaling technology,Phospho-NF-κB p65 (Ser536) Antibody,3031S,-20'C,CST #4,,,,65,,
 Antibody,AB-0145,Cell signaling technology,Phospho-Tpl2 (Ser400) Antibody,4491S,-20'C,CST #4,,,,"60, 62",,
 Antibody,AB-0146,Cell signaling technology,Phospho-IKKα/β (Ser176/180) (16A6) Rabbit mAb,2697S,-20'C,CST #2,,,,85 IKK-alpha 87 IKK-beta,,
-Antibody,AB-0147,Cell signaling technology,Phospho-IKKα (Ser180)/IKKβ (Ser181) Antibody,2681,-20'C,CST #4,,,,85 IKK-alpha 87 IKK-beta,단종,단종
+Antibody,AB-0147,Cell signaling technology,Phospho-IKKα (Ser180)/IKKβ (Ser181) Antibody,2681,-20'C,CST #4,,,,85 IKK-alpha 87 IKK-beta,단종,
 Antibody,AB-0148,Cell signaling technology,IKKα Antibody,2682S,-20'C,CST #3,,,,85,,
-Antibody,AB-0149,Cell signaling technology,NF-κB p65 Antibody,3034,-20'C,CST #4,,,,65,단종,단종
+Antibody,AB-0149,Cell signaling technology,NF-κB p65 Antibody,3034,-20'C,CST #4,,,,65,단종,
 Antibody,AB-0150,Cell signaling technology,Cox2 Antibody,4842S,-20'C,CST #4,,,,74,,
 Antibody,AB-0151,Cell signaling technology,Stat1 Antibody,9172S,-20'C,CST #4,,,,"84, 91",,
-Antibody,AB-0152,Cell signaling technology,Phospho-Stat1 (Tyr701) Antibody,9171S,-20'C,CST #4,,,,"84, 91",단종,단종
+Antibody,AB-0152,Cell signaling technology,Phospho-Stat1 (Tyr701) Antibody,9171S,-20'C,CST #4,,,,"84, 91",단종,
 Antibody,AB-0153,Cell signaling technology,nNOS (C7D7) Rabbit mAb,4231S,-20'C,CST #4,250904 없음,,,160,,
 Antibody,AB-0154,Cell signaling technology,His-Tag Antibody,2365S,-20'C,CST #4,,,,,,
 Antibody,AB-0155,Cell signaling technology,GATA-2 Antibody,4595S,-20'C,CST #4,,,,51,,
@@ -519,7 +519,7 @@ Antibody,AB-0164,Cell signaling technology,GSK-3β (27C10) Rabbit mAb,9315S,-20'
 Antibody,AB-0165,Cell signaling technology,Akt (pan) (C67E7) Rabbit mAb,4691S,-20'C,CST #4,,,,60,,
 Antibody,AB-0166,Cell signaling technology,C/EBPα Antibody,2295S,-20'C,CST #2,,,,"42, 28",,
 Antibody,AB-0167,Cell signaling technology,C/EBPβ Antibody,3082S,-20'C,CST #4,,,,"38, 41",,
-Antibody,AB-0168,Cell signaling technology,Estrogen Receptor α (62A3) Mouse mAb,2512,-20'C,CST #2,,,,66,단종,단종
+Antibody,AB-0168,Cell signaling technology,Estrogen Receptor α (62A3) Mouse mAb,2512,-20'C,CST #2,,,,66,단종,
 Antibody,AB-0169,Cell signaling technology,Atg12 Antibody,2010S,-20'C,CST #4,,,,"16, 55",,
 Antibody,AB-0170,Cell signaling technology,c-Fos (9F6) Rabbit mAb,2250S,-20'C,CST #4,,,,62,,
 Antibody,AB-0171,Cell signaling technology,Bcl-xL Antibody,2762S,-20'C,CST #4,,,,30,,
@@ -531,17 +531,17 @@ Antibody,AB-0176,Cell signaling technology,DNMT1 antibody,5032S,-20'C,CST #4,202
 Antibody,AB-0177,Cell signaling technology,Phospho-SQSTM1/p62 (Ser403) (D8D6T),39786,-20'C,CST #4,2026.01.24,,,62,루시아,
 Antibody,AB-0178,Cell signaling technology,ULK (D8H5) Rabbit monoclonal antibody,8054,-20'C,CST #4,2026.01.24,,,150,루시아,
 Antibody,AB-0179,Cell signaling technology,Cleaved caspase-3,9661S,-20'C,CST #1,2026.2 19.,,,"17, 19",신양지,
-Antibody,AB-0180,Abcam,Anti-CEBP Beta antibody [47A1],ab33481,-20'C,Abcam #1,,,,37,단종,단종
-Antibody,AB-0181,Abcam,Anti-Tau 13 antibody [TAU-13],ab24634,-20'C,Abcam #1,,,,45-60,단종,단종
+Antibody,AB-0180,Abcam,Anti-CEBP Beta antibody [47A1],ab33481,-20'C,Abcam #1,,,,37,단종,
+Antibody,AB-0181,Abcam,Anti-Tau 13 antibody [TAU-13],ab24634,-20'C,Abcam #1,,,,45-60,단종,
 Antibody,AB-0182,Abcam,Anti-PPAR delta antibody,ab23673,-20'C,Abcam #1,,,,50,,
 Antibody,AB-0183,Abcam,Anti-STAT3 (phospho Y705) antibody [EP2147Y],ab76315,-20'C,Abcam #1,,,,88,,
 Antibody,AB-0184,Abcam,Anti-Ki67 antibody,ab15580,-20'C,Abcam #1,,,,"345, 395",,
-Antibody,AB-0185,Abcam,Anti-Stanniocalcin 1/STC1 antibody,ab83065,-20'C,Abcam #1,,,,30,단종,단종
+Antibody,AB-0185,Abcam,Anti-Stanniocalcin 1/STC1 antibody,ab83065,-20'C,Abcam #1,,,,30,단종,
 Antibody,AB-0186,Abcam,Anti-GSK3 beta (phospho Y216) + GSK3 alpha (phospho Y279) antibody,ab75745,-20'C,Abcam #1,,,,47,,
-Antibody,AB-0187,Abcam,Anti-Leptin Receptor antibody [EPR911(N)],ab177469,-20'C,Abcam #1,,,,150,단종,단종
+Antibody,AB-0187,Abcam,Anti-Leptin Receptor antibody [EPR911(N)],ab177469,-20'C,Abcam #1,,,,150,단종,
 Antibody,AB-0188,Millipore,Anti-CPT1A Antibody,ABS65,-20'C,Abcam #2,,,,78,,
 Antibody,AB-0189,Abcam,Anti-Nrf2 antibody [EP1808Y] KO Tested,ab62352,-20'C,Abcam #2,,,,100,,
-Antibody,AB-0190,Abcam,Anti-Superoxide Dismutase 3/EC-SOD antibody [1H12],ab28442,-20'C,Abcam #2,,,,35,단종,단종
+Antibody,AB-0190,Abcam,Anti-Superoxide Dismutase 3/EC-SOD antibody [1H12],ab28442,-20'C,Abcam #2,,,,35,단종,
 Antibody,AB-0191,unknown,UGT1A9,unknown,-20'C,Abcam #2,,,,,,
 Antibody,AB-0192,unknown,p-CDK2 (Tyr15),unknown,-20'C,Abcam #2,,,,,,
 Antibody,AB-0193,Abcam,Anti-Nrf2 antibody [EP1808Y] KO Tested,ab62352,-20'C,Abcam #2,,,,100,,
@@ -549,13 +549,13 @@ Antibody,AB-0194,Abcam,Anti-BCRP/ABCG2 antibody [1H2],ab130244,-20'C,Abcam #3,,,
 Antibody,AB-0195,Abcam,Anti-Nrf2 (phospho S40) antibody [EP1809Y],ab76026,-20'C,Abcam #3,,,,90,,
 Antibody,AB-0196,Novus Biologicals,OCT4 Antibody (EPR2053(2)),NBP1-96637,-20'C,Abcam #3,,,,,,
 Antibody,AB-0197,Abcam,Anti-PRDM16 antibody,ab106410,-20'C,Abcam #3,,,,140,,
-Antibody,AB-0198,Abcam,Anti-HOGA1 antibody,ab213993,-20'C,Abcam #3,,,,35,단종,단종
+Antibody,AB-0198,Abcam,Anti-HOGA1 antibody,ab213993,-20'C,Abcam #3,,,,35,단종,
 Antibody,AB-0199,unknown,PPAR delta antibody,unknown,-20'C,Abcam #3,,,,,,
 Antibody,AB-0200,R&D sytems,Human/Mouse Nrf2 Antibody (Anti-Goat IgG Secondary Antibody),AF3925,-20'C,Abcam #3,,,,110-115,,
 Antibody,AB-0201,Abcam,Anti-ALDH1A1 antibody [EP1933Y],ab52492,-20'C,Abcam #4,,,,54,,
-Antibody,AB-0202,Abcam,Anti-LXR beta/NER antibody,ab56237,-20'C,Abcam #4,,,,50,단종,단종
+Antibody,AB-0202,Abcam,Anti-LXR beta/NER antibody,ab56237,-20'C,Abcam #4,,,,50,단종,
 Antibody,AB-0203,Abcam,Anti-FOXG1 antibody,ab3394,-20'C,Abcam #4,,,,54,,
-Antibody,AB-0204,Abcam,Anti-PROX1 antibody,ab37128,-20'C,Abcam #4,,,,83,단종,단종
+Antibody,AB-0204,Abcam,Anti-PROX1 antibody,ab37128,-20'C,Abcam #4,,,,83,단종,
 Antibody,AB-0205,Abcam,Anti-Superoxide Dismutase 1 antibody,ab13498,-20'C,Abcam #4,,,,23,,
 Antibody,AB-0206,Abcam,Anti-LXR alpha antibody,ab41902,-20'C,Abcam #4,,,,,,
 Antibody,AB-0207,Abcam,Anti-FHL2 antibody,ab12327,-20'C,Abcam #4,,,,32,,

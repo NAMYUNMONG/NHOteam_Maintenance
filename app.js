@@ -2,13 +2,13 @@ const STORAGE_KEY = "l1521_inventory_draft_v1";
 
 const CATEGORY_COLUMNS = {
   Chemical: ["Category", "Item_ID", "Manufacturer", "Item_Name", "Cat_No", "Storage", "Opened_Date", "Quantity_Size", "Form_Type", "Requester", "Note"],
-  Antibody: ["Category", "Item_ID", "Manufacturer", "Item_Name", "Cat_No", "MW_kDa", "Storage", "Location", "Opened_Date", "Requester", "Note"],
+  Antibody: ["Category", "Item_ID", "Manufacturer", "Item_Name", "Cat_No", "MW_kDa", "Storage", "Location", "Opened_Date", "Requester"],
   Product: ["Category", "Item_ID", "Manufacturer", "Item_Name", "Cat_No", "Storage"],
 };
 
 const CATEGORY_TABLE_COLUMNS = {
   Chemical: ["Category", "Manufacturer", "Item_Name", "Cat_No", "Form_Type", "Storage", "Quantity_Size", "Note"],
-  Antibody: ["Category", "Manufacturer", "Item_Name", "Cat_No", "MW_kDa", "Storage", "Location", "Opened_Date", "Requester", "Note"],
+  Antibody: ["Category", "Manufacturer", "Item_Name", "Cat_No", "MW_kDa", "Storage", "Location", "Opened_Date", "Requester"],
 };
 
 const TABLE_COLUMNS = [
@@ -65,6 +65,11 @@ function debounce(fn, delay = 160) {
 
 function columnClass(name) {
   return `col-${String(name).replaceAll("_", "-")}`;
+}
+
+function columnLabel(name, category) {
+  if (category === "Antibody" && name === "Requester") return "Note";
+  return name;
 }
 
 async function loadData() {
@@ -137,7 +142,7 @@ function renderTable() {
   const tbody = $("inventoryTable").querySelector("tbody");
   $("inventoryTable").dataset.view = activeView;
 
-  thead.innerHTML = `<tr>${columns.map((col) => `<th class="${columnClass(col)}">${escapeHtml(col)}</th>`).join("")}<th class="col-Edit">Edit</th></tr>`;
+  thead.innerHTML = `<tr>${columns.map((col) => `<th class="${columnClass(col)}">${escapeHtml(columnLabel(col, activeView))}</th>`).join("")}<th class="col-Edit">Edit</th></tr>`;
 
   if (rows.length === 0) {
     const emptyMessage = activeView === "Mainpage" && !query
@@ -200,9 +205,10 @@ function categoryFields(category) {
 function makeField(name, value, category) {
   const full = ["Item_Name", "Note"].includes(name) ? " full" : "";
   const readonly = name === "Item_ID" ? "readonly" : "";
+  const label = columnLabel(name, category);
   if (name === "Category") {
     return `<label class="${full}">
-      <span>${name}</span>
+      <span>${label}</span>
       <select name="${name}" required>
         ${Object.keys(CATEGORY_COLUMNS).map((cat) => `<option value="${cat}" ${cat === value ? "selected" : ""}>${cat}</option>`).join("")}
       </select>
@@ -210,7 +216,7 @@ function makeField(name, value, category) {
   }
   if (category === "Chemical" && name === "Form_Type") {
     return `<label class="${full}">
-      <span>${name}</span>
+      <span>${label}</span>
       <select name="${name}">
         <option value=""></option>
         ${["solid", "liquid"].map((type) => `<option value="${type}" ${type === value ? "selected" : ""}>${type}</option>`).join("")}
@@ -219,12 +225,12 @@ function makeField(name, value, category) {
   }
   if (name === "Note") {
     return `<label class="${full}">
-      <span>${name}</span>
+      <span>${label}</span>
       <textarea name="${name}">${escapeHtml(value || "")}</textarea>
     </label>`;
   }
   return `<label class="${full}">
-    <span>${name}</span>
+    <span>${label}</span>
     <input name="${name}" value="${escapeHtml(value || "")}" ${readonly} ${name === "Item_Name" ? "required" : ""} />
   </label>`;
 }
