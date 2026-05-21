@@ -63,6 +63,10 @@ function debounce(fn, delay = 160) {
   };
 }
 
+function columnClass(name) {
+  return `col-${String(name).replaceAll("_", "-")}`;
+}
+
 async function loadData() {
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved) {
@@ -131,8 +135,9 @@ function renderTable() {
 
   const thead = $("inventoryTable").querySelector("thead");
   const tbody = $("inventoryTable").querySelector("tbody");
+  $("inventoryTable").dataset.view = activeView;
 
-  thead.innerHTML = `<tr>${columns.map((col) => `<th>${escapeHtml(col)}</th>`).join("")}<th>Edit</th></tr>`;
+  thead.innerHTML = `<tr>${columns.map((col) => `<th class="${columnClass(col)}">${escapeHtml(col)}</th>`).join("")}<th class="col-Edit">Edit</th></tr>`;
 
   if (rows.length === 0) {
     const emptyMessage = activeView === "Mainpage" && !query
@@ -145,9 +150,9 @@ function renderTable() {
   tbody.innerHTML = rows.map((item) => {
     const cells = columns.map((col) => {
       if (col === "Category") {
-        return `<td><span class="badge ${escapeHtml(item.Category)}">${escapeHtml(item.Category)}</span></td>`;
+        return `<td class="${columnClass(col)}"><span class="badge ${escapeHtml(item.Category)}">${escapeHtml(item.Category)}</span></td>`;
       }
-      return `<td>${escapeHtml(item[col] || "")}</td>`;
+      return `<td class="${columnClass(col)}">${escapeHtml(item[col] || "")}</td>`;
     }).join("");
     return `<tr class="row-${escapeHtml(item.Category)}">${cells}<td class="edit-cell"><button type="button" data-edit-id="${escapeHtml(item.Item_ID)}">Edit</button></td></tr>`;
   }).join("");

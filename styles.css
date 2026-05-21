@@ -385,7 +385,17 @@ th {
   z-index: 1;
   color: var(--muted);
   font-weight: 800;
+  text-align: center;
   white-space: nowrap;
+}
+
+th:first-child,
+th + th {
+  border-left: 1px solid #94a3b8;
+}
+
+th:last-child {
+  border-right: 1px solid #94a3b8;
 }
 
 td {
@@ -415,6 +425,36 @@ td.edit-cell button {
   font-size: 0.78rem;
   line-height: 1;
   white-space: nowrap;
+}
+
+table[data-view="Chemical"] .col-Manufacturer {
+  width: 118px;
+  min-width: 118px;
+  max-width: 118px;
+}
+
+table[data-view="Chemical"] .col-Item-Name {
+  width: 420px;
+  min-width: 420px;
+  max-width: 520px;
+}
+
+table[data-view="Antibody"] .col-Manufacturer {
+  width: 128px;
+  min-width: 128px;
+  max-width: 128px;
+}
+
+table[data-view="Antibody"] .col-Item-Name {
+  width: 440px;
+  min-width: 440px;
+  max-width: 560px;
+}
+
+table[data-view="Antibody"] .col-MW-kDa {
+  width: 76px;
+  min-width: 76px;
+  max-width: 76px;
 }
 
 tbody tr.row-Chemical {
