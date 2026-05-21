@@ -2,8 +2,13 @@ const STORAGE_KEY = "l1521_inventory_draft_v1";
 
 const CATEGORY_COLUMNS = {
   Chemical: ["Category", "Item_ID", "Manufacturer", "Item_Name", "Cat_No", "Storage", "Opened_Date", "Quantity_Size", "Form_Type", "Requester", "Note"],
-  Antibody: ["Category", "Item_ID", "Manufacturer", "Item_Name", "Cat_No", "Storage", "Location", "Opened_Date", "MW_kDa", "Requester", "Note"],
+  Antibody: ["Category", "Item_ID", "Manufacturer", "Item_Name", "Cat_No", "MW_kDa", "Storage", "Location", "Opened_Date", "Requester", "Note"],
   Product: ["Category", "Item_ID", "Manufacturer", "Item_Name", "Cat_No", "Storage"],
+};
+
+const CATEGORY_TABLE_COLUMNS = {
+  Chemical: ["Category", "Manufacturer", "Item_Name", "Cat_No", "Form_Type", "Storage", "Quantity_Size", "Note"],
+  Antibody: ["Category", "Manufacturer", "Item_Name", "Cat_No", "MW_kDa", "Storage", "Location", "Opened_Date", "Requester", "Note"],
 };
 
 const TABLE_COLUMNS = [
@@ -121,7 +126,7 @@ function renderTable() {
   const rows = filteredItems();
   const query = normalize($("searchInput").value);
   const prefix = CATEGORY_COLUMNS[activeView] ? `${activeView} ` : "";
-  const columns = (CATEGORY_COLUMNS[activeView] || TABLE_COLUMNS).filter((col) => !HIDDEN_DISPLAY_COLUMNS.has(col));
+  const columns = (CATEGORY_TABLE_COLUMNS[activeView] || CATEGORY_COLUMNS[activeView] || TABLE_COLUMNS).filter((col) => !HIDDEN_DISPLAY_COLUMNS.has(col));
   $("resultCount").textContent = `${prefix}검색 결과 ${rows.length.toLocaleString("ko-KR")}개`;
 
   const thead = $("inventoryTable").querySelector("thead");
@@ -195,6 +200,15 @@ function makeField(name, value, category) {
       <span>${name}</span>
       <select name="${name}" required>
         ${Object.keys(CATEGORY_COLUMNS).map((cat) => `<option value="${cat}" ${cat === value ? "selected" : ""}>${cat}</option>`).join("")}
+      </select>
+    </label>`;
+  }
+  if (category === "Chemical" && name === "Form_Type") {
+    return `<label class="${full}">
+      <span>${name}</span>
+      <select name="${name}">
+        <option value=""></option>
+        ${["solid", "liquid"].map((type) => `<option value="${type}" ${type === value ? "selected" : ""}>${type}</option>`).join("")}
       </select>
     </label>`;
   }
