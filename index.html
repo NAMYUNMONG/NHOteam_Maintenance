@@ -131,7 +131,6 @@ tbody td:first-child{text-align:center;cursor:default;overflow:visible;}
 .badge-20c{background:#eaf1fb;color:#1d4e89;}
 .badge-80c{background:#edf2ff;color:#3730a3;}
 .badge-ln2{background:#f0f0ff;color:#4338ca;}
-.badge-low{background:var(--warn-light);color:var(--warn);}
 .app-tags{display:flex;gap:3px;flex-wrap:wrap;}
 .app-tag{font-size:10px;padding:2px 6px;border-radius:3px;background:var(--surface2);color:var(--muted);border:1px solid var(--line);}
 .msds-link{font-size:12px;color:var(--green);text-decoration:none;font-family:var(--mono);font-weight:500;}
@@ -242,7 +241,6 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
     <a href="#" data-view="Consumable">Consumable</a>
     <a href="#" data-view="Equipment">Equipment</a>
     <span class="nav-section">Special</span>
-    <a href="#" data-view="Low Stock">Low Stock <span class="nav-badge" id="lowStockBadge">0</span></a>
     <a href="#" data-view="Cell Stocks">Cell Stocks</a>
     <a href="#" data-view="Duties">Lab Duties</a>
   </nav>
@@ -409,7 +407,7 @@ const SUBCATS = {
 };
 const LOCATIONS = ['Yellow Cabinet','Cabinet','Fridge','Fridge 2','Freezer','Freezer 2'];
 const STORAGE_BADGE = {'RT':'badge-rt','4°C':'badge-4c','-20°C':'badge-20c','-80°C':'badge-80c','LN2':'badge-ln2'};
-const INVENTORY_VIEWS = new Set(['Chemical','Cell Culture','Antibody/Protein','Kit/Assay','Consumable','Equipment','Low Stock']);
+const INVENTORY_VIEWS = new Set(['Chemical','Cell Culture','Antibody/Protein','Kit/Assay','Consumable','Equipment']);
 
 let lang='en', items=[], sourceMeta={}, selectedIds=new Set();
 let activeView='Mainpage', sortCol='Item_Name', sortDir=1, hasUnsaved=false;
@@ -470,7 +468,6 @@ function resetToSaved(){
 
 // ── FILTER / SORT ─────────────────────────────────────────────
 function getViewItems(){
-  if(activeView==='Low Stock') return items.filter(i=>i.Low_Stock);
   if(activeView==='Mainpage') return items;
   if(INVENTORY_VIEWS.has(activeView)) return items.filter(i=>i.Category===activeView);
   return items;
@@ -543,8 +540,6 @@ function updateStats(){
       badge.textContent=counts[cat];
     }
   });
-  const low=items.filter(i=>i.Low_Stock).length;
-  $('lowStockBadge').textContent=low;
 }
 
 function updateNav(){
@@ -556,7 +551,7 @@ function updateNav(){
 function updateSubcatFilter(){
   const sel=$('subcatFilter');
   const cur=sel.value;
-  const cat=activeView==='Low Stock'?null:activeView;
+  const cat=activeView;
   const opts=cat&&SUBCATS[cat]?SUBCATS[cat]:Object.values(SUBCATS).flat();
   sel.innerHTML='<option value="">All subcategories</option>'+
     [...new Set(opts)].map(s=>`<option value="${esc(s)}"${s===cur?' selected':''}>${esc(s)}</option>`).join('');
@@ -612,7 +607,7 @@ function renderTable(){
       <td><span class="badge ${storageCls}">${esc(item.Storage||'—')}</span></td>
       <td style="font-size:12px">${esc(item.Location||'—')}</td>
       <td style="font-size:12px">${esc(item.Sub_Location||'—')}</td>
-      <td style="white-space:nowrap;text-align:right">${item.Low_Stock?'<span class="badge badge-low">low</span>':item.Current_Stock!=null?`<span style="font-size:12px">${item.Current_Stock}</span>`:'<span style="color:var(--line)">—</span>'}</td>
+      <td style="white-space:nowrap;text-align:right">${item.Current_Stock!=null?`<span style="font-size:12px">${item.Current_Stock}</span>`:'<span style="color:var(--line)">—</span>'}</td>
       <td>${apps.length?`<div class="app-tags">${apps.map(a=>`<span class="app-tag">${esc(a)}</span>`).join('')}</div>`:'<span style="color:var(--line)">—</span>'}</td>
       <td>${msds}</td>
     </tr>`;
@@ -748,7 +743,7 @@ function viewHTML(item){
     </div>
     <div class="panel-section"><div class="panel-section-title">Stock</div>
       <div class="field-row">${f('Current stock',item.Current_Stock!=null?String(item.Current_Stock):'—')}${f('Order unit',item.Order_Unit)}</div>
-      <div class="field-row">${f('Quantity size',item.Quantity_Size)}${f('Low stock flag',item.Low_Stock?'⚠ Flagged':'OK')}</div>
+      <div class="field-row">${f('Quantity size',item.Quantity_Size)}</div>
     </div>
     <div class="panel-section"><div class="panel-section-title">Application</div>
       <div class="app-tags" style="padding:4px 0">${apps.length?apps.map(a=>`<span class="app-tag">${esc(a)}</span>`).join(''):'—'}</div>
@@ -810,12 +805,6 @@ function editHTML(item,isAdd){
         <div class="field-group"><div class="field-label">Current stock</div>${inp('Current_Stock',v('Current_Stock')!=null?String(v('Current_Stock')):'','0')}</div>
         <div class="field-group"><div class="field-label">Order unit</div>${inp('Order_Unit',v('Order_Unit'),'e.g. 500mL')}</div>
       </div>
-      <div class="field-row full">
-        <label class="low-toggle" id="pf-LowToggle">
-          <div class="toggle-dot ${v('Low_Stock')?'on':''}" id="pf-LowDot"></div>
-          Flag as low stock
-        </label>
-      </div>
     </div>
     <div class="panel-section"><div class="panel-section-title">Application</div>
       <div class="app-checkboxes">${APPS.map(a=>`<label class="app-chip${appVal.includes(a)?' checked':''}" data-app="${a}">${a}</label>`).join('')}</div>
@@ -832,8 +821,6 @@ function bindPanelForm(){
     const opts=['',...(SUBCATS[catSel.value]||[])];
     subcatSel.innerHTML=opts.map(o=>`<option value="${o}">${o||'— none —'}</option>`).join('');
   });
-  const ld=$('pf-LowDot'),lt=$('pf-LowToggle');
-  if(lt) lt.addEventListener('click',()=>ld.classList.toggle('on'));
   document.querySelectorAll('.app-chip').forEach(el=>el.addEventListener('click',()=>el.classList.toggle('checked')));
 }
 
@@ -855,7 +842,6 @@ function collectPanel(){
   const st=gv('Current_Stock');
   item.Current_Stock=st!==''?Number(st):null;
   item.Order_Unit=gv('Order_Unit');
-  item.Low_Stock=$('pf-LowDot')?.classList.contains('on')||false;
   item.Application=[...document.querySelectorAll('.app-chip.checked')].map(el=>el.dataset.app);
   item.Requester=gv('Requester');
   item.Note=$('pf-Note')?.value?.trim()||'';
@@ -974,7 +960,7 @@ const TRANS = {
     home: 'Home', chemical: 'Chemical', cellCulture: 'Cell Culture',
     abProtein: 'Antibody & Protein', kitAssay: 'Kit & Assay',
     consumable: 'Consumable', equipment: 'Equipment',
-    lowStock: 'Low Stock', cellStocks: 'Cell Stocks', duties: 'Lab Duties',
+    cellStocks: 'Cell Stocks', duties: 'Lab Duties',
     allSubcats: 'All subcategories', identity: 'Identity', storage: 'Storage & Location',
     stock: 'Stock', application: 'Application', other: 'Other',
     edit: 'Edit', save: 'Save', cancel: 'Cancel', close: 'Close',
@@ -987,7 +973,7 @@ const TRANS = {
     home: '홈', chemical: '화학물질', cellCulture: '세포 배양',
     abProtein: '항체 & 단백질', kitAssay: '키트 & 분석',
     consumable: '소모품', equipment: '장비',
-    lowStock: '부족 재고', cellStocks: '세포주 보관', duties: '실험실 업무',
+    cellStocks: '세포주 보관', duties: '실험실 업무',
     allSubcats: '전체 소분류', identity: '기본 정보', storage: '보관 & 위치',
     stock: '재고', application: '적용 분야', other: '기타',
     edit: '편집', save: '저장', cancel: '취소', close: '닫기',
@@ -1009,7 +995,7 @@ function applyLang(){
     'Mainpage': t.home, 'Chemical': t.chemical, 'Cell Culture': t.cellCulture,
     'Antibody/Protein': t.abProtein, 'Kit/Assay': t.kitAssay,
     'Consumable': t.consumable, 'Equipment': t.equipment,
-    'Low Stock': t.lowStock, 'Cell Stocks': t.cellStocks, 'Duties': t.duties
+    'Cell Stocks': t.cellStocks, 'Duties': t.duties
   };
   document.querySelectorAll('.sidebar-nav a[data-view]').forEach(el => {
     const key = el.dataset.view;
