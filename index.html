@@ -300,7 +300,6 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
         <option value="Item_Name">Name</option>
         <option value="Manufacturer">Manufacturer</option>
         <option value="Storage">Storage</option>
-        <option value="Item_ID">ID</option>
         <option value="Subcategory">Subcategory</option>
       </select>
     </div>
@@ -324,7 +323,7 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
   <div class="actions-panel" id="actionsPanel" style="display:none">
     <label class="upload-label" for="fileInput">Upload JSON / Excel to merge</label>
     <input type="file" id="fileInput" accept=".json,.xlsx,.xls,.csv">
-    <span style="font-size:12px;color:var(--muted)" id="mergeHint">Merges by Item_ID</span>
+    <span style="font-size:12px;color:var(--muted)" id="mergeHint">Uploads merge into the current inventory</span>
   </div>
 
   <!-- TABLE -->
@@ -363,7 +362,7 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
   <div class="panel-header">
     <div class="panel-header-info">
       <div class="panel-title" id="panelTitle">Item</div>
-      <div class="panel-id" id="panelId"></div>
+      <div class="panel-id" id="panelId" hidden></div>
     </div>
     <button class="panel-close" id="panelClose">×</button>
   </div>
@@ -565,8 +564,8 @@ function renderTable(){
   const rows=applyFilters(base);
   $('tableStatus').textContent=`${rows.length} items${activeView!=='Mainpage'?' in '+activeView:''}`;
 
-  const cols=['Item_ID','Item_Name','Subcategory','Manufacturer','Cat_No','Storage','Location','Sub_Location','Current_Stock','Application','MSDS'];
-  const labels={'Item_ID':'ID','Item_Name':'Item','Subcategory':'Subcategory','Manufacturer':'Manufacturer','Cat_No':'Cat#','Storage':'Storage','Location':'Location','Sub_Location':'Shelf/Box','Current_Stock':'Stock','Application':'Application','MSDS':'MSDS'};
+  const cols=['Item_Name','Subcategory','Manufacturer','Cat_No','Storage','Location','Sub_Location','Current_Stock','Application','MSDS'];
+  const labels={'Item_Name':'Item','Subcategory':'Subcategory','Manufacturer':'Manufacturer','Cat_No':'Cat#','Storage':'Storage','Location':'Location','Sub_Location':'Shelf/Box','Current_Stock':'Stock','Application':'Application','MSDS':'MSDS'};
 
   $('tableHead').innerHTML=`<th><input type="checkbox" id="selectAll"></th>`+
     cols.map(c=>`<th data-sort="${c}">${labels[c]}</th>`).join('');
@@ -603,7 +602,6 @@ function renderTable(){
     }
     return `<tr class="${sel?'selected':''}" data-id="${esc(item.Item_ID)}">
       <td><input type="checkbox" class="row-check" data-id="${esc(item.Item_ID)}" ${sel?'checked':''}></td>
-      <td><span class="cell-mono">${esc(item.Item_ID||'—')}</span></td>
       <td><div class="cell-name">${esc(item.Item_Name||'—')}</div></td>
       <td>${item.Subcategory?`<span class="badge badge-cat">${esc(item.Subcategory)}</span>`:'—'}</td>
       <td style="font-size:12px">${esc(item.Manufacturer||'—')}</td>
@@ -1031,7 +1029,7 @@ function applyLang(){
   const unsavedText = $('unsavedText');
   if(unsavedText) unsavedText.textContent = lang==='kr' ? '⚠ 저장되지 않은 변경 사항 —' : '⚠ Unsaved local changes —';
   const mergeHint = $('mergeHint');
-  if(mergeHint) mergeHint.textContent = lang==='kr' ? 'Item_ID 기준으로 병합' : 'Merges by Item_ID';
+  if(mergeHint) mergeHint.textContent = lang==='kr' ? '현재 재고 목록에 병합' : 'Uploads merge into the current inventory';
 
   updateSubcatFilter();
 }
