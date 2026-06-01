@@ -143,6 +143,10 @@ tbody td:first-child{text-align:center;cursor:default;overflow:visible;}
 .mainpage-notice strong{color:var(--text);}
 .mainpage-notice code{background:var(--surface2);border-radius:4px;padding:1px 6px;font-family:var(--mono);font-size:12px;}
 
+/* Cell Stocks */
+.cell-stocks-view{display:none;padding:0 20px 24px;flex:1;min-height:calc(100vh - 150px);}
+.cell-stocks-frame{width:100%;height:calc(100vh - 170px);min-height:760px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);}
+
 /* ── SIDE PANEL ── */
 .panel-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(15,23,42,.3);}
 .panel-overlay.open{display:block;}
@@ -340,11 +344,8 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
   </div>
 
   <!-- PLACEHOLDER VIEWS -->
-  <div id="cellStocksView" style="display:none;padding:32px">
-    <div style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:48px;text-align:center;color:var(--muted)">
-      <strong style="display:block;font-size:15px;color:var(--text);margin-bottom:6px">Cell Stocks</strong>
-      Section coming soon — schema ready, awaiting data.
-    </div>
+  <div id="cellStocksView" class="cell-stocks-view">
+    <iframe class="cell-stocks-frame" title="Cell Stocks LN2 Inventory" src="./ln2-inventory/?embedded=1"></iframe>
   </div>
   <div id="dutiesView" style="display:none;padding:32px">
     <div style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:48px;text-align:center;color:var(--muted)">
@@ -502,11 +503,13 @@ function render(){
 
   const isCategory = INVENTORY_VIEWS.has(activeView);
   const isMainpage = activeView === 'Mainpage';
+  const isSpecial = activeView === 'Cell Stocks' || activeView === 'Duties';
 
   // Show/hide filter dropdowns — only in category views
   ['subcatFilterGroup','storageFilterGroup','locationFilterGroup','sortFilterGroup'].forEach(id=>{
     const el=$(id); if(el) el.style.display = isCategory ? '' : 'none';
   });
+  $('toolbarWrap').style.display = isSpecial ? 'none' : '';
 
   // Actions panel — only in category views
   $('actionsPanel').style.display = isCategory ? '' : 'none';
@@ -516,7 +519,7 @@ function render(){
 
   // Table and placeholder views
   $('tableSection').style.display = (isCategory || isMainpage) ? '' : 'none';
-  $('cellStocksView').style.display = activeView === 'Cell Stocks' ? '' : 'none';
+  $('cellStocksView').style.display = activeView === 'Cell Stocks' ? 'block' : 'none';
   $('dutiesView').style.display = activeView === 'Duties' ? '' : 'none';
 
   if(isCategory || isMainpage){
