@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "sourceFile": "ln2-inventory/data/inventory.json",
+    "sourceSheet": "LN2",
+    "generatedAt": "2026-06-01T00:00:00.000Z"
+  },
+  "summary": {
+    "totalSlots": 0,
+    "occupiedSlots": 0,
+    "emptySlots": 0,
+    "utilization": 0,
+    "cellLineCount": 0
+  },
+  "options": {
+    "racks": ["R1", "R2", "R3", "R4"],
+    "boxes": [],
+    "depositors": []
+  },
+  "boxSummary": [],
+  "records": []
+}
