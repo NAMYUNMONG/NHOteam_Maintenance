@@ -14,7 +14,6 @@ Requirements:
 Notes:
     - Reads a single 'Inventory' sheet (new format from V5 onward).
     - Item_ID is the stable key — never change it.
-    - Application column: semicolon-separated values e.g. "WB;Cell Culture"
     - Low_Stock column: TRUE / FALSE
     - Current_Stock column: number or blank
     - After running, commit data/inventory.json to GitHub to update the site.
@@ -38,7 +37,7 @@ INVENTORY_SHEET = "Inventory"
 SCHEMA = [
     "Item_ID", "Category", "Subcategory", "Item_Name", "Manufacturer",
     "Cat_No", "CAS_No", "MW_kDa",
-    "Application", "Storage", "Location", "Sub_Location",
+    "Storage", "Location", "Sub_Location",
     "Quantity_Size", "Order_Unit", "Current_Stock", "Low_Stock",
     "Opened_Date", "Expiry_Date", "Requester", "MSDS_URL", "Note",
 ]
@@ -48,13 +47,6 @@ VALID_CATEGORIES = {
     "Chemical", "Antibody/Protein", "Products"
 }
 VALID_STORAGE = {"RT", "4°C", "-20°C", "-80°C", "LN2", ""}
-
-STORAGE_NORM = {
-    "4'c": "4°C", "4c": "4°C", "4℃": "4°C", "2-8°c": "4°C", "2-8c": "4°C",
-    "-20'c": "-20°C", "-20c": "-20°C", "-20℃": "-20°C",
-    "-80'c": "-80°C", "-80c": "-80°C", "-80℃": "-80°C",
-    "rt": "RT",
-}
 
 
 def clean(value) -> str:
@@ -68,7 +60,25 @@ def clean(value) -> str:
 
 
 def norm_storage(s: str) -> str:
-    return STORAGE_NORM.get(s.lower(), s)
+    value = clean(s)
+    key = (
+        value.lower()
+        .replace(" ", "")
+        .replace("℃", "°c")
+        .replace("'c", "°c")
+        .replace("˚c", "°c")
+    )
+    if key in {"rt", "roomtemperature"}:
+        return "RT"
+    if key in {"ln2", "liquidnitrogen"}:
+        return "LN2"
+    if key in {"4c", "4°c", "2-8c", "2-8°c", "2~8c", "2~8°c"}:
+        return "4°C"
+    if key in {"-20c", "-20°c", "minus20c", "minus20°c"}:
+        return "-20°C"
+    if key in {"-80c", "-80°c", "minus80c", "minus80°c"}:
+        return "-80°C"
+    return value
 
 
 def parse_bool(s: str) -> bool:
@@ -82,12 +92,6 @@ def parse_stock(s: str):
         return int(float(s))
     except ValueError:
         return None
-
-
-def parse_application(s: str) -> list:
-    if not s:
-        return []
-    return [a.strip() for a in s.split(";") if a.strip()]
 
 
 def read_inventory_sheet(ws) -> list[dict]:
@@ -129,9 +133,7 @@ def read_inventory_sheet(ws) -> list[dict]:
         item = {}
         for field in SCHEMA:
             raw = record.get(field, "")
-            if field == "Application":
-                item[field] = parse_application(raw)
-            elif field == "Low_Stock":
+            if field == "Low_Stock":
                 item[field] = parse_bool(raw)
             elif field == "Current_Stock":
                 item[field] = parse_stock(raw)

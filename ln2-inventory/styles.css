@@ -181,6 +181,7 @@ main {
 .kpi strong { display: block; margin-top: 0.35rem; font-size: clamp(1.6rem, 3vw, 2.4rem); }
 .panel { padding: 1rem; }
 .controls { display: grid; grid-template-columns: 2.2fr repeat(4, 1fr); gap: 0.85rem; align-items: end; margin-bottom: 1rem; }
+.controls label:first-child { width: 360px; max-width: 100%; }
 label { display: grid; gap: 0.38rem; color: var(--muted); font-weight: 800; font-size: 0.82rem; }
 input, select, textarea { width: 100%; padding: 0.65rem 0.8rem; }
 textarea { resize: vertical; }
@@ -275,6 +276,7 @@ tbody tr:hover { background: #fbfdff; }
 @media (max-width: 1180px) {
   .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .controls label:first-child { width: 100%; }
   .dashboard-layout { grid-template-columns: 1fr; }
   .table-wrap { max-height: 42rem; }
 }

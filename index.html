@@ -72,7 +72,7 @@ body.collapsed footer{margin-left:0;}
 
 /* ── TOOLBAR ── */
 .toolbar{display:flex;gap:8px;padding:0 20px 10px;flex-wrap:wrap;align-items:flex-end;}
-.search-wrap{flex:1;min-width:240px;position:relative;}
+.search-wrap{flex:0 0 360px;width:360px;max-width:100%;position:relative;}
 .search-wrap input{width:100%;height:38px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 12px 0 36px;font-family:var(--font);font-size:14px;background:var(--surface);color:var(--text);outline:none;}
 .search-wrap input:focus{border-color:var(--green);}
 .search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px;pointer-events:none;}
@@ -110,9 +110,7 @@ thead th:nth-child(6){width:95px;}
 thead th:nth-child(7){width:55px;}
 thead th:nth-child(8){width:120px;}
 thead th:nth-child(9){width:75px;}
-thead th:nth-child(10){width:50px;}
-thead th:nth-child(11){width:85px;}
-thead th:nth-child(12){width:55px;}
+thead th:nth-child(10){width:58px;}
 tbody tr{border-bottom:1px solid var(--line);transition:background .1s;cursor:pointer;}
 tbody tr:last-child{border-bottom:none;}
 tbody tr:hover{background:#f8fafc;}
@@ -131,8 +129,6 @@ tbody td:first-child{text-align:center;cursor:default;overflow:visible;}
 .badge-20c{background:#eaf1fb;color:#1d4e89;}
 .badge-80c{background:#edf2ff;color:#3730a3;}
 .badge-ln2{background:#f0f0ff;color:#4338ca;}
-.app-tags{display:flex;gap:3px;flex-wrap:wrap;}
-.app-tag{font-size:10px;padding:2px 6px;border-radius:3px;background:var(--surface2);color:var(--muted);border:1px solid var(--line);}
 .msds-link{font-size:12px;color:var(--green);text-decoration:none;font-family:var(--mono);font-weight:500;}
 .msds-link:hover{text-decoration:underline;}
 .empty{padding:48px;text-align:center;color:var(--muted);font-size:14px;}
@@ -173,8 +169,6 @@ tbody td:first-child{text-align:center;cursor:default;overflow:visible;}
 .field-textarea:focus{border-color:var(--green);}
 .field-readonly{font-size:14px;color:var(--muted);background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:7px 10px;font-family:var(--mono);}
 .app-checkboxes{display:flex;flex-wrap:wrap;gap:6px;}
-.app-chip{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--muted);cursor:pointer;padding:4px 10px;border:1px solid var(--line);border-radius:999px;user-select:none;transition:all .1s;}
-.app-chip.checked{background:var(--green-light);border-color:#b7dfc9;color:var(--green);font-weight:600;}
 .low-toggle{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text);cursor:pointer;padding:8px 10px;border:1px solid var(--line);border-radius:var(--radius-sm);user-select:none;}
 .low-toggle:hover{background:var(--surface2);}
 .toggle-dot{width:30px;height:17px;background:var(--line);border-radius:9px;position:relative;transition:background .2s;flex-shrink:0;}
@@ -218,6 +212,7 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
   .stats-grid{grid-template-columns:repeat(2,1fr);}
   .site-header{padding:20px 16px 14px;}
   .toolbar,.actions-panel,.table-section,.stats-grid,.mainpage-notice{padding-left:16px;padding-right:16px;}
+  .search-wrap{flex-basis:100%;width:100%;}
 }
 </style>
 </head>
@@ -392,7 +387,6 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
 <script>
 const STORAGE_KEY = 'l1521_inventory_v2';
 const MSDS_CATS   = new Set(['Chemical','Products','Antibody/Protein']);
-const APPS        = ['WB','Cell Culture','PCR/qPCR','Histology/Staining','Animal Surgery','General'];
 const CATEGORIES  = ['Chemical','Antibody/Protein','Products'];
 const SUBCATS = {
   'Chemical':['Solvent','Acid/Alkali','Salt/Buffer reagent','Fixative','Single compound/Natural product','Pathway inhibitor/Activator','Stain/Dye','Standard/Reference','Assay reagent','Other'],
@@ -410,6 +404,16 @@ let panelMode='view', panelItemId=null;
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const norm=v=>String(v??'').trim();
+function normalizeStorage(value){
+  const raw = norm(value);
+  const key = raw.toLowerCase().replace(/\s+/g,'').replace(/℃/g,'°c').replace(/'c/g,'°c').replace(/˚c/g,'°c');
+  if(key==='rt'||key==='roomtemperature') return 'RT';
+  if(key==='ln2'||key==='liquidnitrogen') return 'LN2';
+  if(['4c','4°c','2-8c','2-8°c','2~8c','2~8°c'].includes(key)) return '4°C';
+  if(['-20c','-20°c','minus20c','minus20°c'].includes(key)) return '-20°C';
+  if(['-80c','-80°c','minus80c','minus80°c'].includes(key)) return '-80°C';
+  return raw;
+}
 
 // ── DATA ──────────────────────────────────────────────────────
 async function loadData(){
@@ -474,7 +478,7 @@ function applyFilters(base){
   const loc=norm($('locationFilter')?.value||'');
   let r=base;
   if(sub) r=r.filter(i=>norm(i.Subcategory)===sub);
-  if(stor) r=r.filter(i=>norm(i.Storage)===stor);
+  if(stor) r=r.filter(i=>normalizeStorage(i.Storage)===stor);
   if(loc) r=r.filter(i=>norm(i.Location)===loc);
   if(q) r=r.filter(i=>{
     const h=Object.values(i).map(v=>Array.isArray(v)?v.join(' '):norm(v)).join(' ').toLowerCase();
@@ -556,8 +560,8 @@ function renderTable(){
   const rows=applyFilters(base);
   $('tableStatus').textContent=`${rows.length} items${activeView!=='Mainpage'?' in '+activeView:''}`;
 
-  const cols=['Item_Name','Subcategory','Manufacturer','Cat_No','Storage','Location','Sub_Location','Current_Stock','Application','MSDS'];
-  const labels={'Item_Name':'Item','Subcategory':'Subcategory','Manufacturer':'Manufacturer','Cat_No':'Cat#','Storage':'Storage','Location':'Location','Sub_Location':'Shelf/Box','Current_Stock':'Stock','Application':'Application','MSDS':'MSDS'};
+  const cols=['Item_Name','Subcategory','Manufacturer','Cat_No','Storage','Location','Sub_Location','Current_Stock','MSDS'];
+  const labels={'Item_Name':'Item','Subcategory':'Subcategory','Manufacturer':'Manufacturer','Cat_No':'Cat#','Storage':'Storage','Location':'Location','Sub_Location':'Shelf/Box','Current_Stock':'Stock','MSDS':'MSDS'};
 
   $('tableHead').innerHTML=`<th><input type="checkbox" id="selectAll"></th>`+
     cols.map(c=>`<th data-sort="${c}">${labels[c]}</th>`).join('');
@@ -570,8 +574,8 @@ function renderTable(){
   $('tableBody').innerHTML=rows.map(item=>{
     const sel=selectedIds.has(item.Item_ID);
     const loc=[item.Location,item.Sub_Location].filter(Boolean).join(' › ');
-    const storageCls=STORAGE_BADGE[norm(item.Storage)]||'badge-rt';
-    const apps=Array.isArray(item.Application)?item.Application:[];
+    const storage = normalizeStorage(item.Storage);
+    const storageCls=STORAGE_BADGE[storage]||'badge-rt';
     let msds='—';
     if(MSDS_CATS.has(item.Category)){
       if(item.MSDS_URL){
@@ -598,11 +602,10 @@ function renderTable(){
       <td>${item.Subcategory?`<span class="badge badge-cat">${esc(item.Subcategory)}</span>`:'—'}</td>
       <td style="font-size:12px">${esc(item.Manufacturer||'—')}</td>
       <td><span class="cell-mono">${esc(item.Cat_No||'—')}</span></td>
-      <td><span class="badge ${storageCls}">${esc(item.Storage||'—')}</span></td>
+      <td><span class="badge ${storageCls}">${esc(storage||'—')}</span></td>
       <td style="font-size:12px">${esc(item.Location||'—')}</td>
       <td style="font-size:12px">${esc(item.Sub_Location||'—')}</td>
       <td style="white-space:nowrap;text-align:right">${item.Current_Stock!=null?`<span style="font-size:12px">${item.Current_Stock}</span>`:'<span style="color:var(--line)">—</span>'}</td>
-      <td>${apps.length?`<div class="app-tags">${apps.map(a=>`<span class="app-tag">${esc(a)}</span>`).join('')}</div>`:'<span style="color:var(--line)">—</span>'}</td>
       <td>${msds}</td>
     </tr>`;
   }).join('');
@@ -723,7 +726,6 @@ function viewHTML(item){
           :`<a class="msds-link" href="https://pubchem.ncbi.nlm.nih.gov/compound/${encodeURIComponent(item.CAS_No.trim())}#section=Safety-and-Hazards" target="_blank">PubChem SDS ↗</a>`)
         :'<span style="color:var(--warn);font-size:13px">No CAS — add manually or run fetch_cas.py</span>')
     :'—';
-  const apps=Array.isArray(item.Application)?item.Application:[];
   return `
     <div class="panel-section"><div class="panel-section-title">Identity</div>
       <div class="field-row">${f('Category',item.Category)}${f('Subcategory',item.Subcategory||'(unassigned)')}</div>
@@ -732,15 +734,12 @@ function viewHTML(item){
       <div class="field-row full"><div class="field-group"><div class="field-label">MSDS</div><div class="field-value">${msds}</div></div></div>
     </div>
     <div class="panel-section"><div class="panel-section-title">Storage & Location</div>
-      <div class="field-row">${f('Storage',item.Storage)}${f('Location',[item.Location,item.Sub_Location].filter(Boolean).join(' › '))}</div>
+      <div class="field-row">${f('Storage',normalizeStorage(item.Storage))}${f('Location',[item.Location,item.Sub_Location].filter(Boolean).join(' › '))}</div>
       <div class="field-row">${f('Opened',item.Opened_Date)}${f('Expiry',item.Expiry_Date)}</div>
     </div>
     <div class="panel-section"><div class="panel-section-title">Stock</div>
       <div class="field-row">${f('Current stock',item.Current_Stock!=null?String(item.Current_Stock):'—')}${f('Order unit',item.Order_Unit)}</div>
       <div class="field-row">${f('Quantity size',item.Quantity_Size)}</div>
-    </div>
-    <div class="panel-section"><div class="panel-section-title">Application</div>
-      <div class="app-tags" style="padding:4px 0">${apps.length?apps.map(a=>`<span class="app-tag">${esc(a)}</span>`).join(''):'—'}</div>
     </div>
     <div class="panel-section"><div class="panel-section-title">Other</div>
       <div class="field-row">${f('Requester',item.Requester)}</div>
@@ -755,7 +754,6 @@ function editHTML(item,isAdd){
   const catVal=v('Category','Chemical');
   const subcatOpts=['',...(SUBCATS[catVal]||[])];
   const locVal=v('Location','');
-  const appVal=Array.isArray(v('Application'))?v('Application'):[];
   return `
     <div class="panel-section"><div class="panel-section-title">Identity</div>
       <div class="field-row full"><div class="field-group"><div class="field-label">Item name *</div>${inp('Item_Name',v('Item_Name'),'e.g. Trypsin-EDTA 0.05%')}</div></div>
@@ -781,7 +779,7 @@ function editHTML(item,isAdd){
       <div class="field-row">
         <div class="field-group"><div class="field-label">Storage</div>
           <select class="field-select" id="pf-Storage">
-            ${['RT','4°C','-20°C','-80°C','LN2'].map(s=>`<option${s===v('Storage','RT')?' selected':''}>${s}</option>`).join('')}
+            ${['RT','4°C','-20°C','-80°C','LN2'].map(s=>`<option${s===normalizeStorage(v('Storage','RT'))?' selected':''}>${s}</option>`).join('')}
           </select>
         </div>
         <div class="field-group"><div class="field-label">Location</div>
@@ -800,9 +798,6 @@ function editHTML(item,isAdd){
         <div class="field-group"><div class="field-label">Order unit</div>${inp('Order_Unit',v('Order_Unit'),'e.g. 500mL')}</div>
       </div>
     </div>
-    <div class="panel-section"><div class="panel-section-title">Application</div>
-      <div class="app-checkboxes">${APPS.map(a=>`<label class="app-chip${appVal.includes(a)?' checked':''}" data-app="${a}">${a}</label>`).join('')}</div>
-    </div>
     <div class="panel-section"><div class="panel-section-title">Other</div>
       <div class="field-row full"><div class="field-group"><div class="field-label">Requester</div>${inp('Requester',v('Requester'))}</div></div>
       <div class="field-row full"><div class="field-group"><div class="field-label">Note</div><textarea class="field-textarea" id="pf-Note">${esc(v('Note'))}</textarea></div></div>
@@ -815,7 +810,6 @@ function bindPanelForm(){
     const opts=['',...(SUBCATS[catSel.value]||[])];
     subcatSel.innerHTML=opts.map(o=>`<option value="${o}">${o||'— none —'}</option>`).join('');
   });
-  document.querySelectorAll('.app-chip').forEach(el=>el.addEventListener('click',()=>el.classList.toggle('checked')));
 }
 
 function collectPanel(){
@@ -828,7 +822,7 @@ function collectPanel(){
   if(panelMode==='add') item.Cat_No=gv('Cat_No');
   item.MW_kDa=gv('MW_kDa');
   item.MSDS_URL=gv('MSDS_URL');
-  item.Storage=gv('Storage')||'RT';
+  item.Storage=normalizeStorage(gv('Storage'))||'RT';
   item.Location=gv('Location');
   item.Sub_Location=gv('Sub_Location');
   item.Opened_Date=gv('Opened_Date');
@@ -836,7 +830,6 @@ function collectPanel(){
   const st=gv('Current_Stock');
   item.Current_Stock=st!==''?Number(st):null;
   item.Order_Unit=gv('Order_Unit');
-  item.Application=[...document.querySelectorAll('.app-chip.checked')].map(el=>el.dataset.app);
   item.Requester=gv('Requester');
   item.Note=$('pf-Note')?.value?.trim()||'';
   return item;
@@ -955,7 +948,7 @@ const TRANS = {
     abProtein: 'Antibody & Protein', products: 'Products',
     cellStocks: 'Cell Stocks', duties: 'Lab Duties',
     allSubcats: 'All subcategories', identity: 'Identity', storage: 'Storage & Location',
-    stock: 'Stock', application: 'Application', other: 'Other',
+    stock: 'Stock', other: 'Other',
     edit: 'Edit', save: 'Save', cancel: 'Cancel', close: 'Close',
     addNew: 'Add new item', editItem: 'Edit item',
     generateOrder: 'Generate order', copyClipboard: 'Copy to clipboard',
@@ -967,7 +960,7 @@ const TRANS = {
     abProtein: '항체 & 단백질', products: '제품',
     cellStocks: '세포주 보관', duties: '실험실 업무',
     allSubcats: '전체 소분류', identity: '기본 정보', storage: '보관 & 위치',
-    stock: '재고', application: '적용 분야', other: '기타',
+    stock: '재고', other: '기타',
     edit: '편집', save: '저장', cancel: '취소', close: '닫기',
     addNew: '새 항목 추가', editItem: '항목 편집',
     generateOrder: '주문 생성', copyClipboard: '클립보드에 복사',
