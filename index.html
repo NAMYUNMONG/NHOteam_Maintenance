@@ -20,7 +20,7 @@
   --mono:'DM Mono',monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15px;line-height:1.5;}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;overflow-x:hidden;}
 
 /* ── SIDEBAR ── */
 .sidebar{position:fixed;inset:0 auto 0 0;width:var(--sidebar-w);background:#111827;color:#e5e7eb;display:flex;flex-direction:column;z-index:40;transition:transform .18s ease;border-right:1px solid #1f2937;}
@@ -44,7 +44,7 @@ body.collapsed footer{margin-left:0;}
 .page-wrap{margin-left:var(--sidebar-w);transition:margin-left .18s ease;min-height:100vh;display:flex;flex-direction:column;}
 
 /* ── HEADER ── */
-.site-header{padding:28px 32px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.site-header{padding:16px 24px 12px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;}
 .header-title .eyebrow{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
 .header-title h1{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:600;line-height:1.1;color:var(--text);}
 .header-title .subtitle{font-size:13px;color:var(--muted);margin-top:6px;}
@@ -71,7 +71,7 @@ body.collapsed footer{margin-left:0;}
 .stat-card.active .stat-count{color:var(--green);}
 
 /* ── TOOLBAR ── */
-.toolbar{display:flex;gap:10px;padding:0 32px 16px;flex-wrap:wrap;align-items:flex-end;}
+.toolbar{display:flex;gap:8px;padding:0 20px 10px;flex-wrap:wrap;align-items:flex-end;}
 .search-wrap{flex:1;min-width:240px;position:relative;}
 .search-wrap input{width:100%;height:38px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 12px 0 36px;font-family:var(--font);font-size:14px;background:var(--surface);color:var(--text);outline:none;}
 .search-wrap input:focus{border-color:var(--green);}
@@ -88,25 +88,42 @@ body.collapsed footer{margin-left:0;}
 .unsaved-bar.visible{display:flex;}
 
 /* ── TABLE ── */
-.table-section{padding:0 32px;flex:1;}
-.table-status{font-size:12px;color:var(--muted);font-family:var(--mono);margin-bottom:8px;}
+.table-section{padding:0 20px;flex:1;}
+.table-status{font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:8px;}
 .table-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
-.table-scroll{overflow:auto;max-height:calc(100vh - 340px);}
-table{width:100%;border-collapse:collapse;font-size:14px;min-width:900px;}
-thead th{background:var(--surface2);padding:9px 12px;text-align:left;font-size:12px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;}
+.table-scroll{overflow:auto;max-height:calc(100vh - 230px);}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:800px;}
+thead th{background:var(--surface2);padding:6px 8px;text-align:left;font-size:11px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;}
 thead th:hover{color:var(--text);}
-thead th.sort-asc::after{content:' ↑';}
-thead th.sort-desc::after{content:' ↓';}
-thead th:first-child{width:40px;cursor:default;}
+thead th.sort-asc::after{content:' ↑';color:var(--green);}
+thead th.sort-desc::after{content:' ↓';color:var(--green);}
+thead th:first-child{width:32px;cursor:default;}
+thead th.sort-asc,thead th.sort-desc{color:var(--green);}
+/* Column resize */
+.col-resizer{position:absolute;right:0;top:0;width:5px;height:100%;cursor:col-resize;user-select:none;z-index:3;}
+.col-resizer:hover,.col-resizer.dragging{background:var(--green);opacity:.5;}
+thead th:nth-child(2){width:75px;}
+thead th:nth-child(3){width:200px;}
+thead th:nth-child(4){width:120px;}
+thead th:nth-child(5){width:100px;}
+thead th:nth-child(6){width:95px;}
+thead th:nth-child(7){width:55px;}
+thead th:nth-child(8){width:120px;}
+thead th:nth-child(9){width:75px;}
+thead th:nth-child(10){width:50px;}
+thead th:nth-child(11){width:85px;}
+thead th:nth-child(12){width:55px;}
 tbody tr{border-bottom:1px solid var(--line);transition:background .1s;cursor:pointer;}
 tbody tr:last-child{border-bottom:none;}
 tbody tr:hover{background:#f8fafc;}
 tbody tr.selected{background:var(--green-light);}
-tbody td{padding:10px 12px;vertical-align:middle;}
-tbody td:first-child{text-align:center;cursor:default;}
-.cell-name{font-weight:600;color:var(--text);font-size:14px;}
-.cell-sub{font-size:12px;color:var(--muted);margin-top:1px;}
-.cell-mono{font-family:var(--mono);font-size:12px;color:var(--muted);}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:800px;table-layout:fixed;}
+thead th{background:var(--surface2);padding:6px 8px;text-align:left;font-size:11px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;overflow:hidden;}
+tbody td{padding:6px 8px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+tbody td:first-child{text-align:center;cursor:default;overflow:visible;}
+.cell-name{font-weight:600;color:var(--text);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.cell-sub{font-size:11px;color:var(--muted);margin-top:1px;}
+.cell-mono{font-family:var(--mono);font-size:11px;color:var(--muted);}
 .badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:600;white-space:nowrap;}
 .badge-cat{background:#f1f5f9;color:#475569;}
 .badge-rt{background:#f0ede8;color:#6b6760;}
@@ -129,7 +146,7 @@ tbody td:first-child{text-align:center;cursor:default;}
 /* ── SIDE PANEL ── */
 .panel-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(15,23,42,.3);}
 .panel-overlay.open{display:block;}
-.side-panel{position:fixed;top:0;right:-500px;width:500px;max-width:96vw;height:100vh;background:var(--surface);border-left:1px solid var(--line);z-index:101;display:flex;flex-direction:column;transition:right .22s ease;box-shadow:var(--shadow);}
+.side-panel{position:fixed;top:0;right:-520px;width:500px;max-width:96vw;height:100vh;background:var(--surface);border-left:1px solid var(--line);z-index:101;display:flex;flex-direction:column;transition:right .22s ease;box-shadow:var(--shadow);}
 .side-panel.open{right:0;}
 .panel-header{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;flex-shrink:0;}
 .panel-header-info .panel-title{font-weight:600;font-size:15px;}
@@ -203,7 +220,7 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
 </head>
 <body>
 
-<button class="sidebar-toggle" id="sidebarToggle" aria-label="toggle sidebar">☰</button>
+<button class="sidebar-toggle" id="sidebarToggle" aria-label="toggle sidebar">&#9776;</button>
 
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-header">
@@ -212,18 +229,18 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
   </div>
   <nav class="sidebar-nav" id="sidebarNav">
     <span class="nav-section">Views</span>
-    <a href="#" data-view="Mainpage" class="active">🏠 Home</a>
+    <a href="#" data-view="Mainpage" class="active">Home</a>
     <span class="nav-section">Categories</span>
-    <a href="#" data-view="Chemical">⚗️ Chemical</a>
-    <a href="#" data-view="Cell Culture">🧫 Cell Culture</a>
-    <a href="#" data-view="Antibody/Protein">🧪 Antibody & Protein</a>
-    <a href="#" data-view="Kit/Assay">🧰 Kit & Assay</a>
-    <a href="#" data-view="Consumable">🗂 Consumable</a>
-    <a href="#" data-view="Equipment">🔧 Equipment</a>
+    <a href="#" data-view="Chemical">Chemical</a>
+    <a href="#" data-view="Cell Culture">Cell Culture</a>
+    <a href="#" data-view="Antibody/Protein">Antibody &amp; Protein</a>
+    <a href="#" data-view="Kit/Assay">Kit &amp; Assay</a>
+    <a href="#" data-view="Consumable">Consumable</a>
+    <a href="#" data-view="Equipment">Equipment</a>
     <span class="nav-section">Special</span>
-    <a href="#" data-view="Low Stock">⚠️ Low Stock <span class="nav-badge" id="lowStockBadge">0</span></a>
-    <a href="#" data-view="Cell Stocks">🧊 Cell Stocks</a>
-    <a href="#" data-view="Duties">📋 Lab Duties</a>
+    <a href="#" data-view="Low Stock">Low Stock <span class="nav-badge" id="lowStockBadge">0</span></a>
+    <a href="#" data-view="Cell Stocks">Cell Stocks</a>
+    <a href="#" data-view="Duties">Lab Duties</a>
   </nav>
   <div class="sidebar-footer">
     <span>Data source</span>
@@ -251,54 +268,24 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
     </div>
   </header>
 
-  <!-- STATS -->
-  <div class="stats-grid" id="statsGrid">
-    <button class="stat-card" data-view="Chemical"><span class="stat-label">Chemical</span><span class="stat-count" id="sc-Chemical">—</span></button>
-    <button class="stat-card" data-view="Cell Culture"><span class="stat-label">Cell Culture</span><span class="stat-count" id="sc-CellCulture">—</span></button>
-    <button class="stat-card" data-view="Antibody/Protein"><span class="stat-label">Antibody & Protein</span><span class="stat-count" id="sc-Antibody">—</span></button>
-    <button class="stat-card" data-view="Kit/Assay"><span class="stat-label">Kit & Assay</span><span class="stat-count" id="sc-Kit">—</span></button>
-    <button class="stat-card" data-view="Consumable"><span class="stat-label">Consumable</span><span class="stat-count" id="sc-Consumable">—</span></button>
-    <button class="stat-card" data-view="Equipment"><span class="stat-label">Equipment</span><span class="stat-count" id="sc-Equipment">—</span></button>
-  </div>
-
-  <!-- NOTICE (mainpage only) -->
-  <div class="mainpage-notice" id="mainpageNotice">
-    <strong>How this works:</strong> This is a static GitHub Pages site. Edits save to your browser automatically.
-    To update for the whole team, export <code>data/inventory.json</code> and commit to GitHub.
-    Use the Excel → <code>convert_excel_to_json.py</code> workflow for bulk updates.
-  </div>
-
-  <!-- UNSAVED BAR -->
-  <div class="unsaved-bar" id="unsavedBar">
-    ⚠ Unsaved local changes —
-    <button class="btn btn-warn" id="exportBtn2" style="height:26px;font-size:12px;">Export JSON</button>
-  </div>
-
-  <!-- ACTIONS -->
-  <div class="actions-panel" id="actionsPanel" style="display:none">
-    <label class="upload-label" for="fileInput">📂 Upload JSON / Excel to merge</label>
-    <input type="file" id="fileInput" accept=".json,.xlsx,.xls,.csv">
-    <span style="font-size:12px;color:var(--muted)">Merges by Item_ID</span>
-  </div>
-
-  <!-- TOOLBAR -->
-  <div class="toolbar" id="toolbarWrap" style="display:none">
+  <!-- SEARCH always visible in header -->
+  <div class="toolbar" id="toolbarWrap">
     <div class="search-wrap">
       <span class="search-icon">⌕</span>
       <input type="search" id="searchInput" placeholder="Search name, Cat#, CAS, manufacturer…" autocomplete="off">
     </div>
-    <div class="filter-group">
+    <div class="filter-group" id="subcatFilterGroup" style="display:none">
       <span class="filter-label">Subcategory</span>
       <select class="filter-select" id="subcatFilter"><option value="">All</option></select>
     </div>
-    <div class="filter-group">
+    <div class="filter-group" id="storageFilterGroup" style="display:none">
       <span class="filter-label">Storage</span>
       <select class="filter-select" id="storageFilter">
         <option value="">All</option>
         <option>RT</option><option>4°C</option><option>-20°C</option><option>-80°C</option><option>LN2</option>
       </select>
     </div>
-    <div class="filter-group">
+    <div class="filter-group" id="locationFilterGroup" style="display:none">
       <span class="filter-label">Location</span>
       <select class="filter-select" id="locationFilter">
         <option value="">All</option>
@@ -307,7 +294,7 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
         <option>Freezer</option><option>Freezer 2</option>
       </select>
     </div>
-    <div class="filter-group">
+    <div class="filter-group" id="sortFilterGroup" style="display:none">
       <span class="filter-label">Sort</span>
       <select class="filter-select" id="sortSelect">
         <option value="Item_Name">Name</option>
@@ -319,8 +306,29 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
     </div>
   </div>
 
+  <!-- NOTICE (mainpage only) -->
+  <div class="mainpage-notice" id="mainpageNotice" style="display:none">
+    <strong id="noticeTitle">How this works:</strong>
+    <span id="noticeText"> This is a static GitHub Pages site. Edits save to your browser automatically.
+    To update for the whole team, export <code>data/inventory.json</code> and commit to GitHub.
+    Use the Excel → <code>convert_excel_to_json.py</code> workflow for bulk updates.</span>
+  </div>
+
+  <!-- UNSAVED BAR -->
+  <div class="unsaved-bar" id="unsavedBar">
+    <span id="unsavedText">⚠ Unsaved local changes —</span>
+    <button class="btn btn-warn" id="exportBtn2" style="height:26px;font-size:12px;">Export JSON</button>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="actions-panel" id="actionsPanel" style="display:none">
+    <label class="upload-label" for="fileInput">Upload JSON / Excel to merge</label>
+    <input type="file" id="fileInput" accept=".json,.xlsx,.xls,.csv">
+    <span style="font-size:12px;color:var(--muted)" id="mergeHint">Merges by Item_ID</span>
+  </div>
+
   <!-- TABLE -->
-  <div class="table-section" id="tableSection" style="display:none">
+  <div class="table-section" id="tableSection">
     <div class="table-status" id="tableStatus"></div>
     <div class="table-wrap">
       <div class="table-scroll">
@@ -415,16 +423,29 @@ const norm=v=>String(v??'').trim();
 async function loadData(){
   const saved=localStorage.getItem(STORAGE_KEY);
   if(saved){
-    try{const p=JSON.parse(saved);sourceMeta=p.meta||{};items=p.items||[];$('lastUpdated').textContent=(sourceMeta.source_file||'inventory.json')+' (browser draft)';
+    try{
+      const p=JSON.parse(saved);
+      sourceMeta=p.meta||{};
+      items=p.items||[];
+      $('lastUpdated').textContent=(sourceMeta.source_file||'inventory.json')+' (browser draft)';
+      render();
+      return;
     }catch(e){localStorage.removeItem(STORAGE_KEY);}
   }
-  if(!items.length){
-    try{
-      const r=await fetch('./data/inventory.json',{cache:'no-store'});
-      const d=await r.json();
-      sourceMeta=d.meta||{};items=d.items||[];
-      $('lastUpdated').textContent=sourceMeta.source_file||'inventory.json';
-    }catch(e){$('lastUpdated').textContent='Failed to load data';}
+  try{
+    const r=await fetch('./data/inventory.json',{cache:'no-store'});
+    if(!r.ok) throw new Error(`HTTP ${r.status}`);
+    const d=await r.json();
+    sourceMeta=d.meta||{};
+    items=d.items||[];
+    $('lastUpdated').textContent=sourceMeta.source_file||'inventory.json';
+  }catch(e){
+    $('lastUpdated').textContent='Failed to load — run via local server or GitHub Pages';
+    $('tableBody').innerHTML=`<tr><td colspan="12" style="padding:24px;text-align:center;color:var(--warn)">
+      Cannot load data/inventory.json.<br>
+      <small>Run via local server: <code>python -m http.server 8000</code></small>
+    </td></tr>`;
+    console.error('loadData failed:',e);
   }
   render();
 }
@@ -450,6 +471,7 @@ function resetToSaved(){
 // ── FILTER / SORT ─────────────────────────────────────────────
 function getViewItems(){
   if(activeView==='Low Stock') return items.filter(i=>i.Low_Stock);
+  if(activeView==='Mainpage') return items;
   if(INVENTORY_VIEWS.has(activeView)) return items.filter(i=>i.Category===activeView);
   return items;
 }
@@ -479,17 +501,27 @@ function render(){
   updateStats();
   updateNav();
 
-  const isInventory=INVENTORY_VIEWS.has(activeView)||activeView==='Mainpage';
-  $('mainpageNotice').style.display=activeView==='Mainpage'?'':'none';
-  $('toolbarWrap').style.display=INVENTORY_VIEWS.has(activeView)?'':'none';
-  $('actionsPanel').style.display=INVENTORY_VIEWS.has(activeView)?'':'none';
-  $('tableSection').style.display=INVENTORY_VIEWS.has(activeView)?'':'none';
-  $('cellStocksView').style.display=activeView==='Cell Stocks'?'':'none';
-  $('dutiesView').style.display=activeView==='Duties'?'':'none';
-  $('statsGrid').style.display=activeView==='Mainpage'?'':'none';
+  const isCategory = INVENTORY_VIEWS.has(activeView);
+  const isMainpage = activeView === 'Mainpage';
 
-  if(INVENTORY_VIEWS.has(activeView)){
-    updateSubcatFilter();
+  // Show/hide filter dropdowns — only in category views
+  ['subcatFilterGroup','storageFilterGroup','locationFilterGroup','sortFilterGroup'].forEach(id=>{
+    const el=$(id); if(el) el.style.display = isCategory ? '' : 'none';
+  });
+
+  // Actions panel — only in category views
+  $('actionsPanel').style.display = isCategory ? '' : 'none';
+
+  // Notice — mainpage only
+  $('mainpageNotice').style.display = isMainpage ? '' : 'none';
+
+  // Table and placeholder views
+  $('tableSection').style.display = (isCategory || isMainpage) ? '' : 'none';
+  $('cellStocksView').style.display = activeView === 'Cell Stocks' ? '' : 'none';
+  $('dutiesView').style.display = activeView === 'Duties' ? '' : 'none';
+
+  if(isCategory || isMainpage){
+    if(isCategory) updateSubcatFilter();
     renderTable();
   }
   updateSelection();
@@ -499,12 +531,16 @@ function updateStats(){
   const counts={};
   CATEGORIES.forEach(c=>counts[c]=0);
   items.forEach(i=>{if(counts[i.Category]!==undefined)counts[i.Category]++;});
-  $('sc-Chemical').textContent=counts['Chemical'];
-  $('sc-CellCulture').textContent=counts['Cell Culture'];
-  $('sc-Antibody').textContent=counts['Antibody/Protein'];
-  $('sc-Kit').textContent=counts['Kit/Assay'];
-  $('sc-Consumable').textContent=counts['Consumable'];
-  $('sc-Equipment').textContent=counts['Equipment'];
+  // Update sidebar nav with counts
+  document.querySelectorAll('.sidebar-nav a[data-view]').forEach(a=>{
+    const cat = a.dataset.view;
+    if(counts[cat]!==undefined){
+      // show count after label
+      let badge = a.querySelector('.nav-count');
+      if(!badge){badge=document.createElement('span');badge.className='nav-count';badge.style.cssText='margin-left:auto;font-size:11px;font-family:var(--mono);color:#64748b;';a.appendChild(badge);}
+      badge.textContent=counts[cat];
+    }
+  });
   const low=items.filter(i=>i.Low_Stock).length;
   $('lowStockBadge').textContent=low;
 }
@@ -530,7 +566,7 @@ function renderTable(){
   $('tableStatus').textContent=`${rows.length} items${activeView!=='Mainpage'?' in '+activeView:''}`;
 
   const cols=['Item_ID','Item_Name','Subcategory','Manufacturer','Cat_No','Storage','Location','Sub_Location','Current_Stock','Application','MSDS'];
-  const labels={'Item_ID':'ID','Item_Name':'Item','Subcategory':'Subcategory','Manufacturer':'Manufacturer','Cat_No':'Cat#','Storage':'Storage','Location':'Location','Sub_Location':'Sub-loc','Current_Stock':'Stock','Application':'Application','MSDS':'MSDS'};
+  const labels={'Item_ID':'ID','Item_Name':'Item','Subcategory':'Subcategory','Manufacturer':'Manufacturer','Cat_No':'Cat#','Storage':'Storage','Location':'Location','Sub_Location':'Shelf/Box','Current_Stock':'Stock','Application':'Application','MSDS':'MSDS'};
 
   $('tableHead').innerHTML=`<th><input type="checkbox" id="selectAll"></th>`+
     cols.map(c=>`<th data-sort="${c}">${labels[c]}</th>`).join('');
@@ -547,21 +583,36 @@ function renderTable(){
     const apps=Array.isArray(item.Application)?item.Application:[];
     let msds='—';
     if(MSDS_CATS.has(item.Category)){
-      if(item.MSDS_URL) msds=`<a class="msds-link" href="${esc(item.MSDS_URL)}" target="_blank">SDS ↗</a>`;
-      else if(item.CAS_No) msds=`<a class="msds-link" href="https://pubchem.ncbi.nlm.nih.gov/compound/${encodeURIComponent(item.CAS_No)}#section=Safety-and-Hazards" target="_blank">SDS ↗</a>`;
-      else msds=`<span style="color:var(--warn);font-size:12px">missing</span>`;
+      if(item.MSDS_URL){
+        // Manual URL — always use it
+        msds=`<a class="msds-link" href="${esc(item.MSDS_URL)}" target="_blank">SDS ↗</a>`;
+      } else if(item.CAS_No){
+        const cas = item.CAS_No.trim();
+        const mfr = (item.Manufacturer||'').toLowerCase();
+        if(mfr.includes('sigma')||mfr.includes('supelco')||mfr.includes('aldrich')||mfr.includes('merck')){
+          // Sigma: search by CAS on their site — reliable
+          msds=`<a class="msds-link" href="https://www.sigmaaldrich.com/GB/en/search#q=${encodeURIComponent(cas)}&t=all&sort=relevance&b=re|Brand:SigmaAldrich||re|Product_Category:Sds" target="_blank">SDS ↗</a>`;
+        } else {
+          // Everyone else: PubChem SDS page by CAS
+          msds=`<a class="msds-link" href="https://pubchem.ncbi.nlm.nih.gov/compound/${encodeURIComponent(cas)}#section=Safety-and-Hazards" target="_blank">SDS ↗</a>`;
+        }
+      } else {
+        // No CAS, no manual URL — show missing
+        msds=`<span style="color:var(--warn);font-size:11px">missing</span>`;
+      }
     }
     return `<tr class="${sel?'selected':''}" data-id="${esc(item.Item_ID)}">
       <td><input type="checkbox" class="row-check" data-id="${esc(item.Item_ID)}" ${sel?'checked':''}></td>
       <td><span class="cell-mono">${esc(item.Item_ID||'—')}</span></td>
-      <td><div class="cell-name">${esc(item.Item_Name||'—')}</div><div class="cell-sub">${esc(item.Manufacturer||'')}</div></td>
+      <td><div class="cell-name">${esc(item.Item_Name||'—')}</div></td>
       <td>${item.Subcategory?`<span class="badge badge-cat">${esc(item.Subcategory)}</span>`:'—'}</td>
-      <td style="font-size:13px">${esc(item.Manufacturer||'—')}</td>
+      <td style="font-size:12px">${esc(item.Manufacturer||'—')}</td>
       <td><span class="cell-mono">${esc(item.Cat_No||'—')}</span></td>
       <td><span class="badge ${storageCls}">${esc(item.Storage||'—')}</span></td>
-      <td style="font-size:13px">${esc(loc||'—')}</td>
-      <td>${item.Low_Stock?'<span class="badge badge-low">low</span> ':''}<span style="font-size:13px;color:var(--muted)">${item.Current_Stock!=null?item.Current_Stock:'—'}</span></td>
-      <td>${apps.length?`<div class="app-tags">${apps.map(a=>`<span class="app-tag">${esc(a)}</span>`).join('')}</div>`:'—'}</td>
+      <td style="font-size:12px">${esc(item.Location||'—')}</td>
+      <td style="font-size:12px">${esc(item.Sub_Location||'—')}</td>
+      <td style="white-space:nowrap;text-align:right">${item.Low_Stock?'<span class="badge badge-low">low</span>':item.Current_Stock!=null?`<span style="font-size:12px">${item.Current_Stock}</span>`:'<span style="color:var(--line)">—</span>'}</td>
+      <td>${apps.length?`<div class="app-tags">${apps.map(a=>`<span class="app-tag">${esc(a)}</span>`).join('')}</div>`:'<span style="color:var(--line)">—</span>'}</td>
       <td>${msds}</td>
     </tr>`;
   }).join('');
@@ -570,6 +621,38 @@ function renderTable(){
 }
 
 function bindTableEvents(){
+  // Add resize handles to headers
+  const tbl=$('mainTable');
+  document.querySelectorAll('#tableHead th').forEach((th,idx)=>{
+    if(idx===0) return; // skip checkbox column
+    const resizer=document.createElement('div');
+    resizer.className='col-resizer';
+    th.style.position='relative';
+    th.appendChild(resizer);
+    let startX,startW;
+    resizer.addEventListener('mousedown',e=>{
+      e.stopPropagation();
+      e.preventDefault();
+      startX=e.pageX;
+      startW=th.getBoundingClientRect().width;
+      resizer.classList.add('dragging');
+      document.body.style.cursor='col-resize';
+      document.body.style.userSelect='none';
+      const onMove=ev=>{
+        const w=Math.max(40,startW+(ev.pageX-startX));
+        th.style.width=w+'px';
+      };
+      const onUp=()=>{
+        resizer.classList.remove('dragging');
+        document.body.style.cursor='';
+        document.body.style.userSelect='';
+        document.removeEventListener('mousemove',onMove);
+        document.removeEventListener('mouseup',onUp);
+      };
+      document.addEventListener('mousemove',onMove);
+      document.addEventListener('mouseup',onUp);
+    });
+  });
   document.querySelectorAll('.row-check').forEach(cb=>{
     cb.addEventListener('change',e=>{
       e.stopPropagation();
@@ -588,7 +671,16 @@ function bindTableEvents(){
   const sa=$('selectAll');
   if(sa) sa.addEventListener('change',e=>{
     const rows=applyFilters(getViewItems());
-    rows.forEach(i=>{e.target.checked?selectedIds.add(i.Item_ID):selectedIds.delete(i.Item_ID);});
+    const allSelected = rows.every(i=>selectedIds.has(i.Item_ID));
+    if(allSelected){
+      // all were selected — deselect all
+      rows.forEach(i=>selectedIds.delete(i.Item_ID));
+      e.target.checked=false;
+    } else {
+      // select all visible
+      rows.forEach(i=>selectedIds.add(i.Item_ID));
+      e.target.checked=true;
+    }
     updateSelection();renderTable();
   });
   document.querySelectorAll('thead th[data-sort]').forEach(th=>{
@@ -605,7 +697,12 @@ function bindTableEvents(){
 function updateSelection(){
   const n=selectedIds.size;
   $('selectedBar').classList.toggle('visible',n>0);
-  $('selectedCount').textContent=n;
+  // Show cross-tab count info
+  const tabIds=new Set(getViewItems().map(i=>i.Item_ID));
+  const otherTabs=[...selectedIds].filter(id=>!tabIds.has(id)).length;
+  let label=String(n);
+  if(otherTabs>0) label+=` (${otherTabs} other tab${otherTabs>1?'s':''})`;
+  $('selectedCount').textContent=label;
   $('openOrderBtn').disabled=n===0;
   $('clearSelBtn').style.display=n?'':'none';
 }
@@ -628,9 +725,14 @@ function viewHTML(item){
   if(!item)return'';
   const f=(label,val,mono=false)=>`<div class="field-group"><div class="field-label">${label}</div><div class="field-value${mono?' cell-mono':''}">${esc(val)||'—'}</div></div>`;
   const msds=MSDS_CATS.has(item.Category)
-    ?(item.MSDS_URL?`<a class="msds-link" href="${esc(item.MSDS_URL)}" target="_blank">Open SDS ↗</a>`
-    :item.CAS_No?`<a class="msds-link" href="https://pubchem.ncbi.nlm.nih.gov/compound/${encodeURIComponent(item.CAS_No)}#section=Safety-and-Hazards" target="_blank">PubChem SDS ↗</a>`
-    :'<span style="color:var(--warn);font-size:13px">No CAS — add manually</span>'):'—';
+    ?(item.MSDS_URL
+      ?`<a class="msds-link" href="${esc(item.MSDS_URL)}" target="_blank">Open SDS ↗</a>`
+      :item.CAS_No
+        ?((item.Manufacturer||'').toLowerCase().match(/sigma|supelco|aldrich|merck/)
+          ?`<a class="msds-link" href="https://www.sigmaaldrich.com/GB/en/search#q=${encodeURIComponent(item.CAS_No.trim())}&t=all&sort=relevance&b=re|Brand:SigmaAldrich||re|Product_Category:Sds" target="_blank">Sigma SDS ↗</a>`
+          :`<a class="msds-link" href="https://pubchem.ncbi.nlm.nih.gov/compound/${encodeURIComponent(item.CAS_No.trim())}#section=Safety-and-Hazards" target="_blank">PubChem SDS ↗</a>`)
+        :'<span style="color:var(--warn);font-size:13px">No CAS — add manually or run fetch_cas.py</span>')
+    :'—';
   const apps=Array.isArray(item.Application)?item.Application:[];
   return `
     <div class="panel-section"><div class="panel-section-title">Identity</div>
@@ -864,13 +966,74 @@ function mergeItems(imported){
 }
 
 // ── LANGUAGE TOGGLE ───────────────────────────────────────────
-const TRANS={
-  en:{search:'Search name, Cat#, CAS, manufacturer…',addItem:'+ Add item',exportJson:'Export JSON',reset:'Reset to saved',generateOrder:'Generate order',close:'Close'},
-  kr:{search:'이름, 카탈로그#, CAS, 제조사 검색…',addItem:'+ 항목 추가',exportJson:'JSON 내보내기',reset:'저장으로 초기화',generateOrder:'주문 생성',close:'닫기'},
+const TRANS = {
+  en: {
+    search: 'Search name, Cat#, CAS, manufacturer…',
+    addItem: '+ Add item', exportJson: 'Export JSON', reset: 'Reset to saved',
+    home: 'Home', chemical: 'Chemical', cellCulture: 'Cell Culture',
+    abProtein: 'Antibody & Protein', kitAssay: 'Kit & Assay',
+    consumable: 'Consumable', equipment: 'Equipment',
+    lowStock: 'Low Stock', cellStocks: 'Cell Stocks', duties: 'Lab Duties',
+    allSubcats: 'All subcategories', identity: 'Identity', storage: 'Storage & Location',
+    stock: 'Stock', application: 'Application', other: 'Other',
+    edit: 'Edit', save: 'Save', cancel: 'Cancel', close: 'Close',
+    addNew: 'Add new item', editItem: 'Edit item',
+    generateOrder: 'Generate order', copyClipboard: 'Copy to clipboard',
+  },
+  kr: {
+    search: '이름, 카탈로그#, CAS, 제조사 검색…',
+    addItem: '+ 항목 추가', exportJson: 'JSON 내보내기', reset: '저장으로 초기화',
+    home: '홈', chemical: '화학물질', cellCulture: '세포 배양',
+    abProtein: '항체 & 단백질', kitAssay: '키트 & 분석',
+    consumable: '소모품', equipment: '장비',
+    lowStock: '부족 재고', cellStocks: '세포주 보관', duties: '실험실 업무',
+    allSubcats: '전체 소분류', identity: '기본 정보', storage: '보관 & 위치',
+    stock: '재고', application: '적용 분야', other: '기타',
+    edit: '편집', save: '저장', cancel: '취소', close: '닫기',
+    addNew: '새 항목 추가', editItem: '항목 편집',
+    generateOrder: '주문 생성', copyClipboard: '클립보드에 복사',
+  }
 };
+
 function applyLang(){
-  const t=TRANS[lang];
-  $('searchInput').placeholder=t.search;
+  const t = TRANS[lang];
+  $('searchInput').placeholder = t.search;
+  $('addItemBtn').textContent = t.addItem;
+  $('exportBtn').textContent = t.exportJson;
+  $('resetBtn').textContent = t.reset;
+  $('copyOrderBtn').textContent = t.copyClipboard;
+
+  // Nav links — preserve child badges/counts
+  const navMap = {
+    'Mainpage': t.home, 'Chemical': t.chemical, 'Cell Culture': t.cellCulture,
+    'Antibody/Protein': t.abProtein, 'Kit/Assay': t.kitAssay,
+    'Consumable': t.consumable, 'Equipment': t.equipment,
+    'Low Stock': t.lowStock, 'Cell Stocks': t.cellStocks, 'Duties': t.duties
+  };
+  document.querySelectorAll('.sidebar-nav a[data-view]').forEach(el => {
+    const key = el.dataset.view;
+    if(!navMap[key]) return;
+    const badge = el.querySelector('.nav-badge');
+    const count = el.querySelector('.nav-count');
+    el.textContent = navMap[key] + ' ';
+    if(badge) el.appendChild(badge);
+    if(count) el.appendChild(count);
+  });
+
+  // Notice text
+  const noticeTitle = $('noticeTitle');
+  const noticeText  = $('noticeText');
+  if(noticeTitle) noticeTitle.textContent = lang==='kr' ? '운영 방식:' : 'How this works:';
+  if(noticeText) noticeText.innerHTML = lang==='kr'
+    ? ' 이 사이트는 GitHub Pages 정적 웹사이트입니다. 수정 내용은 브라우저에 자동 저장됩니다. 팀 전체 반영은 <code>data/inventory.json</code>을 내보내어 GitHub에 커밋하세요. 대량 수정은 Excel → <code>convert_excel_to_json.py</code> 방식을 사용하세요.'
+    : ' This is a static GitHub Pages site. Edits save to your browser automatically. To update for the whole team, export <code>data/inventory.json</code> and commit to GitHub. Use the Excel → <code>convert_excel_to_json.py</code> workflow for bulk updates.';
+
+  const unsavedText = $('unsavedText');
+  if(unsavedText) unsavedText.textContent = lang==='kr' ? '⚠ 저장되지 않은 변경 사항 —' : '⚠ Unsaved local changes —';
+  const mergeHint = $('mergeHint');
+  if(mergeHint) mergeHint.textContent = lang==='kr' ? 'Item_ID 기준으로 병합' : 'Merges by Item_ID';
+
+  updateSubcatFilter();
 }
 
 // ── EVENTS ────────────────────────────────────────────────────
@@ -881,7 +1044,10 @@ document.addEventListener('DOMContentLoaded',async()=>{
     el.addEventListener('click',e=>{
       e.preventDefault();
       activeView=el.dataset.view;
-      selectedIds.clear();
+      // Reset filters when switching view but keep selections
+      const sf=$('subcatFilter');if(sf)sf.value='';
+      const st=$('storageFilter');if(st)st.value='';
+      const lf=$('locationFilter');if(lf)lf.value='';
       render();
     });
   });
@@ -911,13 +1077,16 @@ document.addEventListener('DOMContentLoaded',async()=>{
   $('fileInput').addEventListener('change',handleUpload);
 
   $('langBtn').addEventListener('click',()=>{
-    lang=lang==='en'?'kr':'en';
-    $('langEN').style.cssText=lang==='en'?'color:var(--green);font-weight:600':'';
-    $('langKR').style.cssText=lang==='kr'?'color:var(--green);font-weight:600':'';
+    lang = lang === 'en' ? 'kr' : 'en';
+    $('langEN').style.color = lang === 'en' ? 'var(--green)' : '';
+    $('langEN').style.fontWeight = lang === 'en' ? '600' : '';
+    $('langKR').style.color = lang === 'kr' ? 'var(--green)' : '';
+    $('langKR').style.fontWeight = lang === 'kr' ? '600' : '';
     applyLang();
   });
 
   await loadData();
+  applyLang();
 });
 </script>
 </body>

@@ -45,7 +45,7 @@
       "Item_Name": "(±)-Verapamil hydrochloride",
       "Manufacturer": "Sigma",
       "Cat_No": "V4629",
-      "CAS_No": "",
+      "CAS_No": "152-11-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -95,7 +95,7 @@
       "Item_Name": "1-Chloro-2,4-dinitrobenzene",
       "Manufacturer": "Sigma",
       "Cat_No": "237329",
-      "CAS_No": "",
+      "CAS_No": "97-00-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -145,7 +145,7 @@
       "Item_Name": "1M Magnesium Chloride",
       "Manufacturer": "USB",
       "Cat_No": "78641",
-      "CAS_No": "",
+      "CAS_No": "7786-30-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -245,7 +245,7 @@
       "Item_Name": "2-propanol",
       "Manufacturer": "Supelco",
       "Cat_No": "1.09634.1011",
-      "CAS_No": "",
+      "CAS_No": "67-63-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -270,7 +270,7 @@
       "Item_Name": "200mM EDTA",
       "Manufacturer": "TREVIGEN 4",
       "Cat_No": "4250-050-04",
-      "CAS_No": "",
+      "CAS_No": "60-00-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -295,7 +295,7 @@
       "Item_Name": "3,4-Dihydroxy-L-phenylalanine",
       "Manufacturer": "Sigma",
       "Cat_No": "D9628",
-      "CAS_No": "",
+      "CAS_No": "59-92-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -320,7 +320,7 @@
       "Item_Name": "3,5-Dinitrosalicylic acid",
       "Manufacturer": "Sigma",
       "Cat_No": "D0550",
-      "CAS_No": "",
+      "CAS_No": "609-99-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -345,7 +345,7 @@
       "Item_Name": "4-Hydroxy-3-methoxycinnamaldehyde",
       "Manufacturer": "Sigma",
       "Cat_No": "382051",
-      "CAS_No": "",
+      "CAS_No": "458-36-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -395,7 +395,7 @@
       "Item_Name": "5-Aminosalicylic acid",
       "Manufacturer": "Sigma",
       "Cat_No": "A79809",
-      "CAS_No": "",
+      "CAS_No": "89-57-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -495,7 +495,7 @@
       "Item_Name": "Acetone",
       "Manufacturer": "Sigma",
       "Cat_No": "270725",
-      "CAS_No": "",
+      "CAS_No": "67-64-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -520,7 +520,7 @@
       "Item_Name": "Acetonitrile",
       "Manufacturer": "Thermo Scientific",
       "Cat_No": "A998-4",
-      "CAS_No": "",
+      "CAS_No": "75-05-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -620,7 +620,7 @@
       "Item_Name": "Alizarin Red S",
       "Manufacturer": "Sigma",
       "Cat_No": "A5533",
-      "CAS_No": "",
+      "CAS_No": "83-61-4",
       "MW_kDa": "",
       "Application": [
         "Histology/Staining"
@@ -645,7 +645,7 @@
       "Item_Name": "Aluminum chloride",
       "Manufacturer": "Sigma",
       "Cat_No": "237051",
-      "CAS_No": "",
+      "CAS_No": "7446-70-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -670,7 +670,7 @@
       "Item_Name": "Ammonium persulfate",
       "Manufacturer": "Sigma",
       "Cat_No": "A3678",
-      "CAS_No": "",
+      "CAS_No": "7727-54-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -720,7 +720,7 @@
       "Item_Name": "Barium acetate",
       "Manufacturer": "Sigma",
       "Cat_No": "243671",
-      "CAS_No": "",
+      "CAS_No": "543-80-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -745,7 +745,7 @@
       "Item_Name": "Berberine Chloride",
       "Manufacturer": "Sigma",
       "Cat_No": "PHR1502",
-      "CAS_No": "",
+      "CAS_No": "633-65-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -770,7 +770,7 @@
       "Item_Name": "Berberine Chloride form",
       "Manufacturer": "Sigma",
       "Cat_No": "B3251",
-      "CAS_No": "",
+      "CAS_No": "633-65-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -795,7 +795,7 @@
       "Item_Name": "Betanin",
       "Manufacturer": "TCI",
       "Cat_No": "B0397",
-      "CAS_No": "",
+      "CAS_No": "7659-95-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -820,7 +820,7 @@
       "Item_Name": "Caffeic acid",
       "Manufacturer": "Sigma",
       "Cat_No": "C0625",
-      "CAS_No": "",
+      "CAS_No": "331-39-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -845,7 +845,7 @@
       "Item_Name": "Calcium chloride dihydrate",
       "Manufacturer": "USB",
       "Cat_No": "117960(12531)",
-      "CAS_No": "",
+      "CAS_No": "10035-04-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -870,7 +870,7 @@
       "Item_Name": "Cetirizine dihydrochloride",
       "Manufacturer": "Sigma",
       "Cat_No": "C3618",
-      "CAS_No": "",
+      "CAS_No": "83881-52-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -895,7 +895,7 @@
       "Item_Name": "Cetylpyridinium chloride",
       "Manufacturer": "Sigma",
       "Cat_No": "C0732",
-      "CAS_No": "",
+      "CAS_No": "123-03-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -920,7 +920,7 @@
       "Item_Name": "Chalcone",
       "Manufacturer": "STC",
       "Cat_No": "SC-204681",
-      "CAS_No": "",
+      "CAS_No": "94-41-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -945,7 +945,7 @@
       "Item_Name": "Chloroform",
       "Manufacturer": "Sigma",
       "Cat_No": "C2432",
-      "CAS_No": "",
+      "CAS_No": "67-66-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -970,7 +970,7 @@
       "Item_Name": "Chlorogenic acid",
       "Manufacturer": "Sigma",
       "Cat_No": "C3878",
-      "CAS_No": "",
+      "CAS_No": "327-97-9",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1020,7 +1020,7 @@
       "Item_Name": "Cobalt(II) chloride",
       "Manufacturer": "Sigma",
       "Cat_No": "232696",
-      "CAS_No": "",
+      "CAS_No": "7440-48-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1070,7 +1070,7 @@
       "Item_Name": "D-(+)-Glucose",
       "Manufacturer": "Sigma",
       "Cat_No": "47249",
-      "CAS_No": "",
+      "CAS_No": "58367-01-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1095,7 +1095,7 @@
       "Item_Name": "D-(+)-Glucose",
       "Manufacturer": "Sigma",
       "Cat_No": "G5767",
-      "CAS_No": "",
+      "CAS_No": "58367-01-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1120,7 +1120,7 @@
       "Item_Name": "D-(−)-Fructose",
       "Manufacturer": "Sigma",
       "Cat_No": "F2793",
-      "CAS_No": "",
+      "CAS_No": "30237-26-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1195,7 +1195,7 @@
       "Item_Name": "Dichloromethane",
       "Manufacturer": "Daejung",
       "Cat_No": "3030-4400",
-      "CAS_No": "",
+      "CAS_No": "75-09-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1220,7 +1220,7 @@
       "Item_Name": "Diethanolamine",
       "Manufacturer": "Sigma",
       "Cat_No": "31589",
-      "CAS_No": "",
+      "CAS_No": "111-42-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1295,7 +1295,7 @@
       "Item_Name": "Diflunisal",
       "Manufacturer": "Sigma",
       "Cat_No": "D3281",
-      "CAS_No": "",
+      "CAS_No": "22494-42-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1320,7 +1320,7 @@
       "Item_Name": "Dimethyl sulfoxide",
       "Manufacturer": "Sigma",
       "Cat_No": "D8418",
-      "CAS_No": "",
+      "CAS_No": "67-68-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1345,7 +1345,7 @@
       "Item_Name": "Dimethyl sulfoxide",
       "Manufacturer": "Daejung",
       "Cat_No": "3047-4400",
-      "CAS_No": "",
+      "CAS_No": "67-68-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1395,7 +1395,7 @@
       "Item_Name": "Ethanol",
       "Manufacturer": "Supelco",
       "Cat_No": "1.00983.1011",
-      "CAS_No": "",
+      "CAS_No": "64-17-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1420,7 +1420,7 @@
       "Item_Name": "Ethanol absolute for analysis EMSURE",
       "Manufacturer": "Millipore",
       "Cat_No": "54-17-5",
-      "CAS_No": "",
+      "CAS_No": "64-17-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1445,7 +1445,7 @@
       "Item_Name": "Ethyl alcohol, 95.0% Denatured",
       "Manufacturer": "Samchun",
       "Cat_No": "E0219",
-      "CAS_No": "",
+      "CAS_No": "64-17-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1495,7 +1495,7 @@
       "Item_Name": "Etoposide",
       "Manufacturer": "Sigma",
       "Cat_No": "E1383",
-      "CAS_No": "",
+      "CAS_No": "33419-42-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1595,7 +1595,7 @@
       "Item_Name": "Formamide",
       "Manufacturer": "Sigma",
       "Cat_No": "F7508",
-      "CAS_No": "",
+      "CAS_No": "75-12-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1620,7 +1620,7 @@
       "Item_Name": "Gallic acid",
       "Manufacturer": "Sigma",
       "Cat_No": "G7384",
-      "CAS_No": "",
+      "CAS_No": "149-91-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1645,7 +1645,7 @@
       "Item_Name": "Gallic acid",
       "Manufacturer": "SCBT",
       "Cat_No": "sc-205704",
-      "CAS_No": "",
+      "CAS_No": "149-91-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1720,7 +1720,7 @@
       "Item_Name": "Glycine",
       "Manufacturer": "Calbiochem",
       "Cat_No": "4840",
-      "CAS_No": "",
+      "CAS_No": "56-40-6",
       "MW_kDa": "",
       "Application": [
         "WB"
@@ -1795,7 +1795,7 @@
       "Item_Name": "Hexadecylpyridinium chloride monohydrate",
       "Manufacturer": "Sigma",
       "Cat_No": "C9002",
-      "CAS_No": "",
+      "CAS_No": "6004-24-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1845,7 +1845,7 @@
       "Item_Name": "Hydrochloric acid",
       "Manufacturer": "Sigma",
       "Cat_No": "H1758",
-      "CAS_No": "",
+      "CAS_No": "7647-01-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1895,7 +1895,7 @@
       "Item_Name": "Indomethacin",
       "Manufacturer": "Sigma",
       "Cat_No": "I7378",
-      "CAS_No": "",
+      "CAS_No": "53-86-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1945,7 +1945,7 @@
       "Item_Name": "Isopropyl alcohol",
       "Manufacturer": "Daejung",
       "Cat_No": "5035-4400",
-      "CAS_No": "",
+      "CAS_No": "67-63-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -1995,7 +1995,7 @@
       "Item_Name": "L-Ascorbic acid",
       "Manufacturer": "Sigma",
       "Cat_No": "A5960",
-      "CAS_No": "",
+      "CAS_No": "50-81-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2020,7 +2020,7 @@
       "Item_Name": "L-Cysteine",
       "Manufacturer": "Sigma",
       "Cat_No": "168149",
-      "CAS_No": "",
+      "CAS_No": "52-90-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2045,7 +2045,7 @@
       "Item_Name": "L-Serine",
       "Manufacturer": "Sigma",
       "Cat_No": "S4500",
-      "CAS_No": "",
+      "CAS_No": "56-45-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2070,7 +2070,7 @@
       "Item_Name": "Lead(II) acetate trihydrate",
       "Manufacturer": "Sigma",
       "Cat_No": "316512",
-      "CAS_No": "",
+      "CAS_No": "6080-56-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2120,7 +2120,7 @@
       "Item_Name": "Magnesium chloride hexahydrate",
       "Manufacturer": "Sigma",
       "Cat_No": "M2670",
-      "CAS_No": "",
+      "CAS_No": "7791-18-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2145,7 +2145,7 @@
       "Item_Name": "meta-Phosphoric acid",
       "Manufacturer": "Sigma",
       "Cat_No": "239275",
-      "CAS_No": "",
+      "CAS_No": "37267-86-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2170,7 +2170,7 @@
       "Item_Name": "Methanol",
       "Manufacturer": "Thermo Scientific",
       "Cat_No": "A452-4",
-      "CAS_No": "",
+      "CAS_No": "67-56-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2195,7 +2195,7 @@
       "Item_Name": "Methanol",
       "Manufacturer": "J.T.Baker",
       "Cat_No": "9093-88",
-      "CAS_No": "",
+      "CAS_No": "67-56-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2220,7 +2220,7 @@
       "Item_Name": "Methanol",
       "Manufacturer": "Supelco",
       "Cat_No": "1.06009.1011",
-      "CAS_No": "",
+      "CAS_No": "67-56-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2245,7 +2245,7 @@
       "Item_Name": "Methyl Alcohol",
       "Manufacturer": "Daejung",
       "Cat_No": "5558-4410",
-      "CAS_No": "",
+      "CAS_No": "67-56-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2270,7 +2270,7 @@
       "Item_Name": "Methyl Alcohol / 99.5%",
       "Manufacturer": "Daejung",
       "Cat_No": "5558-4410",
-      "CAS_No": "",
+      "CAS_No": "67-56-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2295,7 +2295,7 @@
       "Item_Name": "Methyl viologen dichloride hydrate",
       "Manufacturer": "Sigma",
       "Cat_No": "856177",
-      "CAS_No": "",
+      "CAS_No": "1083299-87-9",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2320,7 +2320,7 @@
       "Item_Name": "N-(1-Naphthyl)ethylenediamine dihydrochloride",
       "Manufacturer": "Sigma",
       "Cat_No": "N9125",
-      "CAS_No": "",
+      "CAS_No": "1465-25-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2420,7 +2420,7 @@
       "Item_Name": "Orlistat",
       "Manufacturer": "Sigma",
       "Cat_No": "PHR1445",
-      "CAS_No": "",
+      "CAS_No": "96829-58-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2445,7 +2445,7 @@
       "Item_Name": "p-Coumaric acid",
       "Manufacturer": "Sigma",
       "Cat_No": "C9008",
-      "CAS_No": "",
+      "CAS_No": "501-98-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2470,7 +2470,7 @@
       "Item_Name": "Palmitic acid",
       "Manufacturer": "Sigma",
       "Cat_No": "P0500",
-      "CAS_No": "",
+      "CAS_No": "57-10-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2495,7 +2495,7 @@
       "Item_Name": "Phenylmethanesulfonyl fluoride",
       "Manufacturer": "Sigma",
       "Cat_No": "P7626",
-      "CAS_No": "",
+      "CAS_No": "329-98-6",
       "MW_kDa": "",
       "Application": [
         "WB"
@@ -2520,7 +2520,7 @@
       "Item_Name": "Phosphoric acid",
       "Manufacturer": "Sigma",
       "Cat_No": "345245",
-      "CAS_No": "",
+      "CAS_No": "7664-38-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2595,7 +2595,7 @@
       "Item_Name": "Potassium Chloride",
       "Manufacturer": "USB",
       "Cat_No": "20598",
-      "CAS_No": "",
+      "CAS_No": "7447-40-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2620,7 +2620,7 @@
       "Item_Name": "Potassium sodium tartrate tetrahydrate",
       "Manufacturer": "Sigma",
       "Cat_No": "217255",
-      "CAS_No": "",
+      "CAS_No": "6381-59-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2645,7 +2645,7 @@
       "Item_Name": "Putrescine dihydrochloride",
       "Manufacturer": "Sigma",
       "Cat_No": "p5780",
-      "CAS_No": "",
+      "CAS_No": "333-93-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2695,7 +2695,7 @@
       "Item_Name": "Resorufin",
       "Manufacturer": "Sigma",
       "Cat_No": "424455",
-      "CAS_No": "",
+      "CAS_No": "635-78-9",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2770,7 +2770,7 @@
       "Item_Name": "Sephadex LH-20",
       "Manufacturer": "GE healthcare",
       "Cat_No": "17009001",
-      "CAS_No": "",
+      "CAS_No": "9041-37-6",
       "MW_kDa": "",
       "Application": [
         "other"
@@ -2795,7 +2795,7 @@
       "Item_Name": "Sinapic acid",
       "Manufacturer": "Sigma",
       "Cat_No": "D7927",
-      "CAS_No": "",
+      "CAS_No": "530-59-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2820,7 +2820,7 @@
       "Item_Name": "Sodium (meta)arsenite",
       "Manufacturer": "Sigma",
       "Cat_No": "S7400",
-      "CAS_No": "",
+      "CAS_No": "7784-46-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2845,7 +2845,7 @@
       "Item_Name": "Sodium bicarbonate",
       "Manufacturer": "Sigma",
       "Cat_No": "S5761",
-      "CAS_No": "",
+      "CAS_No": "144-55-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2870,7 +2870,7 @@
       "Item_Name": "Sodium bicarbonate",
       "Manufacturer": "Sigma",
       "Cat_No": "S6014",
-      "CAS_No": "",
+      "CAS_No": "144-55-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2895,7 +2895,7 @@
       "Item_Name": "Sodium carbonate",
       "Manufacturer": "Sigma",
       "Cat_No": "223484",
-      "CAS_No": "",
+      "CAS_No": "497-19-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2920,7 +2920,7 @@
       "Item_Name": "Sodium carbonate",
       "Manufacturer": "Sigma",
       "Cat_No": "222321",
-      "CAS_No": "",
+      "CAS_No": "497-19-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -2945,7 +2945,7 @@
       "Item_Name": "Sodium carboxymethyl cellulose",
       "Manufacturer": "Sigma",
       "Cat_No": "419273",
-      "CAS_No": "",
+      "CAS_No": "9004-32-4",
       "MW_kDa": "",
       "Application": [
         "Animal Surgery"
@@ -2970,7 +2970,7 @@
       "Item_Name": "Sodium carboxymethyl cellulose",
       "Manufacturer": "Sigma",
       "Cat_No": "419273",
-      "CAS_No": "",
+      "CAS_No": "9004-32-4",
       "MW_kDa": "",
       "Application": [
         "Animal Surgery"
@@ -2995,7 +2995,7 @@
       "Item_Name": "Sodium chloride",
       "Manufacturer": "USB",
       "Cat_No": "4275449",
-      "CAS_No": "",
+      "CAS_No": "7647-14-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3020,7 +3020,7 @@
       "Item_Name": "Sodium dodecyl sulfate",
       "Manufacturer": "Sigma",
       "Cat_No": "L3771",
-      "CAS_No": "",
+      "CAS_No": "151-21-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3045,7 +3045,7 @@
       "Item_Name": "Sodium hydroxide",
       "Manufacturer": "Sigma",
       "Cat_No": "795429",
-      "CAS_No": "",
+      "CAS_No": "1310-73-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3095,7 +3095,7 @@
       "Item_Name": "Sodium metabisulfite",
       "Manufacturer": "Sigma",
       "Cat_No": "255556",
-      "CAS_No": "",
+      "CAS_No": "7681-57-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3120,7 +3120,7 @@
       "Item_Name": "Sodium nitrite",
       "Manufacturer": "Sigma",
       "Cat_No": "563218",
-      "CAS_No": "",
+      "CAS_No": "7632-00-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3145,7 +3145,7 @@
       "Item_Name": "Sodium orthovanadate",
       "Manufacturer": "Sigma",
       "Cat_No": "S6508",
-      "CAS_No": "",
+      "CAS_No": "13721-39-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3170,7 +3170,7 @@
       "Item_Name": "Sodium phosphate",
       "Manufacturer": "Sigma",
       "Cat_No": "342483",
-      "CAS_No": "",
+      "CAS_No": "7440-23-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3195,7 +3195,7 @@
       "Item_Name": "Sodium phosphate dibasic",
       "Manufacturer": "Sigma",
       "Cat_No": "S3264",
-      "CAS_No": "",
+      "CAS_No": "7558-79-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3220,7 +3220,7 @@
       "Item_Name": "Sodium phosphate dibasic heptahydrate",
       "Manufacturer": "Sigma",
       "Cat_No": "S9390",
-      "CAS_No": "",
+      "CAS_No": "7782-85-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3245,7 +3245,7 @@
       "Item_Name": "Sodium selenite",
       "Manufacturer": "Sigma",
       "Cat_No": "S5261",
-      "CAS_No": "",
+      "CAS_No": "10102-18-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3270,7 +3270,7 @@
       "Item_Name": "Sodium sulfite",
       "Manufacturer": "Sigma",
       "Cat_No": "239321",
-      "CAS_No": "",
+      "CAS_No": "7757-83-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3295,7 +3295,7 @@
       "Item_Name": "Sodium tartrate dibasic dihydrate",
       "Manufacturer": "Sigma",
       "Cat_No": "S4797",
-      "CAS_No": "",
+      "CAS_No": "6106-24-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3320,7 +3320,7 @@
       "Item_Name": "Sucrose",
       "Manufacturer": "Sigma",
       "Cat_No": "47289",
-      "CAS_No": "",
+      "CAS_No": "57-50-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3345,7 +3345,7 @@
       "Item_Name": "Sulfanilamide",
       "Manufacturer": "Sigma",
       "Cat_No": "S9251",
-      "CAS_No": "",
+      "CAS_No": "63-74-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3370,7 +3370,7 @@
       "Item_Name": "Sulfuric acid 98%",
       "Manufacturer": "Daejung",
       "Cat_No": "7683-4100",
-      "CAS_No": "",
+      "CAS_No": "7664-93-9",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3395,7 +3395,7 @@
       "Item_Name": "TEMED",
       "Manufacturer": "Thermo Scientific",
       "Cat_No": "17919",
-      "CAS_No": "",
+      "CAS_No": "110-18-9",
       "MW_kDa": "",
       "Application": [
         "WB"
@@ -3420,7 +3420,7 @@
       "Item_Name": "Tetraethylthiuram disulfide",
       "Manufacturer": "Sigma",
       "Cat_No": "86720",
-      "CAS_No": "",
+      "CAS_No": "97-77-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3445,7 +3445,7 @@
       "Item_Name": "trans-Cinnamaldehyde",
       "Manufacturer": "Sigma",
       "Cat_No": "C80687",
-      "CAS_No": "",
+      "CAS_No": "104-55-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3470,7 +3470,7 @@
       "Item_Name": "trans-Cinnamic acid",
       "Manufacturer": "Sigma",
       "Cat_No": "133760",
-      "CAS_No": "",
+      "CAS_No": "621-82-9",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3495,7 +3495,7 @@
       "Item_Name": "Tris-Base",
       "Manufacturer": "Fisher scientific",
       "Cat_No": "BP152-5",
-      "CAS_No": "",
+      "CAS_No": "77-86-1",
       "MW_kDa": "",
       "Application": [
         "WB"
@@ -3645,7 +3645,7 @@
       "Item_Name": "Vanillic acid",
       "Manufacturer": "Sigma",
       "Cat_No": "94770",
-      "CAS_No": "",
+      "CAS_No": "121-34-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3795,7 +3795,7 @@
       "Item_Name": "(±)-Naringenin",
       "Manufacturer": "SCBT",
       "Cat_No": "SC-203155",
-      "CAS_No": "",
+      "CAS_No": "480-41-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3820,7 +3820,7 @@
       "Item_Name": "(-)-Epigallocatechin gallate",
       "Manufacturer": "sigma",
       "Cat_No": "E4143",
-      "CAS_No": "",
+      "CAS_No": "989-51-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3845,7 +3845,7 @@
       "Item_Name": "(-)-Perillyl Alcohol",
       "Manufacturer": "Santa Cruz Biotechnology",
       "Cat_No": "sc-205798",
-      "CAS_No": "",
+      "CAS_No": "18457-55-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3870,7 +3870,7 @@
       "Item_Name": "(+)-Catechin hydrate",
       "Manufacturer": "sigma",
       "Cat_No": "C1251",
-      "CAS_No": "",
+      "CAS_No": "88191-48-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3895,7 +3895,7 @@
       "Item_Name": "(±)-6-Hydroxy-2,5,7,8-tetramethyl-chromane-2-carboxylic acid",
       "Manufacturer": "sigma",
       "Cat_No": "238813",
-      "CAS_No": "",
+      "CAS_No": "53188-07-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3945,7 +3945,7 @@
       "Item_Name": "1,1,3,3-Tetraethoxypropane",
       "Manufacturer": "sigma",
       "Cat_No": "T9889",
-      "CAS_No": "",
+      "CAS_No": "122-31-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -3995,7 +3995,7 @@
       "Item_Name": "2,2-Diphenyl-1-picrylhydrazyl",
       "Manufacturer": "sigma",
       "Cat_No": "D9132; 43180",
-      "CAS_No": "",
+      "CAS_No": "1898-66-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4070,7 +4070,7 @@
       "Item_Name": "2,2'-Azobis(2-methylpropionamidine)dihydrochloride",
       "Manufacturer": "Thermo Fisher",
       "Cat_No": "401560250",
-      "CAS_No": "",
+      "CAS_No": "2997-92-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4095,7 +4095,7 @@
       "Item_Name": "2,3,4-Trihydroxybenzoic acid",
       "Manufacturer": "aldrich (sigma)",
       "Cat_No": "253847",
-      "CAS_No": "",
+      "CAS_No": "610-02-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4145,7 +4145,7 @@
       "Item_Name": "4-Hydroxybenzoic acid",
       "Manufacturer": "sigma",
       "Cat_No": "240141",
-      "CAS_No": "",
+      "CAS_No": "99-96-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4170,7 +4170,7 @@
       "Item_Name": "4-O-Caffeoylquinic acid",
       "Manufacturer": "sigma",
       "Cat_No": "65969",
-      "CAS_No": "",
+      "CAS_No": "87099-73-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4195,7 +4195,7 @@
       "Item_Name": "4,5-Dicaffeoylquinic acid",
       "Manufacturer": "phytolab",
       "Cat_No": "80427",
-      "CAS_No": "",
+      "CAS_No": "89886-31-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4345,7 +4345,7 @@
       "Item_Name": "Allyl isothiocyanate",
       "Manufacturer": "Santa Cruz Biotechnology",
       "Cat_No": "sc-252361",
-      "CAS_No": "",
+      "CAS_No": "57-06-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4370,7 +4370,7 @@
       "Item_Name": "Allyl sulfide, 97%",
       "Manufacturer": "sigma",
       "Cat_No": "A35801",
-      "CAS_No": "",
+      "CAS_No": "592-88-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4395,7 +4395,7 @@
       "Item_Name": "ammonium pyrrolidinedithiocarbamate",
       "Manufacturer": "sigma",
       "Cat_No": "P8765",
-      "CAS_No": "",
+      "CAS_No": "5108-96-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4420,7 +4420,7 @@
       "Item_Name": "Baicalein",
       "Manufacturer": "sigma",
       "Cat_No": "465119",
-      "CAS_No": "",
+      "CAS_No": "491-67-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4445,7 +4445,7 @@
       "Item_Name": "Benzyl isothiocyanate, 98%",
       "Manufacturer": "sigma",
       "Cat_No": "252492",
-      "CAS_No": "",
+      "CAS_No": "622-78-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4470,7 +4470,7 @@
       "Item_Name": "Bergenin",
       "Manufacturer": "chemFaces",
       "Cat_No": "CFN98724",
-      "CAS_No": "",
+      "CAS_No": "477-90-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4495,7 +4495,7 @@
       "Item_Name": "Betaine",
       "Manufacturer": "sigma",
       "Cat_No": "B2629",
-      "CAS_No": "",
+      "CAS_No": "107-43-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4545,7 +4545,7 @@
       "Item_Name": "Caffeine",
       "Manufacturer": "sigma",
       "Cat_No": "C0750",
-      "CAS_No": "",
+      "CAS_No": "58-08-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4570,7 +4570,7 @@
       "Item_Name": "Capsaicin",
       "Manufacturer": "sigma",
       "Cat_No": "M2028",
-      "CAS_No": "",
+      "CAS_No": "404-86-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4645,7 +4645,7 @@
       "Item_Name": "Cisplatin",
       "Manufacturer": "Santa Cruz Biotechnology",
       "Cat_No": "sc-200896",
-      "CAS_No": "",
+      "CAS_No": "15663-27-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4695,7 +4695,7 @@
       "Item_Name": "Cryptotanshinone",
       "Manufacturer": "chemFaces",
       "Cat_No": "CFN98478",
-      "CAS_No": "",
+      "CAS_No": "35825-57-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4720,7 +4720,7 @@
       "Item_Name": "Cyclosporin A",
       "Manufacturer": "sigma",
       "Cat_No": "30024",
-      "CAS_No": "",
+      "CAS_No": "59865-13-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4770,7 +4770,7 @@
       "Item_Name": "DAPI",
       "Manufacturer": "sigma",
       "Cat_No": "D9542",
-      "CAS_No": "",
+      "CAS_No": "47165-04-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4795,7 +4795,7 @@
       "Item_Name": "Dexamethasone",
       "Manufacturer": "sigma",
       "Cat_No": "D4902",
-      "CAS_No": "",
+      "CAS_No": "50-02-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4820,7 +4820,7 @@
       "Item_Name": "Dihydrocoumarin",
       "Manufacturer": "Santa Cruz Biotechnology",
       "Cat_No": "sc-227867",
-      "CAS_No": "",
+      "CAS_No": "119-84-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4845,7 +4845,7 @@
       "Item_Name": "DL-Dithiothreitol",
       "Manufacturer": "sigma",
       "Cat_No": "D0632",
-      "CAS_No": "",
+      "CAS_No": "27565-41-9",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4870,7 +4870,7 @@
       "Item_Name": "Doxorubicin hydrochloride",
       "Manufacturer": "sigma",
       "Cat_No": "44583",
-      "CAS_No": "",
+      "CAS_No": "25316-40-9",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4945,7 +4945,7 @@
       "Item_Name": "Emodin",
       "Manufacturer": "sigma; santa cruz",
       "Cat_No": "E7881, sc-202601",
-      "CAS_No": "",
+      "CAS_No": "518-82-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4970,7 +4970,7 @@
       "Item_Name": "Ethanolamine-HCL",
       "Manufacturer": "Biacore",
       "Cat_No": "",
-      "CAS_No": "",
+      "CAS_No": "2002-24-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -4995,7 +4995,7 @@
       "Item_Name": "Eugenol",
       "Manufacturer": "Santa Cruz Biotechnology",
       "Cat_No": "sc-203043",
-      "CAS_No": "",
+      "CAS_No": "97-53-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5020,7 +5020,7 @@
       "Item_Name": "Evodiamine",
       "Manufacturer": "sigma",
       "Cat_No": "E3531",
-      "CAS_No": "",
+      "CAS_No": "518-17-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5045,7 +5045,7 @@
       "Item_Name": "Formamide",
       "Manufacturer": "sigma",
       "Cat_No": "F9037",
-      "CAS_No": "",
+      "CAS_No": "75-12-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5070,7 +5070,7 @@
       "Item_Name": "Formic acid",
       "Manufacturer": "Fisher chemical",
       "Cat_No": "A117-50",
-      "CAS_No": "",
+      "CAS_No": "64-18-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5095,7 +5095,7 @@
       "Item_Name": "Galangin",
       "Manufacturer": "sigma",
       "Cat_No": "282200",
-      "CAS_No": "",
+      "CAS_No": "548-83-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5195,7 +5195,7 @@
       "Item_Name": "Glycogen from bovine liver, Type IX",
       "Manufacturer": "sigma",
       "Cat_No": "G0885",
-      "CAS_No": "",
+      "CAS_No": "9005-79-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5245,7 +5245,7 @@
       "Item_Name": "Hesperetin",
       "Manufacturer": "sigma",
       "Cat_No": "H4125",
-      "CAS_No": "",
+      "CAS_No": "520-33-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5320,7 +5320,7 @@
       "Item_Name": "Indole-3-carbinol",
       "Manufacturer": "sigma",
       "Cat_No": "I7256",
-      "CAS_No": "",
+      "CAS_No": "700-06-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5345,7 +5345,7 @@
       "Item_Name": "Iodonitrotetrazolium chloride",
       "Manufacturer": "sigma",
       "Cat_No": "I10406",
-      "CAS_No": "",
+      "CAS_No": "146-68-9",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5395,7 +5395,7 @@
       "Item_Name": "L-Glutamic acid",
       "Manufacturer": "Sigma",
       "Cat_No": "G6133",
-      "CAS_No": "",
+      "CAS_No": "56-86-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5445,7 +5445,7 @@
       "Item_Name": "L-glutathione reduced",
       "Manufacturer": "sigma",
       "Cat_No": "G4251",
-      "CAS_No": "",
+      "CAS_No": "70-18-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5495,7 +5495,7 @@
       "Item_Name": "Liquified Phenol",
       "Manufacturer": "sigma",
       "Cat_No": "P9346",
-      "CAS_No": "",
+      "CAS_No": "108-95-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5520,7 +5520,7 @@
       "Item_Name": "Lithospermic acid",
       "Manufacturer": "chemFaces",
       "Cat_No": "CFN98546",
-      "CAS_No": "",
+      "CAS_No": "28831-65-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5545,7 +5545,7 @@
       "Item_Name": "Madecassoside from Centella asiatica",
       "Manufacturer": "sigma",
       "Cat_No": "M6949",
-      "CAS_No": "",
+      "CAS_No": "34540-22-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5570,7 +5570,7 @@
       "Item_Name": "Matairesinol",
       "Manufacturer": "sigma",
       "Cat_No": "40043",
-      "CAS_No": "",
+      "CAS_No": "580-72-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5695,7 +5695,7 @@
       "Item_Name": "N-Acetyl-L-cysteine",
       "Manufacturer": "sigma",
       "Cat_No": "A7250",
-      "CAS_No": "",
+      "CAS_No": "616-91-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5720,7 +5720,7 @@
       "Item_Name": "Neochlorogenic acid",
       "Manufacturer": "sigma",
       "Cat_No": "94419",
-      "CAS_No": "",
+      "CAS_No": "906-33-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5745,7 +5745,7 @@
       "Item_Name": "Neomycin sulfate",
       "Manufacturer": "Santa Cruz",
       "Cat_No": "sc-3573A",
-      "CAS_No": "",
+      "CAS_No": "1405-10-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5820,7 +5820,7 @@
       "Item_Name": "oltipraz",
       "Manufacturer": "LKT laboratory",
       "Cat_No": "O4578",
-      "CAS_No": "",
+      "CAS_No": "64224-21-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5845,7 +5845,7 @@
       "Item_Name": "Orlistat",
       "Manufacturer": "sigma",
       "Cat_No": "O4139",
-      "CAS_No": "",
+      "CAS_No": "96829-58-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5870,7 +5870,7 @@
       "Item_Name": "Palmitic acid",
       "Manufacturer": "sigma",
       "Cat_No": "P0500",
-      "CAS_No": "",
+      "CAS_No": "57-10-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5920,7 +5920,7 @@
       "Item_Name": "Phenethyl isothiocyanate",
       "Manufacturer": "sigma",
       "Cat_No": "253731",
-      "CAS_No": "",
+      "CAS_No": "2257-09-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -5970,7 +5970,7 @@
       "Item_Name": "Piroxicam",
       "Manufacturer": "sigma",
       "Cat_No": "P5654",
-      "CAS_No": "",
+      "CAS_No": "36322-90-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -6020,7 +6020,7 @@
       "Item_Name": "Propidium iodide",
       "Manufacturer": "sigma",
       "Cat_No": "P4170; 287075",
-      "CAS_No": "",
+      "CAS_No": "25535-16-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -6245,7 +6245,7 @@
       "Item_Name": "SP600125",
       "Manufacturer": "sigma",
       "Cat_No": "S5567",
-      "CAS_No": "",
+      "CAS_No": "129-56-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -6370,7 +6370,7 @@
       "Item_Name": "Taxifolin",
       "Manufacturer": "Fluka",
       "Cat_No": "78666",
-      "CAS_No": "",
+      "CAS_No": "480-18-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -6395,7 +6395,7 @@
       "Item_Name": "Temozolomide",
       "Manufacturer": "sigma",
       "Cat_No": "T2577",
-      "CAS_No": "",
+      "CAS_No": "85622-93-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -6445,7 +6445,7 @@
       "Item_Name": "Theobromine",
       "Manufacturer": "sigma",
       "Cat_No": "42993",
-      "CAS_No": "",
+      "CAS_No": "83-67-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -6470,7 +6470,7 @@
       "Item_Name": "Theophylline",
       "Manufacturer": "sigma",
       "Cat_No": "PHR1023",
-      "CAS_No": "",
+      "CAS_No": "58-55-9",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -6495,7 +6495,7 @@
       "Item_Name": "Thiazolyl Blue Tetrazolium Bromide",
       "Manufacturer": "sigma",
       "Cat_No": "M2128",
-      "CAS_No": "",
+      "CAS_No": "298-93-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -6520,7 +6520,7 @@
       "Item_Name": "trans-Ferulic acid",
       "Manufacturer": "sigma",
       "Cat_No": "128708",
-      "CAS_No": "",
+      "CAS_No": "1135-24-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -6545,7 +6545,7 @@
       "Item_Name": "Trolox",
       "Manufacturer": "CALBIOCHEM",
       "Cat_No": "648471",
-      "CAS_No": "",
+      "CAS_No": "53188-07-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -6570,7 +6570,7 @@
       "Item_Name": "Ursolic acid",
       "Manufacturer": "sigma",
       "Cat_No": "U6753",
-      "CAS_No": "",
+      "CAS_No": "77-52-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -6595,7 +6595,7 @@
       "Item_Name": "Vanillic acid",
       "Manufacturer": "Fluka (SIGMA)",
       "Cat_No": "94770",
-      "CAS_No": "",
+      "CAS_No": "121-34-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7045,7 +7045,7 @@
       "Item_Name": "(−)-Deguelin",
       "Manufacturer": "Cayman",
       "Cat_No": "10010706",
-      "CAS_No": "",
+      "CAS_No": "522-17-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7070,7 +7070,7 @@
       "Item_Name": "(L)-Dehydroascorbic acid",
       "Manufacturer": "sigma",
       "Cat_No": "261556",
-      "CAS_No": "",
+      "CAS_No": "490-83-5",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7095,7 +7095,7 @@
       "Item_Name": "1α,25-Dihydroxyvitamin D3",
       "Manufacturer": "Sigma",
       "Cat_No": "D1530",
-      "CAS_No": "",
+      "CAS_No": "32222-06-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7120,7 +7120,7 @@
       "Item_Name": "3-Isobutyl-1-methylxanthine",
       "Manufacturer": "sigma",
       "Cat_No": "I5879",
-      "CAS_No": "",
+      "CAS_No": "28822-58-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7145,7 +7145,7 @@
       "Item_Name": "3,3′-Diindolylmethane",
       "Manufacturer": "SCBT",
       "Cat_No": "SC-204624",
-      "CAS_No": "",
+      "CAS_No": "1968-05-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7170,7 +7170,7 @@
       "Item_Name": "4'-Bromoflavone",
       "Manufacturer": "SCBT",
       "Cat_No": "SC-220999",
-      "CAS_No": "",
+      "CAS_No": "20525-20-6",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7195,7 +7195,7 @@
       "Item_Name": "9-cis-Retinoic acid",
       "Manufacturer": "Sigma",
       "Cat_No": "R4643",
-      "CAS_No": "",
+      "CAS_No": "5300-03-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7220,7 +7220,7 @@
       "Item_Name": "Adenosine 5′-triphosphate disodium salt hydrate",
       "Manufacturer": "Sigma",
       "Cat_No": "A2383",
-      "CAS_No": "",
+      "CAS_No": "34369-07-8",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7345,7 +7345,7 @@
       "Item_Name": "ALLM (Calpain Inhibitor)",
       "Manufacturer": "SCBT",
       "Cat_No": "SC-201268",
-      "CAS_No": "",
+      "CAS_No": "136632-32-1",
       "MW_kDa": "",
       "Application": [
         "Histology/Staining"
@@ -7370,7 +7370,7 @@
       "Item_Name": "Ampicillin",
       "Manufacturer": "Santa cruz",
       "Cat_No": "sc-210812C",
-      "CAS_No": "",
+      "CAS_No": "69-53-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7420,7 +7420,7 @@
       "Item_Name": "Betanin",
       "Manufacturer": "AdooQ",
       "Cat_No": "A10132",
-      "CAS_No": "",
+      "CAS_No": "7659-95-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7445,7 +7445,7 @@
       "Item_Name": "Calcein, AM",
       "Manufacturer": "Thermo Scientific",
       "Cat_No": "C3100MP",
-      "CAS_No": "",
+      "CAS_No": "148504-34-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7470,7 +7470,7 @@
       "Item_Name": "Cichoric Acid",
       "Manufacturer": "ALB Technology",
       "Cat_No": "70831-56-0",
-      "CAS_No": "",
+      "CAS_No": "70831-56-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7595,7 +7595,7 @@
       "Item_Name": "Curcumin",
       "Manufacturer": "Sigma",
       "Cat_No": "C1386",
-      "CAS_No": "",
+      "CAS_No": "458-37-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7620,7 +7620,7 @@
       "Item_Name": "DPN",
       "Manufacturer": "Tocris",
       "Cat_No": "1494",
-      "CAS_No": "",
+      "CAS_No": "1428-67-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7670,7 +7670,7 @@
       "Item_Name": "Ellagic acid",
       "Manufacturer": "sigma",
       "Cat_No": "E2250",
-      "CAS_No": "",
+      "CAS_No": "476-66-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7695,7 +7695,7 @@
       "Item_Name": "Fisetin",
       "Manufacturer": "Sigma",
       "Cat_No": "F4043",
-      "CAS_No": "",
+      "CAS_No": "528-48-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7720,7 +7720,7 @@
       "Item_Name": "Garcinol",
       "Manufacturer": "SCBT",
       "Cat_No": "SC-200891",
-      "CAS_No": "",
+      "CAS_No": "78824-30-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7745,7 +7745,7 @@
       "Item_Name": "Genistein",
       "Manufacturer": "Sigma",
       "Cat_No": "G6649",
-      "CAS_No": "",
+      "CAS_No": "446-72-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7770,7 +7770,7 @@
       "Item_Name": "Glucotropaeolin potassium salt",
       "Manufacturer": "EXTRASYNTHESE",
       "Cat_No": "2510S",
-      "CAS_No": "",
+      "CAS_No": "5115-71-9",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7795,7 +7795,7 @@
       "Item_Name": "Glucotropaeolin potassium salt",
       "Manufacturer": "extrasynthese",
       "Cat_No": "2510 S",
-      "CAS_No": "",
+      "CAS_No": "5115-71-9",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7820,7 +7820,7 @@
       "Item_Name": "H2DCFDA",
       "Manufacturer": "invitrogen",
       "Cat_No": "1846926",
-      "CAS_No": "",
+      "CAS_No": "4091-99-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7970,7 +7970,7 @@
       "Item_Name": "Metformin hydrochloride",
       "Manufacturer": "fluka",
       "Cat_No": "PHR1084-500MG",
-      "CAS_No": "",
+      "CAS_No": "1115-70-4",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -7995,7 +7995,7 @@
       "Item_Name": "Metronidazole",
       "Manufacturer": "Thermo Scientific",
       "Cat_No": "H6025814",
-      "CAS_No": "",
+      "CAS_No": "443-48-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8045,7 +8045,7 @@
       "Item_Name": "Myricetin",
       "Manufacturer": "Cayman",
       "Cat_No": "10012600",
-      "CAS_No": "",
+      "CAS_No": "529-44-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8070,7 +8070,7 @@
       "Item_Name": "Neomycin sulfate",
       "Manufacturer": "Santa cruz",
       "Cat_No": "sc-3573",
-      "CAS_No": "",
+      "CAS_No": "1405-10-3",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8095,7 +8095,7 @@
       "Item_Name": "Obeticholic acid",
       "Manufacturer": "holzel",
       "Cat_No": "HY-12222-200mg",
-      "CAS_No": "",
+      "CAS_No": "459789-99-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8120,7 +8120,7 @@
       "Item_Name": "Oleic acid",
       "Manufacturer": "sigma",
       "Cat_No": "O1383",
-      "CAS_No": "",
+      "CAS_No": "112-80-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8145,7 +8145,7 @@
       "Item_Name": "Parthenolide",
       "Manufacturer": "Cayman",
       "Cat_No": "70080",
-      "CAS_No": "",
+      "CAS_No": "20554-84-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8195,7 +8195,7 @@
       "Item_Name": "Phosphatase substrate",
       "Manufacturer": "Sigma",
       "Cat_No": "P4744",
-      "CAS_No": "",
+      "CAS_No": "9013-05-2",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8220,7 +8220,7 @@
       "Item_Name": "Progesterone",
       "Manufacturer": "sigma",
       "Cat_No": "P0130-25G",
-      "CAS_No": "",
+      "CAS_No": "57-83-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8345,7 +8345,7 @@
       "Item_Name": "Ribonuclease A, from bovine pancreas",
       "Manufacturer": "Sigma",
       "Cat_No": "R4875",
-      "CAS_No": "",
+      "CAS_No": "108333-82-0",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8395,7 +8395,7 @@
       "Item_Name": "Silymarin",
       "Manufacturer": "sigma",
       "Cat_No": "S0292-10G",
-      "CAS_No": "",
+      "CAS_No": "65666-07-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8420,7 +8420,7 @@
       "Item_Name": "Sulfatase from Helix pomatia",
       "Manufacturer": "sigma",
       "Cat_No": "S9626",
-      "CAS_No": "",
+      "CAS_No": "15681-89-7",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8520,7 +8520,7 @@
       "Item_Name": "Turmeronol-A",
       "Manufacturer": "chemfaces",
       "Cat_No": "CFS201801",
-      "CAS_No": "",
+      "CAS_No": "131651-37-1",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8570,7 +8570,7 @@
       "Item_Name": "Vancomycin hydrochloride",
       "Manufacturer": "alfa aesar",
       "Cat_No": "J62790",
-      "CAS_No": "",
+      "CAS_No": "1404-93-9",
       "MW_kDa": "",
       "Application": [
         "General"
@@ -8595,7 +8595,7 @@
       "Item_Name": "Z-Leu-Leu-Leu-al",
       "Manufacturer": "Sigma",
       "Cat_No": "C2211",
-      "CAS_No": "",
+      "CAS_No": "133407-82-6",
       "MW_kDa": "",
       "Application": [
         "General"
