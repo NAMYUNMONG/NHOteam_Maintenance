@@ -7,6 +7,26 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
+  <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-controls="sidebar" aria-expanded="true"><<</button>
+
+  <aside id="sidebar" class="sidebar" aria-label="page navigation">
+    <div class="sidebar-header">
+      <strong>NHOteam</strong>
+      <span>Inventory</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="../#mainpage">Mainpage</a>
+      <a href="../#chemical">Chemical</a>
+      <a href="../#antibody">Antibody</a>
+      <a href="../#product">Product</a>
+      <a href="./" class="active">LN2 Inventory</a>
+    </nav>
+    <div class="sidebar-data-status">
+      <span>기준 데이터</span>
+      <strong>LN2 inventory.json</strong>
+    </div>
+  </aside>
+
   <header class="hero">
     <div>
       <p class="eyebrow">LN2 Tank · Static Prototype</p>
@@ -120,5 +140,11 @@
   </template>
 
   <script type="module" src="./src/app.js"></script>
+  <script>
+    document.querySelector('#sidebarToggle').addEventListener('click', () => {
+      const collapsed = document.body.classList.toggle('sidebar-collapsed');
+      document.querySelector('#sidebarToggle').setAttribute('aria-expanded', String(!collapsed));
+    });
+  </script>
 </body>
 </html>
