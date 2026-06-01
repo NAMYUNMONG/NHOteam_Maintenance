@@ -246,10 +246,13 @@ textarea { resize: vertical; }
 .well-details { margin-top: 1rem; border: 1px dashed var(--line); border-radius: 1rem; padding: 0.85rem; background: #fbfdff; color: var(--muted); min-height: 4rem; }
 .well-details strong { color: var(--ink); }
 .table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 1rem; max-height: 57rem; }
-table { width: 100%; border-collapse: collapse; min-width: 52rem; background: #fff; }
-th, td { padding: 0.72rem 0.8rem; border-bottom: 1px solid #eef2f7; text-align: left; vertical-align: top; }
-th { position: sticky; top: 0; z-index: 1; background: #f8fbff; color: #475467; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+table { width: 100%; border-collapse: collapse; min-width: 52rem; background: #fff; table-layout: fixed; }
+th, td { padding: 0.72rem 0.8rem; border-bottom: 1px solid #eef2f7; text-align: left; vertical-align: top; overflow: hidden; text-overflow: ellipsis; }
+th { position: sticky; top: 0; z-index: 1; background: #f8fbff; color: #475467; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; user-select: none; }
 tbody tr:hover { background: #fbfdff; }
+.col-resizer { position: absolute; right: 0; top: 0; width: 6px; height: 100%; cursor: col-resize; z-index: 2; }
+.col-resizer:hover,
+.col-resizer.dragging { background: var(--accent); opacity: 0.45; }
 .location { font-weight: 900; color: var(--accent); white-space: nowrap; }
 .muted { color: var(--muted); }
 .empty-state { text-align: center; padding: 3rem; color: var(--muted); }

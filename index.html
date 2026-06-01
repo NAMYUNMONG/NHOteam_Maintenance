@@ -92,25 +92,15 @@ body.collapsed footer{margin-left:0;}
 .table-status{font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:8px;}
 .table-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
 .table-scroll{overflow:auto;max-height:calc(100vh - 230px);}
-table{width:100%;border-collapse:collapse;font-size:12px;min-width:800px;}
-thead th{background:var(--surface2);padding:6px 8px;text-align:left;font-size:11px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;}
 thead th:hover{color:var(--text);}
 thead th.sort-asc::after{content:' ↑';color:var(--green);}
 thead th.sort-desc::after{content:' ↓';color:var(--green);}
 thead th:first-child{width:32px;cursor:default;}
 thead th.sort-asc,thead th.sort-desc{color:var(--green);}
 /* Column resize */
-.col-resizer{position:absolute;right:0;top:0;width:5px;height:100%;cursor:col-resize;user-select:none;z-index:3;}
+.col-resizer{position:absolute;right:0;top:0;width:6px;height:100%;cursor:col-resize;user-select:none;z-index:3;}
 .col-resizer:hover,.col-resizer.dragging{background:var(--green);opacity:.5;}
-thead th:nth-child(2){width:75px;}
-thead th:nth-child(3){width:200px;}
-thead th:nth-child(4){width:120px;}
-thead th:nth-child(5){width:100px;}
-thead th:nth-child(6){width:95px;}
-thead th:nth-child(7){width:55px;}
-thead th:nth-child(8){width:120px;}
-thead th:nth-child(9){width:75px;}
-thead th:nth-child(10){width:58px;}
+.col-resizer.disabled{display:none;}
 tbody tr{border-bottom:1px solid var(--line);transition:background .1s;cursor:pointer;}
 tbody tr:last-child{border-bottom:none;}
 tbody tr:hover{background:#f8fafc;}
@@ -326,6 +316,7 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
     <div class="table-wrap">
       <div class="table-scroll">
         <table id="mainTable">
+          <colgroup id="mainTableCols"></colgroup>
           <thead><tr id="tableHead"></tr></thead>
           <tbody id="tableBody"></tbody>
         </table>
@@ -386,6 +377,7 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
 <script>
 const STORAGE_KEY = 'l1521_inventory_v2';
+const COLUMN_WIDTH_KEY = 'l1521_inventory_column_widths_v1';
 const MSDS_CATS   = new Set(['Chemical','Products','Antibody/Protein']);
 const CATEGORIES  = ['Chemical','Antibody/Protein','Products'];
 const SUBCATS = {
@@ -400,6 +392,7 @@ const INVENTORY_VIEWS = new Set(['Chemical','Antibody/Protein','Products']);
 let lang='en', items=[], sourceMeta={}, selectedIds=new Set();
 let activeView='Mainpage', sortCol='Item_Name', sortDir=1, hasUnsaved=false;
 let panelMode='view', panelItemId=null;
+let columnWidths = loadColumnWidths();
 
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -413,6 +406,25 @@ function normalizeStorage(value){
   if(['-20c','-20°c','minus20c','minus20°c'].includes(key)) return '-20°C';
   if(['-80c','-80°c','minus80c','minus80°c'].includes(key)) return '-80°C';
   return raw;
+}
+
+function loadColumnWidths(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(COLUMN_WIDTH_KEY)||'{}');
+    return saved&&typeof saved==='object'?saved:{};
+  }catch(e){
+    return {};
+  }
+}
+
+function saveColumnWidths(){
+  localStorage.setItem(COLUMN_WIDTH_KEY,JSON.stringify(columnWidths));
+}
+
+function getColumnWidth(col){
+  const saved=Number(columnWidths[col.key]);
+  const width=Number.isFinite(saved)?saved:col.width;
+  return Math.min(col.max||420,Math.max(col.min||48,width));
 }
 
 // ── DATA ──────────────────────────────────────────────────────
@@ -560,14 +572,27 @@ function renderTable(){
   const rows=applyFilters(base);
   $('tableStatus').textContent=`${rows.length} items${activeView!=='Mainpage'?' in '+activeView:''}`;
 
-  const cols=['Item_Name','Subcategory','Manufacturer','Cat_No','Storage','Location','Sub_Location','Current_Stock','MSDS'];
-  const labels={'Item_Name':'Item','Subcategory':'Subcategory','Manufacturer':'Manufacturer','Cat_No':'Cat#','Storage':'Storage','Location':'Location','Sub_Location':'Shelf/Box','Current_Stock':'Stock','MSDS':'MSDS'};
+  const cols=[
+    {key:'select',label:'',width:32,min:32,max:32,fixed:true},
+    {key:'Item_Name',label:'Item',width:220,min:140,max:520},
+    {key:'Subcategory',label:'Subcategory',width:150,min:100,max:300},
+    {key:'Manufacturer',label:'Manufacturer',width:120,min:90,max:260},
+    {key:'Cat_No',label:'Cat#',width:112,min:82,max:220},
+    {key:'Storage',label:'Storage',width:74,min:64,max:120},
+    {key:'Location',label:'Location',width:120,min:90,max:220},
+    {key:'Sub_Location',label:'Shelf/Box',width:96,min:76,max:180},
+    {key:'Current_Stock',label:'Stock',width:64,min:56,max:110},
+    {key:'MSDS',label:'MSDS',width:58,min:58,max:58,fixed:true},
+  ];
+  $('mainTableCols').innerHTML=cols.map(col=>`<col data-col="${col.key}" style="width:${getColumnWidth(col)}px">`).join('');
 
-  $('tableHead').innerHTML=`<th><input type="checkbox" id="selectAll"></th>`+
-    cols.map(c=>`<th data-sort="${c}">${labels[c]}</th>`).join('');
+  $('tableHead').innerHTML=cols.map(col=>col.key==='select'
+    ? '<th><input type="checkbox" id="selectAll"></th>'
+    : `<th data-sort="${col.key}" data-col="${col.key}">${col.label}</th>`
+  ).join('');
 
   if(!rows.length){
-    $('tableBody').innerHTML=`<tr><td colspan="${cols.length+1}"><div class="empty">No items found</div></td></tr>`;
+    $('tableBody').innerHTML=`<tr><td colspan="${cols.length}"><div class="empty">No items found</div></td></tr>`;
     bindTableEvents();return;
   }
 
@@ -614,28 +639,50 @@ function renderTable(){
 }
 
 function bindTableEvents(){
-  // Add resize handles to headers
   const tbl=$('mainTable');
-  document.querySelectorAll('#tableHead th').forEach((th,idx)=>{
-    if(idx===0) return; // skip checkbox column
+  const colDefs=[
+    {key:'select',width:32,min:32,max:32,fixed:true},
+    {key:'Item_Name',width:220,min:140,max:520},
+    {key:'Subcategory',width:150,min:100,max:300},
+    {key:'Manufacturer',width:120,min:90,max:260},
+    {key:'Cat_No',width:112,min:82,max:220},
+    {key:'Storage',width:74,min:64,max:120},
+    {key:'Location',width:120,min:90,max:220},
+    {key:'Sub_Location',width:96,min:76,max:180},
+    {key:'Current_Stock',width:64,min:56,max:110},
+    {key:'MSDS',width:58,min:58,max:58,fixed:true},
+  ];
+  const defsByKey=Object.fromEntries(colDefs.map(col=>[col.key,col]));
+  document.querySelectorAll('#tableHead th[data-col]').forEach(th=>{
+    const col=defsByKey[th.dataset.col];
+    if(!col||col.fixed) return;
     const resizer=document.createElement('div');
     resizer.className='col-resizer';
     th.style.position='relative';
     th.appendChild(resizer);
-    let startX,startW;
+    let startX,startW,colEl;
     resizer.addEventListener('mousedown',e=>{
       e.stopPropagation();
       e.preventDefault();
       startX=e.pageX;
-      startW=th.getBoundingClientRect().width;
+      colEl=tbl.querySelector(`col[data-col="${th.dataset.col}"]`);
+      startW=colEl?colEl.getBoundingClientRect().width:th.getBoundingClientRect().width;
       resizer.classList.add('dragging');
       document.body.style.cursor='col-resize';
       document.body.style.userSelect='none';
       const onMove=ev=>{
-        const w=Math.max(40,startW+(ev.pageX-startX));
-        th.style.width=w+'px';
+        const raw=startW+(ev.pageX-startX);
+        const w=Math.min(col.max,Math.max(col.min,raw));
+        if(colEl) colEl.style.width=w+'px';
       };
       const onUp=()=>{
+        if(colEl){
+          const raw=Number.parseFloat(colEl.style.width);
+          if(Number.isFinite(raw)){
+            columnWidths[th.dataset.col]=Math.round(raw);
+            saveColumnWidths();
+          }
+        }
         resizer.classList.remove('dragging');
         document.body.style.cursor='';
         document.body.style.userSelect='';

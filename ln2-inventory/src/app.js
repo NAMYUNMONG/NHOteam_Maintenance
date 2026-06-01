@@ -1,7 +1,17 @@
 import { loadInventoryData } from './dataProvider.js';
 
 const STORAGE_KEY = 'ln2_inventory_draft_v2';
+const COLUMN_WIDTH_KEY = 'ln2_inventory_column_widths_v1';
 const STOCK_FIELDS = ['cellLine', 'tissue', 'date', 'passage', 'depositor', 'note'];
+const TABLE_COLUMNS = [
+  { key: 'location', width: 150, min: 120, max: 240 },
+  { key: 'cellLine', width: 180, min: 120, max: 320 },
+  { key: 'tissue', width: 110, min: 80, max: 220 },
+  { key: 'date', width: 96, min: 86, max: 150 },
+  { key: 'passage', width: 82, min: 68, max: 140 },
+  { key: 'depositor', width: 112, min: 88, max: 200 },
+  { key: 'note', width: 220, min: 120, max: 420 },
+];
 
 const els = {
   sourceInfo: document.querySelector('#sourceInfo'),
@@ -28,6 +38,7 @@ const els = {
   clearSelectionBtn: document.querySelector('#clearSelectionBtn'),
   wellDetails: document.querySelector('#wellDetails'),
   inventoryBody: document.querySelector('#inventoryBody'),
+  tableCols: document.querySelector('#ln2TableCols'),
   resultCount: document.querySelector('#resultCount'),
   refreshBtn: document.querySelector('#refreshBtn'),
   exportCsvBtn: document.querySelector('#exportCsvBtn'),
@@ -40,6 +51,7 @@ const els = {
   cancelStockBtn: document.querySelector('#cancelStockBtn'),
   emptyState: document.querySelector('#emptyStateTemplate'),
 };
+let columnWidths = loadColumnWidths();
 
 const state = {
   data: null,
@@ -60,6 +72,77 @@ function locationText(record) {
 
 function normalize(value) {
   return String(value ?? '').trim();
+}
+
+function loadColumnWidths() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(COLUMN_WIDTH_KEY) || '{}');
+    return saved && typeof saved === 'object' ? saved : {};
+  } catch (error) {
+    return {};
+  }
+}
+
+function saveColumnWidths() {
+  localStorage.setItem(COLUMN_WIDTH_KEY, JSON.stringify(columnWidths));
+}
+
+function getColumnWidth(column) {
+  const saved = Number(columnWidths[column.key]);
+  const width = Number.isFinite(saved) ? saved : column.width;
+  return Math.min(column.max, Math.max(column.min, width));
+}
+
+function renderTableColumns() {
+  if (!els.tableCols) return;
+  els.tableCols.innerHTML = TABLE_COLUMNS.map((column) => `<col data-col="${column.key}" style="width:${getColumnWidth(column)}px">`).join('');
+}
+
+function bindColumnResize() {
+  const table = els.inventoryBody?.closest('table');
+  if (!table) return;
+  const definitions = Object.fromEntries(TABLE_COLUMNS.map((column) => [column.key, column]));
+  table.querySelectorAll('thead th[data-col]').forEach((th) => {
+    const column = definitions[th.dataset.col];
+    if (!column || th.querySelector('.col-resizer')) return;
+    th.style.position = 'relative';
+    const resizer = document.createElement('div');
+    resizer.className = 'col-resizer';
+    th.appendChild(resizer);
+    let startX = 0;
+    let startW = 0;
+    let colEl = null;
+    resizer.addEventListener('mousedown', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      startX = event.pageX;
+      colEl = table.querySelector(`col[data-col="${th.dataset.col}"]`);
+      startW = colEl ? colEl.getBoundingClientRect().width : th.getBoundingClientRect().width;
+      resizer.classList.add('dragging');
+      document.body.style.cursor = 'col-resize';
+      document.body.style.userSelect = 'none';
+      const onMove = (moveEvent) => {
+        const width = Math.min(column.max, Math.max(column.min, startW + moveEvent.pageX - startX));
+        if (colEl) colEl.style.width = `${width}px`;
+      };
+      const onUp = () => {
+        if (colEl) {
+          const width = Number.parseFloat(colEl.style.width);
+          if (Number.isFinite(width)) {
+            columnWidths[th.dataset.col] = Math.round(width);
+            saveColumnWidths();
+          }
+        }
+        resizer.classList.remove('dragging');
+        document.body.style.cursor = '';
+        document.body.style.userSelect = '';
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+      };
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
+  });
 }
 
 function fillSelect(select, values, firstLabel = '전체') {
@@ -523,6 +606,8 @@ function escapeHtml(value) {
 async function init() {
   state.data = loadDraft(await loadInventoryData());
   recalculateData();
+  renderTableColumns();
+  bindColumnResize();
   renderSummary();
   initializeFilters();
   renderRackOverview();
