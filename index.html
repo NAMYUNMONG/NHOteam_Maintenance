@@ -1,149 +1,924 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NHOteam Lab Maintanence</title>
-  <meta name="description" content="Chemical, Antibody, Product inventory search and update page." />
-  <link rel="stylesheet" href="./styles.css" />
-  <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script defer src="./app.js"></script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NHOteam Lab Inventory</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f7f8fb;--surface:#fff;--surface2:#f1f5f9;
+  --text:#111827;--muted:#64748b;--line:#e2e8f0;
+  --green:#2d6a4f;--green-dark:#1e4d38;--green-light:#e8f5ee;
+  --blue:#2563eb;--blue-dark:#1d4ed8;
+  --warn:#b5451b;--warn-light:#fdf0eb;
+  --danger:#dc2626;--danger-soft:#fee2e2;
+  --radius:14px;--radius-sm:8px;
+  --shadow:0 4px 20px rgba(15,23,42,.08);
+  --sidebar-w:240px;
+  --font:'DM Sans',ui-sans-serif,system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15px;line-height:1.5;}
+
+/* ── SIDEBAR ── */
+.sidebar{position:fixed;inset:0 auto 0 0;width:var(--sidebar-w);background:#111827;color:#e5e7eb;display:flex;flex-direction:column;z-index:40;transition:transform .18s ease;border-right:1px solid #1f2937;}
+.sidebar-header{padding:24px 16px 18px;border-bottom:1px solid #1f2937;}
+.sidebar-header strong{display:block;font-size:16px;color:#fff;letter-spacing:.01em;}
+.sidebar-header span{font-size:12px;color:#94a3b8;margin-top:2px;display:block;}
+.sidebar-nav{padding:14px 10px;display:flex;flex-direction:column;gap:4px;flex:1;overflow-y:auto;}
+.sidebar-nav a{color:#cbd5e1;text-decoration:none;font-size:14px;font-weight:500;padding:9px 12px;border-radius:var(--radius-sm);border:1px solid transparent;display:flex;align-items:center;gap:8px;transition:all .12s;}
+.sidebar-nav a:hover{color:#fff;background:#1e3a5f;border-color:#3b82f6;}
+.sidebar-nav a.active{color:#fff;background:#1e3a8a;border-color:#3b82f6;}
+.sidebar-nav .nav-section{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#475569;padding:10px 12px 4px;}
+.sidebar-footer{padding:14px 16px;border-top:1px solid #1f2937;font-size:12px;color:#64748b;}
+.sidebar-footer strong{display:block;color:#94a3b8;margin-top:3px;font-size:12px;word-break:break-all;}
+.sidebar-toggle{position:fixed;top:16px;left:calc(var(--sidebar-w) + 8px);z-index:50;width:32px;height:32px;border-radius:var(--radius-sm);background:#1f2937;border:1px solid #374151;color:#fff;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:left .18s ease;}
+body.collapsed .sidebar{transform:translateX(-100%);}
+body.collapsed .sidebar-toggle{left:8px;background:var(--green);border-color:var(--green);}
+body.collapsed .page-wrap{margin-left:0;}
+body.collapsed footer{margin-left:0;}
+
+/* ── PAGE WRAP ── */
+.page-wrap{margin-left:var(--sidebar-w);transition:margin-left .18s ease;min-height:100vh;display:flex;flex-direction:column;}
+
+/* ── HEADER ── */
+.site-header{padding:28px 32px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.header-title .eyebrow{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.header-title h1{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:600;line-height:1.1;color:var(--text);}
+.header-title .subtitle{font-size:13px;color:var(--muted);margin-top:6px;}
+.header-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:4px;}
+
+/* ── BUTTONS ── */
+.btn{height:34px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--text);font-family:var(--font);font-size:13px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .12s;white-space:nowrap;text-decoration:none;}
+.btn:hover{border-color:var(--blue);transform:translateY(-1px);}
+.btn-primary{background:var(--blue);color:#fff;border-color:var(--blue);}
+.btn-primary:hover{background:var(--blue-dark);border-color:var(--blue-dark);}
+.btn-green{background:var(--green);color:#fff;border-color:var(--green);}
+.btn-green:hover{background:var(--green-dark);}
+.btn-warn{background:var(--warn);color:#fff;border-color:var(--warn);}
+.btn-danger{color:var(--danger);border-color:var(--danger);background:var(--danger-soft);}
+.btn:disabled{opacity:.4;cursor:default;transform:none;}
+
+/* ── STATS GRID ── */
+.stats-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;padding:0 32px 20px;}
+.stat-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;cursor:pointer;transition:all .12s;text-align:left;font-family:var(--font);width:100%;}
+.stat-card:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:var(--shadow);}
+.stat-card.active{border-color:var(--green);background:var(--green-light);}
+.stat-label{font-size:11px;font-weight:600;color:var(--muted);display:block;margin-bottom:6px;}
+.stat-count{font-size:1.8rem;font-weight:600;color:var(--text);display:block;font-family:var(--mono);}
+.stat-card.active .stat-count{color:var(--green);}
+
+/* ── TOOLBAR ── */
+.toolbar{display:flex;gap:10px;padding:0 32px 16px;flex-wrap:wrap;align-items:flex-end;}
+.search-wrap{flex:1;min-width:240px;position:relative;}
+.search-wrap input{width:100%;height:38px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 12px 0 36px;font-family:var(--font);font-size:14px;background:var(--surface);color:var(--text);outline:none;}
+.search-wrap input:focus{border-color:var(--green);}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px;pointer-events:none;}
+.filter-group{display:flex;flex-direction:column;gap:4px;}
+.filter-label{font-size:11px;font-weight:600;color:var(--muted);}
+.filter-select{height:38px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 10px;font-family:var(--font);font-size:13px;background:var(--surface);color:var(--text);outline:none;cursor:pointer;min-width:140px;}
+.filter-select:focus{border-color:var(--green);}
+
+/* ── SELECTED BAR ── */
+.selected-bar{display:none;align-items:center;gap:10px;padding:8px 32px;background:var(--green-light);border-top:1px solid #b7dfc9;border-bottom:1px solid #b7dfc9;font-size:13px;color:var(--green);font-weight:500;}
+.selected-bar.visible{display:flex;}
+.unsaved-bar{display:none;align-items:center;gap:10px;padding:7px 32px;background:var(--warn-light);border-bottom:1px solid #f0b8a0;font-size:13px;color:var(--warn);font-weight:500;}
+.unsaved-bar.visible{display:flex;}
+
+/* ── TABLE ── */
+.table-section{padding:0 32px;flex:1;}
+.table-status{font-size:12px;color:var(--muted);font-family:var(--mono);margin-bottom:8px;}
+.table-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+.table-scroll{overflow:auto;max-height:calc(100vh - 340px);}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:900px;}
+thead th{background:var(--surface2);padding:9px 12px;text-align:left;font-size:12px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;}
+thead th:hover{color:var(--text);}
+thead th.sort-asc::after{content:' ↑';}
+thead th.sort-desc::after{content:' ↓';}
+thead th:first-child{width:40px;cursor:default;}
+tbody tr{border-bottom:1px solid var(--line);transition:background .1s;cursor:pointer;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:#f8fafc;}
+tbody tr.selected{background:var(--green-light);}
+tbody td{padding:10px 12px;vertical-align:middle;}
+tbody td:first-child{text-align:center;cursor:default;}
+.cell-name{font-weight:600;color:var(--text);font-size:14px;}
+.cell-sub{font-size:12px;color:var(--muted);margin-top:1px;}
+.cell-mono{font-family:var(--mono);font-size:12px;color:var(--muted);}
+.badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:600;white-space:nowrap;}
+.badge-cat{background:#f1f5f9;color:#475569;}
+.badge-rt{background:#f0ede8;color:#6b6760;}
+.badge-4c{background:#e8f5ee;color:#2d6a4f;}
+.badge-20c{background:#eaf1fb;color:#1d4e89;}
+.badge-80c{background:#edf2ff;color:#3730a3;}
+.badge-ln2{background:#f0f0ff;color:#4338ca;}
+.badge-low{background:var(--warn-light);color:var(--warn);}
+.app-tags{display:flex;gap:3px;flex-wrap:wrap;}
+.app-tag{font-size:10px;padding:2px 6px;border-radius:3px;background:var(--surface2);color:var(--muted);border:1px solid var(--line);}
+.msds-link{font-size:12px;color:var(--green);text-decoration:none;font-family:var(--mono);font-weight:500;}
+.msds-link:hover{text-decoration:underline;}
+.empty{padding:48px;text-align:center;color:var(--muted);font-size:14px;}
+
+/* ── MAIN PAGE STATS ── */
+.mainpage-notice{margin:0 32px 20px;padding:14px 18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);color:var(--muted);font-size:13px;line-height:1.7;}
+.mainpage-notice strong{color:var(--text);}
+.mainpage-notice code{background:var(--surface2);border-radius:4px;padding:1px 6px;font-family:var(--mono);font-size:12px;}
+
+/* ── SIDE PANEL ── */
+.panel-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(15,23,42,.3);}
+.panel-overlay.open{display:block;}
+.side-panel{position:fixed;top:0;right:-500px;width:500px;max-width:96vw;height:100vh;background:var(--surface);border-left:1px solid var(--line);z-index:101;display:flex;flex-direction:column;transition:right .22s ease;box-shadow:var(--shadow);}
+.side-panel.open{right:0;}
+.panel-header{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;flex-shrink:0;}
+.panel-header-info .panel-title{font-weight:600;font-size:15px;}
+.panel-header-info .panel-id{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px;}
+.panel-close{width:30px;height:30px;border:none;background:none;cursor:pointer;color:var(--muted);font-size:20px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;}
+.panel-close:hover{background:var(--surface2);}
+.panel-body{flex:1;overflow-y:auto;padding:20px;}
+.panel-footer{padding:14px 20px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end;flex-shrink:0;}
+.panel-section{margin-bottom:22px;}
+.panel-section-title{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.field-row.full{grid-template-columns:1fr;}
+.field-group{display:flex;flex-direction:column;gap:4px;}
+.field-label{font-size:12px;font-weight:600;color:var(--muted);}
+.field-value{font-size:14px;color:var(--text);padding:4px 0;}
+.field-input{height:36px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 10px;font-family:var(--font);font-size:14px;background:var(--bg);color:var(--text);outline:none;width:100%;}
+.field-input:focus{border-color:var(--green);}
+.field-select{height:36px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 8px;font-family:var(--font);font-size:14px;background:var(--bg);color:var(--text);outline:none;width:100%;cursor:pointer;}
+.field-select:focus{border-color:var(--green);}
+.field-textarea{border:1px solid var(--line);border-radius:var(--radius-sm);padding:8px 10px;font-family:var(--font);font-size:14px;background:var(--bg);color:var(--text);outline:none;width:100%;resize:vertical;min-height:64px;}
+.field-textarea:focus{border-color:var(--green);}
+.field-readonly{font-size:14px;color:var(--muted);background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:7px 10px;font-family:var(--mono);}
+.app-checkboxes{display:flex;flex-wrap:wrap;gap:6px;}
+.app-chip{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--muted);cursor:pointer;padding:4px 10px;border:1px solid var(--line);border-radius:999px;user-select:none;transition:all .1s;}
+.app-chip.checked{background:var(--green-light);border-color:#b7dfc9;color:var(--green);font-weight:600;}
+.low-toggle{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text);cursor:pointer;padding:8px 10px;border:1px solid var(--line);border-radius:var(--radius-sm);user-select:none;}
+.low-toggle:hover{background:var(--surface2);}
+.toggle-dot{width:30px;height:17px;background:var(--line);border-radius:9px;position:relative;transition:background .2s;flex-shrink:0;}
+.toggle-dot.on{background:var(--green);}
+.toggle-dot::after{content:'';position:absolute;width:13px;height:13px;background:#fff;border-radius:50%;top:2px;left:2px;transition:left .2s;}
+.toggle-dot.on::after{left:15px;}
+
+/* ── ORDER MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:200;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--surface);border-radius:var(--radius);border:1px solid var(--line);width:580px;max-width:96vw;max-height:82vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow);}
+.modal-header{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
+.modal-title{font-weight:600;font-size:15px;}
+.modal-body{padding:16px 20px;overflow-y:auto;flex:1;}
+.modal-footer{padding:12px 20px;border-top:1px solid var(--line);display:flex;gap:8px;align-items:center;justify-content:flex-end;}
+.order-item{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);}
+.order-item:last-child{border-bottom:none;}
+.order-item-name{font-weight:600;font-size:14px;}
+.order-item-meta{font-size:12px;color:var(--muted);margin-top:2px;}
+.qty-input{width:60px;height:32px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 8px;font-family:var(--font);font-size:14px;text-align:center;background:var(--bg);}
+.order-preview{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;font-family:var(--mono);font-size:12px;line-height:1.9;white-space:pre-wrap;margin-top:12px;max-height:160px;overflow-y:auto;}
+.copy-success{font-size:12px;color:var(--green);font-weight:600;display:none;}
+
+/* ── ACTIONS PANEL ── */
+.actions-panel{padding:0 32px 16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.upload-label{height:34px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--text);font-family:var(--font);font-size:13px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .12s;}
+.upload-label:hover{border-color:var(--blue);}
+#fileInput{display:none;}
+
+/* ── FOOTER ── */
+footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);transition:margin-left .18s ease;}
+
+/* ── LOW STOCK TAB BADGE ── */
+.nav-badge{background:var(--warn-light);color:var(--warn);font-size:10px;font-family:var(--mono);padding:1px 6px;border-radius:999px;margin-left:auto;}
+
+@media(max-width:900px){
+  .stats-grid{grid-template-columns:repeat(3,1fr);}
+  body.collapsed .stats-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .site-header{padding:20px 16px 14px;}
+  .toolbar,.actions-panel,.table-section,.stats-grid,.mainpage-notice{padding-left:16px;padding-right:16px;}
+}
+</style>
 </head>
 <body>
-  <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-controls="sidebar" aria-expanded="true"><<</button>
 
-  <aside id="sidebar" class="sidebar" aria-label="page navigation">
-    <div class="sidebar-header">
-      <strong>NHOteam</strong>
-      <span>Inventory</span>
-    </div>
-    <nav class="sidebar-nav">
-      <a href="#mainpage" data-view="Mainpage" class="active">Mainpage</a>
-      <a href="#chemical" data-view="Chemical">Chemical</a>
-      <a href="#antibody" data-view="Antibody">Antibody</a>
-      <a href="#product" data-view="Product">Product</a>
-    </nav>
-    <div class="sidebar-data-status">
-      <span>기준 데이터</span>
-      <strong id="lastUpdated">로딩 중...</strong>
-    </div>
-  </aside>
+<button class="sidebar-toggle" id="sidebarToggle" aria-label="toggle sidebar">☰</button>
 
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <strong>NHOteam</strong>
+    <span>Lab Inventory</span>
+  </div>
+  <nav class="sidebar-nav" id="sidebarNav">
+    <span class="nav-section">Views</span>
+    <a href="#" data-view="Mainpage" class="active">🏠 Home</a>
+    <span class="nav-section">Categories</span>
+    <a href="#" data-view="Chemical">⚗️ Chemical</a>
+    <a href="#" data-view="Cell Culture">🧫 Cell Culture</a>
+    <a href="#" data-view="Antibody/Protein">🧪 Antibody & Protein</a>
+    <a href="#" data-view="Kit/Assay">🧰 Kit & Assay</a>
+    <a href="#" data-view="Consumable">🗂 Consumable</a>
+    <a href="#" data-view="Equipment">🔧 Equipment</a>
+    <span class="nav-section">Special</span>
+    <a href="#" data-view="Low Stock">⚠️ Low Stock <span class="nav-badge" id="lowStockBadge">0</span></a>
+    <a href="#" data-view="Cell Stocks">🧊 Cell Stocks</a>
+    <a href="#" data-view="Duties">📋 Lab Duties</a>
+  </nav>
+  <div class="sidebar-footer">
+    <span>Data source</span>
+    <strong id="lastUpdated">Loading…</strong>
+  </div>
+</aside>
+
+<div class="page-wrap">
   <header class="site-header">
-    <div>
+    <div class="header-title">
       <p class="eyebrow">Team Inventory</p>
-      <h1>NHOteam Lab Maintanence</h1>
-      <p class="subtitle">Chemical · Antibody · Product 통합 검색 및 목록 관리</p>
+      <h1>NHOteam Lab Maintenance</h1>
+      <p class="subtitle">Chemical · Antibody · Cell Culture · Kits · Consumables</p>
     </div>
     <div class="header-actions">
-      <a class="primary-button" href="./data/inventory.json" download>원본 JSON</a>
+      <div class="selected-bar" id="selectedBar">
+        <span id="selectedCount">0</span> selected
+        <button class="btn btn-green" id="openOrderBtn" disabled>Generate order</button>
+        <button class="btn" id="clearSelBtn">Clear</button>
+      </div>
+      <button class="btn btn-primary" id="addItemBtn">+ Add item</button>
+      <button class="btn" id="exportBtn">Export JSON</button>
+      <button class="btn" id="resetBtn">Reset to saved</button>
+      <button class="btn" id="langBtn"><span id="langEN" class="active" style="color:var(--green);font-weight:600">EN</span> / <span id="langKR">KR</span></button>
     </div>
   </header>
 
-  <main>
-    <section class="notice">
-      <strong>운영 방식:</strong>
-      이 사이트는 GitHub Pages용 정적 웹사이트입니다. 웹에서 수정한 내용은 현재 브라우저에 자동 임시 저장됩니다.
-      팀 전체 데이터에 반영하려면 <code>data/inventory.json</code>을 갱신하여 GitHub에 커밋하세요.
-    </section>
+  <!-- STATS -->
+  <div class="stats-grid" id="statsGrid">
+    <button class="stat-card" data-view="Chemical"><span class="stat-label">Chemical</span><span class="stat-count" id="sc-Chemical">—</span></button>
+    <button class="stat-card" data-view="Cell Culture"><span class="stat-label">Cell Culture</span><span class="stat-count" id="sc-CellCulture">—</span></button>
+    <button class="stat-card" data-view="Antibody/Protein"><span class="stat-label">Antibody & Protein</span><span class="stat-count" id="sc-Antibody">—</span></button>
+    <button class="stat-card" data-view="Kit/Assay"><span class="stat-label">Kit & Assay</span><span class="stat-count" id="sc-Kit">—</span></button>
+    <button class="stat-card" data-view="Consumable"><span class="stat-label">Consumable</span><span class="stat-count" id="sc-Consumable">—</span></button>
+    <button class="stat-card" data-view="Equipment"><span class="stat-label">Equipment</span><span class="stat-count" id="sc-Equipment">—</span></button>
+  </div>
 
-    <section class="stats-grid" aria-label="inventory summary">
-      <article class="stat-card">
-        <span class="stat-label">전체</span>
-        <strong id="statTotal">0</strong>
-      </article>
-      <button class="stat-card category-card" type="button" data-view="Chemical">
-        <span class="stat-label">Chemical</span>
-        <strong id="statChemical">0</strong>
-      </button>
-      <button class="stat-card category-card" type="button" data-view="Antibody">
-        <span class="stat-label">Antibody</span>
-        <strong id="statAntibody">0</strong>
-      </button>
-      <button class="stat-card category-card" type="button" data-view="Product">
-        <span class="stat-label">Product</span>
-        <strong id="statProduct">0</strong>
-      </button>
-    </section>
+  <!-- NOTICE (mainpage only) -->
+  <div class="mainpage-notice" id="mainpageNotice">
+    <strong>How this works:</strong> This is a static GitHub Pages site. Edits save to your browser automatically.
+    To update for the whole team, export <code>data/inventory.json</code> and commit to GitHub.
+    Use the Excel → <code>convert_excel_to_json.py</code> workflow for bulk updates.
+  </div>
 
-    <section class="actions-panel">
-      <div class="action-group">
-        <button id="addItemBtn" class="primary-button" type="button">신규 항목 추가</button>
-      </div>
-      <div class="upload-box">
-        <label for="fileInput">JSON/CSV/Excel 업로드 병합</label>
-        <input id="fileInput" type="file" accept=".json,.csv,.xlsx,.xls" />
-        <small>Excel 업로드는 Chemical/Antibody/Product 탭 또는 동일 컬럼명을 가진 시트를 인식합니다.</small>
-      </div>
-    </section>
+  <!-- UNSAVED BAR -->
+  <div class="unsaved-bar" id="unsavedBar">
+    ⚠ Unsaved local changes —
+    <button class="btn btn-warn" id="exportBtn2" style="height:26px;font-size:12px;">Export JSON</button>
+  </div>
 
-    <section class="toolbar">
-      <label class="search-box">
-        <span>통합 검색</span>
-        <input id="searchInput" type="search" placeholder="예: NaCl, anti-GFP, CST #1, 4℃, Cat No." autocomplete="off" />
-      </label>
+  <!-- ACTIONS -->
+  <div class="actions-panel" id="actionsPanel" style="display:none">
+    <label class="upload-label" for="fileInput">📂 Upload JSON / Excel to merge</label>
+    <input type="file" id="fileInput" accept=".json,.xlsx,.xls,.csv">
+    <span style="font-size:12px;color:var(--muted)">Merges by Item_ID</span>
+  </div>
 
-      <label id="categoryFilterLabel">
-        <span>Category</span>
-        <select id="categoryFilter">
-          <option value="">전체</option>
-          <option value="Chemical">Chemical</option>
-          <option value="Antibody">Antibody</option>
-          <option value="Product">Product</option>
-        </select>
-      </label>
+  <!-- TOOLBAR -->
+  <div class="toolbar" id="toolbarWrap" style="display:none">
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input type="search" id="searchInput" placeholder="Search name, Cat#, CAS, manufacturer…" autocomplete="off">
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Subcategory</span>
+      <select class="filter-select" id="subcatFilter"><option value="">All</option></select>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Storage</span>
+      <select class="filter-select" id="storageFilter">
+        <option value="">All</option>
+        <option>RT</option><option>4°C</option><option>-20°C</option><option>-80°C</option><option>LN2</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Location</span>
+      <select class="filter-select" id="locationFilter">
+        <option value="">All</option>
+        <option>Yellow Cabinet</option><option>Cabinet</option>
+        <option>Fridge</option><option>Fridge 2</option>
+        <option>Freezer</option><option>Freezer 2</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Sort</span>
+      <select class="filter-select" id="sortSelect">
+        <option value="Item_Name">Name</option>
+        <option value="Manufacturer">Manufacturer</option>
+        <option value="Storage">Storage</option>
+        <option value="Item_ID">ID</option>
+        <option value="Subcategory">Subcategory</option>
+      </select>
+    </div>
+  </div>
 
-      <label>
-        <span>Storage</span>
-        <select id="storageFilter">
-          <option value="">전체</option>
-        </select>
-      </label>
-
-      <label>
-        <span>정렬</span>
-        <select id="sortSelect">
-          <option value="Category">Category</option>
-          <option value="Item_Name">Item_Name</option>
-          <option value="Manufacturer">Manufacturer</option>
-          <option value="Storage">Storage</option>
-          <option value="Item_ID">Item_ID</option>
-        </select>
-      </label>
-    </section>
-
-    <section class="status-row">
-      <p id="resultCount">검색 결과 0개</p>
-    </section>
-
-    <section class="table-card">
+  <!-- TABLE -->
+  <div class="table-section" id="tableSection" style="display:none">
+    <div class="table-status" id="tableStatus"></div>
+    <div class="table-wrap">
       <div class="table-scroll">
-        <table id="inventoryTable">
-          <thead></thead>
-          <tbody></tbody>
+        <table id="mainTable">
+          <thead><tr id="tableHead"></tr></thead>
+          <tbody id="tableBody"></tbody>
         </table>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
 
-  <dialog id="itemDialog">
-    <form id="itemForm" method="dialog">
-      <div class="dialog-header">
-        <h2 id="dialogTitle">항목 편집</h2>
-        <button id="closeDialogBtn" class="icon-button" type="button" aria-label="close">×</button>
+  <!-- PLACEHOLDER VIEWS -->
+  <div id="cellStocksView" style="display:none;padding:32px">
+    <div style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:48px;text-align:center;color:var(--muted)">
+      <strong style="display:block;font-size:15px;color:var(--text);margin-bottom:6px">Cell Stocks</strong>
+      Section coming soon — schema ready, awaiting data.
+    </div>
+  </div>
+  <div id="dutiesView" style="display:none;padding:32px">
+    <div style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:48px;text-align:center;color:var(--muted)">
+      <strong style="display:block;font-size:15px;color:var(--text);margin-bottom:6px">Lab Duties</strong>
+      Coming soon.
+    </div>
+  </div>
+
+  <footer>Static GitHub Pages · <code>data/inventory.json</code> · NHOteam</footer>
+</div>
+
+<!-- SIDE PANEL -->
+<div class="panel-overlay" id="panelOverlay"></div>
+<div class="side-panel" id="sidePanel">
+  <div class="panel-header">
+    <div class="panel-header-info">
+      <div class="panel-title" id="panelTitle">Item</div>
+      <div class="panel-id" id="panelId"></div>
+    </div>
+    <button class="panel-close" id="panelClose">×</button>
+  </div>
+  <div class="panel-body" id="panelBody"></div>
+  <div class="panel-footer">
+    <button class="btn" id="panelCancel">Cancel</button>
+    <button class="btn btn-primary" id="panelSave">Save</button>
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">Generate order</span>
+      <button class="panel-close" id="closeOrderModal">×</button>
+    </div>
+    <div class="modal-body">
+      <div id="orderItemsList"></div>
+      <div class="order-preview" id="orderPreview"></div>
+    </div>
+    <div class="modal-footer">
+      <span class="copy-success" id="copySuccess">Copied!</span>
+      <button class="btn" id="copyOrderBtn">Copy to clipboard</button>
+      <button class="btn" id="closeOrderBtn">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
+<script>
+const STORAGE_KEY = 'l1521_inventory_v2';
+const MSDS_CATS   = new Set(['Chemical','Kit/Assay','Antibody/Protein']);
+const APPS        = ['WB','Cell Culture','PCR/qPCR','Histology/Staining','Animal Surgery','General'];
+const CATEGORIES  = ['Chemical','Cell Culture','Antibody/Protein','Kit/Assay','Consumable','Equipment'];
+const SUBCATS = {
+  'Chemical':['Solvent','Acid/Alkali','Salt/Buffer reagent','Fixative','Single compound/Natural product','Pathway inhibitor/Activator','Stain/Dye','Standard/Reference','Assay reagent','Other'],
+  'Cell Culture':['Medium','Serum','Supplement/Additive','Antibiotic','Primary cell/Cell kit','Equipment treatment'],
+  'Antibody/Protein':['Primary antibody','Secondary antibody','Recombinant protein/Cytokine'],
+  'Kit/Assay':['Assay kit – enzymatic','Assay kit – ELISA','Staining kit','Extraction kit','PCR/qPCR reagent'],
+  'Consumable':['Tips, Tubes & Reservoirs','Plates & Dishes','Flasks','Pipettes & Aids','Bottles & Vials','Gloves/PPE','Tape, Labels & Paper','Boxes & Racks','Syringes & Needles','Beads/Homogenization','Surgery tools & Consumables','WB equipment & consumables','Cleaning/Maintenance','Other'],
+  'Equipment':['Scale/Balance','Pump/Vacuum','Other instrument'],
+};
+const LOCATIONS = ['Yellow Cabinet','Cabinet','Fridge','Fridge 2','Freezer','Freezer 2'];
+const STORAGE_BADGE = {'RT':'badge-rt','4°C':'badge-4c','-20°C':'badge-20c','-80°C':'badge-80c','LN2':'badge-ln2'};
+const INVENTORY_VIEWS = new Set(['Chemical','Cell Culture','Antibody/Protein','Kit/Assay','Consumable','Equipment','Low Stock']);
+
+let lang='en', items=[], sourceMeta={}, selectedIds=new Set();
+let activeView='Mainpage', sortCol='Item_Name', sortDir=1, hasUnsaved=false;
+let panelMode='view', panelItemId=null;
+
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const norm=v=>String(v??'').trim();
+
+// ── DATA ──────────────────────────────────────────────────────
+async function loadData(){
+  const saved=localStorage.getItem(STORAGE_KEY);
+  if(saved){
+    try{const p=JSON.parse(saved);sourceMeta=p.meta||{};items=p.items||[];$('lastUpdated').textContent=(sourceMeta.source_file||'inventory.json')+' (browser draft)';
+    }catch(e){localStorage.removeItem(STORAGE_KEY);}
+  }
+  if(!items.length){
+    try{
+      const r=await fetch('./data/inventory.json',{cache:'no-store'});
+      const d=await r.json();
+      sourceMeta=d.meta||{};items=d.items||[];
+      $('lastUpdated').textContent=sourceMeta.source_file||'inventory.json';
+    }catch(e){$('lastUpdated').textContent='Failed to load data';}
+  }
+  render();
+}
+
+function saveLocal(){
+  const p={meta:{...sourceMeta,updated_in_browser_at:new Date().toISOString(),record_count:items.length},items};
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(p));
+  hasUnsaved=true;$('unsavedBar').classList.add('visible');
+  $('lastUpdated').textContent=(sourceMeta.source_file||'inventory.json')+' (browser draft)';
+}
+
+function exportJSON(){
+  const p={meta:{...sourceMeta,exported_at:new Date().toISOString(),record_count:items.length},items};
+  const blob=new Blob([JSON.stringify(p,null,2)],{type:'application/json;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='inventory.json';a.click();
+}
+
+function resetToSaved(){
+  if(!confirm('Discard browser edits and reload from saved JSON?'))return;
+  localStorage.removeItem(STORAGE_KEY);location.reload();
+}
+
+// ── FILTER / SORT ─────────────────────────────────────────────
+function getViewItems(){
+  if(activeView==='Low Stock') return items.filter(i=>i.Low_Stock);
+  if(INVENTORY_VIEWS.has(activeView)) return items.filter(i=>i.Category===activeView);
+  return items;
+}
+
+function applyFilters(base){
+  const q=norm($('searchInput')?.value||'').toLowerCase();
+  const sub=norm($('subcatFilter')?.value||'');
+  const stor=norm($('storageFilter')?.value||'');
+  const loc=norm($('locationFilter')?.value||'');
+  let r=base;
+  if(sub) r=r.filter(i=>norm(i.Subcategory)===sub);
+  if(stor) r=r.filter(i=>norm(i.Storage)===stor);
+  if(loc) r=r.filter(i=>norm(i.Location)===loc);
+  if(q) r=r.filter(i=>{
+    const h=Object.values(i).map(v=>Array.isArray(v)?v.join(' '):norm(v)).join(' ').toLowerCase();
+    return h.includes(q);
+  });
+  r=[...r].sort((a,b)=>{
+    const av=norm(a[sortCol]??'').toLowerCase(),bv=norm(b[sortCol]??'').toLowerCase();
+    return av<bv?-sortDir:av>bv?sortDir:0;
+  });
+  return r;
+}
+
+// ── RENDER ────────────────────────────────────────────────────
+function render(){
+  updateStats();
+  updateNav();
+
+  const isInventory=INVENTORY_VIEWS.has(activeView)||activeView==='Mainpage';
+  $('mainpageNotice').style.display=activeView==='Mainpage'?'':'none';
+  $('toolbarWrap').style.display=INVENTORY_VIEWS.has(activeView)?'':'none';
+  $('actionsPanel').style.display=INVENTORY_VIEWS.has(activeView)?'':'none';
+  $('tableSection').style.display=INVENTORY_VIEWS.has(activeView)?'':'none';
+  $('cellStocksView').style.display=activeView==='Cell Stocks'?'':'none';
+  $('dutiesView').style.display=activeView==='Duties'?'':'none';
+  $('statsGrid').style.display=activeView==='Mainpage'?'':'none';
+
+  if(INVENTORY_VIEWS.has(activeView)){
+    updateSubcatFilter();
+    renderTable();
+  }
+  updateSelection();
+}
+
+function updateStats(){
+  const counts={};
+  CATEGORIES.forEach(c=>counts[c]=0);
+  items.forEach(i=>{if(counts[i.Category]!==undefined)counts[i.Category]++;});
+  $('sc-Chemical').textContent=counts['Chemical'];
+  $('sc-CellCulture').textContent=counts['Cell Culture'];
+  $('sc-Antibody').textContent=counts['Antibody/Protein'];
+  $('sc-Kit').textContent=counts['Kit/Assay'];
+  $('sc-Consumable').textContent=counts['Consumable'];
+  $('sc-Equipment').textContent=counts['Equipment'];
+  const low=items.filter(i=>i.Low_Stock).length;
+  $('lowStockBadge').textContent=low;
+}
+
+function updateNav(){
+  document.querySelectorAll('[data-view]').forEach(el=>{
+    el.classList.toggle('active',el.dataset.view===activeView);
+  });
+}
+
+function updateSubcatFilter(){
+  const sel=$('subcatFilter');
+  const cur=sel.value;
+  const cat=activeView==='Low Stock'?null:activeView;
+  const opts=cat&&SUBCATS[cat]?SUBCATS[cat]:Object.values(SUBCATS).flat();
+  sel.innerHTML='<option value="">All subcategories</option>'+
+    [...new Set(opts)].map(s=>`<option value="${esc(s)}"${s===cur?' selected':''}>${esc(s)}</option>`).join('');
+}
+
+function renderTable(){
+  const base=getViewItems();
+  const rows=applyFilters(base);
+  $('tableStatus').textContent=`${rows.length} items${activeView!=='Mainpage'?' in '+activeView:''}`;
+
+  const cols=['Item_ID','Item_Name','Subcategory','Manufacturer','Cat_No','Storage','Location','Sub_Location','Current_Stock','Application','MSDS'];
+  const labels={'Item_ID':'ID','Item_Name':'Item','Subcategory':'Subcategory','Manufacturer':'Manufacturer','Cat_No':'Cat#','Storage':'Storage','Location':'Location','Sub_Location':'Sub-loc','Current_Stock':'Stock','Application':'Application','MSDS':'MSDS'};
+
+  $('tableHead').innerHTML=`<th><input type="checkbox" id="selectAll"></th>`+
+    cols.map(c=>`<th data-sort="${c}">${labels[c]}</th>`).join('');
+
+  if(!rows.length){
+    $('tableBody').innerHTML=`<tr><td colspan="${cols.length+1}"><div class="empty">No items found</div></td></tr>`;
+    bindTableEvents();return;
+  }
+
+  $('tableBody').innerHTML=rows.map(item=>{
+    const sel=selectedIds.has(item.Item_ID);
+    const loc=[item.Location,item.Sub_Location].filter(Boolean).join(' › ');
+    const storageCls=STORAGE_BADGE[norm(item.Storage)]||'badge-rt';
+    const apps=Array.isArray(item.Application)?item.Application:[];
+    let msds='—';
+    if(MSDS_CATS.has(item.Category)){
+      if(item.MSDS_URL) msds=`<a class="msds-link" href="${esc(item.MSDS_URL)}" target="_blank">SDS ↗</a>`;
+      else if(item.CAS_No) msds=`<a class="msds-link" href="https://pubchem.ncbi.nlm.nih.gov/compound/${encodeURIComponent(item.CAS_No)}#section=Safety-and-Hazards" target="_blank">SDS ↗</a>`;
+      else msds=`<span style="color:var(--warn);font-size:12px">missing</span>`;
+    }
+    return `<tr class="${sel?'selected':''}" data-id="${esc(item.Item_ID)}">
+      <td><input type="checkbox" class="row-check" data-id="${esc(item.Item_ID)}" ${sel?'checked':''}></td>
+      <td><span class="cell-mono">${esc(item.Item_ID||'—')}</span></td>
+      <td><div class="cell-name">${esc(item.Item_Name||'—')}</div><div class="cell-sub">${esc(item.Manufacturer||'')}</div></td>
+      <td>${item.Subcategory?`<span class="badge badge-cat">${esc(item.Subcategory)}</span>`:'—'}</td>
+      <td style="font-size:13px">${esc(item.Manufacturer||'—')}</td>
+      <td><span class="cell-mono">${esc(item.Cat_No||'—')}</span></td>
+      <td><span class="badge ${storageCls}">${esc(item.Storage||'—')}</span></td>
+      <td style="font-size:13px">${esc(loc||'—')}</td>
+      <td>${item.Low_Stock?'<span class="badge badge-low">low</span> ':''}<span style="font-size:13px;color:var(--muted)">${item.Current_Stock!=null?item.Current_Stock:'—'}</span></td>
+      <td>${apps.length?`<div class="app-tags">${apps.map(a=>`<span class="app-tag">${esc(a)}</span>`).join('')}</div>`:'—'}</td>
+      <td>${msds}</td>
+    </tr>`;
+  }).join('');
+
+  bindTableEvents();
+}
+
+function bindTableEvents(){
+  document.querySelectorAll('.row-check').forEach(cb=>{
+    cb.addEventListener('change',e=>{
+      e.stopPropagation();
+      const id=e.target.dataset.id;
+      e.target.checked?selectedIds.add(id):selectedIds.delete(id);
+      updateSelection();
+      e.target.closest('tr').classList.toggle('selected',e.target.checked);
+    });
+  });
+  document.querySelectorAll('tbody tr[data-id]').forEach(tr=>{
+    tr.addEventListener('click',e=>{
+      if(e.target.type==='checkbox') return;
+      openPanel('view',tr.dataset.id);
+    });
+  });
+  const sa=$('selectAll');
+  if(sa) sa.addEventListener('change',e=>{
+    const rows=applyFilters(getViewItems());
+    rows.forEach(i=>{e.target.checked?selectedIds.add(i.Item_ID):selectedIds.delete(i.Item_ID);});
+    updateSelection();renderTable();
+  });
+  document.querySelectorAll('thead th[data-sort]').forEach(th=>{
+    th.addEventListener('click',()=>{
+      const c=th.dataset.sort;
+      if(sortCol===c)sortDir*=-1;else{sortCol=c;sortDir=1;}
+      document.querySelectorAll('thead th').forEach(t=>t.classList.remove('sort-asc','sort-desc'));
+      th.classList.add(sortDir===1?'sort-asc':'sort-desc');
+      renderTable();
+    });
+  });
+}
+
+function updateSelection(){
+  const n=selectedIds.size;
+  $('selectedBar').classList.toggle('visible',n>0);
+  $('selectedCount').textContent=n;
+  $('openOrderBtn').disabled=n===0;
+  $('clearSelBtn').style.display=n?'':'none';
+}
+
+// ── SIDE PANEL ────────────────────────────────────────────────
+function openPanel(mode,id){
+  panelMode=mode;panelItemId=id??null;
+  const item=id?items.find(i=>i.Item_ID===id):null;
+  $('panelTitle').textContent=mode==='add'?'Add new item':mode==='edit'?'Edit item':(item?.Item_Name||'Item');
+  $('panelId').textContent=item?.Item_ID||'';
+  $('panelBody').innerHTML=mode==='view'?viewHTML(item):editHTML(item,mode==='add');
+  $('panelSave').textContent=mode==='view'?'Edit':'Save';
+  $('panelCancel').textContent=mode==='view'?'Close':'Cancel';
+  if(mode!=='view') bindPanelForm();
+  $('panelOverlay').classList.add('open');
+  $('sidePanel').classList.add('open');
+}
+
+function viewHTML(item){
+  if(!item)return'';
+  const f=(label,val,mono=false)=>`<div class="field-group"><div class="field-label">${label}</div><div class="field-value${mono?' cell-mono':''}">${esc(val)||'—'}</div></div>`;
+  const msds=MSDS_CATS.has(item.Category)
+    ?(item.MSDS_URL?`<a class="msds-link" href="${esc(item.MSDS_URL)}" target="_blank">Open SDS ↗</a>`
+    :item.CAS_No?`<a class="msds-link" href="https://pubchem.ncbi.nlm.nih.gov/compound/${encodeURIComponent(item.CAS_No)}#section=Safety-and-Hazards" target="_blank">PubChem SDS ↗</a>`
+    :'<span style="color:var(--warn);font-size:13px">No CAS — add manually</span>'):'—';
+  const apps=Array.isArray(item.Application)?item.Application:[];
+  return `
+    <div class="panel-section"><div class="panel-section-title">Identity</div>
+      <div class="field-row">${f('Category',item.Category)}${f('Subcategory',item.Subcategory||'(unassigned)')}</div>
+      <div class="field-row">${f('Manufacturer',item.Manufacturer)}${f('Cat#',item.Cat_No,true)}</div>
+      <div class="field-row">${f('CAS No.',item.CAS_No,true)}${f('MW kDa',item.MW_kDa)}</div>
+      <div class="field-row full"><div class="field-group"><div class="field-label">MSDS</div><div class="field-value">${msds}</div></div></div>
+    </div>
+    <div class="panel-section"><div class="panel-section-title">Storage & Location</div>
+      <div class="field-row">${f('Storage',item.Storage)}${f('Location',[item.Location,item.Sub_Location].filter(Boolean).join(' › '))}</div>
+      <div class="field-row">${f('Opened',item.Opened_Date)}${f('Expiry',item.Expiry_Date)}</div>
+    </div>
+    <div class="panel-section"><div class="panel-section-title">Stock</div>
+      <div class="field-row">${f('Current stock',item.Current_Stock!=null?String(item.Current_Stock):'—')}${f('Order unit',item.Order_Unit)}</div>
+      <div class="field-row">${f('Quantity size',item.Quantity_Size)}${f('Low stock flag',item.Low_Stock?'⚠ Flagged':'OK')}</div>
+    </div>
+    <div class="panel-section"><div class="panel-section-title">Application</div>
+      <div class="app-tags" style="padding:4px 0">${apps.length?apps.map(a=>`<span class="app-tag">${esc(a)}</span>`).join(''):'—'}</div>
+    </div>
+    <div class="panel-section"><div class="panel-section-title">Other</div>
+      <div class="field-row">${f('Requester',item.Requester)}</div>
+      <div class="field-row full"><div class="field-group"><div class="field-label">Note</div><div class="field-value">${esc(item.Note)||'—'}</div></div></div>
+    </div>`;
+}
+
+function editHTML(item,isAdd){
+  const v=(f,fb='')=>item?.[f]??fb;
+  const inp=(id,val,ph='')=>`<input class="field-input" id="pf-${id}" value="${esc(val)}" placeholder="${ph}">`;
+  const ro=val=>`<div class="field-readonly">${esc(val)||'—'}</div>`;
+  const catVal=v('Category','Chemical');
+  const subcatOpts=['',...(SUBCATS[catVal]||[])];
+  const locVal=v('Location','');
+  const appVal=Array.isArray(v('Application'))?v('Application'):[];
+  return `
+    <div class="panel-section"><div class="panel-section-title">Identity</div>
+      <div class="field-row full"><div class="field-group"><div class="field-label">Item name *</div>${inp('Item_Name',v('Item_Name'),'e.g. Trypsin-EDTA 0.05%')}</div></div>
+      <div class="field-row">
+        <div class="field-group"><div class="field-label">Category *</div>
+          <select class="field-select" id="pf-Category">${CATEGORIES.map(c=>`<option${c===catVal?' selected':''}>${c}</option>`).join('')}</select>
+        </div>
+        <div class="field-group"><div class="field-label">Subcategory</div>
+          <select class="field-select" id="pf-Subcategory">${subcatOpts.map(o=>`<option value="${o}"${o===v('Subcategory')?' selected':''}>${o||'— none —'}</option>`).join('')}</select>
+        </div>
       </div>
-      <div id="formFields" class="form-grid"></div>
-      <menu class="dialog-actions">
-        <button id="deleteItemBtn" class="danger-button" type="button">삭제</button>
-        <span class="spacer"></span>
-        <button type="button" id="cancelBtn">취소</button>
-        <button class="primary-button" id="submitBtn" type="submit">저장</button>
-      </menu>
-    </form>
-  </dialog>
+      <div class="field-row">
+        <div class="field-group"><div class="field-label">Manufacturer</div>${inp('Manufacturer',v('Manufacturer'))}</div>
+        <div class="field-group"><div class="field-label">Cat# ${isAdd?'':'<span style="color:var(--muted);font-weight:400">(read-only)</span>'}</div>${isAdd?inp('Cat_No',v('Cat_No')):ro(v('Cat_No'))}</div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><div class="field-label">CAS No. <span style="color:var(--muted);font-weight:400">(read-only)</span></div>${ro(v('CAS_No'))}</div>
+        <div class="field-group"><div class="field-label">MW kDa</div>${inp('MW_kDa',v('MW_kDa'))}</div>
+      </div>
+      <div class="field-row full"><div class="field-group"><div class="field-label">MSDS URL</div>${inp('MSDS_URL',v('MSDS_URL'),'https://')}</div></div>
+    </div>
+    <div class="panel-section"><div class="panel-section-title">Storage & Location</div>
+      <div class="field-row">
+        <div class="field-group"><div class="field-label">Storage</div>
+          <select class="field-select" id="pf-Storage">
+            ${['RT','4°C','-20°C','-80°C','LN2'].map(s=>`<option${s===v('Storage','RT')?' selected':''}>${s}</option>`).join('')}
+          </select>
+        </div>
+        <div class="field-group"><div class="field-label">Location</div>
+          <select class="field-select" id="pf-Location"><option value="">— none —</option>${LOCATIONS.map(l=>`<option${l===locVal?' selected':''}>${l}</option>`).join('')}</select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><div class="field-label">Sub-location</div>${inp('Sub_Location',v('Sub_Location'))}</div>
+        <div class="field-group"><div class="field-label">Opened date</div>${inp('Opened_Date',v('Opened_Date'),'YYYY.MM.DD')}</div>
+      </div>
+      <div class="field-row full"><div class="field-group"><div class="field-label">Expiry date</div>${inp('Expiry_Date',v('Expiry_Date'),'YYYY.MM.DD')}</div></div>
+    </div>
+    <div class="panel-section"><div class="panel-section-title">Stock</div>
+      <div class="field-row">
+        <div class="field-group"><div class="field-label">Current stock</div>${inp('Current_Stock',v('Current_Stock')!=null?String(v('Current_Stock')):'','0')}</div>
+        <div class="field-group"><div class="field-label">Order unit</div>${inp('Order_Unit',v('Order_Unit'),'e.g. 500mL')}</div>
+      </div>
+      <div class="field-row full">
+        <label class="low-toggle" id="pf-LowToggle">
+          <div class="toggle-dot ${v('Low_Stock')?'on':''}" id="pf-LowDot"></div>
+          Flag as low stock
+        </label>
+      </div>
+    </div>
+    <div class="panel-section"><div class="panel-section-title">Application</div>
+      <div class="app-checkboxes">${APPS.map(a=>`<label class="app-chip${appVal.includes(a)?' checked':''}" data-app="${a}">${a}</label>`).join('')}</div>
+    </div>
+    <div class="panel-section"><div class="panel-section-title">Other</div>
+      <div class="field-row full"><div class="field-group"><div class="field-label">Requester</div>${inp('Requester',v('Requester'))}</div></div>
+      <div class="field-row full"><div class="field-group"><div class="field-label">Note</div><textarea class="field-textarea" id="pf-Note">${esc(v('Note'))}</textarea></div></div>
+    </div>`;
+}
 
-  <footer>
-    <p>Static GitHub Pages package generated from <code>Inventory_Master_CategoryTabs_V4.xlsx</code>.</p>
-  </footer>
+function bindPanelForm(){
+  const catSel=$('pf-Category'),subcatSel=$('pf-Subcategory');
+  if(catSel&&subcatSel) catSel.addEventListener('change',()=>{
+    const opts=['',...(SUBCATS[catSel.value]||[])];
+    subcatSel.innerHTML=opts.map(o=>`<option value="${o}">${o||'— none —'}</option>`).join('');
+  });
+  const ld=$('pf-LowDot'),lt=$('pf-LowToggle');
+  if(lt) lt.addEventListener('click',()=>ld.classList.toggle('on'));
+  document.querySelectorAll('.app-chip').forEach(el=>el.addEventListener('click',()=>el.classList.toggle('checked')));
+}
+
+function collectPanel(){
+  const gv=id=>($(`pf-${id}`)?.value?.trim()||'');
+  const item=panelItemId?{...items.find(i=>i.Item_ID===panelItemId)}:{};
+  item.Item_Name=gv('Item_Name');
+  item.Category=gv('Category')||item.Category||'Chemical';
+  item.Subcategory=gv('Subcategory');
+  item.Manufacturer=gv('Manufacturer');
+  if(panelMode==='add') item.Cat_No=gv('Cat_No');
+  item.MW_kDa=gv('MW_kDa');
+  item.MSDS_URL=gv('MSDS_URL');
+  item.Storage=gv('Storage')||'RT';
+  item.Location=gv('Location');
+  item.Sub_Location=gv('Sub_Location');
+  item.Opened_Date=gv('Opened_Date');
+  item.Expiry_Date=gv('Expiry_Date');
+  const st=gv('Current_Stock');
+  item.Current_Stock=st!==''?Number(st):null;
+  item.Order_Unit=gv('Order_Unit');
+  item.Low_Stock=$('pf-LowDot')?.classList.contains('on')||false;
+  item.Application=[...document.querySelectorAll('.app-chip.checked')].map(el=>el.dataset.app);
+  item.Requester=gv('Requester');
+  item.Note=$('pf-Note')?.value?.trim()||'';
+  return item;
+}
+
+function savePanel(){
+  if(panelMode==='view'){openPanel('edit',panelItemId);return;}
+  const data=collectPanel();
+  if(!data.Item_Name){alert('Item name is required.');return;}
+  if(panelMode==='add'){
+    const prefix={'Chemical':'CHM','Cell Culture':'CC','Antibody/Protein':'ABP','Kit/Assay':'KIT','Consumable':'CON','Equipment':'EQP'}[data.Category]||'ITM';
+    const existing=items.filter(i=>i.Category===data.Category).map(i=>parseInt((i.Item_ID||'0').replace(/\D+/g,''))||0);
+    const maxN=existing.length?Math.max(...existing):0;
+    data.Item_ID=`${prefix}-${String(maxN+1).padStart(4,'0')}`;
+    items.push(data);
+  }else{
+    const idx=items.findIndex(i=>i.Item_ID===panelItemId);
+    if(idx>=0)items[idx]={...items[idx],...data};
+  }
+  saveLocal();closePanel();render();
+}
+
+function closePanel(){
+  $('panelOverlay').classList.remove('open');$('sidePanel').classList.remove('open');
+  panelMode='view';panelItemId=null;
+}
+
+// ── ORDER ─────────────────────────────────────────────────────
+function buildOrderText(){
+  const sel=items.filter(i=>selectedIds.has(i.Item_ID));
+  return sel.map((item,idx)=>{
+    const qty=$(`qty-${item.Item_ID}`)?.value||'1';
+    return `${idx+1}. ${norm(item.Manufacturer)||'?'} / ${norm(item.Item_Name)||'?'} / ${norm(item.Cat_No)||'?'} / ${norm(item.Order_Unit)||'?'} / ${qty}`;
+  }).join('\n');
+}
+
+function openOrderModal(){
+  const sel=items.filter(i=>selectedIds.has(i.Item_ID));
+  $('orderItemsList').innerHTML=sel.map(item=>`
+    <div class="order-item">
+      <div><div class="order-item-name">${esc(item.Item_Name)}</div>
+      <div class="order-item-meta">${esc(item.Manufacturer)} · ${esc(item.Cat_No||'—')} · ${esc(item.Order_Unit||'—')}</div></div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:12px;color:var(--muted)">qty</span>
+        <input class="qty-input" id="qty-${esc(item.Item_ID)}" type="number" min="1" value="1">
+      </div>
+    </div>`).join('');
+  document.querySelectorAll('.qty-input').forEach(inp=>inp.addEventListener('input',()=>$('orderPreview').textContent=buildOrderText()));
+  $('orderPreview').textContent=buildOrderText();
+  $('orderModal').classList.add('open');
+  $('copySuccess').style.display='none';
+}
+
+// ── FILE UPLOAD / MERGE ───────────────────────────────────────
+async function handleUpload(e){
+  const file=e.target.files?.[0];if(!file)return;
+  let imported=[];const lower=file.name.toLowerCase();
+  try{
+    if(lower.endsWith('.json')){const t=await file.text();const p=JSON.parse(t);imported=Array.isArray(p)?p:(p.items||[]);}
+    else if(lower.endsWith('.csv')){imported=parseCsv(await file.text());}
+    else if(lower.endsWith('.xlsx')||lower.endsWith('.xls')){imported=await parseExcel(file);}
+    else{alert('Unsupported file format.');return;}
+    if(!imported.length){alert('No importable items found.');return;}
+    mergeItems(imported);
+  }catch(err){console.error(err);alert('Error reading file.');}
+  finally{e.target.value='';}
+}
+
+async function parseExcel(file){
+  if(!window.XLSX) throw new Error('XLSX not loaded');
+  const wb=XLSX.read(await file.arrayBuffer(),{type:'array'});
+  const imported=[];
+  for(const sn of wb.SheetNames){
+    const rows=XLSX.utils.sheet_to_json(wb.Sheets[sn],{defval:''});
+    for(const row of rows){
+      const n={};for(const[k,v]of Object.entries(row))n[norm(k)]=norm(v);
+      if(n.Item_Name||n.Cat_No)imported.push(n);
+    }
+  }
+  return imported;
+}
+
+function parseCsv(text){
+  const rows=[];let row=[],value='',quote=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i],nx=text[i+1];
+    if(c==='"'&&quote&&nx==='"'){value+='"';i++;}
+    else if(c==='"'){quote=!quote;}
+    else if(c===','&&!quote){row.push(value);value='';}
+    else if((c==='\n'||c==='\r')&&!quote){if(c==='\r'&&nx==='\n')i++;row.push(value);if(row.some(x=>x.trim()))rows.push(row);row=[];value='';}
+    else value+=c;
+  }
+  row.push(value);if(row.some(x=>x.trim()))rows.push(row);
+  const headers=rows.shift().map(norm);
+  return rows.map(line=>Object.fromEntries(headers.map((h,i)=>[h,norm(line[i])])));
+}
+
+function mergeItems(imported){
+  let added=0,updated=0;
+  for(const raw of imported){
+    if(!raw.Item_Name&&!raw.Cat_No)continue;
+    const idx=items.findIndex(i=>i.Item_ID&&i.Item_ID===raw.Item_ID);
+    if(idx>=0){items[idx]={...items[idx],...raw};updated++;}
+    else{items.push(raw);added++;}
+  }
+  saveLocal();render();
+  alert(`Merge complete: ${added} added, ${updated} updated`);
+}
+
+// ── LANGUAGE TOGGLE ───────────────────────────────────────────
+const TRANS={
+  en:{search:'Search name, Cat#, CAS, manufacturer…',addItem:'+ Add item',exportJson:'Export JSON',reset:'Reset to saved',generateOrder:'Generate order',close:'Close'},
+  kr:{search:'이름, 카탈로그#, CAS, 제조사 검색…',addItem:'+ 항목 추가',exportJson:'JSON 내보내기',reset:'저장으로 초기화',generateOrder:'주문 생성',close:'닫기'},
+};
+function applyLang(){
+  const t=TRANS[lang];
+  $('searchInput').placeholder=t.search;
+}
+
+// ── EVENTS ────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',async()=>{
+  $('sidebarToggle').addEventListener('click',()=>document.body.classList.toggle('collapsed'));
+
+  document.querySelectorAll('[data-view]').forEach(el=>{
+    el.addEventListener('click',e=>{
+      e.preventDefault();
+      activeView=el.dataset.view;
+      selectedIds.clear();
+      render();
+    });
+  });
+
+  ['searchInput','subcatFilter','storageFilter','locationFilter','sortSelect'].forEach(id=>{
+    const el=$(id);if(el)el.addEventListener('input',()=>renderTable());
+  });
+
+  $('addItemBtn').addEventListener('click',()=>openPanel('add',null));
+  $('exportBtn').addEventListener('click',exportJSON);
+  $('exportBtn2').addEventListener('click',exportJSON);
+  $('resetBtn').addEventListener('click',resetToSaved);
+  $('clearSelBtn').addEventListener('click',()=>{selectedIds.clear();updateSelection();renderTable();});
+  $('openOrderBtn').addEventListener('click',openOrderModal);
+  $('panelSave').addEventListener('click',savePanel);
+  $('panelCancel').addEventListener('click',()=>{if(panelMode==='view')closePanel();else if(panelMode==='edit')openPanel('view',panelItemId);else closePanel();});
+  $('panelClose').addEventListener('click',closePanel);
+  $('panelOverlay').addEventListener('click',closePanel);
+  $('closeOrderModal').addEventListener('click',()=>$('orderModal').classList.remove('open'));
+  $('closeOrderBtn').addEventListener('click',()=>$('orderModal').classList.remove('open'));
+  $('orderModal').addEventListener('click',e=>{if(e.target===$('orderModal'))$('orderModal').classList.remove('open');});
+  $('copyOrderBtn').addEventListener('click',()=>{
+    navigator.clipboard.writeText($('orderPreview').textContent).then(()=>{
+      $('copySuccess').style.display='inline';setTimeout(()=>$('copySuccess').style.display='none',2000);
+    });
+  });
+  $('fileInput').addEventListener('change',handleUpload);
+
+  $('langBtn').addEventListener('click',()=>{
+    lang=lang==='en'?'kr':'en';
+    $('langEN').style.cssText=lang==='en'?'color:var(--green);font-weight:600':'';
+    $('langKR').style.cssText=lang==='kr'?'color:var(--green);font-weight:600':'';
+    applyLang();
+  });
+
+  await loadData();
+});
+</script>
 </body>
 </html>

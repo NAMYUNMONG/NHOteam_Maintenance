@@ -1,50 +1,73 @@
 {
-  "version": "1.0",
-  "description": "Inventory item schema for Chemical, Antibody, and Product records.",
-  "common_columns": [
-    "Category",
-    "Item_ID",
-    "Manufacturer",
-    "Item_Name",
-    "Cat_No",
-    "Storage"
+  "version": "2.0",
+  "description": "Inventory item schema for L1521 lab inventory. Single-sheet structure from V5 onward.",
+  "generated_from": "Inventory_Master_V7.xlsx — single Inventory sheet",
+  "categories": [
+    "Chemical",
+    "Cell Culture",
+    "Antibody/Protein",
+    "Kit/Assay",
+    "Consumable",
+    "Equipment"
   ],
-  "chemical_columns": [
-    "Category",
+  "all_columns": [
     "Item_ID",
-    "Manufacturer",
-    "Item_Name",
-    "Cat_No",
-    "Storage",
-    "Opened_Date",
-    "Quantity_Size",
-    "Form_Type",
-    "Requester",
-    "Note"
-  ],
-  "antibody_columns": [
     "Category",
-    "Item_ID",
-    "Manufacturer",
+    "Subcategory",
     "Item_Name",
+    "Manufacturer",
     "Cat_No",
+    "CAS_No",
+    "MW_kDa",
+    "Application",
     "Storage",
     "Location",
+    "Sub_Location",
+    "Quantity_Size",
+    "Order_Unit",
+    "Current_Stock",
+    "Low_Stock",
     "Opened_Date",
-    "MW_kDa",
-    "Requester"
+    "Expiry_Date",
+    "Requester",
+    "MSDS_URL",
+    "Note"
   ],
-  "product_columns": [
-    "Category",
-    "Item_ID",
-    "Manufacturer",
-    "Item_Name",
-    "Cat_No",
-    "Storage"
-  ],
+  "field_notes": {
+    "Item_ID": "Stable key — never change. Format: CHM-0001, CC-0001, ABP-0001, KIT-0001, CON-0001, EQP-0001",
+    "Category": "One of the 6 categories above",
+    "Subcategory": "See subcategory tree in Excel dropdown list",
+    "CAS_No": "Chemicals and applicable Kit/Assay items only. Used for auto MSDS lookup via PubChem. Read-only.",
+    "MW_kDa": "Antibody/Protein items only",
+    "Application": "Semicolon-separated in Excel/CSV (e.g. WB;Cell Culture). Stored as list in JSON.",
+    "Storage": "RT / 4C / -20C / -80C / LN2",
+    "Location": "Yellow Cabinet / Cabinet / Fridge / Fridge 2 / Freezer / Freezer 2",
+    "Sub_Location": "Shelf 1-4 for cabinets/fridges/freezers. Box name (e.g. CST #1) for Fridge 2 / Freezer 2.",
+    "Order_Unit": "What one order unit is — used by order generator (e.g. 500mL, 1 box)",
+    "Current_Stock": "Number of units currently on hand. Null if unknown.",
+    "Low_Stock": "Boolean. TRUE if flagged as running low.",
+    "MSDS_URL": "Manual URL fallback if CAS auto-fetch fails.",
+    "Cat_No": "Read-only after first entry — do not change."
+  },
+  "locations": {
+    "Yellow Cabinet": ["Shelf 1", "Shelf 2", "Shelf 3"],
+    "Cabinet": ["Shelf 1", "Shelf 2", "Shelf 3", "Shelf 4"],
+    "Fridge": ["Shelf 1", "Shelf 2"],
+    "Fridge 2": ["box name e.g. Abcam #1, BOX # 1"],
+    "Freezer": ["Shelf 1"],
+    "Freezer 2": ["box name e.g. CST #1, CST #2, CST #3, CST #4"]
+  },
+  "workflow": {
+    "bulk_edit": "Edit Inventory_Master_V*.xlsx → python scripts/convert_excel_to_json.py <input.xlsx> data/inventory.json → commit to GitHub",
+    "single_edit": "Edit via site UI → Export JSON → replace data/inventory.json → commit to GitHub",
+    "new_items": "Add row to Excel with next available Item_ID, or use + Add item on site"
+  },
   "notes": [
-    "Item_ID is used as the stable key for edit/merge/sync.",
-    "GitHub Pages cannot directly save edits to the repository. Export data/inventory.json and commit it to GitHub.",
-    "Google Sheets migration can use the same column names and Category-specific tabs."
+    "Item_ID is the stable merge key — never change it.",
+    "Cat_No and CAS_No are read-only after first entry.",
+    "GitHub Pages is static — edits save to browser localStorage. Export JSON and commit to update the team.",
+    "MSDS auto-links via PubChem using CAS_No. Add MSDS_URL manually for items without CAS.",
+    "Form_Type removed — redundant with Subcategory.",
+    "MW_kDa retained for Antibody/Protein items only."
   ]
 }
