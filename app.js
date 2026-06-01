@@ -513,7 +513,8 @@ function initEvents() {
 
   $("sidebarToggle").addEventListener("click", () => {
     const collapsed = document.body.classList.toggle("sidebar-collapsed");
-    $("sidebarToggle").setAttribute("aria-expanded", String(!collapsed));`n    $("sidebarToggle").textContent = collapsed ? ">>" : "<<";
+    $("sidebarToggle").setAttribute("aria-expanded", String(!collapsed));
+    $("sidebarToggle").textContent = collapsed ? ">>" : "<<";
   });
 
   document.querySelectorAll("[data-view]").forEach((link) => {
