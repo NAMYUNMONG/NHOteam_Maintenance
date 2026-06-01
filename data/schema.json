@@ -4,11 +4,8 @@
   "generated_from": "Inventory_Master_V7.xlsx — single Inventory sheet",
   "categories": [
     "Chemical",
-    "Cell Culture",
     "Antibody/Protein",
-    "Kit/Assay",
-    "Consumable",
-    "Equipment"
+    "Products"
   ],
   "all_columns": [
     "Item_ID",
@@ -34,10 +31,10 @@
     "Note"
   ],
   "field_notes": {
-    "Item_ID": "Stable key — never change. Format: CHM-0001, CC-0001, ABP-0001, KIT-0001, CON-0001, EQP-0001",
-    "Category": "One of the 6 categories above",
+    "Item_ID": "Stable key - never change. Format: CHM-0001, ABP-0001, PRD-0001",
+    "Category": "One of the 3 categories above",
     "Subcategory": "See subcategory tree in Excel dropdown list",
-    "CAS_No": "Chemicals and applicable Kit/Assay items only. Used for auto MSDS lookup via PubChem. Read-only.",
+    "CAS_No": "Chemicals and applicable Products items only. Used for auto MSDS lookup via PubChem. Read-only.",
     "MW_kDa": "Antibody/Protein items only",
     "Application": "Semicolon-separated in Excel/CSV (e.g. WB;Cell Culture). Stored as list in JSON.",
     "Storage": "RT / 4C / -20C / -80C / LN2",
@@ -50,12 +47,30 @@
     "Cat_No": "Read-only after first entry — do not change."
   },
   "locations": {
-    "Yellow Cabinet": ["Shelf 1", "Shelf 2", "Shelf 3"],
-    "Cabinet": ["Shelf 1", "Shelf 2", "Shelf 3", "Shelf 4"],
-    "Fridge": ["Shelf 1", "Shelf 2"],
-    "Fridge 2": ["box name e.g. Abcam #1, BOX # 1"],
-    "Freezer": ["Shelf 1"],
-    "Freezer 2": ["box name e.g. CST #1, CST #2, CST #3, CST #4"]
+    "Yellow Cabinet": [
+      "Shelf 1",
+      "Shelf 2",
+      "Shelf 3"
+    ],
+    "Cabinet": [
+      "Shelf 1",
+      "Shelf 2",
+      "Shelf 3",
+      "Shelf 4"
+    ],
+    "Fridge": [
+      "Shelf 1",
+      "Shelf 2"
+    ],
+    "Fridge 2": [
+      "box name e.g. Abcam #1, BOX # 1"
+    ],
+    "Freezer": [
+      "Shelf 1"
+    ],
+    "Freezer 2": [
+      "box name e.g. CST #1, CST #2, CST #3, CST #4"
+    ]
   },
   "workflow": {
     "bulk_edit": "Edit Inventory_Master_V*.xlsx → python scripts/convert_excel_to_json.py <input.xlsx> data/inventory.json → commit to GitHub",

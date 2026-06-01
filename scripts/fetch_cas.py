@@ -23,7 +23,7 @@ Runtime: ~15-25 min for 150 items.
 import json, re, sys, time, urllib.parse, urllib.request, ssl
 from pathlib import Path
 
-MSDS_CATS  = {'Chemical', 'Kit/Assay'}
+MSDS_CATS  = {'Chemical', 'Products'}
 RATE_LIMIT = 0.25   # seconds between requests (~4/sec, under PubChem 5/sec limit)
 TIMEOUT    = 15
 HEADERS    = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}

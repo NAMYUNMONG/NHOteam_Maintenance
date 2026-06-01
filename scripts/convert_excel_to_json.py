@@ -45,8 +45,7 @@ SCHEMA = [
 
 # Valid values for key fields — warn if something unexpected appears
 VALID_CATEGORIES = {
-    "Chemical", "Cell Culture", "Antibody/Protein",
-    "Kit/Assay", "Consumable", "Equipment"
+    "Chemical", "Antibody/Protein", "Products"
 }
 VALID_STORAGE = {"RT", "4°C", "-20°C", "-80°C", "LN2", ""}
 

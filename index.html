@@ -62,7 +62,7 @@ body.collapsed footer{margin-left:0;}
 .btn:disabled{opacity:.4;cursor:default;transform:none;}
 
 /* ── STATS GRID ── */
-.stats-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;padding:0 32px 20px;}
+.stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:0 32px 20px;}
 .stat-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;cursor:pointer;transition:all .12s;text-align:left;font-family:var(--font);width:100%;}
 .stat-card:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:var(--shadow);}
 .stat-card.active{border-color:var(--green);background:var(--green-light);}
@@ -235,11 +235,8 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
     <a href="#" data-view="Mainpage" class="active">Home</a>
     <span class="nav-section">Categories</span>
     <a href="#" data-view="Chemical">Chemical</a>
-    <a href="#" data-view="Cell Culture">Cell Culture</a>
     <a href="#" data-view="Antibody/Protein">Antibody &amp; Protein</a>
-    <a href="#" data-view="Kit/Assay">Kit &amp; Assay</a>
-    <a href="#" data-view="Consumable">Consumable</a>
-    <a href="#" data-view="Equipment">Equipment</a>
+    <a href="#" data-view="Products">Products</a>
     <span class="nav-section">Special</span>
     <a href="#" data-view="Cell Stocks">Cell Stocks</a>
     <a href="#" data-view="Duties">Lab Duties</a>
@@ -255,7 +252,7 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
     <div class="header-title">
       <p class="eyebrow">Team Inventory</p>
       <h1>NHOteam Lab Maintenance</h1>
-      <p class="subtitle">Chemical · Antibody · Cell Culture · Kits · Consumables</p>
+      <p class="subtitle">Chemical · Antibody/Protein · Products</p>
     </div>
     <div class="header-actions">
       <div class="selected-bar" id="selectedBar">
@@ -394,20 +391,17 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
 <script>
 const STORAGE_KEY = 'l1521_inventory_v2';
-const MSDS_CATS   = new Set(['Chemical','Kit/Assay','Antibody/Protein']);
+const MSDS_CATS   = new Set(['Chemical','Products','Antibody/Protein']);
 const APPS        = ['WB','Cell Culture','PCR/qPCR','Histology/Staining','Animal Surgery','General'];
-const CATEGORIES  = ['Chemical','Cell Culture','Antibody/Protein','Kit/Assay','Consumable','Equipment'];
+const CATEGORIES  = ['Chemical','Antibody/Protein','Products'];
 const SUBCATS = {
   'Chemical':['Solvent','Acid/Alkali','Salt/Buffer reagent','Fixative','Single compound/Natural product','Pathway inhibitor/Activator','Stain/Dye','Standard/Reference','Assay reagent','Other'],
-  'Cell Culture':['Medium','Serum','Supplement/Additive','Antibiotic','Primary cell/Cell kit','Equipment treatment'],
   'Antibody/Protein':['Primary antibody','Secondary antibody','Recombinant protein/Cytokine'],
-  'Kit/Assay':['Assay kit – enzymatic','Assay kit – ELISA','Staining kit','Extraction kit','PCR/qPCR reagent'],
-  'Consumable':['Tips, Tubes & Reservoirs','Plates & Dishes','Flasks','Pipettes & Aids','Bottles & Vials','Gloves/PPE','Tape, Labels & Paper','Boxes & Racks','Syringes & Needles','Beads/Homogenization','Surgery tools & Consumables','WB equipment & consumables','Cleaning/Maintenance','Other'],
-  'Equipment':['Scale/Balance','Pump/Vacuum','Other instrument'],
+  'Products':['Medium','Serum','Supplement/Additive','Antibiotic','Primary cell/Cell kit','Equipment treatment','Assay kit – enzymatic','Assay kit – ELISA','Staining kit','Extraction kit','PCR/qPCR reagent','Tips, Tubes & Reservoirs','Plates & Dishes','Flasks','Pipettes & Aids','Bottles & Vials','Gloves/PPE','Tape, Labels & Paper','Boxes & Racks','Syringes & Needles','Beads/Homogenization','Surgery tools & Consumables','WB equipment & consumables','Cleaning/Maintenance','Scale/Balance','Pump/Vacuum','Other instrument','Other'],
 };
 const LOCATIONS = ['Yellow Cabinet','Cabinet','Fridge','Fridge 2','Freezer','Freezer 2'];
 const STORAGE_BADGE = {'RT':'badge-rt','4°C':'badge-4c','-20°C':'badge-20c','-80°C':'badge-80c','LN2':'badge-ln2'};
-const INVENTORY_VIEWS = new Set(['Chemical','Cell Culture','Antibody/Protein','Kit/Assay','Consumable','Equipment']);
+const INVENTORY_VIEWS = new Set(['Chemical','Antibody/Protein','Products']);
 
 let lang='en', items=[], sourceMeta={}, selectedIds=new Set();
 let activeView='Mainpage', sortCol='Item_Name', sortDir=1, hasUnsaved=false;
@@ -853,7 +847,7 @@ function savePanel(){
   const data=collectPanel();
   if(!data.Item_Name){alert('Item name is required.');return;}
   if(panelMode==='add'){
-    const prefix={'Chemical':'CHM','Cell Culture':'CC','Antibody/Protein':'ABP','Kit/Assay':'KIT','Consumable':'CON','Equipment':'EQP'}[data.Category]||'ITM';
+    const prefix={'Chemical':'CHM','Antibody/Protein':'ABP','Products':'PRD'}[data.Category]||'ITM';
     const existing=items.filter(i=>i.Category===data.Category).map(i=>parseInt((i.Item_ID||'0').replace(/\D+/g,''))||0);
     const maxN=existing.length?Math.max(...existing):0;
     data.Item_ID=`${prefix}-${String(maxN+1).padStart(4,'0')}`;
@@ -957,9 +951,8 @@ const TRANS = {
   en: {
     search: 'Search name, Cat#, CAS, manufacturer…',
     addItem: '+ Add item', exportJson: 'Export JSON', reset: 'Reset to saved',
-    home: 'Home', chemical: 'Chemical', cellCulture: 'Cell Culture',
-    abProtein: 'Antibody & Protein', kitAssay: 'Kit & Assay',
-    consumable: 'Consumable', equipment: 'Equipment',
+    home: 'Home', chemical: 'Chemical',
+    abProtein: 'Antibody & Protein', products: 'Products',
     cellStocks: 'Cell Stocks', duties: 'Lab Duties',
     allSubcats: 'All subcategories', identity: 'Identity', storage: 'Storage & Location',
     stock: 'Stock', application: 'Application', other: 'Other',
@@ -970,9 +963,8 @@ const TRANS = {
   kr: {
     search: '이름, 카탈로그#, CAS, 제조사 검색…',
     addItem: '+ 항목 추가', exportJson: 'JSON 내보내기', reset: '저장으로 초기화',
-    home: '홈', chemical: '화학물질', cellCulture: '세포 배양',
-    abProtein: '항체 & 단백질', kitAssay: '키트 & 분석',
-    consumable: '소모품', equipment: '장비',
+    home: '홈', chemical: '화학물질',
+    abProtein: '항체 & 단백질', products: '제품',
     cellStocks: '세포주 보관', duties: '실험실 업무',
     allSubcats: '전체 소분류', identity: '기본 정보', storage: '보관 & 위치',
     stock: '재고', application: '적용 분야', other: '기타',
@@ -992,9 +984,8 @@ function applyLang(){
 
   // Nav links — preserve child badges/counts
   const navMap = {
-    'Mainpage': t.home, 'Chemical': t.chemical, 'Cell Culture': t.cellCulture,
-    'Antibody/Protein': t.abProtein, 'Kit/Assay': t.kitAssay,
-    'Consumable': t.consumable, 'Equipment': t.equipment,
+    'Mainpage': t.home, 'Chemical': t.chemical,
+    'Antibody/Protein': t.abProtein, 'Products': t.products,
     'Cell Stocks': t.cellStocks, 'Duties': t.duties
   };
   document.querySelectorAll('.sidebar-nav a[data-view]').forEach(el => {

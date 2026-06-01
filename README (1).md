@@ -24,11 +24,8 @@ GitHub Pages 정적 웹사이트 — NHOteam 시약 및 소모품 통합 관리 
 | Category | Count |
 |---|---:|
 | Chemical | 351 |
-| Cell Culture | 41 |
 | Antibody/Protein | 348 |
-| Kit/Assay | 44 |
-| Consumable | 94 |
-| Equipment | 3 |
+| Products | 182 |
 | **Total** | **881** |
 
 ## 주요 기능
