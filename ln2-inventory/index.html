@@ -35,6 +35,7 @@
     </div>
     <div class="hero-actions">
       <button id="refreshBtn" type="button">데이터 새로고침</button>
+      <button id="exportJsonBtn" type="button" class="secondary">전체 JSON</button>
       <button id="exportCsvBtn" type="button" class="secondary">현재 결과 CSV</button>
     </div>
   </header>
@@ -103,6 +104,13 @@
             </div>
           </div>
           <div id="boxMap" class="box-map" aria-label="selected box wells"></div>
+          <div class="selection-toolbar" aria-label="selected well actions">
+            <span id="selectedWellCount" class="pill">0 selected</span>
+            <button id="addStockBtn" type="button">Cell stock 추가</button>
+            <button id="editStockBtn" type="button" class="secondary">선택 정보 수정</button>
+            <button id="deleteStockBtn" type="button" class="danger">선택 정보 삭제</button>
+            <button id="clearSelectionBtn" type="button" class="secondary">선택 해제</button>
+          </div>
           <div id="wellDetails" class="well-details">Well을 선택하면 상세 정보가 표시됩니다.</div>
         </section>
       </div>
@@ -134,6 +142,31 @@
       </section>
     </section>
   </main>
+
+  <dialog id="stockDialog">
+    <form id="stockForm" method="dialog">
+      <div class="dialog-header">
+        <div>
+          <p class="eyebrow">Cell stock</p>
+          <h2 id="stockDialogTitle">Cell stock 정보 입력</h2>
+        </div>
+        <button id="closeStockDialogBtn" class="icon-button" type="button" aria-label="close">×</button>
+      </div>
+      <p id="stockDialogSummary" class="dialog-summary"></p>
+      <div class="form-grid">
+        <label class="full">Cell Line<input name="cellLine" required /></label>
+        <label>Tissue<input name="tissue" /></label>
+        <label>Date<input name="date" type="date" /></label>
+        <label>Passage<input name="passage" /></label>
+        <label>Depositor<input name="depositor" /></label>
+        <label class="full">Note<textarea name="note" rows="3"></textarea></label>
+      </div>
+      <menu class="dialog-actions">
+        <button type="button" id="cancelStockBtn">취소</button>
+        <button class="primary-button" id="saveStockBtn" type="submit">저장</button>
+      </menu>
+    </form>
+  </dialog>
 
   <template id="emptyStateTemplate">
     <tr><td colspan="7" class="empty-state">조건에 맞는 결과가 없습니다.</td></tr>
