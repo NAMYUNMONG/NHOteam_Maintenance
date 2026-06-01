@@ -249,6 +249,11 @@ textarea { resize: vertical; }
 table { width: 100%; border-collapse: collapse; min-width: 52rem; background: #fff; table-layout: fixed; }
 th, td { padding: 0.72rem 0.8rem; border-bottom: 1px solid #eef2f7; text-align: left; vertical-align: top; overflow: hidden; text-overflow: ellipsis; }
 th { position: sticky; top: 0; z-index: 1; background: #f8fbff; color: #475467; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; user-select: none; }
+th.sort-asc,
+th.sort-desc { color: var(--accent); }
+.sort-label { display: inline-block; max-width: calc(100% - 8px); overflow: hidden; text-overflow: ellipsis; vertical-align: top; cursor: pointer; }
+th.sort-asc .sort-label::after { content: ' \25B2'; }
+th.sort-desc .sort-label::after { content: ' \25BC'; }
 tbody tr:hover { background: #fbfdff; }
 .col-resizer { position: absolute; right: 0; top: 0; width: 6px; height: 100%; cursor: col-resize; z-index: 2; }
 .col-resizer:hover,

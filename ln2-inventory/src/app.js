@@ -60,6 +60,8 @@ const state = {
   selectedWellIds: new Set(),
   filtered: [],
   dialogMode: 'add',
+  sortKey: 'location',
+  sortDir: 1,
 };
 
 function fmt(n) {
@@ -91,6 +93,33 @@ function getColumnWidth(column) {
   const saved = Number(columnWidths[column.key]);
   const width = Number.isFinite(saved) ? saved : column.width;
   return Math.min(column.max, Math.max(column.min, width));
+}
+
+function getSortValue(record, key) {
+  if (key === 'location') return locationText(record);
+  return record[key] ?? '';
+}
+
+function compareRecords(a, b) {
+  const av = normalize(getSortValue(a, state.sortKey));
+  const bv = normalize(getSortValue(b, state.sortKey));
+  if (!av && bv) return 1;
+  if (av && !bv) return -1;
+  const an = Number(av);
+  const bn = Number(bv);
+  const result = Number.isFinite(an) && Number.isFinite(bn)
+    ? an - bn
+    : av.localeCompare(bv, 'ko', { numeric: true, sensitivity: 'base' });
+  if (result !== 0) return result * state.sortDir;
+  return a.tank - b.tank || a.rack.localeCompare(b.rack, 'en', { numeric: true }) || a.box - b.box || a.well - b.well;
+}
+
+function updateTableSortHeader() {
+  const table = els.inventoryBody?.closest('table');
+  if (!table) return;
+  table.querySelectorAll('thead th').forEach((th) => th.classList.remove('sort-asc', 'sort-desc'));
+  const active = table.querySelector(`.sort-label[data-sort="${state.sortKey}"]`)?.closest('th');
+  if (active) active.classList.add(state.sortDir === 1 ? 'sort-asc' : 'sort-desc');
 }
 
 function renderTableColumns() {
@@ -143,6 +172,25 @@ function bindColumnResize() {
       document.addEventListener('mouseup', onUp);
     });
   });
+}
+
+function bindTableSort() {
+  const table = els.inventoryBody?.closest('table');
+  if (!table) return;
+  table.querySelectorAll('.sort-label[data-sort]').forEach((label) => {
+    label.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const key = label.dataset.sort;
+      if (state.sortKey === key) state.sortDir *= -1;
+      else {
+        state.sortKey = key;
+        state.sortDir = 1;
+      }
+      applyFilters();
+    });
+  });
+  updateTableSortHeader();
 }
 
 function fillSelect(select, values, firstLabel = '전체') {
@@ -318,7 +366,7 @@ function applyFilters() {
     }
     return true;
   });
-  filtered.sort((a, b) => a.tank - b.tank || a.rack.localeCompare(b.rack, 'en', { numeric: true }) || a.box - b.box || a.well - b.well);
+  filtered.sort(compareRecords);
   state.filtered = filtered;
   renderTable(filtered);
 }
@@ -537,6 +585,7 @@ function clearSelection() {
 }
 
 function renderTable(rows) {
+  updateTableSortHeader();
   els.inventoryBody.innerHTML = '';
   els.resultCount.textContent = `${fmt(rows.length)}개`;
   if (rows.length === 0) {
@@ -608,6 +657,7 @@ async function init() {
   recalculateData();
   renderTableColumns();
   bindColumnResize();
+  bindTableSort();
   renderSummary();
   initializeFilters();
   renderRackOverview();
