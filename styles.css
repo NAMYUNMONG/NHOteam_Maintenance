@@ -134,7 +134,7 @@ body.sidebar-collapsed .sidebar {
   justify-content: space-between;
   gap: 24px;
   align-items: center;
-  padding: 40px min(6vw, 72px) 24px;
+  padding: 40px clamp(18px, 2.4vw, 36px) 24px;
   background: transparent;
   margin-left: 240px;
   transition: margin-left 0.18s ease;
@@ -169,20 +169,13 @@ h1 {
   flex-wrap: wrap;
 }
 
-main {
-  width: min(1440px, 92vw);
-  margin: 0 auto 64px;
-  padding-left: 240px;
-  transition: padding-left 0.18s ease;
-}
+main {`n  width: auto;`n  margin: 0 clamp(18px, 2.4vw, 36px) 64px calc(240px + clamp(18px, 2.4vw, 36px));`n  transition: margin 0.18s ease;`n}
 
 body.sidebar-collapsed .site-header {
   margin-left: 0;
 }
 
-body.sidebar-collapsed main {
-  padding-left: 0;
-}
+body.sidebar-collapsed main {`n  margin-left: clamp(18px, 2.4vw, 36px);`n}
 
 .notice {
   padding: 16px 18px;
@@ -568,9 +561,7 @@ body.sidebar-collapsed footer {
     padding-top: 76px;
   }
 
-  main {
-    padding-left: 0;
-  }
+  main {`n    margin: 0 16px 64px;`n  }
 
   footer {
     margin-left: 0;
@@ -599,10 +590,7 @@ body.sidebar-collapsed footer {
   }
 }
 
-@media (max-width: 520px) {
-  main {
-    width: 94vw;
-  }
+@media (max-width: 520px) {`n  main {`n    margin: 0 12px 64px;`n  }
 
   .stats-grid {
     grid-template-columns: 1fr;
