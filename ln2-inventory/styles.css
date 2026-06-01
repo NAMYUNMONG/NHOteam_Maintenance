@@ -113,7 +113,7 @@ body.sidebar-collapsed .hero { margin-left: 0; }
 .subtitle { margin: 0; max-width: 48rem; color: var(--muted); font-size: 1.05rem; }
 .eyebrow { margin: 0; text-transform: uppercase; font-size: 0.76rem; letter-spacing: 0.16em; color: var(--accent); font-weight: 800; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-button, select, input {
+button, select, input, textarea {
   border: 1px solid var(--line);
   border-radius: 0.85rem;
   background: #fff;
@@ -123,7 +123,9 @@ button, select, input {
 }
 button { padding: 0.75rem 1rem; background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 700; cursor: pointer; box-shadow: 0 10px 24px rgba(35, 100, 170, 0.22); }
 button.secondary { background: #fff; color: var(--accent); box-shadow: none; }
-button:hover { transform: translateY(-1px); }
+button.danger { background: var(--danger); border-color: var(--danger); }
+button:hover:not(:disabled) { transform: translateY(-1px); }
+button:disabled { cursor: not-allowed; opacity: 0.45; transform: none; box-shadow: none; }
 
 main {
   padding: 0 clamp(1rem, 5vw, 4rem) 4rem;
@@ -153,7 +155,8 @@ body.sidebar-collapsed main { margin-left: 0; }
 .panel { padding: 1rem; }
 .controls { display: grid; grid-template-columns: 2.2fr repeat(4, 1fr); gap: 0.85rem; align-items: end; margin-bottom: 1rem; }
 label { display: grid; gap: 0.38rem; color: var(--muted); font-weight: 800; font-size: 0.82rem; }
-input, select { width: 100%; padding: 0.65rem 0.8rem; }
+input, select, textarea { width: 100%; padding: 0.65rem 0.8rem; }
+textarea { resize: vertical; }
 .dashboard-layout { display: grid; grid-template-columns: minmax(29rem, 0.82fr) minmax(34rem, 1.18fr); gap: 1rem; align-items: start; }
 .left-stack { display: grid; gap: 1rem; }
 .inventory-panel { min-width: 0; }
@@ -209,7 +212,9 @@ input, select { width: 100%; padding: 0.65rem 0.8rem; }
 }
 .well.occupied { background: linear-gradient(135deg, #e8faf7, #f8fffe); border-color: rgba(29, 154, 138, 0.55); color: #087569; }
 .well.empty { color: #98a2b3; }
-.well.selected { outline: 3px solid rgba(35, 100, 170, 0.32); border-color: var(--accent); }
+.well.selected { outline: 3px solid rgba(35, 100, 170, 0.38); border-color: var(--accent); background: #dbeafe; color: var(--accent); }
+.selection-toolbar { display: flex; flex-wrap: wrap; gap: 0.55rem; align-items: center; margin-top: 1rem; }
+.selection-toolbar button { min-height: 2.35rem; padding: 0.45rem 0.7rem; }
 .well-details { margin-top: 1rem; border: 1px dashed var(--line); border-radius: 1rem; padding: 0.85rem; background: #fbfdff; color: var(--muted); min-height: 4rem; }
 .well-details strong { color: var(--ink); }
 .table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 1rem; max-height: 57rem; }
@@ -221,6 +226,18 @@ tbody tr:hover { background: #fbfdff; }
 .muted { color: var(--muted); }
 .empty-state { text-align: center; padding: 3rem; color: var(--muted); }
 .badge { display: inline-flex; align-items: center; padding: 0.16rem 0.5rem; border-radius: 999rem; background: #eef5ff; color: var(--accent); font-size: 0.78rem; font-weight: 800; }
+
+#stockDialog { width: min(44rem, calc(100vw - 2rem)); border: 0; border-radius: 1.2rem; padding: 0; box-shadow: 0 24px 80px rgba(15, 23, 42, 0.28); }
+#stockDialog::backdrop { background: rgba(15, 23, 42, 0.45); }
+#stockForm { padding: 1.2rem; }
+.dialog-header { display: flex; justify-content: space-between; gap: 1rem; align-items: start; margin-bottom: 0.75rem; }
+.dialog-header h2 { margin: 0.15rem 0 0; }
+.icon-button { width: 2.35rem; min-height: 2.35rem; padding: 0; border-radius: 0.65rem; background: #fff; color: var(--ink); border-color: var(--line); box-shadow: none; font-size: 1.25rem; }
+.dialog-summary { margin: 0 0 1rem; color: var(--muted); font-weight: 700; }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem; }
+.form-grid .full { grid-column: 1 / -1; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 0.6rem; margin: 1rem 0 0; padding: 0; }
+.primary-button { background: var(--accent); color: #fff; border-color: var(--accent); }
 
 @media (max-width: 1180px) {
   .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -236,7 +253,7 @@ tbody tr:hover { background: #fbfdff; }
 }
 @media (max-width: 720px) {
   .hero { flex-direction: column; align-items: stretch; padding-top: 2rem; }
-  .kpis, .controls { grid-template-columns: 1fr; }
+  .kpis, .controls, .form-grid { grid-template-columns: 1fr; }
   .rack-toggle { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .box-chips { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .section-heading { flex-direction: column; }
