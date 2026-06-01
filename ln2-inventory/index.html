@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-controls="sidebar" aria-expanded="true"><<</button>
+  <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-controls="sidebar" aria-expanded="true">&gt;&gt;</button>
 
   <aside id="sidebar" class="sidebar" aria-label="page navigation">
     <div class="sidebar-header">
@@ -177,6 +177,7 @@
     document.querySelector('#sidebarToggle').addEventListener('click', () => {
       const collapsed = document.body.classList.toggle('sidebar-collapsed');
       document.querySelector('#sidebarToggle').setAttribute('aria-expanded', String(!collapsed));
+      document.querySelector('#sidebarToggle').textContent = collapsed ? '>>' : '<<';
     });
   </script>
 </body>
