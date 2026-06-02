@@ -248,7 +248,7 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
     <div class="header-title">
       <p class="eyebrow">Team Inventory</p>
       <h1>NHOteam Lab Maintenance</h1>
-      <p class="subtitle">Chemical · Antibody/Protein · Products</p>
+      <p class="subtitle" id="pageSubtitle">Chemical · Antibody/Protein · Products</p>
     </div>
     <div class="header-actions">
       <div class="selected-bar" id="selectedBar">
@@ -510,6 +510,20 @@ function render(){
   const isCategory = INVENTORY_VIEWS.has(activeView);
   const isMainpage = activeView === 'Mainpage';
   const isSpecial = activeView === 'Cell Stocks' || activeView === 'Duties';
+  const showInventoryActions = isCategory || isMainpage;
+
+  $('pageSubtitle').textContent = activeView === 'Cell Stocks'
+    ? 'LN2 tank cell stock'
+    : activeView === 'Duties'
+      ? 'Lab Duties'
+      : isCategory
+        ? activeView
+        : '';
+
+  ['addItemBtn','exportBtn','resetBtn'].forEach(id=>{
+    const el=$(id); if(el) el.style.display = showInventoryActions ? '' : 'none';
+  });
+  if(isSpecial) selectedIds.clear();
 
   // Show/hide inventory controls — only in category views
   ['subcatFilterGroup','storageFilterGroup','locationFilterGroup','uploadFilterGroup'].forEach(id=>{

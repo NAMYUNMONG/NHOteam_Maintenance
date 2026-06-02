@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LN2 Cell Line Inventory</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
@@ -32,9 +33,7 @@
   <div class="page-frame">
   <header class="hero">
     <div>
-      <p class="eyebrow">LN2 Tank · Static Prototype</p>
-      <h1>LN2 세포주 재고 대시보드</h1>
-      <p class="subtitle">Tank, Rack, Box, Well 위치와 세포주 정보를 검색하고 한눈에 확인합니다.</p>
+      <p class="eyebrow">LN2 Cell Stock</p>
     </div>
     <div class="hero-actions">
       <button id="refreshBtn" type="button">데이터 새로고침</button>
@@ -44,18 +43,18 @@
   </header>
 
   <main>
-    <section class="status-bar" id="sourceInfo">데이터를 불러오는 중...</section>
+    <section class="status-bar" id="sourceInfo" hidden></section>
 
     <section class="kpis" aria-label="summary cards">
-      <article class="kpi"><span>전체 위치</span><strong id="totalSlots">-</strong></article>
-      <article class="kpi"><span>보관 중</span><strong id="occupiedSlots">-</strong></article>
-      <article class="kpi"><span>빈 위치</span><strong id="emptySlots">-</strong></article>
-      <article class="kpi"><span>활용률</span><strong id="utilization">-</strong></article>
-      <article class="kpi"><span>세포주</span><strong id="cellLineCount">-</strong></article>
+      <article class="kpi"><span data-i18n="totalSlots">전체 위치</span><strong id="totalSlots">-</strong></article>
+      <article class="kpi"><span data-i18n="occupiedSlots">보관 중</span><strong id="occupiedSlots">-</strong></article>
+      <article class="kpi"><span data-i18n="emptySlots">빈 위치</span><strong id="emptySlots">-</strong></article>
+      <article class="kpi"><span data-i18n="utilization">활용률</span><strong id="utilization">-</strong></article>
+      <article class="kpi"><span data-i18n="cellLineCount">세포주</span><strong id="cellLineCount">-</strong></article>
     </section>
 
-    <section class="panel controls" aria-label="filters">
-      <label>
+    <section class="controls" aria-label="filters">
+      <label class="search-control">
         검색어
         <input id="queryInput" type="search" placeholder="세포주, depositor, note, 위치 검색" />
       </label>
@@ -87,7 +86,6 @@
           <div class="section-heading">
             <div>
               <p class="eyebrow">Rack overview</p>
-              <h2>Rack / Box 사용 현황</h2>
             </div>
             <span id="selectedBoxLabel" class="pill">-</span>
           </div>
@@ -99,16 +97,14 @@
           <div class="section-heading">
             <div>
               <p class="eyebrow">Box map</p>
-              <h2>선택 Box Well Map</h2>
             </div>
-            <div class="mini-controls">
-              <select id="mapRackSelect"></select>
-              <select id="mapBoxSelect"></select>
+            <div class="map-status">
+              <span id="mapSelectedBoxLabel" class="pill">-</span>
+              <span id="selectedWellCount" class="pill">0 selected</span>
             </div>
           </div>
           <div id="boxMap" class="box-map" aria-label="selected box wells"></div>
           <div class="selection-toolbar" aria-label="selected well actions">
-            <span id="selectedWellCount" class="pill">0 selected</span>
             <button id="addStockBtn" type="button">Cell stock 추가</button>
             <button id="editStockBtn" type="button" class="secondary">선택 정보 수정</button>
             <button id="deleteStockBtn" type="button" class="danger">선택 정보 삭제</button>

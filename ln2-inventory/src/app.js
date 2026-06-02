@@ -4,13 +4,13 @@ const STORAGE_KEY = 'ln2_inventory_draft_v2';
 const COLUMN_WIDTH_KEY = 'ln2_inventory_column_widths_v1';
 const STOCK_FIELDS = ['cellLine', 'tissue', 'date', 'passage', 'depositor', 'note'];
 const TABLE_COLUMNS = [
-  { key: 'location', width: 150, min: 120, max: 240 },
-  { key: 'cellLine', width: 180, min: 120, max: 320 },
-  { key: 'tissue', width: 110, min: 80, max: 220 },
-  { key: 'date', width: 96, min: 86, max: 150 },
-  { key: 'passage', width: 82, min: 68, max: 140 },
-  { key: 'depositor', width: 112, min: 88, max: 200 },
-  { key: 'note', width: 220, min: 120, max: 420 },
+  { key: 'location', width: '20%', min: 100, max: 220 },
+  { key: 'cellLine', width: '20%', min: 120, max: 320 },
+  { key: 'tissue', width: '9%', min: 72, max: 160 },
+  { key: 'date', width: 78, min: 78, max: 78, fixed: true },
+  { key: 'passage', width: 76, min: 76, max: 76, fixed: true },
+  { key: 'depositor', width: 92, min: 92, max: 92, fixed: true },
+  { key: 'note', width: '13%', min: 110, max: 360 },
 ];
 
 const els = {
@@ -27,9 +27,8 @@ const els = {
   statusFilter: document.querySelector('#statusFilter'),
   rackToggle: document.querySelector('#rackToggle'),
   rackOverview: document.querySelector('#rackOverview'),
-  mapRackSelect: document.querySelector('#mapRackSelect'),
-  mapBoxSelect: document.querySelector('#mapBoxSelect'),
   selectedBoxLabel: document.querySelector('#selectedBoxLabel'),
+  mapSelectedBoxLabel: document.querySelector('#mapSelectedBoxLabel'),
   boxMap: document.querySelector('#boxMap'),
   selectedWellCount: document.querySelector('#selectedWellCount'),
   addStockBtn: document.querySelector('#addStockBtn'),
@@ -51,6 +50,24 @@ const els = {
   cancelStockBtn: document.querySelector('#cancelStockBtn'),
   emptyState: document.querySelector('#emptyStateTemplate'),
 };
+
+const KPI_LABELS = {
+  en: {
+    totalSlots: 'Total slots',
+    occupiedSlots: 'Occupied',
+    emptySlots: 'Empty',
+    utilization: 'Usage',
+    cellLineCount: 'Cell lines',
+  },
+  kr: {
+    totalSlots: '전체 위치',
+    occupiedSlots: '보관 중',
+    emptySlots: '빈 위치',
+    utilization: '활용률',
+    cellLineCount: '세포주',
+  },
+};
+
 let columnWidths = loadColumnWidths();
 
 const state = {
@@ -89,10 +106,48 @@ function saveColumnWidths() {
   localStorage.setItem(COLUMN_WIDTH_KEY, JSON.stringify(columnWidths));
 }
 
+function getCurrentLanguage() {
+  try {
+    const parentDoc = window.parent?.document;
+    const krToggle = parentDoc?.querySelector('#langKR');
+    const enToggle = parentDoc?.querySelector('#langEN');
+    if (krToggle?.style.color) return 'kr';
+    if (enToggle?.style.color) return 'en';
+  } catch (error) {
+    return document.documentElement.lang === 'en' ? 'en' : 'kr';
+  }
+  return document.documentElement.lang === 'en' ? 'en' : 'kr';
+}
+
+function applyKpiLanguage() {
+  const labels = KPI_LABELS[getCurrentLanguage()] || KPI_LABELS.kr;
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    el.textContent = labels[el.dataset.i18n] || el.textContent;
+  });
+}
+
+function initKpiLanguageSync() {
+  applyKpiLanguage();
+  try {
+    const parentDoc = window.parent?.document;
+    const toggles = [parentDoc?.querySelector('#langEN'), parentDoc?.querySelector('#langKR')].filter(Boolean);
+    if (!toggles.length) return;
+    const observer = new MutationObserver(applyKpiLanguage);
+    toggles.forEach((toggle) => observer.observe(toggle, { attributes: true, attributeFilter: ['style', 'class'] }));
+  } catch (error) {
+    // Direct LN2 page access has no parent language controls.
+  }
+}
+
 function getColumnWidth(column) {
+  if (typeof column.width === 'string') return column.width;
   const saved = Number(columnWidths[column.key]);
   const width = Number.isFinite(saved) ? saved : column.width;
   return Math.min(column.max, Math.max(column.min, width));
+}
+
+function formatColumnWidth(width) {
+  return typeof width === 'number' ? `${width}px` : width;
 }
 
 function getSortValue(record, key) {
@@ -124,7 +179,7 @@ function updateTableSortHeader() {
 
 function renderTableColumns() {
   if (!els.tableCols) return;
-  els.tableCols.innerHTML = TABLE_COLUMNS.map((column) => `<col data-col="${column.key}" style="width:${getColumnWidth(column)}px">`).join('');
+  els.tableCols.innerHTML = TABLE_COLUMNS.map((column) => `<col data-col="${column.key}" style="width:${formatColumnWidth(getColumnWidth(column))}">`).join('');
 }
 
 function bindColumnResize() {
@@ -133,7 +188,7 @@ function bindColumnResize() {
   const definitions = Object.fromEntries(TABLE_COLUMNS.map((column) => [column.key, column]));
   table.querySelectorAll('thead th[data-col]').forEach((th) => {
     const column = definitions[th.dataset.col];
-    if (!column || th.querySelector('.col-resizer')) return;
+    if (!column || column.fixed || typeof column.width === 'string' || th.querySelector('.col-resizer')) return;
     th.style.position = 'relative';
     const resizer = document.createElement('div');
     resizer.className = 'col-resizer';
@@ -303,15 +358,17 @@ function loadDraft(baseData) {
 }
 
 function renderSummary() {
-  const { summary, meta } = state.data;
+  const { summary } = state.data;
   els.totalSlots.textContent = fmt(summary.totalSlots);
   els.occupiedSlots.textContent = fmt(summary.occupiedSlots);
   els.emptySlots.textContent = fmt(summary.emptySlots);
   els.utilization.textContent = `${summary.utilization}%`;
   els.cellLineCount.textContent = fmt(summary.cellLineCount);
-  const generated = meta.generatedAt ? new Date(meta.generatedAt).toLocaleString('ko-KR') : '-';
-  const draft = meta.updatedInBrowserAt ? ` · browser draft ${new Date(meta.updatedInBrowserAt).toLocaleString('ko-KR')}` : '';
-  els.sourceInfo.textContent = `Source: ${meta.sourceFile} / ${meta.sourceSheet} · generated ${generated}${draft} · 정적 JSON 기반`;
+  if (els.sourceInfo) {
+    els.sourceInfo.hidden = true;
+    els.sourceInfo.textContent = '';
+  }
+  applyKpiLanguage();
 }
 
 function initializeFilters() {
@@ -319,12 +376,8 @@ function initializeFilters() {
   fillSelect(els.rackFilter, options.racks);
   fillSelect(els.boxFilter, options.boxes);
   fillSelect(els.depositorFilter, options.depositors);
-  fillSelect(els.mapRackSelect, options.racks, null);
-  fillSelect(els.mapBoxSelect, options.boxes, null);
   state.selectedRack = options.racks[0] || '';
   state.selectedBox = String(options.boxes[0] || '');
-  els.mapRackSelect.value = state.selectedRack;
-  els.mapBoxSelect.value = state.selectedBox;
 }
 
 function refreshFilterOptions() {
@@ -398,7 +451,7 @@ function renderRackOverview() {
   boxItems.forEach((box) => {
     const chip = document.createElement('button');
     chip.type = 'button';
-    chip.className = `box-chip ${box.occupiedSlots === 0 ? 'empty' : ''} ${box.emptySlots === 0 ? 'full' : ''}`;
+    chip.className = `box-chip ${box.occupiedSlots > 0 ? 'occupied' : 'empty'} ${box.emptySlots === 0 ? 'full' : ''}`;
     if (rack === state.selectedRack && String(box.box) === String(state.selectedBox)) chip.classList.add('active');
     chip.innerHTML = `<span>B${box.box}</span><small>${box.occupiedSlots}/${box.totalSlots}</small>`;
     chip.addEventListener('click', () => selectBox(rack, box.box));
@@ -429,8 +482,6 @@ function selectBox(rack, box) {
   state.selectedRack = rack;
   state.selectedBox = String(box);
   state.selectedWellIds.clear();
-  els.mapRackSelect.value = rack;
-  els.mapBoxSelect.value = String(box);
   renderRackOverview();
   renderBoxMap();
 }
@@ -448,7 +499,9 @@ function toggleWell(record) {
 function renderBoxMap() {
   const rack = state.selectedRack;
   const box = String(state.selectedBox);
-  els.selectedBoxLabel.textContent = rack && box ? `${rack} · Box ${box}` : '-';
+  const selectedLocation = rack && box ? `${rack} · Box ${box}` : '-';
+  els.selectedBoxLabel.textContent = selectedLocation;
+  els.mapSelectedBoxLabel.textContent = selectedLocation;
   const wells = state.data.records
     .filter((record) => record.rack === rack && String(record.box) === box)
     .sort((a, b) => a.well - b.well);
@@ -670,8 +723,6 @@ async function init() {
     el.addEventListener(eventName, applyFilters);
   });
 });
-els.mapRackSelect.addEventListener('change', () => selectBox(els.mapRackSelect.value, els.mapBoxSelect.value));
-els.mapBoxSelect.addEventListener('change', () => selectBox(els.mapRackSelect.value, els.mapBoxSelect.value));
 els.refreshBtn.addEventListener('click', () => window.location.reload());
 els.exportCsvBtn.addEventListener('click', exportFilteredCsv);
 els.exportJsonBtn.addEventListener('click', exportJson);
@@ -683,7 +734,12 @@ els.stockForm.addEventListener('submit', saveStock);
 els.closeStockDialogBtn.addEventListener('click', closeStockDialog);
 els.cancelStockBtn.addEventListener('click', closeStockDialog);
 
+initKpiLanguageSync();
+
 init().catch((error) => {
   console.error(error);
-  els.sourceInfo.textContent = '데이터를 불러오지 못했습니다. data/inventory.json 파일 경로를 확인하세요.';
+  if (els.sourceInfo) {
+    els.sourceInfo.hidden = false;
+    els.sourceInfo.textContent = '데이터를 불러오지 못했습니다. data/inventory.json 파일 경로를 확인하세요.';
+  }
 });
