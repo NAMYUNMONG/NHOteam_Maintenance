@@ -182,6 +182,7 @@ def normalize_record(record: dict[str, str], sheet_name: str) -> dict:
         "Item_Name": clean(record.get("Item_Name")),
         "Manufacturer": normalize_manufacturer(record.get("Manufacturer")),
         "Cat_No": clean(record.get("Cat_No")),
+        "CAS_No": clean(record.get("CAS_No")),
         "MW_kDa": clean(record.get("MW_kDa")),
         "Storage": normalize_storage(record.get("Storage")),
         "Quantity_Size": clean(record.get("Quantity_Size")),
