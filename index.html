@@ -24,19 +24,23 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:13
 
 /* ── SIDEBAR ── */
 .sidebar{position:fixed;inset:0 auto 0 0;width:var(--sidebar-w);background:#111827;color:#e5e7eb;display:flex;flex-direction:column;z-index:40;transition:transform .18s ease;border-right:1px solid #1f2937;}
-.sidebar-header{padding:24px 16px 18px;border-bottom:1px solid #1f2937;}
-.sidebar-header strong{display:block;font-size:16px;color:#fff;letter-spacing:.01em;}
-.sidebar-header span{font-size:12px;color:#94a3b8;margin-top:2px;display:block;}
+.sidebar-header{padding:20px 14px 18px;border-bottom:1px solid #1f2937;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+.sidebar-title{min-width:0;}
+.sidebar-header strong{display:block;font-size:20px;color:#fff;letter-spacing:.01em;}
+.sidebar-header span{font-size:14px;color:#94a3b8;margin-top:2px;display:block;}
 .sidebar-nav{padding:14px 10px;display:flex;flex-direction:column;gap:4px;flex:1;overflow-y:auto;}
-.sidebar-nav a{color:#cbd5e1;text-decoration:none;font-size:14px;font-weight:500;padding:9px 12px;border-radius:var(--radius-sm);border:1px solid transparent;display:flex;align-items:center;gap:8px;transition:all .12s;}
+.sidebar-nav a{color:#cbd5e1;text-decoration:none;font-size:16px;font-weight:500;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid transparent;display:flex;align-items:center;gap:8px;transition:all .12s;}
 .sidebar-nav a:hover{color:#fff;background:#1e3a5f;border-color:#3b82f6;}
 .sidebar-nav a.active{color:#fff;background:#1e3a8a;border-color:#3b82f6;}
-.sidebar-nav .nav-section{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#475569;padding:10px 12px 4px;}
-.sidebar-footer{padding:14px 16px;border-top:1px solid #1f2937;font-size:12px;color:#64748b;}
-.sidebar-footer strong{display:block;color:#94a3b8;margin-top:3px;font-size:12px;word-break:break-all;}
-.sidebar-toggle{position:fixed;top:16px;left:calc(var(--sidebar-w) + 8px);z-index:50;width:32px;height:32px;border-radius:var(--radius-sm);background:#1f2937;border:1px solid #374151;color:#fff;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:left .18s ease;}
+.sidebar-nav .nav-section{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#475569;padding:11px 12px 5px;}
+.sidebar-footer{padding:14px 16px;border-top:1px solid #1f2937;font-size:13px;color:#64748b;}
+.sidebar-footer strong{display:block;color:#94a3b8;margin-top:3px;font-size:13px;word-break:break-all;}
+.sidebar-toggle{flex:0 0 28px;width:28px;height:28px;border-radius:var(--radius-sm);background:#1f2937;border:1px solid #374151;color:#fff;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .12s,border-color .12s;}
+.sidebar-toggle:hover{background:#273449;border-color:#475569;}
+.sidebar-reveal{position:fixed;top:18px;left:0;z-index:50;width:18px;height:58px;border:1px solid var(--green);border-left:none;border-radius:0 9px 9px 0;background:var(--green);color:#fff;font-size:14px;line-height:1;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:var(--shadow);}
+.sidebar-reveal:hover{background:#1f7a4c;border-color:#1f7a4c;}
 body.collapsed .sidebar{transform:translateX(-100%);}
-body.collapsed .sidebar-toggle{left:8px;background:var(--green);border-color:var(--green);}
+body.collapsed .sidebar-reveal{display:flex;}
 body.collapsed .page-wrap{margin-left:0;}
 body.collapsed footer{margin-left:0;}
 
@@ -71,16 +75,16 @@ body.collapsed footer{margin-left:0;}
 .stat-card.active .stat-count{color:var(--green);}
 
 /* ── TOOLBAR ── */
-.toolbar{display:flex;gap:8px;padding:0 20px 16px;flex-wrap:nowrap;align-items:flex-end;overflow-x:auto;}
-.search-wrap{flex:1 1 420px;min-width:360px;max-width:none;position:relative;}
+.toolbar{--search-w:520px;--filter-w:160px;--upload-w:180px;display:flex;gap:8px;padding:0 20px 16px;flex-wrap:nowrap;align-items:flex-end;overflow-x:auto;}
+.search-wrap{flex:1 0 var(--search-w);min-width:var(--search-w);max-width:none;position:relative;}
 .search-wrap input{width:100%;height:38px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 12px 0 36px;font-family:var(--font);font-size:14px;background:var(--surface);color:var(--text);outline:none;}
 .search-wrap input:focus{border-color:var(--green);}
 .search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px;pointer-events:none;}
-.filter-group{display:flex;flex:0 0 auto;flex-direction:column;gap:4px;}
+.filter-group{display:flex;flex:0 0 var(--filter-w);width:var(--filter-w);min-width:var(--filter-w);max-width:var(--filter-w);flex-direction:column;gap:4px;}
 .filter-label{font-size:11px;font-weight:600;color:var(--muted);}
-.filter-select{height:38px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 10px;font-family:var(--font);font-size:13px;background:var(--surface);color:var(--text);outline:none;cursor:pointer;min-width:140px;}
+.filter-select{width:100%;height:38px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 10px;font-family:var(--font);font-size:13px;background:var(--surface);color:var(--text);outline:none;cursor:pointer;min-width:0;}
 .filter-select:focus{border-color:var(--green);}
-.filter-action{flex:0 0 180px;min-width:180px;justify-content:flex-end;}
+.filter-action{flex-basis:var(--upload-w);width:var(--upload-w);min-width:var(--upload-w);max-width:var(--upload-w);justify-content:flex-end;}
 
 /* ── SELECTED BAR ── */
 .selected-bar{display:none;align-items:center;gap:10px;padding:8px 32px;background:var(--green-light);border-top:1px solid #b7dfc9;border-bottom:1px solid #b7dfc9;font-size:13px;color:var(--green);font-weight:500;}
@@ -109,7 +113,8 @@ tbody tr:hover{background:#f8fafc;}
 tbody tr.selected{background:var(--green-light);}
 table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;min-width:800px;table-layout:fixed;}
 thead{position:sticky;top:0;z-index:6;}
-thead th{background:var(--surface2);padding:6px 8px;text-align:left;font-size:11px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;top:0;z-index:7;cursor:default;user-select:none;overflow:hidden;box-shadow:0 1px 0 var(--line);}
+thead th{background:var(--surface2);padding:7px 8px;text-align:left;font-size:13px;font-weight:700;color:var(--text);border-right:1px solid var(--line);border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;top:0;z-index:7;cursor:default;user-select:none;overflow:hidden;box-shadow:0 1px 0 var(--line);}
+thead th:last-child{border-right:none;}
 tbody td{padding:6px 8px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 tbody td:first-child{text-align:center;cursor:default;overflow:visible;}
 .cell-name{font-weight:600;color:var(--text);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -204,19 +209,22 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
   .site-header{padding:20px 16px 14px;}
   .toolbar,.table-section,.stats-grid,.mainpage-notice{padding-left:16px;padding-right:16px;}
   .toolbar{flex-wrap:wrap;overflow-x:visible;}
-  .search-wrap,.filter-action{flex-basis:100%;min-width:100%;width:100%;}
+  .search-wrap,.filter-group,.filter-action{flex-basis:100%;min-width:100%;max-width:100%;width:100%;}
   .table-scroll{height:calc(100vh - 280px);min-height:300px;}
 }
 </style>
 </head>
 <body>
 
-<button class="sidebar-toggle" id="sidebarToggle" aria-label="toggle sidebar">&#9776;</button>
+<button class="sidebar-reveal" id="sidebarReveal" aria-label="show sidebar">›</button>
 
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <strong>NHOteam</strong>
-    <span>Lab Inventory</span>
+    <div class="sidebar-title">
+      <strong>NHOteam</strong>
+      <span>Lab Inventory</span>
+    </div>
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="hide sidebar">‹</button>
   </div>
   <nav class="sidebar-nav" id="sidebarNav">
     <span class="nav-section">Views</span>
@@ -1040,7 +1048,10 @@ function applyLang(){
 
 // ── EVENTS ────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded',async()=>{
-  $('sidebarToggle').addEventListener('click',()=>document.body.classList.toggle('collapsed'));
+  ['sidebarToggle','sidebarReveal'].forEach(id=>{
+    const btn=$(id);
+    if(btn) btn.addEventListener('click',()=>document.body.classList.toggle('collapsed'));
+  });
 
   document.querySelectorAll('[data-view]').forEach(el=>{
     el.addEventListener('click',e=>{
