@@ -15,6 +15,8 @@ const TABLE_COLUMNS = [
 
 const els = {
   sourceInfo: document.querySelector('#sourceInfo'),
+  leftStack: document.querySelector('.left-stack'),
+  inventoryPanel: document.querySelector('.inventory-panel'),
   totalSlots: document.querySelector('#totalSlots'),
   occupiedSlots: document.querySelector('#occupiedSlots'),
   emptySlots: document.querySelector('#emptySlots'),
@@ -137,6 +139,30 @@ function initKpiLanguageSync() {
   } catch (error) {
     // Direct LN2 page access has no parent language controls.
   }
+}
+
+function syncInventoryPanelHeight() {
+  if (!els.leftStack || !els.inventoryPanel) return;
+  const shouldSync = window.matchMedia('(min-width: 1181px)').matches;
+  if (!shouldSync) {
+    els.inventoryPanel.style.removeProperty('height');
+    els.inventoryPanel.style.removeProperty('max-height');
+    return;
+  }
+  const height = Math.ceil(els.leftStack.getBoundingClientRect().height);
+  if (height > 0) {
+    els.inventoryPanel.style.height = `${height}px`;
+    els.inventoryPanel.style.maxHeight = `${height}px`;
+  }
+}
+
+function initInventoryHeightSync() {
+  syncInventoryPanelHeight();
+  if (window.ResizeObserver && els.leftStack) {
+    const observer = new ResizeObserver(syncInventoryPanelHeight);
+    observer.observe(els.leftStack);
+  }
+  window.addEventListener('resize', syncInventoryPanelHeight);
 }
 
 function getColumnWidth(column) {
@@ -446,7 +472,7 @@ function renderRackOverview() {
 
   const card = document.createElement('article');
   card.className = 'rack-card';
-  card.innerHTML = `<h3>${rack}</h3><div class="box-chips"></div>`;
+  card.innerHTML = '<div class="box-chips"></div>';
   const chips = card.querySelector('.box-chips');
   boxItems.forEach((box) => {
     const chip = document.createElement('button');
@@ -482,8 +508,12 @@ function selectBox(rack, box) {
   state.selectedRack = rack;
   state.selectedBox = String(box);
   state.selectedWellIds.clear();
+  els.rackFilter.value = rack;
+  els.boxFilter.value = String(box);
   renderRackOverview();
   renderBoxMap();
+  applyFilters();
+  syncInventoryPanelHeight();
 }
 
 function toggleWell(record) {
@@ -531,6 +561,7 @@ function renderSelectionToolbar() {
   els.editStockBtn.disabled = count === 0 || !sameInfo || !hasOccupied;
   els.deleteStockBtn.disabled = count === 0 || !hasOccupied;
   els.clearSelectionBtn.disabled = count === 0;
+  els.clearSelectionBtn.hidden = count === 0;
   els.editStockBtn.title = count && !sameInfo ? '선택한 well의 Cell stock 정보가 모두 같을 때만 수정할 수 있습니다.' : '';
   els.addStockBtn.title = count && !allEmpty ? '비어 있는 well만 선택했을 때 Cell stock을 추가할 수 있습니다.' : '';
 }
@@ -716,6 +747,7 @@ async function init() {
   renderRackOverview();
   renderBoxMap();
   applyFilters();
+  syncInventoryPanelHeight();
 }
 
 ['input', 'change'].forEach((eventName) => {
@@ -735,6 +767,7 @@ els.closeStockDialogBtn.addEventListener('click', closeStockDialog);
 els.cancelStockBtn.addEventListener('click', closeStockDialog);
 
 initKpiLanguageSync();
+initInventoryHeightSync();
 
 init().catch((error) => {
   console.error(error);

@@ -35,6 +35,13 @@
     <div>
       <p class="eyebrow">LN2 Cell Stock</p>
     </div>
+    <section class="kpis" aria-label="summary cards">
+      <article class="kpi"><span data-i18n="totalSlots">전체 위치</span><strong id="totalSlots">-</strong></article>
+      <article class="kpi"><span data-i18n="occupiedSlots">보관 중</span><strong id="occupiedSlots">-</strong></article>
+      <article class="kpi"><span data-i18n="emptySlots">빈 위치</span><strong id="emptySlots">-</strong></article>
+      <article class="kpi"><span data-i18n="utilization">활용률</span><strong id="utilization">-</strong></article>
+      <article class="kpi"><span data-i18n="cellLineCount">세포주</span><strong id="cellLineCount">-</strong></article>
+    </section>
     <div class="hero-actions">
       <button id="refreshBtn" type="button">데이터 새로고침</button>
       <button id="exportJsonBtn" type="button" class="secondary">전체 JSON</button>
@@ -44,14 +51,6 @@
 
   <main>
     <section class="status-bar" id="sourceInfo" hidden></section>
-
-    <section class="kpis" aria-label="summary cards">
-      <article class="kpi"><span data-i18n="totalSlots">전체 위치</span><strong id="totalSlots">-</strong></article>
-      <article class="kpi"><span data-i18n="occupiedSlots">보관 중</span><strong id="occupiedSlots">-</strong></article>
-      <article class="kpi"><span data-i18n="emptySlots">빈 위치</span><strong id="emptySlots">-</strong></article>
-      <article class="kpi"><span data-i18n="utilization">활용률</span><strong id="utilization">-</strong></article>
-      <article class="kpi"><span data-i18n="cellLineCount">세포주</span><strong id="cellLineCount">-</strong></article>
-    </section>
 
     <section class="controls" aria-label="filters">
       <label class="search-control">
@@ -101,14 +100,14 @@
             <div class="map-status">
               <span id="mapSelectedBoxLabel" class="pill">-</span>
               <span id="selectedWellCount" class="pill">0 selected</span>
+              <button id="clearSelectionBtn" type="button" class="secondary clear-selection-button" hidden>Clear</button>
             </div>
           </div>
           <div id="boxMap" class="box-map" aria-label="selected box wells"></div>
           <div class="selection-toolbar" aria-label="selected well actions">
-            <button id="addStockBtn" type="button">Cell stock 추가</button>
-            <button id="editStockBtn" type="button" class="secondary">선택 정보 수정</button>
-            <button id="deleteStockBtn" type="button" class="danger">선택 정보 삭제</button>
-            <button id="clearSelectionBtn" type="button" class="secondary">선택 해제</button>
+            <button id="addStockBtn" type="button">Add stock</button>
+            <button id="editStockBtn" type="button" class="secondary">Edit</button>
+            <button id="deleteStockBtn" type="button" class="danger">Delete</button>
           </div>
           <div id="wellDetails" class="well-details">Well을 선택하면 상세 정보가 표시됩니다.</div>
         </section>
@@ -118,7 +117,6 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow">Inventory table</p>
-            <h2>위치별 목록</h2>
           </div>
           <span id="resultCount" class="pill">0개</span>
         </div>
