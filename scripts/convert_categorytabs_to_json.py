@@ -104,8 +104,10 @@ def normalize_storage(value: str) -> str:
     return raw
 
 
-def normalize_manufacturer(value: str) -> str:
+def normalize_manufacturer(value: str, sheet_name: str = "") -> str:
     raw = clean(value)
+    if sheet_name == "Chemical" and raw.lower() in {"biacore", "(cytiva)biacore"}:
+        return "Cytiva"
     return MANUFACTURER_MAP.get(raw.lower(), raw)
 
 
@@ -180,7 +182,7 @@ def normalize_record(record: dict[str, str], sheet_name: str) -> dict:
         "Item_ID": clean(record.get("Item_ID")),
         "Category": category,
         "Item_Name": clean(record.get("Item_Name")),
-        "Manufacturer": normalize_manufacturer(record.get("Manufacturer")),
+        "Manufacturer": normalize_manufacturer(record.get("Manufacturer"), sheet_name),
         "Cat_No": clean(record.get("Cat_No")),
         "CAS_No": clean(record.get("CAS_No")),
         "MW_kDa": clean(record.get("MW_kDa")),

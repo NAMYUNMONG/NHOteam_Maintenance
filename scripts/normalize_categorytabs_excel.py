@@ -143,7 +143,10 @@ def normalize_workbook(path: Path) -> dict[str, int]:
                 if col_index(cell.attrib["r"]) != manufacturer_col:
                     continue
                 raw = get_cell_text(cell, shared).strip()
-                normalized = MANUFACTURER_MAP.get(raw.lower())
+                if sheet_name == "Chemical" and raw.lower() in {"biacore", "(cytiva)biacore"}:
+                    normalized = "Cytiva"
+                else:
+                    normalized = MANUFACTURER_MAP.get(raw.lower())
                 if normalized and normalized != raw:
                     idx = ensure_shared_string(shared_root, shared, normalized)
                     set_shared_string(cell, idx)
