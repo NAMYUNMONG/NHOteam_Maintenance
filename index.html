@@ -71,15 +71,16 @@ body.collapsed footer{margin-left:0;}
 .stat-card.active .stat-count{color:var(--green);}
 
 /* ── TOOLBAR ── */
-.toolbar{display:flex;gap:8px;padding:0 20px 10px;flex-wrap:wrap;align-items:flex-end;}
-.search-wrap{flex:0 0 360px;width:360px;max-width:100%;position:relative;}
+.toolbar{display:flex;gap:8px;padding:0 20px 16px;flex-wrap:nowrap;align-items:flex-end;overflow-x:auto;}
+.search-wrap{flex:1 1 420px;min-width:360px;max-width:none;position:relative;}
 .search-wrap input{width:100%;height:38px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 12px 0 36px;font-family:var(--font);font-size:14px;background:var(--surface);color:var(--text);outline:none;}
 .search-wrap input:focus{border-color:var(--green);}
 .search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px;pointer-events:none;}
-.filter-group{display:flex;flex-direction:column;gap:4px;}
+.filter-group{display:flex;flex:0 0 auto;flex-direction:column;gap:4px;}
 .filter-label{font-size:11px;font-weight:600;color:var(--muted);}
 .filter-select{height:38px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:0 10px;font-family:var(--font);font-size:13px;background:var(--surface);color:var(--text);outline:none;cursor:pointer;min-width:140px;}
 .filter-select:focus{border-color:var(--green);}
+.filter-action{flex:0 0 180px;min-width:180px;justify-content:flex-end;}
 
 /* ── SELECTED BAR ── */
 .selected-bar{display:none;align-items:center;gap:10px;padding:8px 32px;background:var(--green-light);border-top:1px solid #b7dfc9;border-bottom:1px solid #b7dfc9;font-size:13px;color:var(--green);font-weight:500;}
@@ -91,7 +92,7 @@ body.collapsed footer{margin-left:0;}
 .table-section{padding:0 20px;flex:1;}
 .table-status{font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:8px;}
 .table-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
-.table-scroll{overflow:auto;max-height:calc(100vh - 230px);}
+.table-scroll{display:block;overflow:auto;height:calc(100vh - 230px);min-height:320px;position:relative;}
 thead th:hover{color:var(--text);}
 thead th.sort-asc .sort-label::after{content:' \25B2';color:var(--green);}
 thead th.sort-desc .sort-label::after{content:' \25BC';color:var(--green);}
@@ -106,8 +107,9 @@ tbody tr{border-bottom:1px solid var(--line);transition:background .1s;cursor:po
 tbody tr:last-child{border-bottom:none;}
 tbody tr:hover{background:#f8fafc;}
 tbody tr.selected{background:var(--green-light);}
-table{width:100%;border-collapse:collapse;font-size:12px;min-width:800px;table-layout:fixed;}
-thead th{background:var(--surface2);padding:6px 8px;text-align:left;font-size:11px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;top:0;z-index:2;cursor:default;user-select:none;overflow:hidden;}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;min-width:800px;table-layout:fixed;}
+thead{position:sticky;top:0;z-index:6;}
+thead th{background:var(--surface2);padding:6px 8px;text-align:left;font-size:11px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;top:0;z-index:7;cursor:default;user-select:none;overflow:hidden;box-shadow:0 1px 0 var(--line);}
 tbody td{padding:6px 8px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 tbody td:first-child{text-align:center;cursor:default;overflow:visible;}
 .cell-name{font-weight:600;color:var(--text);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -183,9 +185,7 @@ tbody td:first-child{text-align:center;cursor:default;overflow:visible;}
 .order-preview{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;font-family:var(--mono);font-size:12px;line-height:1.9;white-space:pre-wrap;margin-top:12px;max-height:160px;overflow-y:auto;}
 .copy-success{font-size:12px;color:var(--green);font-weight:600;display:none;}
 
-/* ── ACTIONS PANEL ── */
-.actions-panel{padding:0 32px 16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
-.upload-label{height:34px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--text);font-family:var(--font);font-size:13px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .12s;}
+.upload-label{width:100%;height:38px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--text);font-family:var(--font);font-size:13px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:all .12s;white-space:nowrap;}
 .upload-label:hover{border-color:var(--blue);}
 #fileInput{display:none;}
 
@@ -202,8 +202,10 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
 @media(max-width:600px){
   .stats-grid{grid-template-columns:repeat(2,1fr);}
   .site-header{padding:20px 16px 14px;}
-  .toolbar,.actions-panel,.table-section,.stats-grid,.mainpage-notice{padding-left:16px;padding-right:16px;}
-  .search-wrap{flex-basis:100%;width:100%;}
+  .toolbar,.table-section,.stats-grid,.mainpage-notice{padding-left:16px;padding-right:16px;}
+  .toolbar{flex-wrap:wrap;overflow-x:visible;}
+  .search-wrap,.filter-action{flex-basis:100%;min-width:100%;width:100%;}
+  .table-scroll{height:calc(100vh - 280px);min-height:300px;}
 }
 </style>
 </head>
@@ -279,14 +281,9 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
         <option>Freezer</option><option>Freezer 2</option>
       </select>
     </div>
-    <div class="filter-group" id="sortFilterGroup" style="display:none">
-      <span class="filter-label">Sort</span>
-      <select class="filter-select" id="sortSelect">
-        <option value="Item_Name">Name</option>
-        <option value="Manufacturer">Manufacturer</option>
-        <option value="Storage">Storage</option>
-        <option value="Subcategory">Subcategory</option>
-      </select>
+    <div class="filter-group filter-action" id="uploadFilterGroup" style="display:none">
+      <label class="upload-label" for="fileInput">Upload JSON / Excel</label>
+      <input type="file" id="fileInput" accept=".json,.xlsx,.xls,.csv">
     </div>
   </div>
 
@@ -302,13 +299,6 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
   <div class="unsaved-bar" id="unsavedBar">
     <span id="unsavedText">⚠ Unsaved local changes —</span>
     <button class="btn btn-warn" id="exportBtn2" style="height:26px;font-size:12px;">Export JSON</button>
-  </div>
-
-  <!-- ACTIONS -->
-  <div class="actions-panel" id="actionsPanel" style="display:none">
-    <label class="upload-label" for="fileInput">Upload JSON / Excel to merge</label>
-    <input type="file" id="fileInput" accept=".json,.xlsx,.xls,.csv">
-    <span style="font-size:12px;color:var(--muted)" id="mergeHint">Uploads merge into the current inventory</span>
   </div>
 
   <!-- TABLE -->
@@ -513,14 +503,11 @@ function render(){
   const isMainpage = activeView === 'Mainpage';
   const isSpecial = activeView === 'Cell Stocks' || activeView === 'Duties';
 
-  // Show/hide filter dropdowns — only in category views
-  ['subcatFilterGroup','storageFilterGroup','locationFilterGroup','sortFilterGroup'].forEach(id=>{
+  // Show/hide inventory controls — only in category views
+  ['subcatFilterGroup','storageFilterGroup','locationFilterGroup','uploadFilterGroup'].forEach(id=>{
     const el=$(id); if(el) el.style.display = isCategory ? '' : 'none';
   });
   $('toolbarWrap').style.display = isSpecial ? 'none' : '';
-
-  // Actions panel — only in category views
-  $('actionsPanel').style.display = isCategory ? '' : 'none';
 
   // Notice — mainpage only
   $('mainpageNotice').style.display = isMainpage ? '' : 'none';
@@ -1048,9 +1035,6 @@ function applyLang(){
 
   const unsavedText = $('unsavedText');
   if(unsavedText) unsavedText.textContent = lang==='kr' ? '⚠ 저장되지 않은 변경 사항 —' : '⚠ Unsaved local changes —';
-  const mergeHint = $('mergeHint');
-  if(mergeHint) mergeHint.textContent = lang==='kr' ? '현재 재고 목록에 병합' : 'Uploads merge into the current inventory';
-
   updateSubcatFilter();
 }
 
@@ -1070,7 +1054,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
     });
   });
 
-  ['searchInput','subcatFilter','storageFilter','locationFilter','sortSelect'].forEach(id=>{
+  ['searchInput','subcatFilter','storageFilter','locationFilter'].forEach(id=>{
     const el=$(id);if(el)el.addEventListener('input',()=>renderTable());
   });
 
