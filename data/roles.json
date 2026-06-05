@@ -1,0 +1,1156 @@
+{
+  "meta": {
+    "title": "NHO팀 역할 분담표",
+    "updated": "2026-06-05",
+    "source": "노팀 역할 분담표_260514.pdf"
+  },
+  "assignments": [
+    {
+      "section": "Products management",
+      "task": "FBS, FBS (HI), BCS aliquot",
+      "person": "나제야",
+      "order": 1
+    },
+    {
+      "section": "Products management",
+      "task": "P/S (11 ml), T/E (10 ml) aliquot",
+      "person": "나제야",
+      "order": 2
+    },
+    {
+      "section": "Products management",
+      "task": "관리: 실험물품, CO₂, LN₂, 70% EtOH",
+      "person": "신양지",
+      "order": 3
+    },
+    {
+      "section": "Products management",
+      "task": "주문: 실험물품(CO₂, LN₂), 문구류",
+      "person": "남윤성",
+      "order": 4
+    },
+    {
+      "section": "Products management",
+      "task": "결재: 물품검수, 거래명세서, 세금계산서",
+      "person": "남윤성",
+      "order": 5
+    },
+    {
+      "section": "Reagent & Buffer Preparation",
+      "task": "10% APS, PMSF, Protease inhibitor, 5X Protein marker",
+      "person": "루시아",
+      "order": 1
+    },
+    {
+      "section": "Reagent & Buffer Preparation",
+      "task": "Protein standard marker, Solution B/C, 10X transfer/Running buffer",
+      "person": "루시아",
+      "order": 2
+    },
+    {
+      "section": "Reagent & Buffer Preparation",
+      "task": "Autoclave (Tip, e-tube, D.W.)",
+      "person": "송영호",
+      "order": 3
+    }
+  ],
+  "guidelines": [
+    {
+      "section": "Products management",
+      "guideline": "Restock and clean the bench after use (EtOH sanitization, empty tip bins).",
+      "order": 1
+    },
+    {
+      "section": "Products management",
+      "guideline": "Empty the liquid waste container once it reaches the fill line.",
+      "order": 2
+    },
+    {
+      "section": "Products management",
+      "guideline": "HI-FBS: Thaw at 37°C, heat-inactivate at 60°C for 30 minutes, then aliquot.",
+      "order": 3
+    },
+    {
+      "section": "Reagent & Buffer Preparation",
+      "guideline": "Refill 1X buffers immediately after use.",
+      "order": 1
+    },
+    {
+      "section": "Reagent & Buffer Preparation",
+      "guideline": "Notify the person in charge if 10X buffer stocks are low.",
+      "order": 2
+    },
+    {
+      "section": "Reagent & Buffer Preparation",
+      "guideline": "Inform the person in charge in advance when using consumables in bulk.",
+      "order": 3
+    },
+    {
+      "section": "Reagent & Buffer Preparation",
+      "guideline": "Contact the person in charge in advance if aliquoting is required.",
+      "order": 4
+    }
+  ],
+  "storageMap": [
+    {
+      "equipment": "Incubator",
+      "incubatorZone": "Upper",
+      "incubatorPosition": "1",
+      "gridColumn": "",
+      "gridRow": "",
+      "subSection": "",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Incubator",
+      "incubatorZone": "Upper",
+      "incubatorPosition": "2",
+      "gridColumn": "",
+      "gridRow": "",
+      "subSection": "",
+      "person": "신양지",
+      "label": ""
+    },
+    {
+      "equipment": "Incubator",
+      "incubatorZone": "Upper",
+      "incubatorPosition": "3",
+      "gridColumn": "",
+      "gridRow": "",
+      "subSection": "",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Incubator",
+      "incubatorZone": "Lower",
+      "incubatorPosition": "1",
+      "gridColumn": "",
+      "gridRow": "",
+      "subSection": "",
+      "person": "나제야",
+      "label": ""
+    },
+    {
+      "equipment": "Incubator",
+      "incubatorZone": "Lower",
+      "incubatorPosition": "2",
+      "gridColumn": "",
+      "gridRow": "",
+      "subSection": "",
+      "person": "송영호",
+      "label": ""
+    },
+    {
+      "equipment": "Incubator",
+      "incubatorZone": "Lower",
+      "incubatorPosition": "3",
+      "gridColumn": "",
+      "gridRow": "",
+      "subSection": "",
+      "person": "유지혜",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row1",
+      "subSection": "section1",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row1",
+      "subSection": "section2",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row1",
+      "subSection": "section3",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row1",
+      "subSection": "section4",
+      "person": "신양지",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row1",
+      "subSection": "section5",
+      "person": "신양지",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row2",
+      "subSection": "section1",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row2",
+      "subSection": "section2",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row2",
+      "subSection": "section3",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row2",
+      "subSection": "section4",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row2",
+      "subSection": "section5",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row3",
+      "subSection": "section1",
+      "person": "Diversity outbred",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row3",
+      "subSection": "section2",
+      "person": "Diversity outbred",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row3",
+      "subSection": "section3",
+      "person": "Diversity outbred",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row3",
+      "subSection": "section4",
+      "person": "Diversity outbred",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row3",
+      "subSection": "section5",
+      "person": "Diversity outbred",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row4",
+      "subSection": "section1",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row4",
+      "subSection": "section2",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row4",
+      "subSection": "section3",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row4",
+      "subSection": "section4",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column1",
+      "gridRow": "row4",
+      "subSection": "section5",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row1",
+      "subSection": "section1",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row1",
+      "subSection": "section2",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row1",
+      "subSection": "section3",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row1",
+      "subSection": "section4",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row1",
+      "subSection": "section5",
+      "person": "남윤성",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row2",
+      "subSection": "section1",
+      "person": "신양지",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row2",
+      "subSection": "section2",
+      "person": "신양지",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row2",
+      "subSection": "section3",
+      "person": "신양지",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row2",
+      "subSection": "section4",
+      "person": "신양지",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row2",
+      "subSection": "section5",
+      "person": "신양지",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row3",
+      "subSection": "section1",
+      "person": "홍소연",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row3",
+      "subSection": "section2",
+      "person": "홍소연",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row3",
+      "subSection": "section3",
+      "person": "홍소연",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row3",
+      "subSection": "section4",
+      "person": "홍소연",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row3",
+      "subSection": "section5",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row4",
+      "subSection": "section1",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row4",
+      "subSection": "section2",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row4",
+      "subSection": "section3",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row4",
+      "subSection": "section4",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column2",
+      "gridRow": "row4",
+      "subSection": "section5",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row1",
+      "subSection": "section1",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row1",
+      "subSection": "section2",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row1",
+      "subSection": "section3",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row1",
+      "subSection": "section4",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row1",
+      "subSection": "section5",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row2",
+      "subSection": "section1",
+      "person": "홍소연",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row2",
+      "subSection": "section2",
+      "person": "홍소연",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row2",
+      "subSection": "section3",
+      "person": "홍소연",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row2",
+      "subSection": "section4",
+      "person": "홍소연",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row2",
+      "subSection": "section5",
+      "person": "홍소연",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row3",
+      "subSection": "section1",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row3",
+      "subSection": "section2",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row3",
+      "subSection": "section3",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row3",
+      "subSection": "section4",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row3",
+      "subSection": "section5",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row4",
+      "subSection": "section1",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row4",
+      "subSection": "section2",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row4",
+      "subSection": "section3",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row4",
+      "subSection": "section4",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column3",
+      "gridRow": "row4",
+      "subSection": "section5",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row1",
+      "subSection": "section1",
+      "person": "박건희",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row1",
+      "subSection": "section2",
+      "person": "박건희",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row1",
+      "subSection": "section3",
+      "person": "박건희",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row1",
+      "subSection": "section4",
+      "person": "박건희",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row1",
+      "subSection": "section5",
+      "person": "박건희",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row2",
+      "subSection": "section1",
+      "person": "나제야",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row2",
+      "subSection": "section2",
+      "person": "나제야",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row2",
+      "subSection": "section3",
+      "person": "나제야",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row2",
+      "subSection": "section4",
+      "person": "나제야",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row2",
+      "subSection": "section5",
+      "person": "나제야",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row3",
+      "subSection": "section1",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row3",
+      "subSection": "section2",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row3",
+      "subSection": "section3",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row3",
+      "subSection": "section4",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row3",
+      "subSection": "section5",
+      "person": "루시아",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row4",
+      "subSection": "section1",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row4",
+      "subSection": "section2",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row4",
+      "subSection": "section3",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row4",
+      "subSection": "section4",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column4",
+      "gridRow": "row4",
+      "subSection": "section5",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row1",
+      "subSection": "section1",
+      "person": "공용",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row1",
+      "subSection": "section2",
+      "person": "공용",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row1",
+      "subSection": "section3",
+      "person": "공용",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row1",
+      "subSection": "section4",
+      "person": "공용",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row1",
+      "subSection": "section5",
+      "person": "박건희",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row2",
+      "subSection": "section1",
+      "person": "유지혜",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row2",
+      "subSection": "section2",
+      "person": "유지혜",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row2",
+      "subSection": "section3",
+      "person": "유지혜",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row2",
+      "subSection": "section4",
+      "person": "유지혜",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row2",
+      "subSection": "section5",
+      "person": "조수현",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row3",
+      "subSection": "section1",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row3",
+      "subSection": "section2",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row3",
+      "subSection": "section3",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row3",
+      "subSection": "section4",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row3",
+      "subSection": "section5",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row4",
+      "subSection": "section1",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row4",
+      "subSection": "section2",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row4",
+      "subSection": "section3",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row4",
+      "subSection": "section4",
+      "person": "",
+      "label": ""
+    },
+    {
+      "equipment": "Deep freezer",
+      "incubatorZone": "",
+      "incubatorPosition": "",
+      "gridColumn": "column5",
+      "gridRow": "row4",
+      "subSection": "section5",
+      "person": "",
+      "label": ""
+    }
+  ]
+}

@@ -140,6 +140,42 @@ tbody td:first-child{text-align:center;cursor:default;overflow:visible;}
 .cell-stocks-view{display:none;padding:0 20px 24px;flex:1;min-height:calc(100vh - 150px);}
 .cell-stocks-frame{width:100%;height:calc(100vh - 170px);min-height:760px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);}
 
+/* Lab Duties */
+.duties-view{display:none;padding:0 20px 24px;flex:1;}
+.duties-shell{display:grid;gap:14px;}
+.duties-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start;}
+.duties-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);min-width:0;}
+.duties-card h2{font-size:17px;margin:0 0 10px;color:var(--text);}
+.duties-card h3{font-size:12px;margin:14px 0 8px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.duties-table{width:100%;min-width:0;border-collapse:collapse;table-layout:fixed;font-size:12px;}
+.duties-table col.task-col{width:auto;}
+.duties-table col.person-col{width:58px;}
+.duties-table th,.duties-table td{border-bottom:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top;white-space:normal;overflow:visible;text-overflow:clip;}
+.duties-table th:last-child,.duties-table td:last-child{width:58px;padding-left:4px;padding-right:4px;text-align:center;}
+.duties-table td:last-child{white-space:nowrap;}
+.duties-table th{background:var(--surface2);font-size:12px;font-weight:700;color:var(--text);}
+.duties-person{display:inline-flex;align-items:center;justify-content:center;min-height:22px;padding:2px 4px;border-radius:999px;background:var(--green-light);color:var(--green-dark);font-size:11px;font-weight:700;white-space:nowrap;}
+.duties-list{display:grid;gap:7px;list-style:none;padding:0;margin:0;}
+.duties-list li{position:relative;padding-left:18px;color:var(--text);}
+.duties-list li::before{content:'✓';position:absolute;left:0;top:0;color:var(--green);font-weight:700;}
+.storage-map{display:grid;gap:14px;}
+.storage-section{border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:var(--surface);}
+.storage-title{padding:9px 11px;background:var(--green);color:#fff;font-weight:700;}
+.storage-grid{display:grid;gap:1px;background:var(--line);}
+.incubator-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);}
+.incubator-column{display:grid;gap:1px;background:var(--line);}
+.incubator-heading{background:#eef4df;color:var(--green-dark);padding:7px 9px;text-align:center;font-weight:700;font-size:12px;}
+.freezer-grid{display:grid;grid-template-columns:32px repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);}
+.freezer-head,.freezer-row-label{background:#eef4df;color:var(--green-dark);padding:6px 4px;text-align:center;font-weight:700;font-size:11px;}
+.freezer-cell{background:#f8fafc;display:grid;grid-template-rows:repeat(5,minmax(30px,auto));gap:1px;}
+.freezer-subcell{background:#fff;min-height:30px;padding:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.freezer-subcell .zone{font-size:10px;color:var(--muted);margin-bottom:2px;}
+.storage-cell{background:#f8fafc;min-height:62px;padding:8px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+.storage-cell .zone{font-size:11px;color:var(--muted);margin-bottom:3px;}
+.storage-cell .label{font-size:11px;color:#475569;margin-top:3px;}
+.duties-status{color:var(--muted);font-size:13px;padding:16px;}
+@media(max-width:1180px){.duties-grid{grid-template-columns:1fr;}}
+
 /* ── SIDE PANEL ── */
 .panel-overlay{display:none;position:fixed;inset:0;z-index:100;background:rgba(15,23,42,.3);}
 .panel-overlay.open{display:block;}
@@ -325,12 +361,28 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
 
   <!-- PLACEHOLDER VIEWS -->
   <div id="cellStocksView" class="cell-stocks-view">
-    <iframe class="cell-stocks-frame" title="Cell Stocks LN2 Inventory" src="./ln2-inventory/?embedded=1"></iframe>
+    <iframe class="cell-stocks-frame" title="Cell Stocks LN2 Inventory" src="./ln2-inventory/index.html?embedded=1"></iframe>
   </div>
-  <div id="dutiesView" style="display:none;padding:32px">
-    <div style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:48px;text-align:center;color:var(--muted)">
-      <strong style="display:block;font-size:15px;color:var(--text);margin-bottom:6px">Lab Duties</strong>
-      Coming soon.
+  <div id="dutiesView" class="duties-view">
+    <div class="duties-shell">
+      <section class="duties-grid">
+        <article class="duties-card">
+          <h2>Products management</h2>
+          <div id="dutiesProductsTable" class="duties-status">Loading...</div>
+          <h3>Guidelines</h3>
+          <ul id="dutiesProductsGuidelines" class="duties-list"></ul>
+        </article>
+        <article class="duties-card">
+          <h2>Reagent &amp; Buffer Preparation</h2>
+          <div id="dutiesReagentTable" class="duties-status">Loading...</div>
+          <h3>Guidelines</h3>
+          <ul id="dutiesReagentGuidelines" class="duties-list"></ul>
+        </article>
+        <article class="duties-card">
+          <h2>Cell stock list 관리</h2>
+          <div id="dutiesStorageMap" class="storage-map"></div>
+        </article>
+      </section>
     </div>
   </div>
 
@@ -392,6 +444,7 @@ let lang='en', items=[], sourceMeta={}, selectedIds=new Set();
 let activeView='Mainpage', sortCol='Item_Name', sortDir=1, hasUnsaved=false;
 let panelMode='view', panelItemId=null;
 let columnWidths = loadColumnWidths();
+let rolesData=null, rolesLoading=null;
 
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -475,6 +528,111 @@ function resetToSaved(){
   localStorage.removeItem(STORAGE_KEY);location.reload();
 }
 
+async function ensureRolesData(){
+  if(rolesData) return rolesData;
+  if(!rolesLoading){
+    rolesLoading = fetch('./data/roles.json',{cache:'no-store'})
+      .then(r=>{if(!r.ok) throw new Error(`HTTP ${r.status}`); return r.json();})
+      .then(d=>{rolesData=d; return d;});
+  }
+  return rolesLoading;
+}
+
+function renderDutiesTable(section, targetId){
+  const rows=(rolesData?.assignments||[])
+    .filter(item=>item.section===section)
+    .sort((a,b)=>(a.order||0)-(b.order||0));
+  const body=rows.map(row=>`
+    <tr>
+      <td>${esc(row.task)}</td>
+      <td><span class="duties-person">${esc(row.person)}</span></td>
+    </tr>`).join('') || '<tr><td colspan="2">No results.</td></tr>';
+  $(targetId).innerHTML = `<table class="duties-table"><colgroup><col class="task-col"><col class="person-col"></colgroup><thead><tr><th>Task</th><th>PIC</th></tr></thead><tbody>${body}</tbody></table>`;
+}
+
+function renderDutiesGuidelines(section, targetId){
+  const rows=(rolesData?.guidelines||[])
+    .filter(item=>item.section===section)
+    .sort((a,b)=>(a.order||0)-(b.order||0));
+  $(targetId).innerHTML = rows.map(row=>`<li>${esc(row.guideline)}</li>`).join('') || '<li>No results.</li>';
+}
+
+function renderDutiesStorage(){
+  const filtered=rolesData?.storageMap||[];
+  const groupName=item=>`${item.equipment} ${item.equipmentNo||''}`.trim();
+  const groups=[...new Set(filtered.map(item=>groupName(item)))];
+  $('dutiesStorageMap').innerHTML = groups.map(group=>{
+    const items=filtered.filter(item=>groupName(item)===group);
+    if(group.includes('Incubator')){
+      const byZone=zone=>items
+        .filter(item=>item.incubatorZone===zone)
+        .sort((a,b)=>Number(a.incubatorPosition)-Number(b.incubatorPosition))
+        .map(item=>`<div class="storage-cell">
+          <div class="zone">${esc(item.incubatorPosition)}</div>
+          <strong>${esc(item.person)}</strong>
+          ${item.label ? `<div class="label">${esc(item.label)}</div>` : ''}
+        </div>`).join('');
+      return `<div class="storage-section">
+        <div class="storage-title">${esc(group)}</div>
+        <div class="incubator-grid">
+          <div class="incubator-column"><div class="incubator-heading">Upper</div>${byZone('Upper')}</div>
+          <div class="incubator-column"><div class="incubator-heading">Lower</div>${byZone('Lower')}</div>
+        </div>
+      </div>`;
+    }
+    if(group.includes('Deep freezer') && items.some(item=>item.gridColumn && item.gridRow && item.subSection)){
+      const byCell=(gridColumn,gridRow,subSection)=>items.find(item=>item.gridColumn===gridColumn && item.gridRow===gridRow && item.subSection===subSection);
+      const rows=[1,2,3,4].map(row=>`
+        <div class="freezer-row-label">row${row}</div>
+        ${[1,2,3,4,5].map(col=>{
+          const subcells=[1,2,3,4,5].map(sub=>{
+            const item=byCell(`column${col}`,`row${row}`,`section${sub}`);
+            const owner=item?.person||'';
+            return `<div class="freezer-subcell">${owner ? '' : `<div class="zone">section${sub}</div>`}<strong>${esc(owner)}</strong>${item?.label ? `<div class="label">${esc(item.label)}</div>` : ''}</div>`;
+          }).join('');
+          return `<div class="freezer-cell">${subcells}</div>`;
+        }).join('')}`).join('');
+      return `<div class="storage-section">
+        <div class="storage-title">${esc(group)}</div>
+        <div style="padding:8px">
+          <div class="freezer-grid">
+            <div class="freezer-head"></div>
+            <div class="freezer-head">column1</div><div class="freezer-head">column2</div><div class="freezer-head">column3</div><div class="freezer-head">column4</div><div class="freezer-head">column5</div>
+            ${rows}
+          </div>
+        </div>
+      </div>`;
+    }
+    const cols=4;
+    return `<div class="storage-section">
+      <div class="storage-title">${esc(group)}</div>
+      <div class="storage-grid" style="grid-template-columns:repeat(${cols},minmax(0,1fr))">
+        ${items.map(item=>`<div class="storage-cell">
+          <div class="zone">${esc(item.zone)} · ${esc(item.position)}</div>
+          <strong>${esc(item.person)}</strong>
+          ${item.label ? `<div class="label">${esc(item.label)}</div>` : ''}
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('') || '<p class="duties-status">No results.</p>';
+}
+
+async function renderDuties(){
+  try{
+    await ensureRolesData();
+    const updated=rolesData?.meta?.updated ? ` · Updated ${rolesData.meta.updated}` : '';
+    if(activeView==='Duties') $('pageSubtitle').textContent = `Lab Duties${updated}`;
+    renderDutiesTable('Products management','dutiesProductsTable');
+    renderDutiesGuidelines('Products management','dutiesProductsGuidelines');
+    renderDutiesTable('Reagent & Buffer Preparation','dutiesReagentTable');
+    renderDutiesGuidelines('Reagent & Buffer Preparation','dutiesReagentGuidelines');
+    renderDutiesStorage();
+  }catch(e){
+    $('dutiesView').innerHTML = `<section class="duties-card"><h2>Lab Duties</h2><p class="duties-status">Cannot load data/roles.json.</p></section>`;
+    console.error('load roles failed:',e);
+  }
+}
+
 // ── FILTER / SORT ─────────────────────────────────────────────
 function getViewItems(){
   if(activeView==='Mainpage') return items;
@@ -537,7 +695,8 @@ function render(){
   // Table and placeholder views
   $('tableSection').style.display = (isCategory || isMainpage) ? '' : 'none';
   $('cellStocksView').style.display = activeView === 'Cell Stocks' ? 'block' : 'none';
-  $('dutiesView').style.display = activeView === 'Duties' ? '' : 'none';
+  $('dutiesView').style.display = activeView === 'Duties' ? 'block' : 'none';
+  if(activeView === 'Duties') renderDuties();
 
   if(isCategory || isMainpage){
     if(isCategory) updateSubcatFilter();
@@ -1112,6 +1271,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
     applyLang();
   });
 
+  if(location.hash.toLowerCase()==='#duties') activeView='Duties';
   await loadData();
   applyLang();
 });
