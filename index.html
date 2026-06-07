@@ -345,8 +345,7 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
   <div class="mainpage-notice" id="mainpageNotice" style="display:none">
     <strong id="noticeTitle">How this works:</strong>
     <span id="noticeText"> This is a static GitHub Pages site. Edits save to your browser automatically.
-    To update for the whole team, export <code>data/inventory.json</code> and commit to GitHub.
-    Use the Excel → <code>convert_excel_to_json.py</code> workflow for bulk updates.</span>
+    To update for the whole team, export <code>data/inventory.json</code> and commit to GitHub.</span>
   </div>
 
   <!-- UNSAVED BAR -->
@@ -1215,8 +1214,8 @@ function applyLang(){
   const noticeText  = $('noticeText');
   if(noticeTitle) noticeTitle.textContent = lang==='kr' ? '운영 방식:' : 'How this works:';
   if(noticeText) noticeText.innerHTML = lang==='kr'
-    ? ' 이 사이트는 GitHub Pages 정적 웹사이트입니다. 수정 내용은 브라우저에 자동 저장됩니다. 팀 전체 반영은 <code>data/inventory.json</code>을 내보내어 GitHub에 커밋하세요. 대량 수정은 Excel → <code>convert_excel_to_json.py</code> 방식을 사용하세요.'
-    : ' This is a static GitHub Pages site. Edits save to your browser automatically. To update for the whole team, export <code>data/inventory.json</code> and commit to GitHub. Use the Excel → <code>convert_excel_to_json.py</code> workflow for bulk updates.';
+    ? ' 이 사이트는 GitHub Pages 정적 웹사이트입니다. 수정 내용은 브라우저에 자동 저장됩니다. 팀 전체 반영은 <code>data/inventory.json</code>을 내보내어 GitHub에 커밋하세요.'
+    : ' This is a static GitHub Pages site. Edits save to your browser automatically. To update for the whole team, export <code>data/inventory.json</code> and commit to GitHub.';
 
   const unsavedText = $('unsavedText');
   if(unsavedText) unsavedText.textContent = lang==='kr' ? '⚠ 저장되지 않은 변경 사항 —' : '⚠ Unsaved local changes —';
