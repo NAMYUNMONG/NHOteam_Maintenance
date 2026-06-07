@@ -7,33 +7,27 @@
   "assignments": [
     {
       "section": "Products management",
-      "task": "FBS, FBS (HI), BCS aliquot",
-      "person": "나제야",
+      "task": "Autoclave (Tip, e-tube, D.W.)",
+      "person": "송영호",
       "order": 1
-    },
-    {
-      "section": "Products management",
-      "task": "P/S (11 ml), T/E (10 ml) aliquot",
-      "person": "나제야",
-      "order": 2
     },
     {
       "section": "Products management",
       "task": "관리: 실험물품, CO₂, LN₂, 70% EtOH",
       "person": "신양지",
-      "order": 3
+      "order": 2
     },
     {
       "section": "Products management",
       "task": "주문: 실험물품(CO₂, LN₂), 문구류",
       "person": "남윤성",
-      "order": 4
+      "order": 3
     },
     {
       "section": "Products management",
       "task": "결재: 물품검수, 거래명세서, 세금계산서",
       "person": "남윤성",
-      "order": 5
+      "order": 4
     },
     {
       "section": "Reagent & Buffer Preparation",
@@ -49,9 +43,15 @@
     },
     {
       "section": "Reagent & Buffer Preparation",
-      "task": "Autoclave (Tip, e-tube, D.W.)",
-      "person": "송영호",
+      "task": "FBS, FBS (HI), BCS aliquot",
+      "person": "나제야",
       "order": 3
+    },
+    {
+      "section": "Reagent & Buffer Preparation",
+      "task": "P/S (11 ml), T/E (10 ml) aliquot",
+      "person": "나제야",
+      "order": 4
     }
   ],
   "guidelines": [
@@ -67,7 +67,7 @@
     },
     {
       "section": "Products management",
-      "guideline": "HI-FBS: Thaw at 37°C, heat-inactivate at 60°C for 30 minutes, then aliquot.",
+      "guideline": "Inform the person in charge in advance when using consumables in bulk.",
       "order": 3
     },
     {
@@ -82,7 +82,7 @@
     },
     {
       "section": "Reagent & Buffer Preparation",
-      "guideline": "Inform the person in charge in advance when using consumables in bulk.",
+      "guideline": "HI-FBS: Thaw at 37°C, heat-inactivate at 60°C for 30 minutes, then aliquot.",
       "order": 3
     },
     {
