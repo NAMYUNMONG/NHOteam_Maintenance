@@ -22,6 +22,9 @@ const els = {
   emptySlots: document.querySelector('#emptySlots'),
   utilization: document.querySelector('#utilization'),
   cellLineCount: document.querySelector('#cellLineCount'),
+  cellLineToggleBtn: document.querySelector('#cellLineToggleBtn'),
+  cellLineListPanel: document.querySelector('#cellLineListPanel'),
+  cellLineList: document.querySelector('#cellLineList'),
   queryInput: document.querySelector('#queryInput'),
   rackFilter: document.querySelector('#rackFilter'),
   boxFilter: document.querySelector('#boxFilter'),
@@ -81,6 +84,9 @@ const state = {
   dialogMode: 'add',
   sortKey: 'location',
   sortDir: 1,
+  cellLineListOpen: false,
+  boxSelectionAnchorId: null,
+  tableSelectionAnchorId: null,
 };
 
 function fmt(n) {
@@ -390,11 +396,37 @@ function renderSummary() {
   els.emptySlots.textContent = fmt(summary.emptySlots);
   els.utilization.textContent = `${summary.utilization}%`;
   els.cellLineCount.textContent = fmt(summary.cellLineCount);
+  renderCellLineList();
   if (els.sourceInfo) {
     els.sourceInfo.hidden = true;
     els.sourceInfo.textContent = '';
   }
   applyKpiLanguage();
+}
+
+function renderCellLineList() {
+  if (!els.cellLineListPanel || !els.cellLineList || !els.cellLineToggleBtn) return;
+  const rows = [...(state.data.cellLineSummary || [])]
+    .sort((a, b) => a.cellLine.localeCompare(b.cellLine, 'en', { numeric: true, sensitivity: 'base' }));
+
+  els.cellLineToggleBtn.setAttribute('aria-expanded', String(state.cellLineListOpen));
+  els.cellLineListPanel.hidden = !state.cellLineListOpen;
+
+  if (!state.cellLineListOpen) return;
+  if (!rows.length) {
+    els.cellLineList.innerHTML = '<div class="empty-state">No cell lines found.</div>';
+    return;
+  }
+
+  els.cellLineList.innerHTML = rows
+    .map((item) => `<button type="button" class="cell-line-item" title="${escapeHtml(item.cellLine)}">${escapeHtml(item.cellLine)}</button>`)
+    .join('');
+}
+
+function toggleCellLineList() {
+  state.cellLineListOpen = !state.cellLineListOpen;
+  renderCellLineList();
+  syncInventoryPanelHeight();
 }
 
 function initializeFilters() {
@@ -504,10 +536,15 @@ function selectRack(rack) {
   selectBox(rack, nextBox);
 }
 
-function selectBox(rack, box) {
+function selectBox(rack, box, options = {}) {
+  const clearSelection = options.clearSelection !== false;
   state.selectedRack = rack;
   state.selectedBox = String(box);
-  state.selectedWellIds.clear();
+  if (clearSelection) {
+    state.selectedWellIds.clear();
+    state.boxSelectionAnchorId = null;
+    state.tableSelectionAnchorId = null;
+  }
   els.rackFilter.value = rack;
   els.boxFilter.value = String(box);
   renderRackOverview();
@@ -516,13 +553,47 @@ function selectBox(rack, box) {
   syncInventoryPanelHeight();
 }
 
-function toggleWell(record) {
+function applySelectionRange(records, anchorId, targetId, shouldSelect) {
+  const start = records.findIndex((item) => item.id === anchorId);
+  const end = records.findIndex((item) => item.id === targetId);
+  if (start === -1 || end === -1) return false;
+  const [from, to] = start < end ? [start, end] : [end, start];
+  records.slice(from, to + 1).forEach((item) => {
+    if (shouldSelect) state.selectedWellIds.add(item.id);
+    else state.selectedWellIds.delete(item.id);
+  });
+  return true;
+}
+
+function currentBoxRecords() {
+  const rack = state.selectedRack;
+  const box = String(state.selectedBox);
+  return state.data.records
+    .filter((record) => record.rack === rack && String(record.box) === box)
+    .sort((a, b) => a.well - b.well);
+}
+
+function toggleWell(record, event) {
+  const boxRecords = currentBoxRecords();
+  const shouldSelectRange = !state.selectedWellIds.has(record.id);
+  if (event?.shiftKey && state.boxSelectionAnchorId && applySelectionRange(boxRecords, state.boxSelectionAnchorId, record.id, shouldSelectRange)) {
+    state.boxSelectionAnchorId = record.id;
+    state.tableSelectionAnchorId = record.id;
+    renderBoxMap();
+    renderTable(state.filtered);
+    renderWellDetails();
+    return;
+  }
+
   if (state.selectedWellIds.has(record.id)) {
     state.selectedWellIds.delete(record.id);
   } else {
     state.selectedWellIds.add(record.id);
   }
+  state.boxSelectionAnchorId = record.id;
+  state.tableSelectionAnchorId = record.id;
   renderBoxMap();
+  renderTable(state.filtered);
   renderWellDetails();
 }
 
@@ -532,9 +603,7 @@ function renderBoxMap() {
   const selectedLocation = rack && box ? `${rack} · Box ${box}` : '-';
   els.selectedBoxLabel.textContent = selectedLocation;
   els.mapSelectedBoxLabel.textContent = selectedLocation;
-  const wells = state.data.records
-    .filter((record) => record.rack === rack && String(record.box) === box)
-    .sort((a, b) => a.well - b.well);
+  const wells = currentBoxRecords();
   els.boxMap.innerHTML = '';
   wells.forEach((record) => {
     const btn = document.createElement('button');
@@ -542,7 +611,7 @@ function renderBoxMap() {
     btn.className = `well ${record.occupied ? 'occupied' : 'empty'} ${state.selectedWellIds.has(record.id) ? 'selected' : ''}`;
     btn.title = `${locationText(record)} ${record.cellLine || 'Empty'}`;
     btn.textContent = record.well;
-    btn.addEventListener('click', () => toggleWell(record));
+    btn.addEventListener('click', (event) => toggleWell(record, event));
     els.boxMap.appendChild(btn);
   });
   renderSelectionToolbar();
@@ -664,7 +733,30 @@ function afterDataMutation() {
 
 function clearSelection() {
   state.selectedWellIds.clear();
+  state.boxSelectionAnchorId = null;
+  state.tableSelectionAnchorId = null;
   renderBoxMap();
+  renderTable(state.filtered);
+  renderWellDetails();
+}
+
+function selectTableRecord(record, event) {
+  const shouldSelectRange = !state.selectedWellIds.has(record.id);
+  if (event?.shiftKey && state.tableSelectionAnchorId && applySelectionRange(state.filtered, state.tableSelectionAnchorId, record.id, shouldSelectRange)) {
+    state.tableSelectionAnchorId = record.id;
+    state.boxSelectionAnchorId = record.id;
+    selectBox(record.rack, record.box, { clearSelection: false });
+    renderTable(state.filtered);
+    renderWellDetails();
+    return;
+  }
+
+  selectBox(record.rack, record.box);
+  state.selectedWellIds.add(record.id);
+  state.tableSelectionAnchorId = record.id;
+  state.boxSelectionAnchorId = record.id;
+  renderBoxMap();
+  renderTable(state.filtered);
   renderWellDetails();
 }
 
@@ -679,6 +771,7 @@ function renderTable(rows) {
   const fragment = document.createDocumentFragment();
   rows.slice(0, 1000).forEach((record) => {
     const tr = document.createElement('tr');
+    if (state.selectedWellIds.has(record.id)) tr.classList.add('selected');
     tr.innerHTML = `<td class="location">${escapeHtml(locationText(record))}</td>
       <td>${record.occupied ? escapeHtml(record.cellLine) : '<span class="muted">Empty</span>'}</td>
       <td>${escapeHtml(record.tissue || '')}</td>
@@ -686,12 +779,7 @@ function renderTable(rows) {
       <td>${escapeHtml(record.passage || '')}</td>
       <td>${escapeHtml(record.depositor || '')}</td>
       <td>${escapeHtml(record.note || '')}</td>`;
-    tr.addEventListener('click', () => {
-      selectBox(record.rack, record.box);
-      state.selectedWellIds.add(record.id);
-      renderBoxMap();
-      renderWellDetails();
-    });
+    tr.addEventListener('click', (event) => selectTableRecord(record, event));
     fragment.appendChild(tr);
   });
   if (rows.length > 1000) {
@@ -758,6 +846,7 @@ async function init() {
 els.refreshBtn.addEventListener('click', () => window.location.reload());
 els.exportCsvBtn.addEventListener('click', exportFilteredCsv);
 els.exportJsonBtn.addEventListener('click', exportJson);
+els.cellLineToggleBtn?.addEventListener('click', toggleCellLineList);
 els.addStockBtn.addEventListener('click', () => openStockDialog('add'));
 els.editStockBtn.addEventListener('click', () => openStockDialog('edit'));
 els.deleteStockBtn.addEventListener('click', deleteSelectedStock);

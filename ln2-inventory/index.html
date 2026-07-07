@@ -40,7 +40,14 @@
       <article class="kpi"><span data-i18n="occupiedSlots">보관 중</span><strong id="occupiedSlots">-</strong></article>
       <article class="kpi"><span data-i18n="emptySlots">빈 위치</span><strong id="emptySlots">-</strong></article>
       <article class="kpi"><span data-i18n="utilization">활용률</span><strong id="utilization">-</strong></article>
-      <article class="kpi"><span data-i18n="cellLineCount">세포주</span><strong id="cellLineCount">-</strong></article>
+      <div class="kpi-dropdown">
+        <button id="cellLineToggleBtn" class="kpi kpi-button" type="button" aria-expanded="false" aria-controls="cellLineListPanel">
+          <span data-i18n="cellLineCount">CELL LINES</span><strong id="cellLineCount">-</strong>
+        </button>
+        <section id="cellLineListPanel" class="cell-line-list-panel" aria-label="cell line list" hidden>
+          <div id="cellLineList" class="cell-line-list"></div>
+        </section>
+      </div>
     </section>
     <div class="hero-actions">
       <button id="refreshBtn" type="button">데이터 새로고침</button>
