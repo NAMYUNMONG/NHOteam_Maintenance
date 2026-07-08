@@ -35,6 +35,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:13
 .sidebar-nav .nav-section{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#475569;padding:11px 12px 5px;}
 .sidebar-footer{padding:14px 16px;border-top:1px solid #1f2937;font-size:13px;color:#64748b;}
 .sidebar-footer strong{display:block;color:#94a3b8;margin-top:3px;font-size:13px;word-break:break-all;}
+.sidebar-footer-link{display:flex;align-items:center;justify-content:center;margin-bottom:12px;padding:9px 10px;border:1px solid #334155;border-radius:var(--radius-sm);background:#1f2937;color:#e5e7eb;text-decoration:none;font-size:13px;font-weight:600;}
+.sidebar-footer-link:hover{background:#273449;border-color:#475569;color:#fff;}
 .sidebar-toggle{flex:0 0 28px;width:28px;height:28px;border-radius:var(--radius-sm);background:#1f2937;border:1px solid #374151;color:#fff;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .12s,border-color .12s;}
 .sidebar-toggle:hover{background:#273449;border-color:#475569;}
 .sidebar-reveal{position:fixed;top:18px;left:0;z-index:50;width:18px;height:58px;border:1px solid var(--green);border-left:none;border-radius:0 9px 9px 0;background:var(--green);color:#fff;font-size:14px;line-height:1;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:var(--shadow);}
@@ -274,17 +276,17 @@ footer{margin-left:var(--sidebar-w);padding:20px 32px;color:var(--muted);font-si
     <button class="sidebar-toggle" id="sidebarToggle" aria-label="hide sidebar">‹</button>
   </div>
   <nav class="sidebar-nav" id="sidebarNav">
-    <span class="nav-section">Views</span>
     <a href="#" data-view="Mainpage" class="active">Home</a>
-    <span class="nav-section">Categories</span>
+    <span class="nav-section">Inventory</span>
     <a href="#" data-view="Chemical">Chemical</a>
     <a href="#" data-view="Antibody/Protein">Antibody &amp; Protein</a>
     <a href="#" data-view="Products">Products</a>
-    <span class="nav-section">Special</span>
     <a href="#" data-view="Cell Stocks">Cell Stocks</a>
+    <span class="nav-section">ETC.</span>
     <a href="#" data-view="Duties">Lab Duties</a>
   </nav>
   <div class="sidebar-footer">
+    <a class="sidebar-footer-link" href="https://sites.google.com/view/npaslab/" target="_blank" rel="noopener noreferrer">LAB HOMEPAGE</a>
     <span>Data source</span>
     <strong id="lastUpdated">Loading…</strong>
   </div>
@@ -453,7 +455,7 @@ let lang='en', items=[], sourceMeta={}, selectedIds=new Set();
 let activeView='Mainpage', sortCol='Item_Name', sortDir=1, hasUnsaved=false;
 let panelMode='view', panelItemId=null;
 let columnWidths = loadColumnWidths();
-let rolesData=null, rolesLoading=null;
+let rolesData=null, rolesLoading=null, cellStockLineCount=null;
 
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -490,6 +492,7 @@ function getColumnWidth(col){
 
 // ── DATA ──────────────────────────────────────────────────────
 async function loadData(){
+  await loadCellStockStats();
   const saved=localStorage.getItem(STORAGE_KEY);
   if(saved){
     try{
@@ -517,6 +520,24 @@ async function loadData(){
     console.error('loadData failed:',e);
   }
   render();
+}
+
+async function loadCellStockStats(){
+  try{
+    const r=await fetch('./ln2-inventory/data/inventory.json',{cache:'no-store'});
+    if(!r.ok) throw new Error(`HTTP ${r.status}`);
+    const d=await r.json();
+    const summaryCount=Number(d.summary?.cellLineCount);
+    if(Number.isFinite(summaryCount)){
+      cellStockLineCount=summaryCount;
+      return;
+    }
+    const records=Array.isArray(d.records)?d.records:[];
+    cellStockLineCount=new Set(records.filter(record=>record.occupied).map(record=>norm(record.cellLine)).filter(Boolean)).size;
+  }catch(e){
+    cellStockLineCount=null;
+    console.warn('loadCellStockStats failed:',e);
+  }
 }
 
 function saveLocal(){
@@ -713,6 +734,7 @@ function updateStats(){
   const counts={};
   CATEGORIES.forEach(c=>counts[c]=0);
   items.forEach(i=>{if(counts[i.Category]!==undefined)counts[i.Category]++;});
+  if(Number.isFinite(cellStockLineCount)) counts['Cell Stocks']=cellStockLineCount;
   // Update sidebar nav with counts
   document.querySelectorAll('.sidebar-nav a[data-view]').forEach(a=>{
     const cat = a.dataset.view;
