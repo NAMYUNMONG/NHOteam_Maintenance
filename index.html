@@ -750,6 +750,7 @@ function renderTable(){
     {key:'Subcategory',label:'Subcategory',width:150,min:100,max:300},
     {key:'Manufacturer',label:'Manufacturer',width:120,min:90,max:260},
     {key:'Cat_No',label:'Cat#',width:112,min:82,max:220},
+    {key:'MW_kDa',label:'MW (kDa)',width:82,min:70,max:150},
     {key:'Storage',label:'Storage',width:74,min:64,max:120},
     {key:'Location',label:'Location',width:120,min:90,max:220},
     {key:'Sub_Location',label:'Shelf/Box',width:96,min:76,max:180},
@@ -799,6 +800,7 @@ function renderTable(){
       <td>${item.Subcategory?`<span class="badge badge-cat">${esc(item.Subcategory)}</span>`:'—'}</td>
       <td style="font-size:12px">${esc(item.Manufacturer||'—')}</td>
       <td><span class="cell-mono">${esc(item.Cat_No||'—')}</span></td>
+      <td><span class="cell-mono">${esc(item.MW_kDa||'—')}</span></td>
       <td><span class="badge ${storageCls}">${esc(storage||'—')}</span></td>
       <td style="font-size:12px">${esc(item.Location||'—')}</td>
       <td style="font-size:12px">${esc(item.Sub_Location||'—')}</td>
@@ -818,6 +820,7 @@ function bindTableEvents(){
     {key:'Subcategory',width:150,min:100,max:300},
     {key:'Manufacturer',width:120,min:90,max:260},
     {key:'Cat_No',width:112,min:82,max:220},
+    {key:'MW_kDa',width:82,min:70,max:150},
     {key:'Storage',width:74,min:64,max:120},
     {key:'Location',width:120,min:90,max:220},
     {key:'Sub_Location',width:96,min:76,max:180},
