@@ -127,6 +127,7 @@ tbody td:first-child{text-align:center;cursor:default;overflow:visible;}
 .badge-20c{background:#eaf1fb;color:#1d4e89;}
 .badge-80c{background:#edf2ff;color:#3730a3;}
 .badge-ln2{background:#f0f0ff;color:#4338ca;}
+.storage-badge{width:54px;justify-content:center;}
 .msds-link{font-size:12px;color:var(--green);text-decoration:none;font-family:var(--mono);font-weight:500;}
 .msds-link:hover{text-decoration:underline;}
 .empty{padding:48px;text-align:center;color:var(--muted);font-size:14px;}
@@ -750,7 +751,7 @@ function renderTable(){
     {key:'Subcategory',label:'Subcategory',width:150,min:100,max:300},
     {key:'Manufacturer',label:'Manufacturer',width:120,min:90,max:260},
     {key:'Cat_No',label:'Cat#',width:112,min:82,max:220},
-    {key:'MW_kDa',label:'MW (kDa)',width:82,min:70,max:150},
+    ...(activeView==='Antibody/Protein' ? [{key:'MW_kDa',label:'MW (kDa)',width:82,min:70,max:150}] : []),
     {key:'Storage',label:'Storage',width:74,min:64,max:120},
     {key:'Location',label:'Location',width:120,min:90,max:220},
     {key:'Sub_Location',label:'Shelf/Box',width:96,min:76,max:180},
@@ -800,8 +801,8 @@ function renderTable(){
       <td>${item.Subcategory?`<span class="badge badge-cat">${esc(item.Subcategory)}</span>`:'—'}</td>
       <td style="font-size:12px">${esc(item.Manufacturer||'—')}</td>
       <td><span class="cell-mono">${esc(item.Cat_No||'—')}</span></td>
-      <td><span class="cell-mono">${esc(item.MW_kDa||'—')}</span></td>
-      <td><span class="badge ${storageCls}">${esc(storage||'—')}</span></td>
+      ${activeView==='Antibody/Protein' ? `<td><span class="cell-mono">${esc(item.MW_kDa||'—')}</span></td>` : ''}
+      <td><span class="badge storage-badge ${storageCls}">${esc(storage||'—')}</span></td>
       <td style="font-size:12px">${esc(item.Location||'—')}</td>
       <td style="font-size:12px">${esc(item.Sub_Location||'—')}</td>
       <td style="white-space:nowrap;text-align:right">${item.Current_Stock!=null?`<span style="font-size:12px">${item.Current_Stock}</span>`:'<span style="color:var(--line)">—</span>'}</td>
@@ -820,7 +821,7 @@ function bindTableEvents(){
     {key:'Subcategory',width:150,min:100,max:300},
     {key:'Manufacturer',width:120,min:90,max:260},
     {key:'Cat_No',width:112,min:82,max:220},
-    {key:'MW_kDa',width:82,min:70,max:150},
+    ...(activeView==='Antibody/Protein' ? [{key:'MW_kDa',width:82,min:70,max:150}] : []),
     {key:'Storage',width:74,min:64,max:120},
     {key:'Location',width:120,min:90,max:220},
     {key:'Sub_Location',width:96,min:76,max:180},
